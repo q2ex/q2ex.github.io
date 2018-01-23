@@ -182,7 +182,7 @@ MD5sum: f9fccd166dc3b873724c7f07a32568e4
 Filename: Files/berkeleydb/berkeleydb_4.6.21-6_iphoneos-arm.deb
 Depiction: http://q2ex.github.io/Files/?p=berkeleydb
 
-Package: ifile
+Package: iFile
 Name: iFile
 Version: 2.2.0-1
 Architecture: iphoneos-arm
