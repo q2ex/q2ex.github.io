@@ -1,3 +1,18 @@
+Package: com.tigisoftware.filza64bit
+Name: Filza File Manager
+Depends: zip, unzip, gzip, unrar, p7zip
+Conflicts: com.tigisoftware.filza
+Version: 3.4.0-25
+Architecture: iphoneos-arm
+Description: File Manager for iPhone, iPad, iPod Touch. Supports iOS 7+. This special version only supports 64-bit devices
+Maintainer: TIGI Software
+Author: TIGI Software
+Section: Utilities
+Installed-Size: 21088
+MD5sum: 1d0417c6ad81f27b1a2d69629504b123
+Filename: Files/com.tigisoftware.filza64bit/com.tigisoftware.filza64bit_3.4.0-25_iphoneos-arm.deb
+Depiction: http://q2ex.github.io/Files/?p=com.tigisoftware.filza64bit
+
 Package: springtomize3
 Depends: firmware (>= 7.0), mobilesubstrate (>= 0.9.5000), preferenceloader (>= 2.2.2), com.rpetrich.rocketbootstrap
 Conflicts: com.filippobiga.springtomize2, com.filippobiga.springtomize3, com.filippobiga.springtomize4, com.springtomize.st4
