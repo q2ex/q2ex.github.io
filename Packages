@@ -197,7 +197,7 @@ Section: System
 dev: carsten
 MD5sum: e4fd36fde5d1f862f8fd4322659e2c8f
 Filename: Files/iFile/ifile_2.2.0-1_iphoneos-arm.deb
-Depiction: http://q2ex.github.io/Files/?p=iFile
+Depiction: http://q2ex.github.io/Files/?p=ifile
 
 Package: io.github.q2ex.themes
 Name: UIBar for iPhone
