@@ -1,0 +1,29 @@
+<package>
+<id>io.github.q2ex.themes</id>
+<name>UIBar for iPhone</name>
+<!--version></version>
+<changelog>
+<change></change>
+</changelog-->
+<compatibility>
+<firmware>
+<miniOS>8.0</miniOS>
+<maxiOS>10.3.3</maxiOS>
+<otherVersions>UnSupported</otherVersions>
+</firmware>
+</compatibility>
+<!--dependencies>
+<package></package>
+</dependencies-->
+<descriptionlist>
+<description>Only Support for 6P/6SP/7P 8.x - 10.3.x devices.</description>
+</descriptionlist>
+<screenshots>
+<screenshot>
+<description></description>
+<image>../../../img/io.github.q2ex.themes.png</image>
+</screenshot>
+</screenshots>
+<links>
+</links>
+</package>

@@ -1,0 +1,29 @@
+<package>
+<id>taiguntether83x</id>
+<name>TAiG 8.1.x - 8.4 Untether</name>
+<!--version></version>
+<changelog>
+<change></change>
+</changelog-->
+<compatibility>
+<firmware>
+<miniOS>8.1.3</miniOS>
+<maxiOS>8.4</maxiOS>
+<otherVersions>UnSupported</otherVersions>
+</firmware>
+</compatibility>
+<!--dependencies>
+<package></package>
+</dependencies-->
+<descriptionlist>
+<description>TAiG Untether JAilbreAK for iOS8.1.x - iOS8.4</description>
+</descriptionlist>
+<!--screenshots>
+<screenshot>
+<description></description>
+<image>../../../img/.png</image>
+</screenshot>
+</screenshots-->
+<links>
+</links>
+</package>

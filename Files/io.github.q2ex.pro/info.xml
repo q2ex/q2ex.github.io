@@ -1,0 +1,29 @@
+<package>
+<id>io.github.q2ex.pro</id>
+<name>Procedures Collection v2</name>
+<!--version>1.1</version>
+<changelog>
+<change>Fix On iOS 9.</change>
+</changelog-->
+<compatibility>
+<firmware>
+<miniOS>10</miniOS>
+<maxiOS>10.3.3</maxiOS>
+<!--otherVersions>UnSupported</otherVersions-->
+</firmware>
+</compatibility>
+<!--dependencies>
+<package></package>
+</dependencies-->
+<descriptionlist>
+<description>This patch will give you big surprise.</description>
+</descriptionlist>
+<!--screenshots>
+<screenshot>
+<description></description>
+<image>../../../img/.gif</image>
+</screenshot>
+</screenshots-->
+<links>
+</links>
+</package>
