@@ -1,14 +1,14 @@
 <package>
 <id>io.github.q2ex.dev</id>
 <name>Procedures Collection</name>
-<!--version>1.1</version>
+<!--version></version>
 <changelog>
-<change>Fix On iOS 9.</change>
+<change></change>
 </changelog-->
 <compatibility>
 <firmware>
-<miniOS>8.1</miniOS>
-<maxiOS>9.3.3</maxiOS>
+<miniOS>8.0</miniOS>
+<maxiOS>10.3.3</maxiOS>
 <otherVersions>UnSupported</otherVersions>
 </firmware>
 </compatibility>
@@ -21,7 +21,7 @@
 <!--screenshots>
 <screenshot>
 <description></description>
-<image>../../../img/.gif</image>
+<image>../../../img/.png</image>
 </screenshot>
 </screenshots-->
 <links>
