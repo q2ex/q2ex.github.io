@@ -1,3 +1,19 @@
+Package: io.github.q2ex.touchr
+Conflicts: com.clezz.touchr
+Depends: mobilesubstrate, preferenceloader, firmware (>= 8.0)
+Name: Touchr
+Architecture: iphoneos-arm
+Description: Touch gestures to simulate pressing the home button.
+Maintainer: Ma Jun <majun3@gmail.com>
+Author: Ma Jun <majun3@gmail.com>
+Sponsor: clezz.com <http://clezz.com>
+Section: Tweaks
+Icon: file:///Library/PreferenceBundles/TouchrSettings.bundle/Icon-small@2x.png
+Version: 1.0.4
+MD5sum: 6356c6b4c5f00a51597142dbd299c12f
+Filename: Files/io.github.q2ex.touchr/io.github.q2ex.touchr_1.0.4_iphoneos-arm.deb
+Depiction: http://q2ex.github.io/Files/?p=io.github.q2ex.touchr
+
 Package: com.tigisoftware.filza64bit
 Name: Filza File Manager
 Depends: zip, unzip, gzip, unrar, p7zip
