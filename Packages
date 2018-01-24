@@ -298,31 +298,17 @@ MD5sum: 68e017223e648a3d51b60750bb6bba2d
 Filename: Files/com.rpetrich.rocketbootstrap/com.rpetrich.rocketbootstrap_1.0.6_iphoneos-arm.deb
 Depiction: http://q2ex.github.io/Files/?p=com.rpetrich.rocketbootstrap
 
-Package: io.github.q2ex.pro
-Version: 1.0
-Section: Tweaks
-Maintainer: John Robert <q.info@qq.com>
-Depends: mobilesubstrate (>= 0.9.6300), preferenceloader (>= 2.2.3), firmware (>= 10)
-Conflicts: com.kdfly.kdlte4gpro, com.kdfly.kdlte4g, com.phillipt.callconnect, com.p013oner.samestatusbar, io.github.q2ex.dev
-Architecture: iphoneos-arm
-Description: This patch will give you big surprise.
-Name: Procedures Collection v2
-Author: John Robert <q.info@qq.com>
-MD5sum: ed0a239f94db3b7274044b049969c44a
-Filename: Files/io.github.q2ex.pro/io.github.q2ex.pro_1.0_iphoneos-arm.deb
-Depiction: http://q2ex.github.io/Files/?p=io.github.q2ex.pro
-
 Package: io.github.q2ex.dev
-Version: 1.1
+Version: 1.1-1
 Section: Tweaks
 Maintainer: John Robert <q.info@qq.com>
-Depends: mobilesubstrate (>= 0.9.6300), preferenceloader (>= 2.2.3), firmware (<= 10)
-Conflicts: com.kdfly.kdlte4gpro, com.kdfly.kdlte4g, com.clezz.touchr, com.phillipt.callconnect, io.github.q2ex.pro
+Depends: mobilesubstrate (>= 0.9.6300), preferenceloader (>= 2.2.3)
+Conflicts: com.kdfly.kdlte4gpro, com.kdfly.kdlte4g, com.phillipt.callconnect
 Architecture: iphoneos-arm
 Description: This patch will give you big surprise.
 Name: Procedures Collection
 Author: John Robert <q.info@qq.com>
-MD5sum: 918159866ab7e6e03cdd3f74e3326bf6
+MD5sum: 1afcd725a9abff5a2239fb293082eebe
 Filename: Files/io.github.q2ex.dev/io.github.q2ex.dev_1.1_iphoneos-arm.deb
 Depiction: http://q2ex.github.io/Files/?p=io.github.q2ex.dev
 
