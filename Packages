@@ -1,3 +1,18 @@
+Author: BigBoss <bigboss@thebigboss.org>
+Maintainer: BigBoss <bigboss@thebigboss.org>
+Name: SimpleStatus
+Package: io.github.q2ex.simplestatus
+Conflicts: com.skyfrost.samestatus
+Depends: firmware (<= 10), mobilesubstrate (>= 0.9.6000)
+Section: Tweaks
+Version: 1.1
+Architecture: iphoneos-arm
+Description: Restore the classic status bar size.
+Tag: purpose::extension, role::enduser
+MD5sum: 50eb2384f1952e15201ed77524cc569d
+Filename: Files/io.github.q2ex.simplestatus/io.github.q2ex.simplestatus_1.1_iphoneos-arm.deb
+Depiction: http://q2ex.github.io/Files/?p=io.github.q2ex.simplestatus
+
 Name: SimpleStatusBar
 Package: io.github.q2ex.simplestatusbar
 Conflicts: com.p013oner.samestatusbar
