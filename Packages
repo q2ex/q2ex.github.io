@@ -1,3 +1,19 @@
+Author: thebigboss.org <http://thebigboss.org>
+Maintainer: BigBoss <bigboss@thebigboss.org>
+Name: Dissident
+Package: io.github.q2ex.dissident
+Conflicts: org.thebigboss.dissident
+Depends: firmware (>= 8.0), mobilesubstrate, applist
+Section: Tweaks
+Version: 2.0.2
+Architecture: iphoneos-arm
+Description: This plug-in prevents the program from terminating.
+Tag: compatible::ios8, compatible::ios9, compatible::ios10
+Icon: file:///Library/Application Support/Dissident/Icon_r@2x.png
+MD5sum: bed724d50742503890cd9b92506a7b44
+Filename: Files/io.github.q2ex.dissident/io.github.q2ex.dissident_2.0.2_iphoneos-arm.deb
+Depiction: http://q2ex.github.io/Files/?p=io.github.q2ex.dissident
+
 Author: BigBoss <bigboss@thebigboss.org>
 Maintainer: BigBoss <bigboss@thebigboss.org>
 Name: SimpleStatus
