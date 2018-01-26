@@ -1,42 +1,39 @@
 <html>
 <head>
-    <title></title>
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
-    <base target="_blank" />
-    <script src="js/iphone.js"></script>
+<title></title>
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+<base target="_blank" />
+<script src="/js/iphone.js"></script>
 </head>
 <script type="text/javascript">
-    if (navigator.userAgent.search(/Cydia/) != -1)
-        document.write('<style type="text/css"> body { background: none !important; } .header { display: none !important; } </style>');
-
+if (navigator.userAgent.search(/Cydia/) != -1)
+document.write('<style type="text/css"> body { background: none !important; } .header { display: none !important; } </style>');
 </script>
-
 <body class="pinstripe">
-    <panel>
-        <fieldset class="iosver">
-            <div data-min-ios="8.4" data-max-ios="9.3.5" data-unsupported class="prerequisite">
-                <p>Compatible with iOS 8.4 - 9.3.5</p>
-            </div>
-        </fieldset>
-        <label>Description</label>
-        <fieldset>
-            <div>
-                <p>TEST</p>
-            </div>
-        </fieldset>
-        <label>Changes</label>
-        <fieldset>
-            <div>
-                <div>
-                    <label>
-                        <p>1.1: TEST</p>
-                    </label>
-                </div>
-            </div>
-        </fieldset>
-        <script src="/js/twitter.js"></script>
-    </panel>
-    <script src="js/cydia.js" async></script>
+<panel>
+<fieldset class="iosver">
+<div data-min-ios="8.4" data-max-ios="11" data-unsupported class="prerequisite">
+<p>Only Compatible with iOS 8.4 - 11</p>
+</div>
+</fieldset>
+<label>Description</label>
+<fieldset>
+<div>
+<p>TEST</p>
+</div>
+</fieldset>
+<label>UpdateLog</label>
+<fieldset>
+<div>
+<div>
+<label>
+<p>1.1: TEST</p>
+</label>
+</div>
+</div>
+</fieldset>
+<script src="/js/twitter.js"></script>
+</panel>
+<script src="/js/cydia.js" async></script>
 </body>
-
 </html>
