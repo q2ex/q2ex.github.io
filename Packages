@@ -1,3 +1,17 @@
+Package: io.github.q2ex.pro
+Conflicts: io.github.q2ex.test
+Name: TEST
+Description: TEST
+Author: TEST
+Maintainer: TEST
+Version: 1.1
+Section: Tweaks
+Architecture: iphoneos-arm
+Depends: mobilesubstrate, firmware (>= 10.0), firmware (<< 11.1)
+MD5sum: 19f39f8b8466c03553a659bccfc2e752
+Filename: /Files/test/io.github.q2ex.pro_1.1_iphoneos-arm.deb
+Depiction: https://q2ex.github.io/File/test/
+
 Author: thebigboss.org <http://thebigboss.org>
 Maintainer: BigBoss <bigboss@thebigboss.org>
 Name: Dissident
