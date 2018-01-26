@@ -1,17 +1,3 @@
-Package: io.github.q2ex.pro
-Conflicts: io.github.q2ex.test
-Name: TEST
-Description: TEST
-Author: TEST
-Maintainer: TEST
-Version: 1.1
-Section: Tweaks
-Architecture: iphoneos-arm
-Depends: mobilesubstrate, firmware (>= 10.0), firmware (<< 11.1)
-MD5sum: 19f39f8b8466c03553a659bccfc2e752
-Filename: /Files/test/io.github.q2ex.pro_1.1_iphoneos-arm.deb
-Depiction: https://q2ex.github.io/Files/test/
-
 Author: thebigboss.org <http://thebigboss.org>
 Maintainer: BigBoss <bigboss@thebigboss.org>
 Name: Dissident
@@ -162,7 +148,7 @@ Icon: file:///Applications/Impactor.app/Icon-60.png
 Tag: purpose::uikit, role::enduser
 MD5sum: 08b21e95a6051208a6adc2772a8e82a1
 Filename: Files/Impactor/Impactor_0.9.17+53.g3daccc9_iphoneos-arm.deb
-Depiction: http://q2ex.github.io/Files/?p=Impactor
+Depiction: http://q2ex.github.io/Files/Impactor/
 
 Package: taiguntether83x
 Name: TAiG 8.1.x - 8.4 Untether
@@ -192,7 +178,7 @@ Description: Enable FaceTime Audio On CH/A iPhones.
 Tag: purpose::extension, compatible::ios7, compatible::ios8, compatible::ios9
 MD5sum: 4160043aa5045fe03f6dc38b28805f20
 Filename: Files/com.pc.mobile.facetime/com.pc.mobile.facetime_1.1.1_iphoneos-arm.deb
-Depiction: http://q2ex.github.io/Files/?p=com.pc.mobile.facetime
+Depiction: http://q2ex.github.io/Files/com.pc.mobile.facetime/
 
 Package: io.github.q2ex.tinnitus
 Name: Tinnitus
@@ -202,7 +188,6 @@ Conflicts: net.tateu.tinnitus
 Description: Play a random ringtone from a user defined list for incoming calls.
 Maintainer: tateu (Josh Harris) <tateu@tateu.net>
 Author: tateu (Josh Harris) <tateu@tateu.net>
-Depiction: http://www.tateu.net/repo/html/?p=tinnitus
 Section: Tweaks
 Version: 1.0.3
 MD5sum: a371248f9a560fbf67af5f2f252ed54b
@@ -257,7 +242,7 @@ Name: bdb
 Homepage: http://www.oracle.com/technology/products/berkeley-db/index.html
 MD5sum: f9fccd166dc3b873724c7f07a32568e4
 Filename: Files/berkeleydb/berkeleydb_4.6.21-6_iphoneos-arm.deb
-Depiction: http://q2ex.github.io/Files/?p=berkeleydb
+Depiction: http://q2ex.github.io/Files/berkeleydb/
 
 Package: ifile
 Name: iFile
@@ -357,7 +342,7 @@ Version: 1.0.6
 Installed-Size: 504
 MD5sum: 68e017223e648a3d51b60750bb6bba2d
 Filename: Files/com.rpetrich.rocketbootstrap/com.rpetrich.rocketbootstrap_1.0.6_iphoneos-arm.deb
-Depiction: http://q2ex.github.io/Files/?p=com.rpetrich.rocketbootstrap
+Depiction: http://q2ex.github.io/Files/com.rpetrich.rocketbootstrap/
 
 Package: io.github.q2ex.dev
 Version: 1.1-1
