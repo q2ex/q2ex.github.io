@@ -1,3 +1,22 @@
+Name: TrueBackground
+Package: io.github.q2ex.truebackground
+Conflicts: com.tangxianhai.truebackground
+Priority: optional
+Depends: mobilesubstrate, preferenceloader, firmware (>= 10.0), applist
+Version: 2.1.0-14
+Architecture: iphoneos-arm
+Description: fully fledged backgrounding manager tweak for iOS 10
+Homepage: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=truebackgroundDp
+Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=truebackgroundDp
+Sponsor: thebigboss.org <http://thebigboss.org>
+Maintainer: BigBoss <bigboss@thebigboss.org>
+Author: tangxianhai <2846306067@qq.com>
+Section: Tweaks
+Tag: compatible::ios10
+Icon: file:///Library/PreferenceLoader/Preferences/TrueBackgroundPre@2x.png
+MD5sum: ca604b55e52e87e86afd23ccb00673b5
+Filename: Files/io.github.q2ex.truebackground/io.github.q2ex.truebackground_2.1.0-14_iphoneos-arm.deb
+
 Author: thebigboss.org <http://thebigboss.org>
 Maintainer: BigBoss <bigboss@thebigboss.org>
 Name: Dissident
