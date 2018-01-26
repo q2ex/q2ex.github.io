@@ -12,7 +12,7 @@ Tag: compatible::ios8, compatible::ios9, compatible::ios10
 Icon: file:///Library/Application Support/Dissident/Icon_r@2x.png
 MD5sum: bed724d50742503890cd9b92506a7b44
 Filename: Files/io.github.q2ex.dissident/io.github.q2ex.dissident_2.0.2_iphoneos-arm.deb
-Depiction: http://q2ex.github.io/Files/?p=io.github.q2ex.dissident
+Depiction: http://q2ex.github.io/Files/io.github.q2ex.dissident/index.html
 
 Author: BigBoss <bigboss@thebigboss.org>
 Maintainer: BigBoss <bigboss@thebigboss.org>
@@ -27,7 +27,7 @@ Description: Restore the classic status bar size.
 Tag: purpose::extension, role::enduser
 MD5sum: 50eb2384f1952e15201ed77524cc569d
 Filename: Files/io.github.q2ex.simplestatus/io.github.q2ex.simplestatus_1.1_iphoneos-arm.deb
-Depiction: http://q2ex.github.io/Files/?p=io.github.q2ex.simplestatus
+Depiction: http://q2ex.github.io/Files/io.github.q2ex.simplestatus/index.html
 
 Name: SimpleStatusBar
 Package: io.github.q2ex.simplestatusbar
@@ -43,7 +43,7 @@ Section: Tweaks
 Tag: purpose::extension, compatible::ios10
 MD5sum: 9582ea646e56b381dbed0522b46456a6
 Filename: Files/io.github.q2ex.simplestatusbar/io.github.q2ex.simplestatusbar_1.1_iphoneos-arm.deb
-Depiction: http://q2ex.github.io/Files/?p=io.github.q2ex.simplestatusbar
+Depiction: http://q2ex.github.io/Files/io.github.q2ex.simplestatusbar/index.html
 
 Package: io.github.q2ex.touchr
 Conflicts: com.clezz.touchr
@@ -59,7 +59,7 @@ Icon: file:///Library/PreferenceBundles/TouchrSettings.bundle/Icon-small@2x.png
 Version: 1.0.4
 MD5sum: 6356c6b4c5f00a51597142dbd299c12f
 Filename: Files/io.github.q2ex.touchr/io.github.q2ex.touchr_1.0.4_iphoneos-arm.deb
-Depiction: http://q2ex.github.io/Files/?p=io.github.q2ex.touchr
+Depiction: http://q2ex.github.io/Files/io.github.q2ex.touchr/index.html
 
 Package: com.tigisoftware.filza64bit
 Name: Filza File Manager
@@ -74,7 +74,7 @@ Section: Utilities
 Installed-Size: 21088
 MD5sum: 1d0417c6ad81f27b1a2d69629504b123
 Filename: Files/com.tigisoftware.filza64bit/com.tigisoftware.filza64bit_3.4.0-25_iphoneos-arm.deb
-Depiction: http://q2ex.github.io/Files/?p=com.tigisoftware.filza64bit
+Depiction: http://q2ex.github.io/Files/com.tigisoftware.filza64bit/index.html
 
 Package: springtomize3
 Depends: firmware (>= 7.0), mobilesubstrate (>= 0.9.5000), preferenceloader (>= 2.2.2), com.rpetrich.rocketbootstrap
@@ -123,7 +123,7 @@ Name: WATCHDog Pro
 Version: 1.0.2
 Architecture: iphoneos-arm
 Description: full featured app backgrounding management
-Depiction: http://q2ex.github.io/Files/?p=io.github.q2ex.watchdogpro
+Depiction: http://q2ex.github.io/Files/io.github.q2ex.watchdogpro/index.html
 Homepage: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=watchdogproDp
 Maintainer: BigBoss <bigboss@thebigboss.org>
 Author: Allan Kerr <Personal.AllanKerr@gmail.com>
@@ -148,7 +148,7 @@ Icon: file:///Applications/Impactor.app/Icon-60.png
 Tag: purpose::uikit, role::enduser
 MD5sum: 08b21e95a6051208a6adc2772a8e82a1
 Filename: Files/Impactor/Impactor_0.9.17+53.g3daccc9_iphoneos-arm.deb
-Depiction: http://q2ex.github.io/Files/Impactor/
+Depiction: http://q2ex.github.io/Files/Impactor/index.html
 
 Package: taiguntether83x
 Name: TAiG 8.1.x - 8.4 Untether
@@ -162,7 +162,7 @@ Author: TAiG
 Description: TAiG Untether JAilbreAK for iOS8.1.x - iOS8.4
 MD5sum: d828105e72c497f693a05c8606697b90
 Filename: Files/taiguntether83x/taiguntether83x_2.4_iphoneos-arm.deb
-Depiction: http://q2ex.github.io/Files/?p=taiguntether83x
+Depiction: http://q2ex.github.io/Files/taiguntether83x/index.html
 
 Depiction: Enable FaceTime Audio On CH/A iPhones.
 Author: BigBoss <bigboss@thebigboss.org>
@@ -178,7 +178,7 @@ Description: Enable FaceTime Audio On CH/A iPhones.
 Tag: purpose::extension, compatible::ios7, compatible::ios8, compatible::ios9
 MD5sum: 4160043aa5045fe03f6dc38b28805f20
 Filename: Files/com.pc.mobile.facetime/com.pc.mobile.facetime_1.1.1_iphoneos-arm.deb
-Depiction: http://q2ex.github.io/Files/com.pc.mobile.facetime/
+Depiction: http://q2ex.github.io/Files/com.pc.mobile.facetime/index.html
 
 Package: io.github.q2ex.tinnitus
 Name: Tinnitus
@@ -192,7 +192,7 @@ Section: Tweaks
 Version: 1.0.3
 MD5sum: a371248f9a560fbf67af5f2f252ed54b
 Filename: Files/io.github.q2ex.tinnitus/io.github.q2ex.tinnitus_1.0.3_iphoneos-arm.deb
-Depiction: http://q2ex.github.io/Files/?p=io.github.q2ex.tinnitus
+Depiction: http://q2ex.github.io/Files/io.github.q2ex.tinnitus/index.html
 
 Conflicts:com.malcolmhall.wifipasswords
 Package: wifipasswords
@@ -209,11 +209,11 @@ dev: malcolmhall
 Tag: purpose::uikit, ios7support::1, ios8support::1
 MD5sum: eea63eb48bab6dcf6450ac2edb6fcd08
 Filename: Files/wifipasswords/wifipasswords_2.0.3_iphoneos-arm.deb
-Depiction: http://q2ex.github.io/Files/?p=wifipasswords
+Depiction: http://q2ex.github.io/Files/wifipasswords/index.html
 
 Conflicts: us.hackulo.appsync50, us.hackulo.appsync50plus, com.hackyouriphone.appsync7, com.teiron.ppsync, appsync50plus2.25pp, com.linusyang.appsync, com.sull.appsyncunified, com.sull.appsyncunifiedbeta, com.xsellize.appsync50, com.xsellize.appsync50plus, appsync50plus.178, appsync50plus2.178, net.angelxwind.appsyncunified
 Depends: firmware (>= 5.0), mobilesubstrate (>= 0.9.5100), firmware (<< 11.0)
-Depiction: http://q2ex.github.io/Files/?p=io.github.q2ex.appsyncunified
+Depiction: http://q2ex.github.io/Files/io.github.q2ex.appsyncunified/index.html
 MD5sum: 0f8025c08580ebe77268bd9157284d0d
 Filename: Files/io.github.q2ex.appsyncunified/io.github.q2ex.appsyncunified_6.0.2_iphoneos-arm.deb
 Maintainer: Karen／明美 (angelXwind) <angelXwind@angelxwind.net>
@@ -242,7 +242,7 @@ Name: bdb
 Homepage: http://www.oracle.com/technology/products/berkeley-db/index.html
 MD5sum: f9fccd166dc3b873724c7f07a32568e4
 Filename: Files/berkeleydb/berkeleydb_4.6.21-6_iphoneos-arm.deb
-Depiction: http://q2ex.github.io/Files/berkeleydb/
+Depiction: http://q2ex.github.io/Files/berkeleydb/index.html
 
 Package: ifile
 Name: iFile
@@ -252,14 +252,13 @@ Depends: file-cmds, zip, unzip, p7zip, gzip, bzip2, unrar, diskdev-cmds
 Conflicts: eu.heinelt.ifile, io.github.qin4.ifile
 Description: A File Manager and Viewer. iFile is a file manager runnning under user root. It allows fast navigation through the iPhone file system. It allows direct viewing of files of various types, e.g. movies, sound, text, HTML, Microsoft types, PDF, ZIP. For PDF files direct jumping to pages is possible. ZIP packing and unpacking is also supported. Files can be sent as email attachments. Text files and property lists can be edited. Folders and files can be bookmarked. In addition, files can be uploaded and downloaded from iFile's built-in web server.
 Homepage: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=ifileData
-Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=ifileData
 Maintainer: Carsten Heinelt <ifile@iphone.heinelt.eu>
 Author: Carsten Heinelt <ifile@iphone.heinelt.eu>
 Section: System
 dev: carsten
 MD5sum: e4fd36fde5d1f862f8fd4322659e2c8f
 Filename: Files/iFile/ifile_2.2.0-1_iphoneos-arm.deb
-Depiction: http://q2ex.github.io/Files/?p=ifile
+Depiction: http://q2ex.github.io/Files/ifile/index.html
 
 Package: io.github.q2ex.themes
 Name: UIBar for iPhone
@@ -272,7 +271,7 @@ Author: iRwin3g <q.info@qq.com>
 Section: Themes (SpringBoard)
 MD5sum: 8edf268f59daa8f82ae90164b684121c
 Filename: Files/o.github.q2ex.themes/io.github.q2ex.themes_1.1_iphoneos-arm.deb
-Depiction: http://q2ex.github.io/Files/?p=io.github.q2ex.themes
+Depiction: http://q2ex.github.io/Files/io.github.q2ex.themes/index.html
 
 Author: Jerry En <Jerry+gifviewer@jerryen.com>
 Maintainer: BigBoss <bigboss@thebigboss.org>
@@ -284,14 +283,13 @@ Section: Tweaks
 Version: 1.0.3-2
 Architecture: iphoneos-arm
 Description: View animated GIFs in Photos.app and the image PiCKer.
-Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=gifviewerDp
 Homepage: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=gifviewerDp
 Sponsor: thebigboss.org <http://thebigboss.org>
 dev: jerryen
 Tag: compatible::ios7, compatible::ios8, compatible::ios9
 MD5sum: abc27c48fe2c75682613a46046740286
 Filename: Files/io.github.q2ex.gifviewer/io.github.q2ex.gifviewer_1.0.3-2_iphoneos-arm.deb
-Depiction: http://q2ex.github.io/Files/?p=io.github.q2ex.gifviewer
+Depiction: http://q2ex.github.io/Files/io.github.q2ex.gifviewer/index.html
 
 Author: BigBoss <bigboss@thebigboss.org>
 Maintainer: BigBoss <bigboss@thebigboss.org>
@@ -309,7 +307,7 @@ Version: 4.2
 Installed-Size: 280
 MD5sum: a5a9b1f05720d9893205e8d8c8dfe875
 Filename: Files/io.github.q2ex.wechatredenvelop/io.github.q2ex.wechatredenvelop_4.2_iphoneos-arm.deb
-Depiction: http://q2ex.github.io/Files/?p=io.github.q2ex.wechatredenvelop
+Depiction: http://q2ex.github.io/Files/io.github.q2ex.wechatredenvelop/index.html
 
 Package: io.github.q2ex.sftpenabler
 Name: SFTP & SCP Enabler
@@ -323,15 +321,13 @@ Maintainer: John Rebort
 Section: Networking
 MD5sum: b1c80928d473784e02200f3101876af3
 Filename: Files/io.github.q2ex.sftpenabler/io.github.q2ex.sftpenabler_1.1_iphoneos-arm.deb
-Depiction: http://q2ex.github.io/Files/?p=io.github.q2ex.sftpenabler
+Depiction: http://q2ex.github.io/Files/io.github.q2ex.sftpenabler/index.html
 
 Package: com.rpetrich.rocketbootstrap
 Depends: mobilesubstrate (>= 0.9.5000), firmware (>= 3.0)
 Name: ROCKetBootstrap
 Architecture: iphoneos-arm
 Description: Support library allowing tweaks to communicate with sandboxed processes
-Depiction: http://rpetri.ch/cydia/rocketbootstrap/
-Homepage: http://rpetri.ch/cydia/rocketbootstrap/
 Maintainer: BigBoss <bigboss@thebigboss.org>
 Author: Ryan Petrich <rpetrich+rocketbootstrap@gmail.com>
 Sponsor: thebigboss.org <http://thebigboss.org>
@@ -342,7 +338,7 @@ Version: 1.0.6
 Installed-Size: 504
 MD5sum: 68e017223e648a3d51b60750bb6bba2d
 Filename: Files/com.rpetrich.rocketbootstrap/com.rpetrich.rocketbootstrap_1.0.6_iphoneos-arm.deb
-Depiction: http://q2ex.github.io/Files/com.rpetrich.rocketbootstrap/
+Depiction: http://q2ex.github.io/Files/com.rpetrich.rocketbootstrap/index.html
 
 Package: io.github.q2ex.dev
 Version: 1.1-1
@@ -356,7 +352,7 @@ Name: Procedures Collection
 Author: John Robert <q.info@qq.com>
 MD5sum: 1afcd725a9abff5a2239fb293082eebe
 Filename: Files/io.github.q2ex.dev/io.github.q2ex.dev_1.1-1_iphoneos-arm.deb
-Depiction: http://q2ex.github.io/Files/?p=io.github.q2ex.dev
+Depiction: http://q2ex.github.io/Files/io.github.q2ex.dev/index.html
 
 Author: Minuit <minuits@163.com>
 Maintainer: BigBoss <bigboss@thebigboss.org>
@@ -374,7 +370,7 @@ Installed-Size: 1307
 Icon: file:///Library/PreferenceBundles/DataMeterSettings.bundle/icon@2x.png
 MD5sum: 0e39cd055ae3c018091633224475a6c1
 Filename: Files/io.github.q2ex.datameter/io.github.q2ex.datameter_1.3-10_iphoneos-arm.deb
-Depiction: http://q2ex.github.io/Files/?p=io.github.q2ex.datameter
+Depiction: http://q2ex.github.io/Files/io.github.q2ex.datameter/index.html
 
 Package: applist
 Name: APPLIST
@@ -385,11 +381,10 @@ Author: Ryan Petrich <rpetrich@gmail.com>
 Depends: mobilesubstrate (>= 0.9.5000), firmware (>= 3.0), com.rpetrich.rocketbootstrap (>= 1.0.3) | firmware (<< 7.0)
 Conflicts: com.a3tweaks.polus (<< 2.0.7)
 Section: System
-Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=AppListDp
 Website: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=AppListDp
 dev: rpetrich
 Version: 1.5.14
 Installed-Size: 600
 MD5sum: 1160edd273e088999dc5ca8c84ea0081
 Filename: Files/applist/applist_1.5.14_iphoneos-arm.deb
-Depiction: http://q2ex.github.io/Files/?p=applist
+Depiction: http://q2ex.github.io/Files/applist/index.html
