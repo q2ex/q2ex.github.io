@@ -4,5 +4,5 @@ ios = ios == null ? '6.0' : ios[1].replace(/_/g,'.');
 if (ios.match(/^[78910]($|\.)/) != null) {
   document.write('<link rel="stylesheet" type="text/css" href="../../repo/css/iPhone.css"');
 } else {
-  document.write('<link rel="stylesheet" type="text/css" href="../repo/css/legacy.css"');
+  document.write('<link rel="stylesheet" type="text/css" href="../../repo/css/legacy.css"');
 }
