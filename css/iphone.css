@@ -78,7 +78,7 @@ font-family:Helvetica Neue, Arial;
 -webkit-text-size-adjust:none;
 -webkit-touch-callout:none;
 -webkit-user-select:none;
-max-width:540px;
+max-width:414px;
 margin:0 auto
 }
 
@@ -100,7 +100,7 @@ color:#aab
 
 div.cy-table {
 margin: 0 auto;
-max-width: 568px
+max-width: 960px
 }
 
 panel {
@@ -130,7 +130,7 @@ margin:6px 0 35px 0;
 /* iPhone 6 */
 @media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : portrait) {panel > block {border-left:0;border-right:0;}}
 /* iPhone 6 Plus */
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {panel > block {border-left:0;border-right:0;}}
+@media only screen and (min-device-width : 540px) and (max-device-width : 960px) and (orientation : portrait) {panel > block {border-left:0;border-right:0;}}
 /* iPad 1/2 */
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (-webkit-min-device-pixel-ratio: 1) {panel > block {border-left:1px dashed #d5d4d8;border-right:1px dashed #d5d4d8;}}
 /* iPad 3/4 */
@@ -161,7 +161,7 @@ border-top:0;
 /* iPhone 6 */
 @media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : portrait) {panel > fieldset, div.cy-table > fieldset {border-left:0;border-right:0;}}
 /* iPhone 6 Plus */
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {panel > fieldset, div.cy-table > fieldset {border-left:0;border-right:0;}}
+@media only screen and (min-device-width : 540px) and (max-device-width : 960px) and (orientation : portrait) {panel > fieldset, div.cy-table > fieldset {border-left:0;border-right:0;}}
 /* iPad 1/2 */
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (-webkit-min-device-pixel-ratio: 1) {panel > fieldset, div.cy-table > fieldset {border-left:1px solid #d5d4d8;border-right:1px solid #d5d4d8;}}
 /* iPad 3/4 */
