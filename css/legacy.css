@@ -124,7 +124,7 @@ font-family:Helvetica,Arial;
 -webkit-text-size-adjust:none;
 -webkit-touch-callout:none;
 -webkit-user-select:none;
-width:320px;
+width:420px;
 margin:0 auto
 }
 
@@ -175,7 +175,7 @@ border-radius:9px;
 margin:9px;
 font-size:16px;
 position:relative;
-max-width:402px
+max-width:302px
 }
 
 panel > fieldset.terminal {
