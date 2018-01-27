@@ -142,7 +142,7 @@ background-color:#fff;
 /* margin:6px 0 35px 0; */
 margin:0 0 35px 0;
 border:1px solid #d5d4d8;
-font-size:14px;
+font-size:16px;
 position:relative;
 max-width:414px
 }
@@ -179,7 +179,7 @@ panel > fieldset.terminal {
 background-color:#000;
 color:#fff;
 font-family:monospace;
-font-size:12px;
+font-size:14px;
 font-weight:bold;
 padding:10px
 }
@@ -191,7 +191,7 @@ position:relative;
 top:0;
 padding-left:11px;
 color:#6d6d72;
-font-size:12px;
+font-size:14px;
 text-transform: uppercase;
 }
 
@@ -199,7 +199,7 @@ panel > footer {
 display: block;
 margin: 9px;
 color: #4d4d70;
-font-size: 10px;
+font-size: 12px;
 text-align: center
 }
 
@@ -236,7 +236,7 @@ border-right:0
 }
 
 fieldset > div, panel > block {
-font-size:14px;
+font-size:12px;
 padding:0 13px
 }
 
@@ -337,7 +337,7 @@ margin:-0.2em -0.4em
 fieldset > a > div > div > label.verbose {
 display:inline-block;
 float:right;
-font-size:8px;
+font-size:10px;
 position:relative;
 margin:-3.5px;
 text-align:center
@@ -345,13 +345,13 @@ text-align:center
 
 fieldset > a > div > div > label.lower {
 display:block;
-font-size:11px;
+font-size:13px;
 color:grey
 }
 
 fieldset> a > div > div > label.url {
 display:block;
-font-size:12px;
+font-size:14px;
 font-style:italic;
 word-wrap:break-word;
 color:grey
@@ -391,7 +391,7 @@ border-bottom-left-radius: 7px;
 padding: 0.2em 0.4em;
 background-color: #999;
 color: #fff;
-font-size: 10px;
+font-size: 12px;
 font-weight: bold
 }
 
@@ -415,7 +415,7 @@ border-top-left-radius: 7px;
 padding: 0.2em 0.4em;
 background-color: #da0812;
 color: #fff;
-font-size: 9px;
+font-size: 11px;
 font-weight: bold
 }
 
