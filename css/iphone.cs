@@ -100,7 +100,7 @@ color:#aab
 
 div.cy-table {
 margin: 0 auto;
-max-width: 960px
+max-width: 568px
 }
 
 panel {
