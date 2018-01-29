@@ -1,21 +1,16 @@
-Name: TrueBackground
-Package: io.github.q2ex.truebackground
-Conflicts: com.tangxianhai.truebackground
-Priority: optional
-Depends: mobilesubstrate, preferenceloader, firmware (>= 10.0), applist
-Version: 2.1.0-14
+Package: io.github.q2ex.sftpenabler
+Name: SFTP & SCP Enabler
+Author: John Rebort
+Version: 1.1-1
+Depends: openssl, firmware (>> 8)
+Conflicts: openssh
 Architecture: iphoneos-arm
-Description: fully fledged backgrounding manager tweak for iOS 10
-Homepage: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=truebackgroundDp
-Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=truebackgroundDp
-Sponsor: thebigboss.org <http://thebigboss.org>
-Maintainer: BigBoss <bigboss@thebigboss.org>
-Author: tangxianhai <2846306067@qq.com>
-Section: Tweaks
-Tag: compatible::ios10
-Icon: file:///Library/PreferenceLoader/Preferences/TrueBackgroundPre@2x.png
-MD5sum: ca604b55e52e87e86afd23ccb00673b5
-Filename: Files/io.github.q2ex.truebackground/io.github.q2ex.truebackground_2.1.0-14_iphoneos-arm.deb
+Description: SFTP & SCP Connection For SSH Dropbear iOS 10.
+Maintainer: John Rebort
+Section: Networking
+MD5sum: 19b1f7832fa1963cbe1c8f66e5bfc83e
+Filename: Files/io.github.q2ex.sftpenabler/io.github.q2ex.sftpenabler_1.1-1_iphoneos-arm.deb
+Depiction: http://q2ex.github.io/Files/io.github.q2ex.sftpenabler/index.html
 
 Author: thebigboss.org <http://thebigboss.org>
 Maintainer: BigBoss <bigboss@thebigboss.org>
