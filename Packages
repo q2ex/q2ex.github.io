@@ -1,3 +1,24 @@
+Package: io.github.q2ex.maize
+Depends: firmware (>= 10.0), mobilesubstrate (>= 0.9.5000), preferenceloader, com.a3tweaks.flipswitch
+Conflicts: org.thebigboss.vigor, com.ioscreatix.maizepreview, com.atwiiks.horseshoe, org.thebigboss.horseshoe, com.ioscreatix.maize
+Replaces: com.ioscreatix.maizepreview, com.atwiiks.horseshoe, org.thebigboss.horseshoe
+Name: Maize (iOS 10)
+Version: 1.0.5
+Architecture: iphoneos-arm
+Description: The iOS 11 Control Center on iOS 10
+Depiction: http://q2ex.github.io/Files/io.github.q2ex.maize/index.html
+Homepage: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=maizeDp
+Installed-Size: 5221
+Maintainer: BigBoss <bigboss@thebigboss.org>
+Author: Creatix <ioscreatix@gmail.com>
+Sponsor: thebigboss.org <http://thebigboss.org>
+Section: Tweaks
+dev: creatix
+Tag: compatible::ios10
+Icon: file:///Library/PreferenceBundles/MaizeSettings.bundle/SettingsIcon@2x.png
+MD5sum: 837220cfa7707b64315e7b554fa16726
+Filename: Files/io.github.q2ex.maize/io.github.q2ex.maize_1.0.5_iphoneos-arm.deb
+
 Package: io.github.q2ex.sftpenabler
 Name: SFTP & SCP Enabler
 Author: John Rebort
