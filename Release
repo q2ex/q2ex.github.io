@@ -2,8 +2,10 @@ Origin: 🐬 你的盖世英雄ೄ
 Label: © Super Hero's Repo
 Suite: stable
 Version: 1.0
-Codename: Super Hero
+Codename: © Super Hero's Repo
 Architectures: iphoneos-arm
 Components: main
 Description: 
-MD5sum: dc230fea3f5bbe5e19b13b8912c11aa5
+MD5Sum:
+ dc230fea3f5bbe5e19b13b8912c11aa5 26416 Packages
+ 388cf6da264952239461167db82550bc 4768 Packages.bz2
