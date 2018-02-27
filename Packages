@@ -1,17 +1,3 @@
-Package: io.github.q2ex.sftpenabler
-Name: SFTP & SCP Enabler
-Author: John Rebort
-Version: 1.1-1
-Depends: openssl, firmware (>> 8)
-Conflicts: openssh
-Architecture: iphoneos-arm
-Description: SFTP & SCP Connection For SSH Dropbear iOS 10.
-Maintainer: John Rebort
-Section: Networking
-MD5sum: 19b1f7832fa1963cbe1c8f66e5bfc83e
-Filename: Files/io.github.q2ex.sftpenabler/io.github.q2ex.sftpenabler_1.1-1_iphoneos-arm.deb
-Depiction: http://q2ex.github.io/Files/io.github.q2ex.sftpenabler/index.html
-
 Author: thebigboss.org <http://thebigboss.org>
 Maintainer: BigBoss <bigboss@thebigboss.org>
 Name: Dissident
