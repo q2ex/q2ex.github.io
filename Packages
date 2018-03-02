@@ -368,7 +368,7 @@ Section: Tweaks
 dev: rpetrich
 Tag: purpose::extension, role::developer
 Version: 1.0.6
-MD5sum: c57c2f5aadeec7e2b8eb57f66f54905a
+MD5sum: 981b54dc1707d867f039deb021d1da0b
 Filename: Files/com.rpetrich.rocketbootstrap/com.rpetrich.rocketbootstrap_1.0.6_iphoneos-arm.deb
 Depiction: http://q2ex.github.io/Files/com.rpetrich.rocketbootstrap/index.html
 
