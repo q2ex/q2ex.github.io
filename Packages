@@ -1,3 +1,17 @@
+Package: io.github.q2ex.LocalIAPStore
+Name: LocalIAPStore
+Version: 1.4-1
+Description: Pwns In-app purchases on iOS 4.1 - 11 (works with developer servers,in-appstore.com DNS needed). 64bit compatible
+Section: Tweaks
+Depends: firmware (>= 5.1.1), mobilesubstrate, preferenceloader
+Conflicts: anondev.LocalIAPStore
+Priority: optional
+Architecture: iphoneos-arm
+Author: anondev
+Depiction: Pwns In-app purchases on iOS 4.1 - 11 (works with developer servers,in-appstore.com DNS needed). 64bit compatible
+MD5sum: 705371da8e472ef6230c22fec45b8f24
+Filename: Files/io.github.q2ex.LocalIAPStore/io.github.q2ex.LocalIAPStore_1.4-1_iphoneos-arm.deb
+
 Package: preferenceloader
 Name: PreferenceLoader
 Depends: mobilesubstrate
