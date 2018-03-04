@@ -1,3 +1,22 @@
+Name: Simple LS
+Package: io.github.q2ex.simplels
+Conflicts: com.xcxiao.simplelsios10
+Priority: optional
+Depends: mobilesubstrate, firmware (>= 10.0), preferenceloader
+Version: 1.2-b2
+Architecture: iphoneos-arm
+Description: Simple LOCKScreen for iOS 10 - 11 Devices.
+Homepage: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=simplelockscreenios10Dp
+Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=simplelockscreenios10Dp
+Sponsor: thebigboss.org <http://thebigboss.org>
+Maintainer: BigBoss <bigboss@thebigboss.org>
+Author: XCXiao <958169971@qq.com>
+Section: Tweaks
+Tag: purpose::extension, compatible::ios10
+Icon: file:///Library/PreferenceBundles/SIMPLELSPB.bundle/icon@2x.png
+MD5sum: e447725a2722921376b6a4f0354fc59a
+Filename: Files/SimpleLS/io.github.q2ex.simplels_1.2-b2_iphoneos-arm.deb
+
 Package: respring
 Section: Utilities
 Maintainer: John Robert
