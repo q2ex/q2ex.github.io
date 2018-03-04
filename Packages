@@ -1,3 +1,15 @@
+Package: respring
+Section: Utilities
+Maintainer: John Robert
+Architecture: iphoneos-arm
+Version: 1.1
+Description: Shell program to respring your device.
+Name: ReSpring Device
+Author: John Robert
+Depiction: Shell program to respring your device.
+MD5sum: 0078bd6312f82dcf6d108523f52e7e0d
+Filename: Files/ReSpring/respring_1.1_iphoneos-arm.deb
+
 Package: reboot
 Section: Utilities
 Maintainer: John Robert
