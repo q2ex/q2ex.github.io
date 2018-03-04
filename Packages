@@ -1,3 +1,15 @@
+Package: reboot
+Section: Utilities
+Maintainer: John Robert
+Architecture: iphoneos-arm
+Version: 1.1
+Description: Shell program to restart your device.
+Name: Reboot Device
+Author: John Robert
+Depiction: Shell program to restart your device.
+MD5sum: 6e0b33f961d399cef5fc80f5d2aaa7fd
+Filename: Files/Reboot/reboot_1.1_iphoneos-arm.deb
+
 Package: io.github.q2ex.LocalIAPStore
 Name: LocalIAPStore
 Version: 1.4-1
