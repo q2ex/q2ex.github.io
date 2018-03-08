@@ -432,10 +432,12 @@ Filename: Files/io.github.q2ex.sftpenabler/io.github.q2ex.sftpenabler_1.1_iphone
 Depiction: http://q2ex.github.io/Files/io.github.q2ex.sftpenabler/index.html
 
 Package: com.rpetrich.rocketbootstrap
-Depends: mobilesubstrate (>= 0.9.5000), firmware (>= 3.0)
-Name: ROCKetBootstrap
+Depends: mobilesubstrate (>= 0.9.6000), firmware (>= 3.0)
+Name: ROCKetbootStrap
 Architecture: iphoneos-arm
 Description: Support library allowing tweaks to communicate with sandboxed processes
+Depiction: https://www.rpetrich.com/cydia/rocketbootstrap/
+Homepage: https://www.rpetrich.com/cydia/rocketbootstrap/
 Maintainer: BigBoss <bigboss@thebigboss.org>
 Author: Ryan Petrich <rpetrich+rocketbootstrap@gmail.com>
 Sponsor: thebigboss.org <http://thebigboss.org>
@@ -443,9 +445,8 @@ Section: Tweaks
 dev: rpetrich
 Tag: purpose::extension, role::developer
 Version: 1.0.6
-MD5sum: 981b54dc1707d867f039deb021d1da0b
+MD5sum: 87351fc21278f3ffea99f0a786955d62
 Filename: Files/com.rpetrich.rocketbootstrap/com.rpetrich.rocketbootstrap_1.0.6_iphoneos-arm.deb
-Depiction: http://q2ex.github.io/Files/com.rpetrich.rocketbootstrap/index.html
 
 Package: io.github.q2ex.dev
 Version: 1.1-1
@@ -485,13 +486,12 @@ Architecture: iphoneos-arm
 Description: Allow extensions to read the list of installed apps
 Maintainer: Ryan Petrich <rpetrich@gmail.com>
 Author: Ryan Petrich <rpetrich@gmail.com>
-Depends: mobilesubstrate (>= 0.9.5000), firmware (>= 3.0), com.rpetrich.rocketbootstrap (>= 1.0.3) | firmware (<< 7.0)
+Depends: mobilesubstrate (>= 0.9.5000), firmware (>= 3.0), com.rpetrich.rocketbootstrap (>= 1.0.6~beta) | firmware (<< 8.0)
 Conflicts: com.a3tweaks.polus (<< 2.0.7)
 Section: System
+Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=AppListDp
 Website: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=AppListDp
 dev: rpetrich
 Version: 1.5.14
-Installed-Size: 600
-MD5sum: 1160edd273e088999dc5ca8c84ea0081
+MD5sum: 1874cfbb87b2d2c88408319ecb8f0e80
 Filename: Files/applist/applist_1.5.14_iphoneos-arm.deb
-Depiction: http://q2ex.github.io/Files/applist/index.html
