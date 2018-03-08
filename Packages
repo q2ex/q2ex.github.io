@@ -2,11 +2,9 @@ Package: com.rpetrich.rocketbootstrap
 Version: 1.0.6
 Section: Tweaks
 Maintainer: BigBoss <bigboss@thebigboss.org>
-Depends: mobilesubstrate (>= 0.9.5000), firmware (>= 3.0)
+Depends: mobilesubstrate (>= 0.9.6100), firmware (>= 4.0)
 Architecture: iphoneos-arm
 Filename: Files/com.rpetrich.rocketbootstrap/com.rpetrich.rocketbootstrap_1.0.6_iphoneos-arm.deb
-Size: 29482
-Installed-Size: 504
 MD5sum: 3fc47cae7a21accf027b43691c52e9c1
 Name: ROCKetbootStrap
 Description: Support library allowing tweaks to communicate with sandboxed processes.
@@ -14,7 +12,6 @@ Sponsor: thebigboss.org <http://thebigboss.org>
 Author: Ryan Petrich <rpetrich+rocketbootstrap@gmail.com>
 Tag: purpose::extension, role::developer
 Depiction: https://www.rpetrich.com/cydia/rocketbootstrap/
-homepage: https://www.rpetrich.com/cydia/rocketbootstrap/
 dev: rpetrich
 
 Package: applist
@@ -467,23 +464,6 @@ Section: Networking
 MD5sum: b1c80928d473784e02200f3101876af3
 Filename: Files/io.github.q2ex.sftpenabler/io.github.q2ex.sftpenabler_1.1_iphoneos-arm.deb
 Depiction: http://q2ex.github.io/Files/io.github.q2ex.sftpenabler/index.html
-
-Package: com.rpetrich.rocketbootstrap
-Depends: mobilesubstrate (>= 0.9.6000), firmware (>= 3.0)
-Name: ROCKetbootStrap
-Architecture: iphoneos-arm
-Description: Support library allowing tweaks to communicate with sandboxed processes
-Depiction: https://www.rpetrich.com/cydia/rocketbootstrap/
-Homepage: https://www.rpetrich.com/cydia/rocketbootstrap/
-Maintainer: BigBoss <bigboss@thebigboss.org>
-Author: Ryan Petrich <rpetrich+rocketbootstrap@gmail.com>
-Sponsor: thebigboss.org <http://thebigboss.org>
-Section: Tweaks
-dev: rpetrich
-Tag: purpose::extension, role::developer
-Version: 1.0.6
-MD5sum: 87351fc21278f3ffea99f0a786955d62
-Filename: Files/com.rpetrich.rocketbootstrap/com.rpetrich.rocketbootstrap_1.0.6_iphoneos-arm.deb
 
 Package: io.github.q2ex.dev
 Version: 1.1-1
