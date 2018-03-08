@@ -7,7 +7,7 @@ Architecture: iphoneos-arm
 Filename: Files/com.rpetrich.rocketbootstrap/com.rpetrich.rocketbootstrap_1.0.6_iphoneos-arm.deb
 Size: 29482
 Installed-Size: 504
-MD5sum: d28611254d30a7f2bdce588f33430447
+MD5sum: 3fc47cae7a21accf027b43691c52e9c1
 Name: ROCKetbootStrap
 Description: Support library allowing tweaks to communicate with sandboxed processes.
 Sponsor: thebigboss.org <http://thebigboss.org>
@@ -27,7 +27,7 @@ Architecture: iphoneos-arm
 Filename: Files/applist/applist_1.5.14_iphoneos-arm.deb
 Size: 93138
 Installed-Size: 600
-MD5sum: cd8cc24cb82a6714a6a1a41424d72e22
+MD5sum: dbbd8e29ebd039c6bc7a7295d56a59a5
 Name: APPLIST
 Website: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=AppListDp
 Description: Allow extensions to read the list of installed apps.
