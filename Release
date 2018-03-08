@@ -1,8 +1,9 @@
 Origin: ★ CLATech, LLC
 Label: ★ CLATech, LLC
 Suite: stable
-Version: 1.0
-Codename: ★ CLATech, LLC
-Architectures: iphoneos-arm
+Version: 1.1
+Codename: ios
+Architectures: darwin-arm iphoneos-arm
+Support: https://cyida.saurik.com/api/support/*
 Components: main
 Description:
