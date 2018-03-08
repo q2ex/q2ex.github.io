@@ -486,12 +486,10 @@ Architecture: iphoneos-arm
 Description: Allow extensions to read the list of installed apps
 Maintainer: Ryan Petrich <rpetrich@gmail.com>
 Author: Ryan Petrich <rpetrich@gmail.com>
-Depends: mobilesubstrate (>= 0.9.5000), firmware (>= 3.0), com.rpetrich.rocketbootstrap (>= 1.0.6~beta) | firmware (<< 8.0)
+Depends: mobilesubstrate (>= 0.9.5000), firmware (>= 3.0), com.rpetrich.rocketbootstrap (>= 1.0.6) | firmware (<< 7.0)
 Conflicts: com.a3tweaks.polus (<< 2.0.7)
 Section: System
-Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=AppListDp
-Website: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=AppListDp
-dev: rpetrich
 Version: 1.5.14
-MD5sum: 1874cfbb87b2d2c88408319ecb8f0e80
+Depiction: http://q2ex.github.io/Files/applist/index.html
+MD5sum: dbbd8e29ebd039c6bc7a7295d56a59a5
 Filename: Files/applist/applist_1.5.14_iphoneos-arm.deb
