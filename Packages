@@ -11,7 +11,7 @@ Installed-Size: 600
 MD5sum: cd8cc24cb82a6714a6a1a41424d72e22
 Name: APPLIST
 Website: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=AppListDp
-Description: Allow extensions to read the list of installed apps
+Description: Allow extensions to read the list of installed apps.
 Author: Ryan Petrich <rpetrich@gmail.com>
 Depiction: http://q2ex.github.io/Files/applist/index.html
 dev: rpetrich
