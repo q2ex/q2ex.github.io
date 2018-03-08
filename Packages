@@ -9,7 +9,7 @@ Filename: Files/applist/applist_1.5.14_iphoneos-arm.deb
 Size: 93138
 Installed-Size: 600
 MD5sum: cd8cc24cb82a6714a6a1a41424d72e22
-Name: AppList
+Name: APPLIST
 Website: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=AppListDp
 Description: Allow extensions to read the list of installed apps
 Author: Ryan Petrich <rpetrich@gmail.com>
