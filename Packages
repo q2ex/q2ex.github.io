@@ -1,5 +1,5 @@
 Package: com.rpetrich.rocketbootstrap
-Version: 1.0.6
+Version: 1.0.6K
 Section: Tweaks
 Maintainer: BigBoss <bigboss@thebigboss.org>
 Depends: mobilesubstrate (>= 0.9.5000), firmware (>= 3.0)
@@ -18,7 +18,7 @@ homepage: https://www.rpetrich.com/cydia/rocketbootstrap/
 dev: rpetrich
 
 Package: applist
-Version: 1.5.14
+Version: 1.5.14K
 Section: System
 Maintainer: Ryan Petrich <rpetrich@gmail.com>
 Depends: mobilesubstrate (>= 0.9.5000), firmware (>= 3.0), com.rpetrich.rocketbootstrap (>= 1.0.6~beta) | firmware (<< 7.0)
