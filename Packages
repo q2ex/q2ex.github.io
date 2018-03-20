@@ -45,24 +45,6 @@ Author: Ryan Petrich <rpetrich@gmail.com>
 Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=AppListDp
 dev: rpetrich
 
-Package: eraser
-Priority: optional
-Section: Utilities
-Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
-Architecture: iphoneos-arm
-Version: 0.9.43
-Description: specific utility to unjailbreak most devices
-Name: Cydia Eraser
-Author: Jay Freeman (saurik) <saurik@saurik.com>
-Depiction: http://cydia.saurik.com/info/com.saurik.impactor/
-Icon: file:///Applications/Eraser.app/Icon-60.png
-Depends: firmware (>= 10.3), firmware (<= 10.3.3)
-Breaks: com.saurik.patych (<< 1.0.1)
-Tag: purpose::uikit, role::enduser
-MD5sum: 438e9e86ae83373d7c6e47de1f368456
-Filename: Files/Eraser/Eraser_0.9.43_iphoneos-arm.deb
-
-
 Name: Simple LS
 Package: io.github.q2ex.simplels
 Conflicts: com.xcxiao.simplelsios10
