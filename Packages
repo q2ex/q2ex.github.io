@@ -88,20 +88,6 @@ Depiction: Shell program to restart your device.
 MD5sum: 6e0b33f961d399cef5fc80f5d2aaa7fd
 Filename: Files/Reboot/reboot_1.1_iphoneos-arm.deb
 
-Package: io.github.q2ex.LocalIAPStore
-Name: LocalIAPStore
-Version: 1.4-1
-Description: Pwns In-app purchases on iOS 4.1.1 - 11, 64bit compatible.
-Section: Tweaks
-Depends: firmware (>= 4.1.1), mobilesubstrate, preferenceloader
-Conflicts: anondev.LocalIAPStore
-Priority: optional
-Architecture: iphoneos-arm
-Author: anondev
-Depiction: Pwns In-app purchases on iOS 4.1.1 - 11, 64bit compatible.
-MD5sum: bbb7951b0c887ba5c6205282758f84ba
-Filename: Files/io.github.q2ex.LocalIAPStore/io.github.q2ex.LocalIAPStore_1.4-1_iphoneos-arm.deb
-
 Package: preferenceloader
 Name: PreferenceLoader
 Depends: mobilesubstrate
@@ -117,39 +103,6 @@ Tag: role::hacker, purpose::library
 Version: 2.2.4
 MD5sum: 705371da8e472ef6230c22fec45b8f24
 Filename: Files/PreferenceLoader/PreferenceLoader_2.2.4_iphoneos-arm.deb
-
-Conflicts: us.hackulo.appsync50, us.hackulo.appsync50plus, com.hackyouriphone.appsync7, com.teiron.ppsync, appsync50plus2.25pp, com.linusyang.appsync, com.sull.appsyncunified, com.sull.appsyncunifiedbeta, com.xsellize.appsync50, com.xsellize.appsync50plus, appsync50plus.178, appsync50plus2.178, net.angelxwind.appsyncunified
-Depends: firmware (>= 5.0), mobilesubstrate (>= 0.9.5100), firmware (<= 11.1.2)
-Depiction: https://cydia.angelxwind.net/?page/net.angelxwind.appsyncunified
-Maintainer: Karen／明美 (angelXwind) <angelXwind@angelxwind.net>
-Homepage: https://cydia.angelxwind.net/
-Provides: appsync
-Replaces: us.hackulo.appsync50
-Package: io.github.q2ex.appsyncunified
-Name: AppSync Unified
-Architecture: iphoneos-arm
-Description: Enables the ability to install unsigned/fakesigned iOS applications.
-Section: Tweaks
-Author: Linus Yang, Karen／明美 <angelXwind@angelxwind.net>
-Version: 9.0
-MD5sum: 378319bd31387f3566a68ff4ea245a78
-Filename: Files/io.github.q2ex.appsyncunified/io.github.q2ex.appsyncunified_9.0_iphoneos-arm.deb
-
-Author: thebigboss.org <http://thebigboss.org>
-Maintainer: BigBoss <bigboss@thebigboss.org>
-Name: Dissident
-Package: io.github.q2ex.dissident
-Conflicts: org.thebigboss.dissident
-Depends: firmware (>= 8.0), mobilesubstrate, applist
-Section: Tweaks
-Version: 2.0.2
-Architecture: iphoneos-arm
-Description: This plug-in prevents the program from terminating.
-Tag: compatible::ios8, compatible::ios9, compatible::ios10
-Icon: file:///Library/Application Support/Dissident/Icon_r@2x.png
-MD5sum: bed724d50742503890cd9b92506a7b44
-Filename: Files/io.github.q2ex.dissident/io.github.q2ex.dissident_2.0.2_iphoneos-arm.deb
-Depiction: This plug-in prevents the program from terminating.
 
 Author: BigBoss <bigboss@thebigboss.org>
 Maintainer: BigBoss <bigboss@thebigboss.org>
@@ -349,24 +302,6 @@ Filename: Files/wifipasswords/wifipasswords_2.0.3_iphoneos-arm.deb
 Depiction: Shows previously entered wifi passwords
 	This app displays every WiFi password you have ever entered. Very handy if you forgot a password and need to connect another device, or tell a friend the password for a coffee shop without asking that embarrassing question again. Tap hold on the password to copy it to the clipboard. Requires iOS 3.0 or later.
 
-Conflicts: us.hackulo.appsync50, us.hackulo.appsync50plus, com.hackyouriphone.appsync7, com.teiron.ppsync, appsync50plus2.25pp, com.linusyang.appsync, com.sull.appsyncunified, com.sull.appsyncunifiedbeta, com.xsellize.appsync50, com.xsellize.appsync50plus, appsync50plus.178, appsync50plus2.178, net.angelxwind.appsyncunified
-Depends: firmware (>= 5.0), mobilesubstrate (>= 0.9.5100), firmware (<< 11.0)
-Depiction: Enables the ability to install unsigned/fakesigned iOS applications.
-MD5sum: 0f8025c08580ebe77268bd9157284d0d
-Filename: Files/io.github.q2ex.appsyncunified/io.github.q2ex.appsyncunified_6.0.2_iphoneos-arm.deb
-Maintainer: Karen／明美 (angelXwind) <angelXwind@angelxwind.net>
-Homepage: http://cydia.angelxwind.net/
-Provides: appsync
-Replaces: us.hackulo.appsync50
-Package: io.github.q2ex.appsyncunified
-Name: AppSync Unified
-Architecture: iphoneos-arm
-Description: Enables the ability to install unsigned/fakesigned iOS applications.
-Section: Tweaks
-Author: Linus Yang, Karen／明美 <angelXwind@angelxwind.net>
-Version: 6.0.2
-Installed-Size: 256
-
 Package: berkeleydb
 Priority: standard
 Section: Data_Storage
@@ -381,22 +316,6 @@ Homepage: http://www.oracle.com/technology/products/berkeley-db/index.html
 MD5sum: f9fccd166dc3b873724c7f07a32568e4
 Filename: Files/berkeleydb/berkeleydb_4.6.21-6_iphoneos-arm.deb
 Depiction: Oracle's embeddable database engine
-
-Package: ifile
-Name: iFile
-Version: 2.2.0-1
-Architecture: iphoneos-arm
-Depends: file-cmds, zip, unzip, p7zip, gzip, bzip2, unrar, diskdev-cmds
-Conflicts: eu.heinelt.ifile, io.github.qin4.ifile
-Description: A File Manager and Viewer. iFile is a file manager runnning under user root. It allows fast navigation through the iPhone file system. It allows direct viewing of files of various types, e.g. movies, sound, text, HTML, Microsoft types, PDF, ZIP. For PDF files direct jumping to pages is possible. ZIP packing and unpacking is also supported. Files can be sent as email attachments. Text files and property lists can be edited. Folders and files can be bookmarked. In addition, files can be uploaded and downloaded from iFile's built-in web server.
-Homepage: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=ifileData
-Maintainer: Carsten Heinelt <ifile@iphone.heinelt.eu>
-Author: Carsten Heinelt <ifile@iphone.heinelt.eu>
-Section: System
-dev: carsten
-MD5sum: e4fd36fde5d1f862f8fd4322659e2c8f
-Filename: Files/iFile/ifile_2.2.0-1_iphoneos-arm.deb
-Depiction: A File Manager and Viewer. iFile is a file manager runnning under user root. It allows fast navigation through the iPhone file system. It allows direct viewing of files of various types, e.g. movies, sound, text, HTML, Microsoft types, PDF, ZIP. For PDF files direct jumping to pages is possible. ZIP packing and unpacking is also supported. Files can be sent as email attachments. Text files and property lists can be edited. Folders and files can be bookmarked. In addition, files can be uploaded and downloaded from iFile's built-in web server.
 
 Package: io.github.q2ex.themes
 Name: UIBar for iPhone
@@ -446,20 +365,6 @@ Installed-Size: 280
 MD5sum: a5a9b1f05720d9893205e8d8c8dfe875
 Filename: Files/io.github.q2ex.wechatredenvelop/io.github.q2ex.wechatredenvelop_4.2_iphoneos-arm.deb
 Depiction: WEChat automatic acquisition red envelope.
-
-Package: io.github.q2ex.sftpenabler
-Name: SFTP & SCP Enabler
-Author: John Rebort
-Version: 1.1
-Depends: openssl, firmware (>> 8)
-Conflicts: openssh
-Architecture: iphoneos-arm
-Description: SFTP & SCP Connection For SSH Dropbear iOS 10.
-Maintainer: John Rebort
-Section: Networking
-MD5sum: b1c80928d473784e02200f3101876af3
-Filename: Files/io.github.q2ex.sftpenabler/io.github.q2ex.sftpenabler_1.1_iphoneos-arm.deb
-Depiction: SFTP & SCP Connection For SSH Dropbear iOS 10.
 
 Package: io.github.q2ex.dev
 Version: 1.1-1
