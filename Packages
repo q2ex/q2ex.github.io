@@ -1,3 +1,37 @@
+Package: io.github.q2ex.Flex
+Name: Flex
+Depends: mobilesubstrate, firmware (>= 9.0), com.rpetrich.rocketbootstrap
+Recommended: com.modmyi.libswift4 (>= 4.0.3)
+Conflicts: Flexpackage, Flexpackagebeta, com.fuyuchi.flex, Flex2packagebeta, Flex2package,  com.fuyuchi.flex2, Flex2Blackpackagebeta, com.johncoates.Flex3,Flex3beta
+Replaces: Flexpackage, Flexpackagebeta, com.fuyuchi.flex, Flex2packagebeta, Flex2package,  com.fuyuchi.flex2, Flex2Blackpackagebeta, com.johncoates.Flex3,Flex3beta
+Version: 3.0-46
+Architecture: iphoneos-arm
+Description: Develop your own tweaks and share them on the Flex Community Cloud
+Depiction: Develop your own tweaks and share them on the Flex Community Cloud
+Maintainer: John Coates
+Author: John Coates
+Section: Tweaks
+Filename: dl/io.github.q2ex.flex_3.0-46_iphoneos-arm.deb
+MD5sum: 320cad5b7a811d8d0ef36286545f01d6
+
+Package: com.exile90.icleanerpro
+Name: iCleaner Pro
+Description: The first real iOS system cleaner & optimizer
+Author: Ivano Bilenchi <support@ib-soft.net>
+Maintainer: Ivano Bilenchi <support@ib-soft.net>
+Version: 7.6.4
+Architecture: iphoneos-arm
+Homepage: http://ib-soft.net/icleaner
+Depiction: http://ib-soft.net/depictions/?pkgId=com.exile90.icleanerpro
+Section: Utilities
+Pre-Depends: apt, findutils, shell-cmds
+Depends: firmware (>= 4.0)
+Conflicts: org.altervista.exilecom.icleaner
+Replaces: org.altervista.exilecom.icleaner
+Icon: file:///Applications/iCleaner.app/Icon.png
+Filename: dl/com.exile90.icleanerpro_7.6.4_iphoneos-arm.deb
+MD5sum: f4c8796a87254e539d77ef910ebeed08
+
 Package: io.github.q2ex.sftpenabler
 Name: SFTP & SCP Enabler
 Author: John Rebort
@@ -13,13 +47,13 @@ MD5sum: 19b1f7832fa1963cbe1c8f66e5bfc83e
 Depiction: SFTP & SCP Connection For SSH Dropbear iOS 10.
 
 Package: com.rpetrich.rocketbootstrap
-Version: 1.0.6d
+Version: 1.0.7
 Section: Tweaks
 Maintainer: BigBoss <bigboss@thebigboss.org>
 Depends: mobilesubstrate (>= 0.9.5000), firmware (>= 3.0)
 Architecture: iphoneos-arm
-Filename: Files/com.rpetrich.rocketbootstrap/com.rpetrich.rocketbootstrap_1.0.6_iphoneos-arm.deb
-MD5sum: 47f21bea39f7aaa56ebb610d6ff260ff
+Filename: dl/com.rpetrich.rocketbootstrap_1.0.7_iphoneos-arm.deb
+MD5sum: 211123a3b15c4a248bd7850f1823bead
 Name: ROCKetbootStrap
 Description: Support library allowing tweaks to communicate with sandboxed processes
 Sponsor: thebigboss.org <http://thebigboss.org>
@@ -394,6 +428,6 @@ Sponsor: thebigboss.org <http://thebigboss.org>
 dev: minuit
 Installed-Size: 1307
 Icon: file:///Library/PreferenceBundles/DataMeterSettings.bundle/icon@2x.png
-MD5sum: 0e39cd055ae3c018091633224475a6c1
-Filename: Files/io.github.q2ex.datameter/io.github.q2ex.datameter_1.3-10_iphoneos-arm.deb
+MD5sum: cef602eb4b82110e58c7a54029004e86
+Filename: dl/io.github.q2ex.datameter_1.3-10_iphoneos-arm.deb
 Depiction: wifi & data traffic Notification widget
