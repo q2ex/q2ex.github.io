@@ -185,21 +185,6 @@ MD5sum: 6356c6b4c5f00a51597142dbd299c12f
 Filename: Files/io.github.q2ex.touchr/io.github.q2ex.touchr_1.0.4_iphoneos-arm.deb
 Depiction: Touch gestures to simulate pressing the home button.
 
-Package: com.tigisoftware.filza64bit
-Name: Filza File Manager
-Depends: zip, unzip, gzip, unrar, p7zip
-Conflicts: com.tigisoftware.filza
-Version: 3.4.0-25
-Architecture: iphoneos-arm
-Description: File Manager for iPhone, iPad, iPod Touch. Supports iOS 7+. This special version only supports 64-bit devices
-Maintainer: TIGI Software
-Author: TIGI Software
-Section: Utilities
-Installed-Size: 21088
-MD5sum: 1d0417c6ad81f27b1a2d69629504b123
-Filename: Files/com.tigisoftware.filza64bit/com.tigisoftware.filza64bit_3.4.0-25_iphoneos-arm.deb
-Depiction: File Manager for iPhone, iPad, iPod Touch. Supports iOS 7+. This special version only supports 64-bit devices
-
 Package: springtomize3
 Depends: firmware (>= 7.0), mobilesubstrate (>= 0.9.5000), preferenceloader (>= 2.2.2), com.rpetrich.rocketbootstrap
 Conflicts: com.filippobiga.springtomize2, com.filippobiga.springtomize3, com.filippobiga.springtomize4, com.springtomize.st4
@@ -287,22 +272,6 @@ Description: TAiG Untether JAilbreAK for iOS8.1.x - iOS8.4
 MD5sum: d828105e72c497f693a05c8606697b90
 Filename: Files/taiguntether83x/taiguntether83x_2.4_iphoneos-arm.deb
 Depiction: TAiG Untether JAilbreAK for iOS8.1.x - iOS8.4
-
-Depiction: Enable FaceTime Audio On CH/A iPhones.
-Author: BigBoss <bigboss@thebigboss.org>
-Maintainer: BigBoss <bigboss@thebigboss.org>
-Name: FaceTime Audio Enabler
-Package: com.pc.mobile.facetime
-Conflicts: com.hacksong.facetimeaudioenabler
-Depends: mobilesubstrate (>= 0.9.5000), firmware (>= 7.0)
-Section: Tweaks
-Version: 1.1.1
-Architecture: iphoneos-arm
-Description: Enable FaceTime Audio On CH/A iPhones.
-Tag: purpose::extension, compatible::ios7, compatible::ios8, compatible::ios9
-MD5sum: 4160043aa5045fe03f6dc38b28805f20
-Filename: Files/com.pc.mobile.facetime/com.pc.mobile.facetime_1.1.1_iphoneos-arm.deb
-Depiction: Enable FaceTime Audio On CH/A iPhones.
 
 Package: io.github.q2ex.tinnitus
 Name: Tinnitus
