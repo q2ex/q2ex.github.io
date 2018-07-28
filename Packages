@@ -11,7 +11,7 @@ Author: Jay Freeman
 Depiction: Allow Full File - System Access Over USB.
 Tag: purpose::daemon, role::enduser
 Filename: dl/io.github.q2ex.afc2d_1.1-debug_iphoneos-arm.deb
-MD5sum: 464ae3dbd0220246203a5292d370a17c
+MD5sum: b6e22085df9f69174a01d44122bd5834
 
 Package: cydia-lproj
 Priority: required
