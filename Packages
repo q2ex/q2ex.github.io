@@ -1,20 +1,17 @@
-Package: io.github.q2ex.afc
+Package: io.github.q2ex.afc2d
 Priority: optional
 Section: System
 Maintainer: Jay Freeman
 Architecture: iphoneos-arm
-Version: 1-debug
-Depends: firmware (>= 11)
-Conflicts: us.scw.afctwoadd, net.angelxwind.afc2ios70, afc2.25pp, afc2.25pp7, afc2.91, app.taig.afc2
-Replaces: us.scw.afctwoadd, net.angelxwind.afc2ios70, afc2.25pp, afc2.25pp7, afc2.91, app.taig.afc2
-Provides: us.scw.afctwoadd, net.angelxwind.afc2ios70, afc2.25pp, afc2.25pp7, afc2.91, app.taig.afc2
-Description: Allow Full File-System Access Over USB.
+Version: 1.1-debug
+Depends: mobilesubstrate, firmware (<= 11.4)
+Description: Allow Full File - System Access Over USB.
 Name: Apple File Conduit "2"
 Author: Jay Freeman
-Depiction: http://cydia.saurik.com/info/com.saurik.afc2d/
+Depiction: Allow Full File - System Access Over USB.
 Tag: purpose::daemon, role::enduser
-Filename: dl/io.github.q2ex.afc_1-debug_iphoneos-arm.deb
-MD5sum: 00898d949c79e87f70d780ce5544ee14
+Filename: dl/io.github.q2ex.afc2d_1.1-debug_iphoneos-arm.deb
+MD5sum: 464ae3dbd0220246203a5292d370a17c
 
 Package: cydia-lproj
 Priority: required
