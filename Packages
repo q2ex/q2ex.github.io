@@ -2,7 +2,7 @@ Package: io.github.q2ex.cyfix
 Version: 1.1-debug
 Architecture: iphoneos-arm
 Maintainer: Robert John
-Depends: firmware (>= 10), firmware (<= 11)
+Depends: firmware (>= 10)
 Section: Utilities
 Priority: optional
 Description: Repair Program Cannot Be Connected To the Internet.
