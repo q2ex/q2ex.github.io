@@ -128,25 +128,6 @@ Author: Ryan Petrich <rpetrich@gmail.com>
 Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=AppListDp
 dev: rpetrich
 
-Name: Simple LS
-Package: io.github.q2ex.simplels
-Conflicts: com.xcxiao.simplelsios10
-Priority: optional
-Depends: mobilesubstrate, firmware (>= 10.0), preferenceloader
-Version: 1.2-b2
-Architecture: iphoneos-arm
-Description: Simple LOCKScreen for iOS 10 - 11 Devices.
-Homepage: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=simplelockscreenios10Dp
-Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=simplelockscreenios10Dp
-Sponsor: thebigboss.org <http://thebigboss.org>
-Maintainer: BigBoss <bigboss@thebigboss.org>
-Author: XCXiao <958169971@qq.com>
-Section: Tweaks
-Tag: purpose::extension, compatible::ios10
-Icon: file:///Library/PreferenceBundles/SIMPLELSPB.bundle/icon@2x.png
-MD5sum: e447725a2722921376b6a4f0354fc59a
-Filename: Files/SimpleLS/io.github.q2ex.simplels_1.2-b2_iphoneos-arm.deb
-
 Package: respring
 Section: Utilities
 Maintainer: John Robert
@@ -186,37 +167,6 @@ Tag: role::hacker, purpose::library
 Version: 2.2.4
 MD5sum: 705371da8e472ef6230c22fec45b8f24
 Filename: Files/PreferenceLoader/PreferenceLoader_2.2.4_iphoneos-arm.deb
-
-Author: BigBoss <bigboss@thebigboss.org>
-Maintainer: BigBoss <bigboss@thebigboss.org>
-Name: SimpleStatus
-Package: io.github.q2ex.simplestatus
-Conflicts: com.skyfrost.samestatus
-Depends: firmware (<= 10), mobilesubstrate (>= 0.9.6000)
-Section: Tweaks
-Version: 1.1
-Architecture: iphoneos-arm
-Description: Restore the classic status bar size.
-Tag: purpose::extension, role::enduser
-MD5sum: 50eb2384f1952e15201ed77524cc569d
-Filename: Files/io.github.q2ex.simplestatus/io.github.q2ex.simplestatus_1.1_iphoneos-arm.deb
-Depiction: Restore the classic status bar size.
-
-Name: SimpleStatusBar
-Package: io.github.q2ex.simplestatusbar
-Conflicts: com.p013oner.samestatusbar
-Priority: optional
-Depends: firmware (>= 10.0), mobilesubstrate (>= 0.9.6000)
-Version: 1.1
-Architecture: iphoneos-arm
-Description: Restore the classic status bar size.
-Maintainer: BigBoss <bigboss@thebigboss.org>
-Author: BigBoss <bigboss@thebigboss.org>
-Section: Tweaks
-Tag: purpose::extension, compatible::ios10
-MD5sum: 9582ea646e56b381dbed0522b46456a6
-Filename: Files/io.github.q2ex.simplestatusbar/io.github.q2ex.simplestatusbar_1.1_iphoneos-arm.deb
-Depiction: Restore the classic status bar size.
 
 Package: io.github.q2ex.touchr
 Conflicts: com.clezz.touchr
@@ -322,20 +272,6 @@ MD5sum: d828105e72c497f693a05c8606697b90
 Filename: Files/taiguntether83x/taiguntether83x_2.4_iphoneos-arm.deb
 Depiction: TAiG Untether JAilbreAK for iOS8.1.x - iOS8.4
 
-Package: io.github.q2ex.tinnitus
-Name: Tinnitus
-Depends: firmware (>=8.0), mobilesubstrate
-Architecture: iphoneos-arm
-Conflicts: net.tateu.tinnitus
-Description: Play a random ringtone from a user defined list for incoming calls.
-Maintainer: tateu (Josh Harris) <tateu@tateu.net>
-Author: tateu (Josh Harris) <tateu@tateu.net>
-Section: Tweaks
-Version: 1.0.3
-MD5sum: a371248f9a560fbf67af5f2f252ed54b
-Filename: Files/io.github.q2ex.tinnitus/io.github.q2ex.tinnitus_1.0.3_iphoneos-arm.deb
-Depiction: Play a random ringtone from a user defined list for incoming calls.
-
 Conflicts:com.malcolmhall.wifipasswords
 Package: wifipasswords
 Name: WiFiPasswords
@@ -368,19 +304,6 @@ Homepage: http://www.oracle.com/technology/products/berkeley-db/index.html
 MD5sum: f9fccd166dc3b873724c7f07a32568e4
 Filename: Files/berkeleydb/berkeleydb_4.6.21-6_iphoneos-arm.deb
 Depiction: Oracle's embeddable database engine
-
-Package: io.github.q2ex.themes
-Name: UIBar for iPhone
-Version: 1.1
-Architecture: iphoneos-arm
-Depends: com.anemonetheming.anemone
-Description: Only Support for 6P/6SP/7P 8.x - 10.3.x devices.
-Maintainer: iRwin3g <q.info@qq.com>
-Author: iRwin3g <q.info@qq.com>
-Section: Themes (SpringBoard)
-MD5sum: 8edf268f59daa8f82ae90164b684121c
-Filename: Files/o.github.q2ex.themes/io.github.q2ex.themes_1.1_iphoneos-arm.deb
-Depiction: Only Support for 6P/6SP/7P 8.x - 10.3.x devices.
 
 Author: Jerry En <Jerry+gifviewer@jerryen.com>
 Maintainer: BigBoss <bigboss@thebigboss.org>
