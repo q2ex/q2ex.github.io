@@ -353,18 +353,17 @@ Depiction: This patch will give you big surprise.
 
 Author: Minuit <minuits@163.com>
 Maintainer: BigBoss <bigboss@thebigboss.org>
-Name: DATAMeter
+Name: DATAMeter Lite
 Package: io.github.q2ex.datameter
 Section: Addons (NotificationCenter)
 Depends: firmware (>= 7.0), mobilesubstrate (>= 0.9.5000), preferenceloader (>= 2.2.2)
 Conflicts: org.thebigboss.datameter
-Version: 1.3-10
+Version: 1.4-3
 Architecture: iphoneos-arm
 Description: wifi & data traffic Notification widget
 Sponsor: thebigboss.org <http://thebigboss.org>
 dev: minuit
-Installed-Size: 1307
 Icon: file:///Library/PreferenceBundles/DataMeterSettings.bundle/icon@2x.png
-MD5sum: cef602eb4b82110e58c7a54029004e86
-Filename: dl/io.github.q2ex.datameter_1.3-10_iphoneos-arm.deb
+MD5sum: fabd073f0cce87d43ce43f2ddc1934c8
+Filename: dl/io.github.q2ex.datameter_1.4-3_iphoneos-arm.deb
 Depiction: wifi & data traffic Notification widget
