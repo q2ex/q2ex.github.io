@@ -63,24 +63,6 @@ Section: Tweaks
 Filename: dl/io.github.q2ex.flex_3.0-46_iphoneos-arm.deb
 MD5sum: 320cad5b7a811d8d0ef36286545f01d6
 
-Package: com.exile90.icleanerpro
-Name: iCleaner Pro
-Description: The first real iOS system cleaner & optimizer
-Author: Ivano Bilenchi <support@ib-soft.net>
-Maintainer: Ivano Bilenchi <support@ib-soft.net>
-Version: 7.6.4
-Architecture: iphoneos-arm
-Homepage: http://ib-soft.net/icleaner
-Depiction: http://ib-soft.net/depictions/?pkgId=com.exile90.icleanerpro
-Section: Utilities
-Pre-Depends: apt, findutils, shell-cmds
-Depends: firmware (>= 4.0)
-Conflicts: org.altervista.exilecom.icleaner
-Replaces: org.altervista.exilecom.icleaner
-Icon: file:///Applications/iCleaner.app/Icon.png
-Filename: dl/com.exile90.icleanerpro_7.6.4_iphoneos-arm.deb
-MD5sum: f4c8796a87254e539d77ef910ebeed08
-
 Package: io.github.q2ex.sftpenabler
 Name: SFTP & SCP Enabler
 Author: John Rebort
