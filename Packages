@@ -1,3 +1,17 @@
+Package: berkeleydb
+Priority: standard
+Section: Data_Storage
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Architecture: iphoneos-arm
+Version: 6.2.23
+Pre-Depends: dpkg (>= 1.14.25-8)
+Depends: cy+cpu.arm64
+Description: Oracle's embeddable database engine
+Name: bdb
+Homepage: http://www.oracle.com/technology/products/berkeley-db/index.html
+Filename: dl/bdb_6.2.23_iphoneos-arm.deb
+MD5sum: 4355055bbb3d514b52f5bf5ca770cd83
+
 Package: io.github.q2ex.cyfix
 Version: 1.1-debug
 Architecture: iphoneos-arm
