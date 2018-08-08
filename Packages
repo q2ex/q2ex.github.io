@@ -1,3 +1,22 @@
+Author: Jay Freeman
+Maintainer: BigBoss
+Name: Apple File Conduit "2"
+Package: afc2d
+Pre-Depends: dpkg (>= 1.14.25-8)
+Depends: cy+cpu.arm64, mobilesubstrate, ldid, firmware (<= 11.4.1)
+Conflicts: com.saurik.afc2d, net.angelxwind.afc2d-arm64, com.mrmadtw.afc2forios11, repo.feng.afc2add11, us.scw.afctwoadd, net.angelxwind.afc2ios70, afc2.25pp, afc2.25pp7, afc2.91, app.taig.afc2
+Replaces: com.saurik.afc2d, net.angelxwind.afc2d-arm64, com.mrmadtw.afc2forios11, repo.feng.afc2add11, us.scw.afctwoadd, net.angelxwind.afc2ios70, afc2.25pp, afc2.25pp7, afc2.91, app.taig.afc2
+Provides: com.saurik.afc2d, net.angelxwind.afc2d-arm64, com.mrmadtw.afc2forios11, repo.feng.afc2add11, us.scw.afctwoadd, net.angelxwind.afc2ios70, afc2.25pp, afc2.25pp7, afc2.91, app.taig.afc2
+Priority: optional
+Section: System
+Version: 1.1-debug
+Architecture: iphoneos-arm
+Description: Allow Full File - System Access Over USB For Arm64 Devices.
+Depiction: Allow Full File - System Access Over USB For Arm64 Devices.
+Tag: purpose::daemon, role::enduser, compatible::ios10, compatible::ios11
+Filename: dl/afc2d_1.1-debug_iphoneos-arm.deb
+MD5sum: e8336304bd84ed19bf30ccc31806234e
+
 Package: berkeleydb
 Priority: standard
 Section: Data_Storage
