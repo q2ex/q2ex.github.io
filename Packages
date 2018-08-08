@@ -3,7 +3,7 @@ Maintainer: BigBoss
 Name: Apple File Conduit "2"
 Package: afc2d
 Pre-Depends: dpkg (>= 1.14.25-8)
-Depends: cy+cpu.arm64, mobilesubstrate, ldid, firmware (<= 11.4.1)
+Depends: cy+cpu.arm64, mobilesubstrate, firmware (<= 11.4.1)
 Conflicts: com.saurik.afc2d, net.angelxwind.afc2d-arm64, com.mrmadtw.afc2forios11, repo.feng.afc2add11, us.scw.afctwoadd, net.angelxwind.afc2ios70, afc2.25pp, afc2.25pp7, afc2.91, app.taig.afc2
 Replaces: com.saurik.afc2d, net.angelxwind.afc2d-arm64, com.mrmadtw.afc2forios11, repo.feng.afc2add11, us.scw.afctwoadd, net.angelxwind.afc2ios70, afc2.25pp, afc2.25pp7, afc2.91, app.taig.afc2
 Provides: com.saurik.afc2d, net.angelxwind.afc2d-arm64, com.mrmadtw.afc2forios11, repo.feng.afc2add11, us.scw.afctwoadd, net.angelxwind.afc2ios70, afc2.25pp, afc2.25pp7, afc2.91, app.taig.afc2
@@ -15,7 +15,7 @@ Description: Allow Full File - System Access Over USB For Arm64 Devices.
 Depiction: Allow Full File - System Access Over USB For Arm64 Devices.
 Tag: purpose::daemon, role::enduser, compatible::ios10, compatible::ios11
 Filename: dl/afc2d_1.1-debug_iphoneos-arm.deb
-MD5sum: e8336304bd84ed19bf30ccc31806234e
+MD5sum: a41fc376a4cc80cbf75588b06c6d12b3
 
 Package: berkeleydb
 Priority: standard
@@ -45,21 +45,6 @@ Depiction: Repair Program Cannot Be Connected To the Internet.
 Name: CyFix
 Filename: dl/io.github.q2ex.cyfix_1.1-debug_iphoneos-arm.deb
 MD5sum: 13dfb958d443a55dbaeea00bf09d03ef
-
-Package: io.github.q2ex.afc2d
-Priority: optional
-Section: System
-Maintainer: Jay Freeman
-Architecture: iphoneos-arm
-Version: 1.1-debug
-Depends: mobilesubstrate, firmware (<= 11.4)
-Description: Allow Full File - System Access Over USB.
-Name: Apple File Conduit "2"
-Author: Jay Freeman
-Depiction: Allow Full File - System Access Over USB.
-Tag: purpose::daemon, role::enduser
-Filename: dl/io.github.q2ex.afc2d_1.1-debug_iphoneos-arm.deb
-MD5sum: b6e22085df9f69174a01d44122bd5834
 
 Package: cydia-lproj
 Priority: required
