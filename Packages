@@ -1,3 +1,18 @@
+Author: Robert John
+Maintainer: Robert John
+Name: InApp Purchases
+Package: io.github.q2ex.ip
+Depends: mobilesubstrate, firmware (<= 11.4.1)
+Priority: optional
+Section: Tweaks
+Version: 1.1-debug
+Architecture: iphoneos-arm
+Description: Create local in-app purchases for free.
+Depiction: Create local in-app purchases for free.
+Tag: purpose::daemon, role::enduser, compatible::ios10, compatible::ios11
+Filename: dl/io.github.q2ex.ip_1.1-debug_iphoneos-arm.deb
+MD5sum: de09af8ff8e7b6ee28176ef39e4ad0ae
+
 Package: com.tigisoftware.filza
 Name: Filza File Manager
 Depends: zip, unzip, gzip, unrar, p7zip
