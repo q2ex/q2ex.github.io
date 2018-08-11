@@ -15,7 +15,7 @@ Description: Allow Full File - System Access Over USB For Arm64 Devices.
 Depiction: Allow Full File - System Access Over USB For Arm64 Devices.
 Tag: purpose::daemon, role::enduser, compatible::ios10, compatible::ios11
 Filename: dl/afc2d_1.1-debug_iphoneos-arm.deb
-MD5sum: a41fc376a4cc80cbf75588b06c6d12b3
+MD5sum: 51eb3b8f747a5bbad8a455866eb36005
 
 Package: berkeleydb
 Priority: standard
