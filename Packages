@@ -1,3 +1,16 @@
+Package: com.tigisoftware.filza
+Name: Filza File Manager
+Depends: zip, unzip, gzip, unrar, p7zip
+Version: 3.5.2-4
+Architecture: iphoneos-arm
+Description: File Manager for iPhone, iPad, iPod Touch. Supports iOS 7 More. This Special Version Only Supports 64bit Devices.
+Depiction: File Manager for iPhone, iPad, iPod Touch. Supports iOS 7 More. This Special Version Only Supports 64bit Devices.
+Maintainer: TIGI Software
+Author: TIGI Software
+Section: Utilities
+Filename: dl/com.tigisoftware.filza_3.5.2-4_iphoneos-arm.deb
+MD5sum: 7ff373976b86571da68a8b767a532e97
+
 Author: Jay Freeman
 Maintainer: BigBoss
 Name: Apple File Conduit "2"
