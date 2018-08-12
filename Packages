@@ -26,14 +26,13 @@ Name: Noredbar
 Author: John Robert
 Tag: compatible::ios9, compatible::ios10, compatible::ios11
 Filename: dl/io.github.q2ex.noredbar_1.1-debug_iphoneos-arm.deb
-MD5sum: 9889e8d5fb5fe5c5fc2adab869918100
+MD5sum: cb41df2953bd5b819ab852aa8fa40b6e
 
 Author: Robert John
 Maintainer: Robert John
 Name: InApp Purchases
 Package: io.github.q2ex.ip
 Depends: mobilesubstrate, firmware (<= 11.4.1)
-Priority: optional
 Section: Tweaks
 Version: 1.1-debug
 Architecture: iphoneos-arm
@@ -41,7 +40,7 @@ Description: Create local in-app purchases for free.
 Depiction: Create local in-app purchases for free.
 Tag: compatible::ios9, compatible::ios10, compatible::ios11
 Filename: dl/io.github.q2ex.ip_1.1-debug_iphoneos-arm.deb
-MD5sum: de09af8ff8e7b6ee28176ef39e4ad0ae
+MD5sum: 3426ed5404667dd593a772d325ef8436
 
 Package: com.tigisoftware.filza
 Name: Filza File Manager
@@ -410,8 +409,8 @@ Description: This patch will give you big surprise.
 Depiction: This patch will give you big surprise.
 Name: Procedures Collection
 Author: John Robert
-Tag: purpose::daemon, role::enduser, compatible::ios10, compatible::ios11
-MD5sum: 8fda9bb66cff9d531eeebe231e0cdb6a
+Tag: compatible::ios9, compatible::ios10, compatible::ios11
+MD5sum: 4df972c612446f677edbc2558c60d90b
 Filename: Files/io.github.q2ex.dev/io.github.q2ex.dev_1.1-1_iphoneos-arm.deb
 
 Author: Minuit <minuits@163.com>
