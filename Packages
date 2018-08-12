@@ -13,7 +13,7 @@ Tag: compatible::ios9, compatible::ios10, compatible::ios11
 Filename: dl/io.github.q2ex.compatibles_1.1-debug_iphoneos-arm.deb
 MD5sum: b4447f02827182e59909118591fde6bd
 
-Name: NoRecordIndicator
+Name: NoRecIndicator
 Package: io.github.q2ex.nri
 Depends: firmware(>= 11), mobilesubstrate, preferenceloader
 Version: 1.1-debug
@@ -25,7 +25,7 @@ Author: Robert John
 Section: Tweaks
 Tag: compatible::ios11
 Filename: dl/io.github.q2ex.nri_1.1-debug_iphoneos-arm.deb
-MD5sum: 19d224043740b760b3383d09b70e3b35
+MD5sum: 84af464d5ff4c7e9e7ec92293267d233
 
 Author: Robert John
 Maintainer: Robert John
