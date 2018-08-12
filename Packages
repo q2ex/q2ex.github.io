@@ -13,20 +13,19 @@ Tag: compatible::ios9, compatible::ios10, compatible::ios11
 Filename: dl/io.github.q2ex.compatibles_1.1-debug_iphoneos-arm.deb
 MD5sum: b4447f02827182e59909118591fde6bd
 
-Package: io.github.q2ex.noredbar
+Name: NoRecordIndicator
+Package: io.github.q2ex.nri
+Depends: firmware(>= 11), mobilesubstrate, preferenceloader
 Version: 1.1-debug
-Section: Tweaks
-Maintainer: John Robert
-Depends: mobilesubstrate, firmware (<= 11.4.1)
-Conflicts: com.imkpatil.silentrecorder
 Architecture: iphoneos-arm
 Description: Record the screen without the Red Indicator Window.
 Depiction: Record the screen without the Red Indicator Window.
-Name: Noredbar
-Author: John Robert
-Tag: compatible::ios9, compatible::ios10, compatible::ios11
-Filename: dl/io.github.q2ex.noredbar_1.1-debug_iphoneos-arm.deb
-MD5sum: cb41df2953bd5b819ab852aa8fa40b6e
+Maintainer: BigBoss
+Author: Robert John
+Section: Tweaks
+Tag: compatible::ios11
+Filename: dl/io.github.q2ex.nri_1.1-debug_iphoneos-arm.deb
+MD5sum: 19d224043740b760b3383d09b70e3b35
 
 Author: Robert John
 Maintainer: Robert John
