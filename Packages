@@ -223,24 +223,6 @@ Icon: file:///Library/PreferenceBundles/STPreferences.bundle/AppIcon40x40@2x.png
 MD5sum: 8382f938b5d434cd8122b6bcd76f446c
 Filename: Files/com.filippobiga.springtomize4/com.filippobiga.springtomize4_3_iphoneos-arm.deb
 
-Package: io.github.q2ex.watchdogpro
-Conflicts: org.thebigboss.watchdoglite, com.theronen.watchdog
-Depends: firmware (>= 8), mobilesubstrate (>= 0.9.5000), preferenceloader (>= 2.2.2)
-Name: WATCHDog Pro
-Version: 1.0.2
-Architecture: iphoneos-arm
-Description: full featured app backgrounding management
-Depiction: full featured app backgrounding management
-Homepage: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=watchdogproDp
-Maintainer: BigBoss <bigboss@thebigboss.org>
-Author: Allan Kerr <Personal.AllanKerr@gmail.com>
-Sponsor: thebigboss.org <http://thebigboss.org>
-Section: Tweaks
-dev: allankerr
-Icon: file:///Library/PreferenceBundles/WatchdogPreferences.bundle/Watchdog@2x.png
-MD5sum: d1622883417028a3cb750d04601cc61d
-Filename: Files/io.github.q2ex.watchdogpro/io.github.q2ex.watchdogpro_1.0.2_iphoneos-arm.deb
-
 Package: Impactor
 Version: 0.9.17+53.g3daccc9
 Priority: optional
@@ -335,7 +317,7 @@ Depiction: WEChat automatic acquisition red envelope.
 Sponsor: thebigboss.org <http://thebigboss.org>
 dev: Bigboss
 Tag: compatible::ios9, compatible::ios10, compatible::ios11
-Version: 4.2
+Version: 1.1-debug
 MD5sum: a5a9b1f05720d9893205e8d8c8dfe875
 Filename: dl/io.github.q2ex.wechatredenvelop_1.1-debug_iphoneos-arm.deb
 
