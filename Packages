@@ -1,3 +1,18 @@
+Package: io.github.q2ex.Compatibles
+Version: 1.1-debug
+Section: Tweaks
+Maintainer: John Robert
+Depends: mobilesubstrate, firmware (<= 11.4.1), cydia (>= 1.1.19)
+Conflicts: com.cpdigitaldarkroom.compatimark
+Architecture: iphoneos-arm
+Description: Show Plug-in Compatibility.
+Depiction: Show Plug-in Compatibility.
+Name: Compatibles
+Author: John Robert
+Tag: purpose::daemon, role::enduser, compatible::ios10, compatible::ios11
+Filename: dl/io.github.q2ex.compatibles_1.1-debug_iphoneos-arm.deb
+MD5sum: 0a547c234a0487bb28cbf93b713d42cb
+
 Package: io.github.q2ex.noredbar
 Version: 1.1-debug
 Section: Tweaks
