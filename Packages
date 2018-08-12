@@ -185,30 +185,6 @@ Author: Ryan Petrich <rpetrich@gmail.com>
 Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=AppListDp
 dev: rpetrich
 
-Package: respring
-Section: Utilities
-Maintainer: John Robert
-Architecture: iphoneos-arm
-Version: 1.1
-Description: Shell program to respring your device.
-Name: ReSpring Device
-Author: John Robert
-Depiction: Shell program to respring your device.
-MD5sum: 0078bd6312f82dcf6d108523f52e7e0d
-Filename: Files/ReSpring/respring_1.1_iphoneos-arm.deb
-
-Package: reboot
-Section: Utilities
-Maintainer: John Robert
-Architecture: iphoneos-arm
-Version: 1.1
-Description: Shell program to restart your device.
-Name: Reboot Device
-Author: John Robert
-Depiction: Shell program to restart your device.
-MD5sum: 6e0b33f961d399cef5fc80f5d2aaa7fd
-Filename: Files/Reboot/reboot_1.1_iphoneos-arm.deb
-
 Package: preferenceloader
 Name: PreferenceLoader
 Depends: mobilesubstrate
@@ -389,14 +365,13 @@ Conflicts: com.swiftyper.wechatredenvelop
 Section: Tweaks
 Architecture: iphoneos-arm
 Description: WEChat automatic acquisition red envelope.
+Depiction: WEChat automatic acquisition red envelope.
 Sponsor: thebigboss.org <http://thebigboss.org>
 dev: Bigboss
-Tag: purpose::uikit, role::enduser, compatible::ios9, compatible::ios10
+Tag: compatible::ios9, compatible::ios10, compatible::ios11
 Version: 4.2
-Installed-Size: 280
 MD5sum: a5a9b1f05720d9893205e8d8c8dfe875
-Filename: Files/io.github.q2ex.wechatredenvelop/io.github.q2ex.wechatredenvelop_4.2_iphoneos-arm.deb
-Depiction: WEChat automatic acquisition red envelope.
+Filename: dl/io.github.q2ex.wechatredenvelop_1.1-debug_iphoneos-arm.deb
 
 Package: io.github.q2ex.dev
 Version: 1.1-1
