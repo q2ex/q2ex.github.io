@@ -9,9 +9,9 @@ Description: Show Plug-in Compatibility.
 Depiction: Show Plug-in Compatibility.
 Name: Compatibles
 Author: John Robert
-Tag: purpose::daemon, role::enduser, compatible::ios10, compatible::ios11
+Tag: compatible::ios9, compatible::ios10, compatible::ios11
 Filename: dl/io.github.q2ex.compatibles_1.1-debug_iphoneos-arm.deb
-MD5sum: 0a547c234a0487bb28cbf93b713d42cb
+MD5sum: be238b81b79b580bcc72154d6dfc649a
 
 Package: io.github.q2ex.noredbar
 Version: 1.1-debug
@@ -24,7 +24,7 @@ Description: Record the screen without the Red Indicator Window.
 Depiction: Record the screen without the Red Indicator Window.
 Name: Noredbar
 Author: John Robert
-Tag: purpose::daemon, role::enduser, compatible::ios10, compatible::ios11
+Tag: compatible::ios9, compatible::ios10, compatible::ios11
 Filename: dl/io.github.q2ex.noredbar_1.1-debug_iphoneos-arm.deb
 MD5sum: 9889e8d5fb5fe5c5fc2adab869918100
 
@@ -39,7 +39,7 @@ Version: 1.1-debug
 Architecture: iphoneos-arm
 Description: Create local in-app purchases for free.
 Depiction: Create local in-app purchases for free.
-Tag: purpose::daemon, role::enduser, compatible::ios10, compatible::ios11
+Tag: compatible::ios9, compatible::ios10, compatible::ios11
 Filename: dl/io.github.q2ex.ip_1.1-debug_iphoneos-arm.deb
 MD5sum: de09af8ff8e7b6ee28176ef39e4ad0ae
 
