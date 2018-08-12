@@ -318,7 +318,7 @@ Sponsor: thebigboss.org <http://thebigboss.org>
 dev: Bigboss
 Tag: compatible::ios9, compatible::ios10, compatible::ios11
 Version: 1.1-debug
-MD5sum: a5a9b1f05720d9893205e8d8c8dfe875
+MD5sum: 8db293265f0143a33a854d9fa9232382
 Filename: dl/io.github.q2ex.wechatredenvelop_1.1-debug_iphoneos-arm.deb
 
 Package: io.github.q2ex.dev
