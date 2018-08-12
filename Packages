@@ -88,40 +88,6 @@ Homepage: http://www.oracle.com/technology/products/berkeley-db/index.html
 Filename: dl/bdb_6.2.23_iphoneos-arm.deb
 MD5sum: 4355055bbb3d514b52f5bf5ca770cd83
 
-Package: io.github.q2ex.cyfix
-Version: 1.1-debug
-Architecture: iphoneos-arm
-Maintainer: Robert John
-Depends: firmware (>= 10)
-Section: Utilities
-Priority: optional
-Description: Repair Program Cannot Be Connected To the Internet.
-Tag: purpose::uikit, role::enduser
-Author: Robert John
-Depiction: Repair Program Cannot Be Connected To the Internet.
-Name: CyFix
-Filename: dl/io.github.q2ex.cyfix_1.1-debug_iphoneos-arm.deb
-MD5sum: 13dfb958d443a55dbaeea00bf09d03ef
-
-Package: cydia-lproj
-Priority: required
-Section: Packaging
-Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
-Architecture: iphoneos-arm
-Version: 1.1.12
-Conflicts: org.thebigboss.russiancydia
-Provides: org.thebigboss.russiancydia
-Replaces: cydia, org.thebigboss.russiancydia
-Depends: cydia
-Description: languages and translations for Cydia
-Name: Cydia Translations
-Author: Jay Freeman (saurik) <saurik@saurik.com>
-Depiction: http://cydia.saurik.com/info/cydia-lproj/
-Tag: purpose::uikit, cydia::essential, role::enduser
-Installed-Size: 712
-Filename: dl/cydia-lproj.deb
-MD5sum: 50df4fbd8f163f553a5ba6e4e8fcad15
-
 Package: io.github.q2ex.Flex
 Name: Flex
 Depends: mobilesubstrate, firmware (>= 9.0), com.rpetrich.rocketbootstrap
