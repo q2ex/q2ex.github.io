@@ -5,13 +5,13 @@ Maintainer: John Robert
 Depends: mobilesubstrate, firmware (<= 11.4.1), cydia (>= 1.1.19)
 Conflicts: com.cpdigitaldarkroom.compatimark
 Architecture: iphoneos-arm
-Description: Show Plug-in Compatibility.
-Depiction: Show Plug-in Compatibility.
+Description: Shows whether the plug-in is compatible.
+Depiction: Shows whether the plug-in is compatible.
 Name: Compatibles
 Author: John Robert
 Tag: compatible::ios9, compatible::ios10, compatible::ios11
 Filename: dl/io.github.q2ex.compatibles_1.1-debug_iphoneos-arm.deb
-MD5sum: be238b81b79b580bcc72154d6dfc649a
+MD5sum: b4447f02827182e59909118591fde6bd
 
 Package: io.github.q2ex.noredbar
 Version: 1.1-debug
