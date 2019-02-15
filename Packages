@@ -169,15 +169,15 @@ Depends: mobilesubstrate, firmware (>= 9.0), com.rpetrich.rocketbootstrap
 Recommended: com.modmyi.libswift4 (>= 4.0.3)
 Conflicts: Flexpackage, Flexpackagebeta, com.fuyuchi.flex, Flex2packagebeta, Flex2package,  com.fuyuchi.flex2, Flex2Blackpackagebeta, com.johncoates.Flex3,Flex3beta
 Replaces: Flexpackage, Flexpackagebeta, com.fuyuchi.flex, Flex2packagebeta, Flex2package,  com.fuyuchi.flex2, Flex2Blackpackagebeta, com.johncoates.Flex3,Flex3beta
-Version: 3.0-46
+Version: 1:3~Beta50
 Architecture: iphoneos-arm
 Description: Develop your own tweaks and share them on the Flex Community Cloud
 Depiction: Develop your own tweaks and share them on the Flex Community Cloud
 Maintainer: John Coates
 Author: John Coates
 Section: Tweaks
-Filename: dl/io.github.q2ex.flex_3.0-46_iphoneos-arm.deb
-MD5sum: 320cad5b7a811d8d0ef36286545f01d6
+Filename: dl/io.github.q2ex.flex_3~Beta50_iphoneos-arm.deb
+MD5sum: 23040d557214bd46bb8935e6aff9f802
 
 Package: io.github.q2ex.sftpenabler
 Name: SFTP & SCP Enabler
