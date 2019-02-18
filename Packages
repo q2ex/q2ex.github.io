@@ -125,20 +125,6 @@ Homepage: http://www.oracle.com/technology/products/berkeley-db/index.html
 Description: Oracle's embeddable database engine
 Name: bdb
 
-Package: berkeleydb
-Priority: standard
-Section: Data_Storage
-Maintainer: CoolStar <coolstarorganization@gmail.com>
-Architecture: iphoneos-arm
-Version: 6.2.23
-Pre-Depends: dpkg (>= 1.14.25-8)
-Depends: cy+cpu.arm64
-Description: Oracle's embeddable database engine
-Name: bdb
-Homepage: http://www.oracle.com/technology/products/berkeley-db/index.html
-Filename: dl/bdb_6.2.23_iphoneos-arm.deb
-MD5sum: 4355055bbb3d514b52f5bf5ca770cd83
-
 Package: io.github.q2ex.Flex
 Name: Flex
 Depends: mobilesubstrate, firmware (>= 9.0), com.rpetrich.rocketbootstrap
@@ -173,22 +159,20 @@ homepage: https://www.rpetrich.com/cydia/rocketbootstrap/
 dev: rpetrich
 
 Package: applist
-Version: 1.5.14
-Section: System
+Name: AppLiST
+Architecture: iphoneos-arm
+Description: Allow extensions to read the list of installed apps
 Maintainer: Ryan Petrich <rpetrich@gmail.com>
+Author: Ryan Petrich <rpetrich@gmail.com>
 Depends: mobilesubstrate (>= 0.9.5000), firmware (>= 3.0), com.rpetrich.rocketbootstrap (>= 1.0.6~beta) | firmware (<< 7.0)
 Conflicts: com.a3tweaks.polus (<< 2.0.7)
-Architecture: iphoneos-arm
-Filename: dl/applist_1.5.14_iphoneos-arm.deb
-Size: 93138
-Installed-Size: 600
-MD5sum: cd8cc24cb82a6714a6a1a41424d72e22
-Name: APPLiST
-Website: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=AppListDp
-Description: Allow extensions to read the list of installed apps
-Author: Ryan Petrich <rpetrich@gmail.com>
+Section: System
 Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=AppListDp
+Website: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=AppListDp
 dev: rpetrich
+Version: 1.5.14-1
+MD5sum: d731fd39ea4d36a5460546403b53dd4b
+Filename: dl/applist_1.5.14-1_iphoneos-arm.deb
 
 Package: preferenceloader
 Name: PreferenceLoader
