@@ -30,20 +30,6 @@ Version: 3.6.1-22
 Filename: dl/com.tigisoftware.filza_3.6.1-22_iphoneos-arm.deb
 MD5sum: 3071e7600916d71d8fb8b4d2066c2fc1
 
-Package: com.tigisoftware.filza
-Name: Filza File Manager
-Depends: zip, unzip, gzip, unrar, p7zip
-Conflicts: com.tigisoftware.filza
-Architecture: iphoneos-arm
-Description: File Manager For Iphone, Ipad, Ipod Touch. Supports Ios 7 & More. This Special Version Only Supports 64-bit Devices.
-Depiction: File Manager For Iphone, Ipad, Ipod Touch. Supports Ios 7 & More. This Special Version Only Supports 64-bit Devices.
-Maintainer: TIGI Software
-Author: TIGI Software
-Section: Utilities
-Version: 3.6.1-20
-Filename: dl/com.tigisoftware.filza_3.6.1-20_iphoneos-arm.deb
-MD5sum: a267602abad0d2d123c400cdad32f507
-
 Package: com.ichitaso.semirestore11
 Conflicts: com.pwn20wnd.semirestore11
 Replaces: com.ichitaso.semirestore11
@@ -75,20 +61,6 @@ Tag: compatible::ios9, compatible::ios10, compatible::ios11
 Filename: dl/io.github.q2ex.compatibles_1.1-debug_iphoneos-arm.deb
 MD5sum: b4447f02827182e59909118591fde6bd
 
-Package: com.tigisoftware.filza
-Name: Filza File Manager
-Depends: zip, unzip, gzip, unrar, p7zip
-Conflicts: com.tigisoftware.filza
-Architecture: iphoneos-arm
-Description: File Manager For Iphone, Ipad, Ipod Touch. Supports Ios 7 & More. This Special Version Only Supports 64-bit Devices.
-Depiction: File Manager For Iphone, Ipad, Ipod Touch. Supports Ios 7 & More. This Special Version Only Supports 64-bit Devices.
-Maintainer: TIGI Software
-Author: TIGI Software
-Section: Utilities
-Version: 3.6.1-1
-Filename: dl/com.tigisoftware.filza_3.6.1-1_iphoneos-arm.deb
-MD5sum: 639ddd94edee034f15a1429610cfbfd0
-
 Name: NoRecIndicator
 Package: io.github.q2ex.nri
 Depends: firmware(>= 11), mobilesubstrate, preferenceloader
@@ -116,19 +88,6 @@ Depiction: Create local in-app purchases for free.
 Tag: compatible::ios9, compatible::ios10, compatible::ios11
 Filename: dl/io.github.q2ex.ip_1.1-debug_iphoneos-arm.deb
 MD5sum: 3426ed5404667dd593a772d325ef8436
-
-Package: com.tigisoftware.filza
-Name: Filza File Manager
-Depends: zip, unzip, gzip, unrar, p7zip
-Version: 3.5.2-4
-Architecture: iphoneos-arm
-Description: File Manager for iPhone, iPad, iPod Touch. Supports iOS 7 More. This Special Version Only Supports 64bit Devices.
-Depiction: File Manager for iPhone, iPad, iPod Touch. Supports iOS 7 More. This Special Version Only Supports 64bit Devices.
-Maintainer: TIGI Software
-Author: TIGI Software
-Section: Utilities
-Filename: dl/com.tigisoftware.filza_3.5.2-4_iphoneos-arm.deb
-MD5sum: 7ff373976b86571da68a8b767a532e97
 
 Author: Jay Freeman
 Maintainer: BigBoss
@@ -178,20 +137,6 @@ Author: John Coates
 Section: Tweaks
 Filename: dl/io.github.q2ex.flex_3~Beta50_iphoneos-arm.deb
 MD5sum: 23040d557214bd46bb8935e6aff9f802
-
-Package: io.github.q2ex.sftpenabler
-Name: SFTP & SCP Enabler
-Author: John Rebort
-Version: 1.1-1
-Depends: openssl, firmware (>> 8)
-Conflicts: openssh
-Architecture: iphoneos-arm
-Description: SFTP & SCP Connection For SSH Dropbear iOS 10.
-Maintainer: John Rebort
-Section: Networking
-Filename: Files/io.github.q2ex.sftpenabler/io.github.q2ex.sftpenabler_1.1-1_iphoneos-arm.deb
-MD5sum: 19b1f7832fa1963cbe1c8f66e5bfc83e
-Depiction: SFTP & SCP Connection For SSH Dropbear iOS 10.
 
 Package: com.rpetrich.rocketbootstrap
 Version: 1.0.7
@@ -345,21 +290,6 @@ MD5sum: eea63eb48bab6dcf6450ac2edb6fcd08
 Filename: Files/wifipasswords/wifipasswords_2.0.3_iphoneos-arm.deb
 Depiction: Shows previously entered wifi passwords
 	This app displays every WiFi password you have ever entered. Very handy if you forgot a password and need to connect another device, or tell a friend the password for a coffee shop without asking that embarrassing question again. Tap hold on the password to copy it to the clipboard. Requires iOS 3.0 or later.
-
-Package: berkeleydb
-Priority: standard
-Section: Data_Storage
-Installed-Size: 1704
-Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
-Architecture: iphoneos-arm
-Version: 4.6.21-6
-Pre-Depends: dpkg (>= 1.14.25-8)
-Description: Oracle's embeddable database engine
-Name: bdb
-Homepage: http://www.oracle.com/technology/products/berkeley-db/index.html
-MD5sum: f9fccd166dc3b873724c7f07a32568e4
-Filename: Files/berkeleydb/berkeleydb_4.6.21-6_iphoneos-arm.deb
-Depiction: Oracle's embeddable database engine
 
 Author: Jerry En <Jerry+gifviewer@jerryen.com>
 Maintainer: BigBoss <bigboss@thebigboss.org>
