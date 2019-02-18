@@ -173,15 +173,17 @@ homepage: https://www.rpetrich.com/cydia/rocketbootstrap/
 dev: rpetrich
 
 Package: applist
-Version: 1.5.14F
+Version: 1.5.14
 Section: System
 Maintainer: Ryan Petrich <rpetrich@gmail.com>
 Depends: mobilesubstrate (>= 0.9.5000), firmware (>= 3.0), com.rpetrich.rocketbootstrap (>= 1.0.6~beta) | firmware (<< 7.0)
 Conflicts: com.a3tweaks.polus (<< 2.0.7)
 Architecture: iphoneos-arm
-Filename: Files/applist/applist_1.5.14_iphoneos-arm.deb
-MD5sum: 5f0ee18c6a853cf250251775ffde5e76
-Name: APPLIST
+Filename: dl/applist_1.5.14_iphoneos-arm.deb
+Size: 93138
+Installed-Size: 600
+MD5sum: cd8cc24cb82a6714a6a1a41424d72e22
+Name: APPLiST
 Website: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=AppListDp
 Description: Allow extensions to read the list of installed apps
 Author: Ryan Petrich <rpetrich@gmail.com>
