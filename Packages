@@ -1,3 +1,33 @@
+Package: io.github.q2ex.Flex
+Name: Flex
+Depends: mobilesubstrate, firmware (>= 9.0), com.rpetrich.rocketbootstrap
+Recommended: com.modmyi.libswift4 (>= 4.0.3)
+Conflicts: Flexpackage, Flexpackagebeta, com.fuyuchi.flex, Flex2packagebeta, Flex2package,  com.fuyuchi.flex2, Flex2Blackpackagebeta, com.johncoates.Flex3,Flex3beta
+Replaces: Flexpackage, Flexpackagebeta, com.fuyuchi.flex, Flex2packagebeta, Flex2package,  com.fuyuchi.flex2, Flex2Blackpackagebeta, com.johncoates.Flex3,Flex3beta
+Version: 1:3~Beta51
+Architecture: iphoneos-arm
+Description: Develop your own tweaks and share them on the Flex Community Cloud
+Depiction: Develop your own tweaks and share them on the Flex Community Cloud
+Maintainer: John Coates
+Author: John Coates
+Section: Tweaks
+Filename: dl/io.github.q2ex.flex_3~Beta51_iphoneos-arm.deb
+MD5sum: b67ee869d7a467210bed5499be9f3455
+
+Package: com.tigisoftware.filza
+Name: Filza File Manager
+Depends: zip, unzip, gzip, unrar, p7zip
+Conflicts: com.tigisoftware.filza
+Architecture: iphoneos-arm
+Description: File Manager For Iphone, Ipad, Ipod Touch. Supports Ios 7 & More. This Special Version Only Supports 64-bit Devices.
+Depiction: File Manager For Iphone, Ipad, Ipod Touch. Supports Ios 7 & More. This Special Version Only Supports 64-bit Devices.
+Maintainer: TIGI Software
+Author: TIGI Software
+Section: Utilities
+Version: 3.6.2-4
+Filename: dl/com.tigisoftware.filza_3.6.2-4_iphoneos-arm.deb
+MD5sum: d5923faa97c3b1a7c53467cfccd942ae
+
 Package: com.imkpatil.screenrecorderforcedaudio
 Version: 1.0-3
 Architecture: iphoneos-arm
