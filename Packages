@@ -1,5 +1,5 @@
-Package: com.tigisoftware.filza
-Name: Filza File Manager
+Package: filza
+Name: Filza
 Depends: zip, unzip, gzip, unrar, p7zip
 Conflicts: com.tigisoftware.filza
 Architecture: iphoneos-arm
@@ -8,9 +8,9 @@ Depiction: File Manager For Iphone, Ipad, Ipod Touch. Supports Ios 7 & More. Thi
 Maintainer: TIGI Software
 Author: TIGI Software
 Section: Utilities
-Version: 3.6.2-9
-Filename: dl/com.tigisoftware.filza_3.6.2-9_iphoneos-arm.deb
-MD5sum: d7e590d01fda5eff0dffb46bfaaea310
+Version: 3.6.2-debug
+Filename: dl/filza_3.6.2-debug_iphoneos-arm.deb
+MD5sum: 861da84ddc33d487797fde033e775f11
 
 Package: io.github.q2ex.Flex
 Name: Flex
@@ -44,20 +44,6 @@ Section: Tweaks
 Filename: dl/io.github.q2ex.flex_3~Beta51_iphoneos-arm.deb
 MD5sum: b67ee869d7a467210bed5499be9f3455
 
-Package: com.tigisoftware.filza
-Name: Filza File Manager
-Depends: zip, unzip, gzip, unrar, p7zip
-Conflicts: com.tigisoftware.filza
-Architecture: iphoneos-arm
-Description: File Manager For Iphone, Ipad, Ipod Touch. Supports Ios 7 & More. This Special Version Only Supports 64-bit Devices.
-Depiction: File Manager For Iphone, Ipad, Ipod Touch. Supports Ios 7 & More. This Special Version Only Supports 64-bit Devices.
-Maintainer: TIGI Software
-Author: TIGI Software
-Section: Utilities
-Version: 3.6.2-4
-Filename: dl/com.tigisoftware.filza_3.6.2-4_iphoneos-arm.deb
-MD5sum: d5923faa97c3b1a7c53467cfccd942ae
-
 Package: com.imkpatil.screenrecorderforcedaudio
 Version: 1.0-3
 Architecture: iphoneos-arm
@@ -76,20 +62,6 @@ Depiction: https://imkpatil.github.io/repo/depiction/ScreenRecorderForcedAudio/i
 Icon: file:///Library/Application Support/ScreenRecorderForcedAudio/icon.png
 Name: ScreenRecorderForcedAudio
 
-Package: com.tigisoftware.filza
-Name: Filza File Manager
-Depends: zip, unzip, gzip, unrar, p7zip
-Conflicts: com.tigisoftware.filza
-Architecture: iphoneos-arm
-Description: File Manager For Iphone, Ipad, Ipod Touch. Supports Ios 7 & More. This Special Version Only Supports 64-bit Devices.
-Depiction: File Manager For Iphone, Ipad, Ipod Touch. Supports Ios 7 & More. This Special Version Only Supports 64-bit Devices.
-Maintainer: TIGI Software
-Author: TIGI Software
-Section: Utilities
-Version: 3.6.1-22
-Filename: dl/com.tigisoftware.filza_3.6.1-22_iphoneos-arm.deb
-MD5sum: 3071e7600916d71d8fb8b4d2066c2fc1
-
 Package: com.ichitaso.semirestore11
 Conflicts: com.pwn20wnd.semirestore11
 Replaces: com.ichitaso.semirestore11
@@ -105,35 +77,6 @@ Name: SemiRestore11 / Rollectra
 Version: 1.0.1-beta1
 Filename: dl/com.ichitaso.semirestore11_1.0.1-beta1_iphoneos-arm.deb
 MD5sum: b0ed9f53209ed0f907b264f5d58837b7
-
-Package: io.github.q2ex.Compatibles
-Version: 1.1-debug
-Section: Tweaks
-Maintainer: John Robert
-Depends: mobilesubstrate, firmware (<= 11.4.1), cydia (>= 1.1.19)
-Conflicts: com.cpdigitaldarkroom.compatimark
-Architecture: iphoneos-arm
-Description: Shows whether the plug-in is compatible.
-Depiction: Shows whether the plug-in is compatible.
-Name: Compatibles
-Author: John Robert
-Tag: compatible::ios9, compatible::ios10, compatible::ios11
-Filename: dl/io.github.q2ex.compatibles_1.1-debug_iphoneos-arm.deb
-MD5sum: b4447f02827182e59909118591fde6bd
-
-Name: NoRecIndicator
-Package: io.github.q2ex.nri
-Depends: firmware(>= 11), mobilesubstrate, preferenceloader
-Version: 1.1-debug
-Architecture: iphoneos-arm
-Description: Record the screen without the Red Indicator Window.
-Depiction: Record the screen without the Red Indicator Window.
-Maintainer: BigBoss
-Author: Robert John
-Section: Tweaks
-Tag: compatible::ios11
-Filename: dl/io.github.q2ex.nri_1.1-debug_iphoneos-arm.deb
-MD5sum: 84af464d5ff4c7e9e7ec92293267d233
 
 Author: Robert John
 Maintainer: Robert John
