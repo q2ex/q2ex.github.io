@@ -10,7 +10,7 @@ Author: TIGI Software
 Section: Utilities
 Version: 3.6.2-debug
 Filename: dl/filza_3.6.2-debug_iphoneos-arm.deb
-MD5sum: 861da84ddc33d487797fde033e775f11
+MD5sum: f09caef4c0bc2ce1150c574b875a7ef4
 
 Package: io.github.q2ex.Flex
 Name: Flex
