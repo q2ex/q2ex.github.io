@@ -1,3 +1,17 @@
+Package: com.tigisoftware.filza
+Name: Filza File Manager
+Depends: zip, unzip, gzip, unrar, p7zip
+Conflicts: com.tigisoftware.filza
+Architecture: iphoneos-arm
+Description: File Manager For Iphone, Ipad, Ipod Touch. Supports Ios 7 & More. This Special Version Only Supports 64-bit Devices.
+Depiction: File Manager For Iphone, Ipad, Ipod Touch. Supports Ios 7 & More. This Special Version Only Supports 64-bit Devices.
+Maintainer: TIGI Software
+Author: TIGI Software
+Section: Utilities
+Version: 3.6.2-9
+Filename: dl/com.tigisoftware.filza_3.6.2-9_iphoneos-arm.deb
+MD5sum: d7e590d01fda5eff0dffb46bfaaea310
+
 Package: io.github.q2ex.Flex
 Name: Flex
 Depends: mobilesubstrate, firmware (>= 9.0), com.rpetrich.rocketbootstrap
