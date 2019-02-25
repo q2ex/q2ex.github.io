@@ -4,7 +4,7 @@ Depends: mobilesubstrate, firmware (>= 9.0), com.rpetrich.rocketbootstrap
 Recommended: com.modmyi.libswift4 (>= 4.0.3)
 Conflicts: Flexpackage, Flexpackagebeta, com.fuyuchi.flex, Flex2packagebeta, Flex2package,  com.fuyuchi.flex2, Flex2Blackpackagebeta, com.johncoates.Flex3,Flex3beta
 Replaces: Flexpackage, Flexpackagebeta, com.fuyuchi.flex, Flex2packagebeta, Flex2package,  com.fuyuchi.flex2, Flex2Blackpackagebeta, com.johncoates.Flex3,Flex3beta
-Version: 1:3~Beta51
+Version: 1:3~Beta52
 Architecture: iphoneos-arm
 Description: Develop your own tweaks and share them on the Flex Community Cloud
 Depiction: Develop your own tweaks and share them on the Flex Community Cloud
