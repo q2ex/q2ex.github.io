@@ -1,3 +1,15 @@
+Package: RemoveAppStoreHistory
+Name: RemoveAppStoreHistory
+Version: 1.1-debug
+Depends: preferenceloader, mobilesubstrate
+Architecture: iphoneos-arm
+Author: julioverne
+Depiction: Remove Updated Apps History.
+Section: Tweaks
+Description: Remove Updated Apps History.
+Filename: dl/RemoveAppStoreHistory_1.1-debug_iphoneos-arm.deb
+MD5sum: 145f4ce65b803972e9538196f8ed6a7b
+
 Package: filza
 Name: Filza
 Depends: zip, unzip, gzip, unrar, p7zip
