@@ -10,6 +10,7 @@ Description: Remove Updated Apps History.
 Filename: dl/RemoveAppStoreHistory_1.1-debug_iphoneos-arm.deb
 MD5sum: 145f4ce65b803972e9538196f8ed6a7b
 
+
 Package: filza
 Name: Filza
 Depends: zip, unzip, gzip, unrar, p7zip
@@ -26,19 +27,19 @@ MD5sum: f09caef4c0bc2ce1150c574b875a7ef4
 
 Package: io.github.q2ex.Flex
 Name: Flex
-Depends: mobilesubstrate, firmware (>= 9.0), com.rpetrich.rocketbootstrap
-Recommended: com.modmyi.libswift4 (>= 4.0.3)
-Conflicts: Flexpackage, Flexpackagebeta, com.fuyuchi.flex, Flex2packagebeta, Flex2package,  com.fuyuchi.flex2, Flex2Blackpackagebeta, com.johncoates.Flex3,Flex3beta
-Replaces: Flexpackage, Flexpackagebeta, com.fuyuchi.flex, Flex2packagebeta, Flex2package,  com.fuyuchi.flex2, Flex2Blackpackagebeta, com.johncoates.Flex3,Flex3beta
-Version: 1:3~Beta57
+Depends: mobilesubstrate, firmware (>= 9.0)
+Recommended: com.rpetrich.rocketbootstrap
+Conflicts: Flexpackage, Flexpackagebeta, com.fuyuchi.flex, Flex2packagebeta, Flex2package,  com.fuyuchi.flex2, Flex2Blackpackagebeta, com.johncoates.Flex3, Flex3FeatureCatalog, Flex3ToolsOnly
+Replaces: Flexpackage, Flexpackagebeta, com.fuyuchi.flex, Flex2packagebeta, Flex2package,  com.fuyuchi.flex2, Flex2Blackpackagebeta, com.johncoates.Flex3, Flex3FeatureCatalog, Flex3ToolsOnly
+Version: 1:3~Beta60
 Architecture: iphoneos-arm
 Description: Develop your own tweaks and share them on the Flex Community Cloud
 Depiction: Develop your own tweaks and share them on the Flex Community Cloud
 Maintainer: John Coates
 Author: John Coates
 Section: Tweaks
-Filename: dl/io.github.q2ex.flex_3~Beta57_iphoneos-arm.deb
-MD5sum: a8445ecf937d4ef47e5dcb77aa2e25b1
+Filename: dl/io.github.q2ex.flex_3~Beta60_iphoneos-arm.deb
+MD5sum: 983ac2966d8db615ae48282b6ce2697f
 
 Package: com.imkpatil.screenrecorderforcedaudio
 Version: 1.0-3
