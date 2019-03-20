@@ -1,3 +1,20 @@
+Package: flexible
+Depends: firmware(>= 8.0), mobilesubstrate, preferenceloader, applist
+Name: FLEXible
+Version: 1.6.0
+Architecture: iphoneos-arm
+Description: Tweak to enable FLEX debugging tool
+Maintainer: BigBoss <bigboss@thebigboss.org>
+Author: Shmoopi <shmoopillc@gmail.com>
+Section: Development
+dev: shmoopi
+Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=flexibleDp
+Homepage: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=flexibleDp
+Tag: purpose::extension, compatible::ios8, compatible::ios9, compatible::ios10, compatible::ios11
+Icon: file:///Library/PreferenceBundles/FlexiblePrefs.bundle/FLEXibleIcon@2x.png
+Filename: dl/flexible_1.6.0_iphoneos-arm.deb
+MD5sum: 8688e37c49d26b353763f56cb32c6ae8
+
 Package: net.tateu.tinnitus
 Version: 1.0.6
 Architecture: iphoneos-arm
