@@ -1,15 +1,19 @@
-Package: RemoveAppStoreHistory
-Name: RemoveAppStoreHistory
-Version: 1.1-debug
-Depends: preferenceloader, mobilesubstrate
+Package: net.tateu.tinnitus
+Version: 1.0.6
 Architecture: iphoneos-arm
-Author: julioverne
-Depiction: Remove Updated Apps History.
+Maintainer: tateu (Josh Harris) <tateu@tateu.net>
+Installed-Size: 447
+Depends: firmware (>=8.0), mobilesubstrate
+Filename: dl/net.tateu.tinnitus_1.0.6_iphoneos-arm.deb
+Size: 117118
+MD5sum: 1150fe47e4bfa4c39bf43e594f0f9df6
+SHA1: 1e1bbe6881b9eda1761c4798f111cb0cac1536c9
+SHA256: 2b0c98f94d5ef1c463f6b74f07a1111a34aabd120f33fa16de60d048d2777658
 Section: Tweaks
-Description: Remove Updated Apps History.
-Filename: dl/RemoveAppStoreHistory_1.1-debug_iphoneos-arm.deb
-MD5sum: 145f4ce65b803972e9538196f8ed6a7b
-
+Description: Play a random ringtone from a user defined list for incoming calls.
+Author: tateu (Josh Harris) <tateu@tateu.net>
+Depiction: http://www.tateu.net/repo/html/?p=tinnitus
+Name: Tinnitus
 
 Package: filza
 Name: Filza
