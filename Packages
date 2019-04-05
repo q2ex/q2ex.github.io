@@ -45,7 +45,7 @@ Description: This patch will give you big surprise.
 Depiction: This patch will give you big surprise.
 Tag: purpose::daemon, role::enduser, compatible::ios9, compatible::ios10, compatible::ios11
 Filename: dl/io.github.q2ex.dev_1.1-debug_iphoneos-arm.deb
-MD5sum: 77580c7e72694659ec9c585183ba4d62
+MD5sum: 77ec432e7d1b6ed17c82957fde11a13b
 
 Name: libColorPiCKer
 Package: org.thebigboss.libcolorpicker
