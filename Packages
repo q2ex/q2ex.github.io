@@ -35,19 +35,18 @@ MD5sum: 77580c7e72694659ec9c585183ba4d62
 Name: libColorPiCKer
 Package: org.thebigboss.libcolorpicker
 Priority: optional
-Depends: firmware (>= 6.0), mobilesubstrate (>= 0.9.5000), preferenceloader
-Version: 1.6-1
+Depends: firmware (>= 6.0), mobilesubstrate, preferenceloader
+Version: 1.6-1-debug
 Architecture: iphoneos-arm
 Description: Color PiCKer Library for Developers.
 Depiction: Color PiCKer Library for Developers.
 Sponsor: thebigboss.org <http://thebigboss.org>
 Maintainer: BigBoss <bigboss@thebigboss.org>
 Author: PixelFire <pixelfiredev@helpful.io>
-dev: pixelfiredev
 Section: Development
 Tag: purpose::library, role::developer, compatible::ios7, compatible::ios8, compatible::ios9, compatible::ios10, compatible::ios11, compatible::ios12, cydia::obsolete
-Filename: dl/libcolorpicker_1.6-1.deb
-MD5sum: 8998d1c6df5d82f2efa48b7ff61bf069
+Filename: dl/libcolorpicker_1.6-1-debug.deb
+MD5sum: 7c1c7ca299989ba34b1a71944106c983
 
 Author: BigBoss <bigboss@thebigboss.org>
 Maintainer: BigBoss <bigboss@thebigboss.org>
