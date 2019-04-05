@@ -1,3 +1,22 @@
+Package: org.thebigboss.elite
+Version: 1.5
+Architecture: iphoneos-arm
+Maintainer: leftyfl1p <leftyfl1p@icloud.com>
+Installed-Size: 332
+Depends: mobilesubstrate, org.thebigboss.libcolorpicker
+Filename: debs/org.thebigboss.elite_1.5_iphoneos-arm.deb
+Size: 22006
+MD5sum: 6117970c34f6840423920912175015a3
+SHA1: 5e7523e3c3a18a86c083f7aac210f2096df027aa
+SHA256: a500b30ebf37f5140a4810bd0a6b938eddbc98c7bafd3cb0dd73d301a6639989
+Section: Tweaks
+Description: An awesome MobileSubstrate tweak!
+Author: leftyfl1p <leftyfl1p@icloud.com>
+Depiction: https://leftyfl1p.github.io/depictions/?p=com.leftyfl1p.elite
+Icon: https://leftyfl1p.github.io/sileo-icon/org.thebigboss.elite.png
+Name: ColorCodedLogs
+SileoDepiction: https://leftyfl1p.github.io/sileo-depiction/org.thebigboss.elite.json
+
 Author: John Robert
 Maintainer: John Robert
 Name: Procedures Collection
