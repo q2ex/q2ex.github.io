@@ -4,7 +4,7 @@ Architecture: iphoneos-arm
 Maintainer: leftyfl1p <leftyfl1p@icloud.com>
 Installed-Size: 332
 Depends: mobilesubstrate, org.thebigboss.libcolorpicker
-Filename: debs/org.thebigboss.elite_1.5_iphoneos-arm.deb
+Filename: dl/org.thebigboss.elite_1.5_iphoneos-arm.deb
 Size: 22006
 MD5sum: 6117970c34f6840423920912175015a3
 SHA1: 5e7523e3c3a18a86c083f7aac210f2096df027aa
