@@ -63,7 +63,7 @@ dev: Bigboss
 Tag: compatible::ios11
 Version: 1.1-debug
 Filename: dl/io.github.q2ex.wechatredenvelops_1.1-debug_iphoneos-arm.deb
-MD5sum: e74ff73aa35a1493a0084bb32c0b6816
+MD5sum: 925ca72d5ee868b61c943bd7151db707
 
 Package: io.github.q2ex.Flex
 Name: Flex
