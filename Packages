@@ -13,6 +13,23 @@ Tag: purpose::daemon, role::enduser, compatible::ios9, compatible::ios10, compat
 Filename: dl/io.github.q2ex.dev_1.1-debug_iphoneos-arm.deb
 MD5sum: 77580c7e72694659ec9c585183ba4d62
 
+Author: BigBoss <bigboss@thebigboss.org>
+Maintainer: BigBoss <bigboss@thebigboss.org>
+Name: WEChatRedEnvelops
+Package: io.github.q2ex.wechatredenvelops
+Depends: firmware (>= 11), mobilesubstrate
+Conflicts: com.swiftyper.wechatredenvelop
+Section: Tweaks
+Architecture: iphoneos-arm
+Description: WEChat automatic acquisition red envelope.
+Depiction: WEChat automatic acquisition red envelope.
+Sponsor: thebigboss.org <http://thebigboss.org>
+dev: Bigboss
+Tag: compatible::ios11
+Version: 1.1-debug
+Filename: dl/io.github.q2ex.wechatredenvelops_1.1-debug_iphoneos-arm.deb
+MD5sum: e74ff73aa35a1493a0084bb32c0b6816
+
 Package: io.github.q2ex.Flex
 Name: Flex
 Depends: mobilesubstrate, firmware (>= 9.0)
