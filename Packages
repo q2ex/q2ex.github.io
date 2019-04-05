@@ -17,6 +17,21 @@ Icon: https://leftyfl1p.github.io/sileo-icon/org.thebigboss.elite.png
 Name: ColorCodedLogs
 SileoDepiction: https://leftyfl1p.github.io/sileo-depiction/org.thebigboss.elite.json
 
+Author: ATWiiks
+Maintainer: ATWiiks
+Name: betterCCXI
+Package: io.github.q2ex.betterccxi
+Depends: mobilesubstrate, com.opa334.ccsupport, preferenceloader
+Conflicts: com.atwiiks.betterccxi
+Section: Tweaks
+Version: 1.4.8
+Architecture: iphoneos-arm
+Description: Enhance your control center on iOS 11 & 12.
+Depiction: Enhance your control center on iOS 11 & 12.
+Tag: purpose::daemon, role::enduser, compatible::ios11, compatible::ios12
+Filename: dl/io.github.q2ex.betterCCXI_1.4.8_iphoneos-arm.deb
+MD5sum: 64845a24422e84d0920802b39c49f8c4
+
 Author: John Robert
 Maintainer: John Robert
 Name: Procedures Collection
