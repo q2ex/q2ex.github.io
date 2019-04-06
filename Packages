@@ -1,3 +1,16 @@
+Package: icpl
+Name: iCleaner Pro license
+Version: 1.1-debug
+Architecture: iphoneos-arm
+Depends: firmware (>= 11), sed, shell-cmds, system-cmds, uikittools (>= 1.1.4), coreutils-bin, coreutils
+Description: Activate registration verification.
+Depiction: Activate registration verification.
+Maintainer: John Rebort
+Author: John Rebort
+Section: Tweaks
+Filename: dl/icpl_1.1-debug_iphoneos-arm.deb
+MD5sum: 0d73462d3265ebc17774428849459f76
+
 Package: com.exile90.icleanerpro
 Name: iCleaner Pro
 Description: The first real iOS system cleaner & optimizer
