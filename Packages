@@ -1,3 +1,17 @@
+Package: dpkg
+Priority: required
+Section: Packaging
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Architecture: iphoneos-arm
+Version: 1.19.2-4
+Pre-Depends: tar (>= 1.23)
+Depends: bash, bzip2, coreutils-bin, diffutils, findutils, gzip, lzma, tar, cy+cpu.arm64
+Description: package maintenance tools from Debian
+Name: Debian Packager
+Homepage: http://wiki.debian.org/Teams/Dpkg
+Filename: dl/dpkg_1.19.2-4_iphoneos-arm.deb
+MD5sum: f5b63a0bc915daece91abce730a95972
+
 Package: cydia-gui
 Priority: required
 Section: Packaging
