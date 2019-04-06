@@ -47,24 +47,6 @@ Tag: purpose::uikit, cydia::essential, role::enduser
 Filename: dl/cydia-gui_1.1.30-4_iphoneos-arm.deb
 MD5sum: 87ab48b7750567e2ef8377f61f1aa8e3
 
-Package: apt7-lib
-Essential: yes
-Priority: required
-Section: Packaging
-Maintainer: CoolStar <coolstarorganization@gmail.com>
-Architecture: iphoneos-arm
-Version: 1.7.0-sileo3
-Pre-Depends: dpkg (>= 1.14.25-8)
-Depends: bzip2, dpkg (>= 1.14.25-9), gnupg, gzip, lzma, cy+cpu.arm64
-Replaces: apt (<< 1:0-1), apt7 (<< 0.7.20.2-3), apt7-ssl
-Breaks: cydia (<< 1.1.10), apt7 (<< 0.7.25.3-7), aptitude (<< 0.4.11.11-6)
-Conflicts: apt7-ssl
-Provides: apt7-ssl
-Description: the advanced packaging library from Debian
-Name: APT 1.7 Strict (lib)
-Filename: dl/apt7-lib_1.7.0-sileo_iphoneos-arm.deb
-MD5sum: 2799526f47d0f5738fa8e45d6aa1c39c
-
 Package: org.thebigboss.elite
 Version: 1.5
 Architecture: iphoneos-arm
