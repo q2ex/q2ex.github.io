@@ -1,3 +1,20 @@
+Package: cydia-gui
+Priority: required
+Section: Packaging
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Architecture: iphoneos-arm
+Version: 1.1.30-4
+Replaces: cydia
+Depends: cy+cpu.arm64
+Description: graphical iPhone front-end for APT
+Name: Cydia (GUI Only)
+Author: Jay Freeman (saurik) <saurik@saurik.com>
+Depiction: http://cydia.saurik.com/info/cydia/
+Icon: file:///Applications/Cydia.app/Icon-60.png
+Tag: purpose::uikit, cydia::essential, role::enduser
+Filename: dl/cydia-gui_1.1.30-4_iphoneos-arm.deb
+MD5sum: 87ab48b7750567e2ef8377f61f1aa8e3
+
 Package: cydia
 Priority: required
 Section: Packaging
