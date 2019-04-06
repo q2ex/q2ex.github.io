@@ -1,3 +1,21 @@
+Package: cydia
+Priority: required
+Section: Packaging
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Architecture: iphoneos-arm
+Version: 1.9.1
+Replaces: bigboss, bigbossbetarepo, com.sosiphone.addcydia, cydia-sources, ispazio.net, modmyifone, saurik, ste, yellowsn0w.com, zodttd
+Depends: cydia-gui, apt7-lib, apt7-key, darwintools, debianutils, dpkg (>= 1.18), org.thebigboss.repo.icons, sed, shell-cmds, system-cmds, uikittools (>= 1.1.4), cy+cpu.arm64
+Conflicts: bigboss, bigbossbetarepo, com.sosiphone.addcydia, cydia-sources, ispazio.net, modmyifone, ste, yellowsn0w.com, zodttd
+Pre-Depends: debianutils, dpkg (>= 1.14.25-8)
+Provides: bigbossbetarepo, cydia-sources
+Description: Base scripts and tools to set up Cydia-compatible virtual dependencies
+Name: Cydia Compatibility Package
+Author: CoolStar <coolstarorganization@gmail.com>
+Tag: cydia::essential
+Filename: dl/cydia_1.9.1_iphoneos-arm.deb
+MD5sum: 523732bbacff629c401d9840008245d3
+
 Package: apt7-lib
 Essential: yes
 Priority: required
