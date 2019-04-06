@@ -1,3 +1,18 @@
+Package: apt
+Priority: standard
+Section: Packaging
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Architecture: iphoneos-arm
+Version: 1.7.4-debug
+Pre-Depends: dpkg (>= 1.18)
+Depends: apt-key, apt-lib (>= 1.7.4), berkeleydb, cy+cpu.arm64
+Replaces: apt7
+Provides: apt7 (= 1.7.4)
+Description: the advanced packaging tool from Debian
+Name: APT 1.7 Strict
+Filename: dl/apt_1.7.4-debug_iphoneos-arm.deb
+MD5sum: f5e5eb999d3e29fc1fde8665634e5caa
+
 Package: org.coolstar.sileo
 Priority: required
 Section: Packaging
