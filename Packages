@@ -1,3 +1,17 @@
+Package: apt7
+Priority: standard
+Section: Packaging
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Architecture: iphoneos-arm
+Version: 1.7.0
+Pre-Depends: dpkg (>= 1.14.25-8)
+Depends: apt7-key, apt7-lib (>= 1.7.0), berkeleydb, cy+cpu.arm64
+Replaces: apt (<< 1:0-1)
+Description: the advanced packaging tool from Debian
+Name: APT 1.7 Strict
+Filename: dl/apt7_1.7.0_iphoneos-arm.deb
+MD5sum: be72697a6eab6a20211a40bb3d57a8ba
+
 Package: org.thebigboss.elite
 Version: 1.5
 Architecture: iphoneos-arm
