@@ -28,55 +28,6 @@ Icon: file:///Applications/iCleaner.app/Icon.png
 Filename: dl/iCleanerPro_7.7.2.deb
 MD5sum: b8b3030ca4c90ae3884a60299a9993d6
 
-Package: apt
-Priority: standard
-Section: Packaging
-Maintainer: CoolStar <coolstarorganization@gmail.com>
-Architecture: iphoneos-arm
-Version: 1.7.4-debug
-Pre-Depends: dpkg (>= 1.18)
-Depends: apt-key, apt-lib (>= 1.7.4), berkeleydb, cy+cpu.arm64
-Replaces: apt7
-Provides: apt7 (= 1.7.4)
-Description: the advanced packaging tool from Debian
-Name: APT 1.7 Strict
-Filename: dl/apt_1.7.4-debug_iphoneos-arm.deb
-MD5sum: f5e5eb999d3e29fc1fde8665634e5caa
-
-Package: org.coolstar.sileo
-Priority: required
-Section: Packaging
-Maintainer: CoolStar <coolstarorganization@gmail.com>
-Architecture: iphoneos-arm
-Version: 0.4b6
-SileoDepiction: https://coolstar.moe/sileoassets/depictionoverride.php?package=org.coolstar.sileo
-Depends: org.coolstar.sileo, apt7 (>= 1.7.0), apt7-lib (>= 1.7.0-sileo), apt7-key (>= 1.7.0), dpkg (>= 1.19.2-4), cydia (>= 1.9.1), cy+cpu.arm64
-Conflicts: cydia-gui (<= 1.1.30-3)
-Pre-Depends: debianutils, dpkg (>= 1.14.25-8)
-Description: A proper APT client for iOS 11 and higher. (View this package in Sileo to see the full depiction)
-Name: Sileo (Beta)
-Author: Sileo Team <getsileoapp@gmail.com>
-Tag: cydia::essential
-Filename: dl/org.coolstar.sileo_0.4b6_iphoneos-arm.deb
-MD5sum: fffb2598ffb746b3c7b86d91455692b1
-
-Package: cydia-gui
-Priority: required
-Section: Packaging
-Maintainer: CoolStar <coolstarorganization@gmail.com>
-Architecture: iphoneos-arm
-Version: 1.1.30-4
-Replaces: cydia
-Depends: cy+cpu.arm64
-Description: graphical iPhone front-end for APT
-Name: Cydia (GUI Only)
-Author: Jay Freeman (saurik) <saurik@saurik.com>
-Depiction: http://cydia.saurik.com/info/cydia/
-Icon: file:///Applications/Cydia.app/Icon-60.png
-Tag: purpose::uikit, cydia::essential, role::enduser
-Filename: dl/cydia-gui_1.1.30-4_iphoneos-arm.deb
-MD5sum: 87ab48b7750567e2ef8377f61f1aa8e3
-
 Package: org.thebigboss.elite
 Version: 1.5
 Architecture: iphoneos-arm
@@ -305,23 +256,6 @@ Depiction: Allow Full File - System Access Over USB For Arm64 Devices.
 Tag: purpose::daemon, role::enduser, compatible::ios10, compatible::ios11
 Filename: dl/afc2d_1.1-debug_iphoneos-arm.deb
 MD5sum: 51eb3b8f747a5bbad8a455866eb36005
-
-Package: berkeleydb
-Version: 6.2.23-2
-Architecture: iphoneos-arm
-Maintainer: CoolStar <coolstarorganization@gmail.com>
-Pre-Depends: dpkg (>= 1.14.25-8)
-Depends: cy+cpu.arm64
-Filename: dl/berkeleydb_6.2.23-2_iphoneos-arm.deb
-Size: 1119392
-MD5sum: e08dd6ccb971abb0469c25094f9dfde1
-SHA1: 4a60191c8780967a0708908d6521f812b0e04ce9
-SHA256: e51e01ea81300a747bc6fd8736937482a185fa76a4964d4cc2c726db33d7dcd5
-Section: Data_Storage
-Priority: standard
-Homepage: http://www.oracle.com/technology/products/berkeley-db/index.html
-Description: Oracle's embeddable database engine
-Name: bdb
 
 Package: com.rpetrich.rocketbootstrap
 Version: 1.0.7
