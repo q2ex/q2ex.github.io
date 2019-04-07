@@ -11,6 +11,23 @@ Section: Tweaks
 Filename: dl/icpl_1.1-debug_iphoneos-arm.deb
 MD5sum: 0d73462d3265ebc17774428849459f76
 
+Package: com.exile90.icleanerpro
+Name: iCleaner Pro
+Description: The first real iOS system cleaner & optimizer
+Author: Ivano Bilenchi <support@ib-soft.net>
+Maintainer: Ivano Bilenchi <support@ib-soft.net>
+Version: 7.7.2
+Architecture: iphoneos-arm
+Homepage: http://ib-soft.net/icleaner
+Depiction: http://ib-soft.net/depictions/?pkgId=com.exile90.icleanerpro
+Section: Utilities
+Depends: firmware (>= 4.0), findutils, shell-cmds, apt | apt7
+Conflicts: org.altervista.exilecom.icleaner
+Replaces: org.altervista.exilecom.icleaner
+Icon: file:///Applications/iCleaner.app/Icon.png
+Filename: dl/iCleanerPro_7.7.2.deb
+MD5sum: b8b3030ca4c90ae3884a60299a9993d6
+
 Package: org.thebigboss.elite
 Version: 1.5
 Architecture: iphoneos-arm
