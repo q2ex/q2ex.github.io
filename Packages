@@ -480,7 +480,7 @@ Maintainer: BigBoss <bigboss@thebigboss.org>
 Name: DATAMeter Lite
 Package: io.github.q2ex.datameter
 Section: Addons (NotificationCenter)
-Depends: firmware (>= 7.0), mobilesubstrate (>= 0.9.5000), preferenceloader (>= 2.2.2)
+Depends: firmware (>= 7.0), mobilesubstrate (>= 0.9.5000), preferenceloader
 Conflicts: org.thebigboss.datameter
 Version: 1.4-3
 Architecture: iphoneos-arm
@@ -488,6 +488,6 @@ Description: wifi & data traffic Notification widget
 Sponsor: thebigboss.org <http://thebigboss.org>
 dev: minuit
 Icon: file:///Library/PreferenceBundles/DataMeterSettings.bundle/icon@2x.png
-MD5sum: fabd073f0cce87d43ce43f2ddc1934c8
+MD5sum: 9172f97f775db8aa113d5057715df25f
 Filename: dl/io.github.q2ex.datameter_1.4-3_iphoneos-arm.deb
 Depiction: wifi & data traffic Notification widget
