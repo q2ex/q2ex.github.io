@@ -1,21 +1,3 @@
-Package: berkeleydb
-Version: 6.2.23-1
-Architecture: iphoneos-arm
-Maintainer: Sam Bingner <maintainer@sbdhi.com>
-Pre-Depends: dpkg (>= 1.14.25-8)
-Size: 1119392
-Installed-Size: 5520
-Section: Data_Storage
-Priority: required
-Homepage: http://www.oracle.com/technology/products/berkeley-db/index.html
-Description: Oracle's embeddable database engine.
-Depiction: Oracle's embeddable database engine.
-Name: bdb
-Filename: dl/berkeleydb_6.2.32-1_iphoneos-arm.deb
-MD5: 328bff67e00572c2aae54deafa7f61be
-SHA1: cd70e6e513eca8f2e55e88a4fc8965ef87f6fff4
-SHA256: 8bc988f667b383b4bd80d888756845b66a9976e9afda92d5ae003298eac47538
-
 Author: John Robert
 Maintainer: John Robert
 Name: Procedures Collection
@@ -65,20 +47,16 @@ Package: org.thebigboss.elite
 Version: 1.5
 Architecture: iphoneos-arm
 Maintainer: leftyfl1p <leftyfl1p@icloud.com>
-Installed-Size: 332
 Depends: mobilesubstrate, org.thebigboss.libcolorpicker
 Filename: dl/org.thebigboss.elite_1.5_iphoneos-arm.deb
-Size: 22006
-MD5sum: 6117970c34f6840423920912175015a3
-SHA1: 5e7523e3c3a18a86c083f7aac210f2096df027aa
-SHA256: a500b30ebf37f5140a4810bd0a6b938eddbc98c7bafd3cb0dd73d301a6639989
+MD5sum: 571925f82e88d83cad1abe5a861537db
+SHA1: 0543599236e4c53ab75c6a384190d64e5a1f1a66
+SHA256: f5d2be94d5ae1ecf9cacdec894f6c94c2bc2b6297908b96e3e13c57327efb641
 Section: Tweaks
 Description: An awesome MobileSubstrate tweak!
 Author: leftyfl1p <leftyfl1p@icloud.com>
-Depiction: https://leftyfl1p.github.io/depictions/?p=com.leftyfl1p.elite
-Icon: https://leftyfl1p.github.io/sileo-icon/org.thebigboss.elite.png
+Depiction: An awesome MobileSubstrate tweak!
 Name: ColorCodedLogs
-SileoDepiction: https://leftyfl1p.github.io/sileo-depiction/org.thebigboss.elite.json
 
 Author: ATWiiks
 Maintainer: ATWiiks
