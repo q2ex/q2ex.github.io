@@ -243,15 +243,15 @@ Author: Robert John
 Maintainer: Robert John
 Name: InApp Purchases
 Package: io.github.q2ex.ip
-Depends: mobilesubstrate, firmware (<= 11.4.1)
+Depends: mobilesubstrate, firmware (<= 12.2)
 Section: Tweaks
 Version: 1.1-debug
 Architecture: iphoneos-arm
 Description: Create local in-app purchases for free.
 Depiction: Create local in-app purchases for free.
-Tag: compatible::ios9, compatible::ios10, compatible::ios11
+Tag: compatible::ios9, compatible::ios10, compatible::ios11, compatible::ios12
 Filename: dl/io.github.q2ex.ip_1.1-debug_iphoneos-arm.deb
-MD5sum: 3426ed5404667dd593a772d325ef8436
+MD5sum: 8499b69ccea09b8b780c76fea5e0c919
 
 Author: Jay Freeman
 Maintainer: BigBoss
