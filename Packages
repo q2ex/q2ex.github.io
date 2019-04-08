@@ -6,7 +6,7 @@ Pre-Depends: dpkg (>= 1.14.25-8)
 Size: 1119392
 Installed-Size: 5520
 Section: Data_Storage
-Priority: standard
+Priority: optional
 Homepage: http://www.oracle.com/technology/products/berkeley-db/index.html
 Description: Oracle's embeddable database engine.
 Depiction: Oracle's embeddable database engine.
