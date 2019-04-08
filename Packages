@@ -301,10 +301,10 @@ Conflicts: com.a3tweaks.polus (<< 2.0.7)
 Section: System
 Depiction: Allow extensions to read the list of installed apps.
 dev: rpetrich
-Version: 1.5.14
+Version: 1.5.14-debug
 Tag: role::developer, role::hacker, purpose::library, compatible::ios7, compatible::ios8, compatible::ios9, compatible::ios10, compatible::ios11, compatible::ios12
-MD5sum: d8eb651ba8b08556ce3bcaae990bef38
-Filename: dl/applist_1.5.14_iphoneos-arm.deb
+MD5sum: 4995dd74f8d4cd32cff51f913ed02701
+Filename: dl/applist_1.5.14-debug_iphoneos-arm.deb
 
 Package: preferenceloader
 Name: PreferenceLoader
@@ -318,9 +318,9 @@ Priority: optional
 dev: dustinhowett
 Depiction: load preferences in style.
 Tag: role::developer, role::hacker, purpose::library, compatible::ios7, compatible::ios8, compatible::ios9, compatible::ios10, compatible::ios11, compatible::ios12
-Version: 2.2.3-3
-MD5sum: 4c288a761eaeee8be7fdd0dd3456cf54
-Filename: dl/PreferenceLoader_2.2.3-3_iphoneos-arm.deb
+Version: 2.2.3-3-debug
+MD5sum: e33876dcc51f93f71daff91828025170
+Filename: dl/PreferenceLoader_2.2.3-3-debug_iphoneos-arm.deb
 
 Package: io.github.q2ex.touchr
 Conflicts: com.clezz.touchr
