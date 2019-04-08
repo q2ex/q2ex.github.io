@@ -420,24 +420,6 @@ Filename: Files/wifipasswords/wifipasswords_2.0.3_iphoneos-arm.deb
 Depiction: Shows previously entered wifi passwords
 	This app displays every WiFi password you have ever entered. Very handy if you forgot a password and need to connect another device, or tell a friend the password for a coffee shop without asking that embarrassing question again. Tap hold on the password to copy it to the clipboard. Requires iOS 3.0 or later.
 
-Author: Jerry En <Jerry+gifviewer@jerryen.com>
-Maintainer: BigBoss <bigboss@thebigboss.org>
-Name: GIFViewer
-Package: io.github.q2ex.gifviewer
-Depends: firmware (>= 7.0), mobilesubstrate (>= 0.9.5000)
-Conflicts: com.jerryen.gifviewer
-Section: Tweaks
-Version: 1.0.3-2
-Architecture: iphoneos-arm
-Description: View animated GIFs in Photos.app and the image PiCKer.
-Homepage: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=gifviewerDp
-Sponsor: thebigboss.org <http://thebigboss.org>
-dev: jerryen
-Tag: compatible::ios7, compatible::ios8, compatible::ios9
-MD5sum: abc27c48fe2c75682613a46046740286
-Filename: Files/io.github.q2ex.gifviewer/io.github.q2ex.gifviewer_1.0.3-2_iphoneos-arm.deb
-Depiction: View animated GIFs in Photos.app and the image PiCKer.
-
 Author: BigBoss <bigboss@thebigboss.org>
 Maintainer: BigBoss <bigboss@thebigboss.org>
 Name: WEChatRedEnvelop
