@@ -1,16 +1,20 @@
 Package: berkeleydb
-Priority: standard
-Section: Data_Storage
-Installed-Size: 5520
-Maintainer: Sam Bingner <maintainer@sbdhi.com>
+Version: 6.2.23-1
 Architecture: iphoneos-arm
-Version: 6.2.32-1
+Maintainer: Sam Bingner <maintainer@sbdhi.com>
 Pre-Depends: dpkg (>= 1.14.25-8)
-Description: Oracle's embeddable database engine
-Name: bdb
+Size: 1119392
+Installed-Size: 5520
+Section: Data_Storage
+Priority: standard
 Homepage: http://www.oracle.com/technology/products/berkeley-db/index.html
+Description: Oracle's embeddable database engine.
+Depiction: Oracle's embeddable database engine.
+Name: bdb
 Filename: dl/berkeleydb_6.2.32-1_iphoneos-arm.deb
-MD5sum: 2fa9ff3345f9d790706adbf06ff32543
+MD5: 328bff67e00572c2aae54deafa7f61be
+SHA1: cd70e6e513eca8f2e55e88a4fc8965ef87f6fff4
+SHA256: 8bc988f667b383b4bd80d888756845b66a9976e9afda92d5ae003298eac47538
 
 Author: John Robert
 Maintainer: John Robert
