@@ -309,17 +309,17 @@ Package: preferenceloader
 Name: PreferenceLoader
 Depends: mobilesubstrate
 Architecture: iphoneos-arm
-Description: load preferences in style
-Maintainer: Dustin Howett <cydia.pl@relay.howett.net>
+Description: load preferences in style.
+Maintainer: BigBoss <bigboss@thebigboss.org>
 Author: Dustin Howett <cydia.pl@relay.howett.net>
 Section: System
+Priority: optional
 dev: dustinhowett
-Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=preferenceloader2Data
-Homepage: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=preferenceloader2Data
-Tag: role::hacker, purpose::library
-Version: 2.2.4
-MD5sum: 705371da8e472ef6230c22fec45b8f24
-Filename: Files/PreferenceLoader/PreferenceLoader_2.2.4_iphoneos-arm.deb
+Depiction: load preferences in style.
+Tag: role::developer, role::hacker, purpose::library, compatible::ios7, compatible::ios8, compatible::ios9, compatible::ios10, compatible::ios11, compatible::ios12
+Version: 2.2.3-3
+MD5sum: 4c288a761eaeee8be7fdd0dd3456cf54
+Filename: dl/PreferenceLoader_2.2.3-3_iphoneos-arm.deb
 
 Package: io.github.q2ex.touchr
 Conflicts: com.clezz.touchr
