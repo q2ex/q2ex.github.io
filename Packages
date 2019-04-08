@@ -258,7 +258,7 @@ Maintainer: BigBoss
 Name: Apple File Conduit "2"
 Package: afc2d
 Pre-Depends: dpkg (>= 1.14.25-8)
-Depends: cy+cpu.arm64, mobilesubstrate, firmware (<= 11.4.1)
+Depends: cy+cpu.arm64, mobilesubstrate, firmware (<= 12.2)
 Conflicts: com.saurik.afc2d, net.angelxwind.afc2d-arm64, com.mrmadtw.afc2forios11, repo.feng.afc2add11, us.scw.afctwoadd, net.angelxwind.afc2ios70, afc2.25pp, afc2.25pp7, afc2.91, app.taig.afc2
 Replaces: com.saurik.afc2d, net.angelxwind.afc2d-arm64, com.mrmadtw.afc2forios11, repo.feng.afc2add11, us.scw.afctwoadd, net.angelxwind.afc2ios70, afc2.25pp, afc2.25pp7, afc2.91, app.taig.afc2
 Provides: com.saurik.afc2d, net.angelxwind.afc2d-arm64, com.mrmadtw.afc2forios11, repo.feng.afc2add11, us.scw.afctwoadd, net.angelxwind.afc2ios70, afc2.25pp, afc2.25pp7, afc2.91, app.taig.afc2
@@ -268,9 +268,9 @@ Version: 1.1-debug
 Architecture: iphoneos-arm
 Description: Allow Full File - System Access Over USB For Arm64 Devices.
 Depiction: Allow Full File - System Access Over USB For Arm64 Devices.
-Tag: purpose::daemon, role::enduser, compatible::ios10, compatible::ios11
+Tag: purpose::daemon, role::enduser, compatible::ios10, compatible::ios11, compatible::ios12
 Filename: dl/afc2d_1.1-debug_iphoneos-arm.deb
-MD5sum: 51eb3b8f747a5bbad8a455866eb36005
+MD5sum: d718e4e8b7d9bd18e3f399183e6a6af0
 
 Package: com.rpetrich.rocketbootstrap
 Version: 1.0.7
