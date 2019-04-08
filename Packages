@@ -267,21 +267,20 @@ Filename: dl/afc2d_1.1-debug_iphoneos-arm.deb
 MD5sum: d718e4e8b7d9bd18e3f399183e6a6af0
 
 Package: com.rpetrich.rocketbootstrap
-Version: 1.0.7
-Section: Tweaks
-Maintainer: BigBoss <bigboss@thebigboss.org>
 Depends: mobilesubstrate (>= 0.9.5000), firmware (>= 3.0)
-Architecture: iphoneos-arm
-Filename: dl/com.rpetrich.rocketbootstrap_1.0.7_iphoneos-arm.deb
-MD5sum: 211123a3b15c4a248bd7850f1823bead
 Name: ROCKetbootStrap
+Architecture: iphoneos-arm
 Description: Support library allowing tweaks to communicate with sandboxed processes
-Sponsor: thebigboss.org <http://thebigboss.org>
+Depiction: https://www.rpetrich.com/cydia/rocketbootstrap/beta/
+Maintainer: BigBoss <bigboss@thebigboss.org>
 Author: Ryan Petrich <rpetrich+rocketbootstrap@gmail.com>
-Tag: purpose::extension, role::developer
-Depiction: https://www.rpetrich.com/cydia/rocketbootstrap/
-homepage: https://www.rpetrich.com/cydia/rocketbootstrap/
+Sponsor: thebigboss.org <http://thebigboss.org>
+Section: Tweaks
 dev: rpetrich
+Tag: purpose::extension, role::developer
+Version: 1.0.7~beta2-debug
+Filename: dl/com.rpetrich.rocketbootstrap_1.0.7_beta2-debug_iphoneos-arm.deb
+MD5sum: ed292ed78f7517b8a8da6074ed18cdbb
 
 Package: applist
 Name: AppLiST
