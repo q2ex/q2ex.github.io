@@ -291,19 +291,20 @@ dev: rpetrich
 
 Package: applist
 Name: AppLiST
+Priority: optional
 Architecture: iphoneos-arm
-Description: Allow extensions to read the list of installed apps
+Description: Allow extensions to read the list of installed apps.
 Maintainer: Ryan Petrich <rpetrich@gmail.com>
 Author: Ryan Petrich <rpetrich@gmail.com>
 Depends: mobilesubstrate (>= 0.9.5000), firmware (>= 3.0), com.rpetrich.rocketbootstrap (>= 1.0.6~beta) | firmware (<< 7.0)
 Conflicts: com.a3tweaks.polus (<< 2.0.7)
 Section: System
-Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=AppListDp
-Website: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=AppListDp
+Depiction: Allow extensions to read the list of installed apps.
 dev: rpetrich
-Version: 1.5.14-1
-MD5sum: d731fd39ea4d36a5460546403b53dd4b
-Filename: dl/applist_1.5.14-1_iphoneos-arm.deb
+Version: 1.5.14
+Tag: role::developer, role::hacker, purpose::library, compatible::ios7, compatible::ios8, compatible::ios9, compatible::ios10, compatible::ios11, compatible::ios12
+MD5sum: d8eb651ba8b08556ce3bcaae990bef38
+Filename: dl/applist_1.5.14_iphoneos-arm.deb
 
 Package: preferenceloader
 Name: PreferenceLoader
