@@ -205,17 +205,15 @@ Package: com.imkpatil.screenrecorderforcedaudio
 Version: 1.0-3
 Architecture: iphoneos-arm
 Maintainer: Kiran Patil
-Installed-Size: 208
 Depends: mobilesubstrate
 Filename: dl/com.imkpatil.screenrecorderforcedaudio_1.0-3_iphoneos-arm.deb
-Size: 22202
-MD5sum: 612b2c682457f9c0968331519def91d5
-SHA1: ab03900973e2b9ec637cfa7a15e7b00ae70b9fdf
-SHA256: 3bc3942ddad6324abe5a3ede6f945e7babc0cd098042b0a174b49913735599fa
+MD5sum: adf4c63e583e152e7378b93c6eaef508
+SHA1: 0db90b128e2492940515aacaa6e8a7624ab5ce83
+SHA256: fb8de07fef909c5231ae72e5f3e341fcf50b3d7a4f47d7ebceaa77559c00a522
 Section: Tweaks
 Description: This tweak will force the phone audio to be recorded even when the micophone is turned ON.
 Author: Kiran Patil
-Depiction: https://imkpatil.github.io/repo/depiction/ScreenRecorderForcedAudio/index.html
+Depiction: This tweak will force the phone audio to be recorded even when the micophone is turned ON.
 Icon: file:///Library/Application Support/ScreenRecorderForcedAudio/icon.png
 Name: ScreenRecorderForcedAudio
 
