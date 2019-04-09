@@ -200,22 +200,6 @@ Depiction: This tweak will force the phone audio to be recorded even when the mi
 Icon: file:///Library/Application Support/ScreenRecorderForcedAudio/icon.png
 Name: ScreenRecorderForcedAudio
 
-Package: com.ichitaso.semirestore11
-Conflicts: com.pwn20wnd.semirestore11
-Replaces: com.ichitaso.semirestore11
-Architecture: iphoneos-arm
-Description: Only for iOS 11.3 - 11.4.1 for Now ...
-Depiction: Only for iOS 11.3 - 11.4.1 for Now ...
-Maintainer: ichitaso
-Pre-Depends: firmware (>= 11.3), firmware (<< 12.0)
-Depends: cy+cpu.arm64
-Section: System
-Author: Pwn20wnd
-Name: SemiRestore11 / Rollectra
-Version: 1.0.1-beta1
-Filename: dl/com.ichitaso.semirestore11_1.0.1-beta1_iphoneos-arm.deb
-MD5sum: b0ed9f53209ed0f907b264f5d58837b7
-
 Author: Robert John
 Maintainer: Robert John
 Name: InApp Purchases
