@@ -165,3 +165,18 @@ Section: System
 Priority: optional
 Description: Allow Full File - System Access Over USB For Arm64 Devices.
 Name: Apple File Conduit "2"
+
+Package: io.github.q2ex.betterccxi
+Version: 1.4.8
+Architecture: iphoneos-arm
+Maintainer: ATWiiks
+Depends: mobilesubstrate, com.opa334.ccsupport, preferenceloader
+Filename: dl/io.github.q2ex.betterCCXI_1.4.8_iphoneos-arm.deb
+Size: 49532
+MD5sum: 3134e367cf1aca94ba530bc6979c5054
+SHA1: 97a147c2c31dfa291286e95bc4049010080d54a5
+SHA256: 908205649dcd03fa817ef50dd8385b9f0e470ada0fb3d83649f207242bf488d9
+Section: Tweaks
+Priority: important
+Description: Enhance your control center on iOS 11 & 12.
+Name: betterCCXI
