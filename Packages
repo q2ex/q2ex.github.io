@@ -46,3 +46,21 @@ Section: Development
 Priority: optional
 Description: Color PiCKer Library for Developers.
 Name: libColorPiCKer
+
+Package: io.github.q2ex.datameter
+Version: 1.4-3
+Architecture: iphoneos-arm
+Maintainer: Robert John
+Pre-Depends: dpkg (>= 1.14.25-8)
+Depends: preferenceloader
+Conflicts: org.thebigboss.datameter
+Filename: dl/io.github.q2ex.datameter_1.4-3_iphoneos-arm.deb
+Size: 71856
+MD5sum: bd3984e1d5dbde2889124fa137e0abeb
+SHA1: 7c3a99062819937918facc7264dbc60492e6bee6
+SHA256: 615ae654e924f649a1466ec3dc13a14b5b429b6f9366cb271545361fb451f08e
+Section: Addons (NotificationCenter)
+Priority: important
+Description: wifi & data traffic Notification widget
+Icon: file:///Library/PreferenceBundles/DataMeterSettings.bundle/icon@2x.png
+Name: DATAMeter Lite
