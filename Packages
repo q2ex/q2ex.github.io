@@ -115,3 +115,19 @@ Section: Tweaks
 Priority: important
 Description: Develop your own tweaks and share them on the Flex Community Cloud.
 Name: Flex
+
+Package: com.rpetrich.rocketbootstrap
+Version: 1.0.7~beta2-debug
+Architecture: iphoneos-arm
+Maintainer: Ryan Petrich
+Pre-Depends: dpkg (>= 1.14.25-8)
+Depends: mobilesubstrate
+Filename: dl/com.rpetrich.rocketbootstrap_1.0.7_beta2-debug_iphoneos-arm.deb
+Size: 31696
+MD5sum: b78048d4cd0d27e9495b72a291014f02
+SHA1: d122441c4533f2fcad3d66b23721301ef5451673
+SHA256: ac274d76083460d658488c533ef2441f3213c5b55ed023c0c73b2dc20802e771
+Section: Tweaks
+Priority: important
+Description: Support library allowing tweaks to communicate with sandboxed processes.
+Name: ROCKetbootStrap
