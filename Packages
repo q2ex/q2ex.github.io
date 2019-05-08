@@ -80,3 +80,19 @@ Section: Tweaks
 Priority: important
 Description: WEChat automatic acquisition red envelope.
 Name: WEChatRedEnvelops
+
+Package: filza
+Version: 3.6.2-debug
+Architecture: iphoneos-arm
+Maintainer: TIGI Software
+Pre-Depends: dpkg (>= 1.14.25-8)
+Depends: zip, unzip, gzip, unrar, p7zip
+Filename: dl/filza_3.6.2-debug_iphoneos-arm.deb
+Size: 6716316
+MD5sum: 180662249e093aacaf3872260bf392e9
+SHA1: 2643f6ae9bd4070245be632c4685ff530e06f368
+SHA256: b3630d1548f86aaaeffa4d99b62849fa1ece6c64984b29a3abbc553fdb0017ba
+Section: Utilities
+Priority: important
+Description: File Manager For Iphone, Ipad, Ipod Touch. Supports Ios 7 & More. This Special Version Only Supports Devices.
+Name: Filza
