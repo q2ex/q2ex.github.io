@@ -1,9 +1,8 @@
 Origin: ★ Star
 Label: ★ Star
 Suite: stable
-Version: 1.1
-Codename: tangelo-3.7
-Architectures: darwin-arm iphoneos-arm
-Support: https://cydia.saurik.com/api/support/*
+Version: 1.0
+Architectures: iphoneos-arm
 Components: main
+Codename: ios
 Description:
