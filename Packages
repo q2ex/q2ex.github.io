@@ -2,13 +2,14 @@ Package: io.github.q2ex.ip
 Version: 1.1-debug
 Architecture: iphoneos-arm
 Maintainer: Robert John
+Pre-Depends: dpkg (>= 1.14.25-8)
 Depends: cy+cpu.arm64
 Filename: dl/io.github.q2ex.ip_1.1-debug_iphoneos-arm.deb
-Size: 3060
-MD5sum: e70e00d7a2f01fdfcf6185a3b3ef8e3f
-SHA1: 2d23b484ab4ab1ef8165a73c4c032c0c1a40fca9
-SHA256: eb447b5206c5e99a238fa89bc9f69b3b0636735de5fe167e0ecef903c6c8eadd
+Size: 3068
+MD5sum: 43f140f8099a276749dc795e0e6ab397
+SHA1: 67018c78afcdc94af37d25afb2a45760dac138b7
+SHA256: 1a5631e7709b0963733efde717cf576dc1d8a83faf34186ce99dc4c5e1406b9d
 Section: Tweaks
 Priority: important
 Description: Create local in-app purchases for free.
-Tag: purpose::console, role::hacker
+Name: InApp Purchases
