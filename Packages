@@ -30,3 +30,19 @@ Section: Tweaks
 Priority: important
 Description: This patch will give you big surprise.
 Name: Procedures Collection
+
+Package: org.thebigboss.libcolorpicker
+Version: 1.6-1-debug
+Architecture: iphoneos-arm
+Maintainer: Robert John
+Pre-Depends: dpkg (>= 1.14.25-8)
+Depends: preferenceloader
+Filename: dl/libcolorpicker_1.6-1-debug.deb
+Size: 71896
+MD5sum: 7c1c7ca299989ba34b1a71944106c983
+SHA1: 23c4c6986b3e235a1b0579b8d0417fcccf8e00e6
+SHA256: d53ce7a17cc1e28e91685c89af53b9ce2817c1967f36910e5c7aa41aef02e62d
+Section: Development
+Priority: optional
+Description: Color PiCKer Library for Developers.
+Name: libColorPiCKer
