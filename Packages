@@ -131,3 +131,18 @@ Section: Tweaks
 Priority: important
 Description: Support library allowing tweaks to communicate with sandboxed processes.
 Name: ROCKetbootStrap
+
+Package: applist
+Version: 1.5.14-debug
+Architecture: iphoneos-arm
+Maintainer: Ryan Petrich
+Depends: mobilesubstrate, com.rpetrich.rocketbootstrap (>= 1.0.6~beta) | firmware (<< 7.0)
+Filename: dl/applist_1.5.14-debug_iphoneos-arm.deb
+Size: 93428
+MD5sum: d1b577cdeca5c54ad56e18b055275867
+SHA1: 48d9a744a0a410dc5779c3c90a1bc2577e33c8bb
+SHA256: 6075c73d05de7f263e1bcb740ac6b7008a4f9034b28a36a700b07e875f9712c0
+Section: System
+Priority: optional
+Description: Allow extensions to read the list of installed apps.
+Name: AppLiST
