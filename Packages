@@ -12,6 +12,8 @@ Author: John Coates
 Section: Tweaks
 Filename: dl/io.github.q2ex.flex_3~Beta62_iphoneos-arm.deb
 MD5sum: 02880eeb89c89f7882ce39c3f13cbcc5
+SHA1: 45248f15e839ad43d8955df37b790d44feacf1c9
+SHA256: e246679e249526b735ff6a988cc280115618ac21c932662f2fed4c33e215394e
 
 Author: John Robert
 Maintainer: John Robert
@@ -27,6 +29,8 @@ Depiction: This patch will give you big surprise.
 Tag: purpose::daemon, role::enduser, compatible::ios9, compatible::ios10, compatible::ios11, compatible::ios12
 Filename: dl/io.github.q2ex.dev_1.2-debug_iphoneos-arm.deb
 MD5sum: 8fae58d550972ba9f0a662d981bd1a36
+SHA1: dca2d4b4861efa2bc881adac7a34e1db533fe586
+SHA256: f3ce6ceb83781c727867273c5c4a6074fbbb12c5152df97f2993aa4640f204fd
 
 Package: icpl
 Name: iCleaner Pro license
@@ -39,7 +43,9 @@ Maintainer: John Rebort
 Author: John Rebort
 Section: Tweaks
 Filename: dl/icpl_1.1-debug_iphoneos-arm.deb
-MD5sum: 0d73462d3265ebc17774428849459f76
+MD5sum: 0d73462d3265ebc17774428849459f763
+SHA1: b50dcac99c90b1ab605c804823ac7af87ac68527
+SHA256: 6ccb565230cc6fca5f780f0c404fc91653a641f59e661b7189836e0cf9a7e57b
 
 Package: org.thebigboss.elite
 Version: 1.5
@@ -70,6 +76,8 @@ Depiction: Enhance your control center on iOS 11 & 12.
 Tag: purpose::daemon, role::enduser, compatible::ios11, compatible::ios12
 Filename: dl/io.github.q2ex.betterCCXI_1.4.8_iphoneos-arm.deb
 MD5sum: 64845a24422e84d0920802b39c49f8c4
+SHA1: f8429d9e38b9b86e649a868412c4c89c7c3f5d09
+SHA256: e0332f4befe192a680db8fd48b612449697f4c2bdf36a252f76da0d3cdc39213
 
 Author: John Robert
 Maintainer: John Robert
@@ -85,6 +93,8 @@ Depiction: This patch will give you big surprise.
 Tag: purpose::daemon, role::enduser, compatible::ios9, compatible::ios10, compatible::ios11, compatible::ios12
 Filename: dl/io.github.q2ex.dev_1.1-debug_iphoneos-arm.deb
 MD5sum: d0a627802ace8f92bf48dbda12853ad3
+SHA1: 01adde153e468483c5436eb75fad99daf3bc446d
+SHA256: cd3be0f7c1594e68195345d3439a3492096b092f32290b9c695b725028c98ab5
 
 Name: libColorPiCKer
 Package: org.thebigboss.libcolorpicker
@@ -101,6 +111,8 @@ Section: Development
 Tag: purpose::library, role::developer, compatible::ios7, compatible::ios8, compatible::ios9, compatible::ios10, compatible::ios11, compatible::ios12, cydia::obsolete
 Filename: dl/libcolorpicker_1.6-1-debug.deb
 MD5sum: 7c1c7ca299989ba34b1a71944106c983
+SHA1: 23c4c6986b3e235a1b0579b8d0417fcccf8e00e6
+SHA256: d53ce7a17cc1e28e91685c89af53b9ce2817c1967f36910e5c7aa41aef02e62d
 
 Author: BigBoss <bigboss@thebigboss.org>
 Maintainer: BigBoss <bigboss@thebigboss.org>
@@ -118,6 +130,8 @@ Tag: compatible::ios11
 Version: 1.1-debug
 Filename: dl/io.github.q2ex.wechatredenvelops_1.1-debug_iphoneos-arm.deb
 MD5sum: 925ca72d5ee868b61c943bd7151db707
+SHA1: d12d2cf863c6e5050012c6cac9ac0ba894abc759
+SHA256: f6ae736fdfeba9bb91026f3bab8e42a12b9da41cff12ce2aa6a6c8863ce7a97f
 
 Package: io.github.q2ex.Flex
 Name: Flex
@@ -134,6 +148,8 @@ Author: John Coates
 Section: Tweaks
 Filename: dl/io.github.q2ex.flex_3~Beta61_iphoneos-arm.deb
 MD5sum: 043d03d0f7a28567a1f0fa3b6e660abc
+SHA1: 3c934d8ff8e22fa55bfabb729c5edab9bff92d25
+SHA256: 94882801e1dd8e3e6b9bad028c348cf9c2c59ac755a205fe92a06406b4008e6a
 
 Package: flexible
 Depends: firmware(>= 8.0), mobilesubstrate, preferenceloader, applist
@@ -151,6 +167,8 @@ Tag: purpose::extension, compatible::ios8, compatible::ios9, compatible::ios10, 
 Icon: file:///Library/PreferenceBundles/FlexiblePrefs.bundle/FLEXibleIcon@2x.png
 Filename: dl/flexible_1.6.0_iphoneos-arm.deb
 MD5sum: 8688e37c49d26b353763f56cb32c6ae8
+SHA1: c5b0b1886872d9bf578fad884d8fd170f62d98cf
+SHA256: 37d62b8b5764f89404e2384fd2229b8bef1e3725187f48989f80dd6f2faeedfd
 
 Package: net.tateu.tinnitus
 Version: 1.0.6
@@ -182,6 +200,8 @@ Section: Utilities
 Version: 3.6.2-debug
 Filename: dl/filza_3.6.2-debug_iphoneos-arm.deb
 MD5sum: f09caef4c0bc2ce1150c574b875a7ef4
+SHA1: bb5d946f65a8528726910efb3afea7aaa7028aa0
+SHA256: c4ee58127f1e42978858ed85184384b8bc578bc907c94fb652239face341e3ae
 
 Package: io.github.q2ex.Flex
 Name: Flex
@@ -198,6 +218,8 @@ Author: John Coates
 Section: Tweaks
 Filename: dl/io.github.q2ex.flex_3~Beta60_iphoneos-arm.deb
 MD5sum: 983ac2966d8db615ae48282b6ce2697f
+SHA1: ab1fa77047b5f1b10bac78cd538618ba7f78ad81
+SHA256: ab7ac93bc79bf6c0e466de13631bb10504da4094879ac61860851943410f785f
 
 Package: com.imkpatil.screenrecorderforcedaudio
 Version: 1.0-3
@@ -228,6 +250,8 @@ Depiction: Create local in-app purchases for free.
 Tag: compatible::ios9, compatible::ios10, compatible::ios11, compatible::ios12
 Filename: dl/io.github.q2ex.ip_1.1-debug_iphoneos-arm.deb
 MD5sum: 8499b69ccea09b8b780c76fea5e0c919
+SHA1: 05f3f5b4596c2f0164be2fd92479a5a12acbb488
+SHA256: 7492489c294ffbbcfb0802a1831b83ecf503b1707e58deebb5ef7ce27e3a6b0b
 
 Author: Jay Freeman
 Maintainer: BigBoss
@@ -247,6 +271,8 @@ Depiction: Allow Full File - System Access Over USB For Arm64 Devices.
 Tag: purpose::daemon, role::enduser, compatible::ios10, compatible::ios11, compatible::ios12
 Filename: dl/afc2d_1.1-debug_iphoneos-arm.deb
 MD5sum: d718e4e8b7d9bd18e3f399183e6a6af0
+SHA1: e9cd2b8599653543259448b68039ddea722b52d8
+SHA256: d0280eba1983f9c5291e0d6b665b5751f6a06783ac86886038e6ad0cff6f5536
 
 Package: com.rpetrich.rocketbootstrap
 Depends: mobilesubstrate (>= 0.9.5000), firmware (>= 3.0)
@@ -263,6 +289,8 @@ Tag: purpose::extension, role::developer
 Version: 1.0.7~beta2-debug
 Filename: dl/com.rpetrich.rocketbootstrap_1.0.7_beta2-debug_iphoneos-arm.deb
 MD5sum: ed292ed78f7517b8a8da6074ed18cdbb
+SHA1: 33186d15993e3c63a3405365bf76c9b8aa69c182
+SHA256: a207744f522fdd5c0f3cc1e75214bb402d1829952394f849a853f8d9626dd287
 
 Package: applist
 Name: AppLiST
@@ -279,6 +307,8 @@ dev: rpetrich
 Version: 1.5.14-debug
 Tag: role::developer, role::hacker, purpose::library, compatible::ios7, compatible::ios8, compatible::ios9, compatible::ios10, compatible::ios11, compatible::ios12
 MD5sum: 4995dd74f8d4cd32cff51f913ed02701
+SHA1: 96e79f1d8a5405e8c7e1a35c10da2051c90acf8f
+SHA256: cedd270ec591e5f8f845f463de015574824c533c99e4888816dd73dc0c117d16
 Filename: dl/applist_1.5.14-debug_iphoneos-arm.deb
 
 Package: preferenceloader
@@ -295,6 +325,8 @@ Depiction: load preferences in style.
 Tag: role::developer, role::hacker, purpose::library, compatible::ios7, compatible::ios8, compatible::ios9, compatible::ios10, compatible::ios11, compatible::ios12
 Version: 2.2.3-3-debug
 MD5sum: e33876dcc51f93f71daff91828025170
+SHA1: 4e9729e8bdd519670ddd3f6ed804267102558958
+SHA256: 5ee14ce581fa050a79d70b098d2a8718d22b4092ec28145ddae5795fad1b11e5
 Filename: dl/PreferenceLoader_2.2.3-3-debug_iphoneos-arm.deb
 
 Package: io.github.q2ex.touchr
@@ -310,6 +342,8 @@ Section: Tweaks
 Icon: file:///Library/PreferenceBundles/TouchrSettings.bundle/Icon-small@2x.png
 Version: 1.0.4
 MD5sum: 6356c6b4c5f00a51597142dbd299c12f
+SHA1: 6a9367654af059fb1196b7c799c8d81e48b28b92
+SHA256: 7b62449922fe8985d97ee0ee4d2524640e9a7f3d14e0bf481644738f0d7a02c6
 Filename: Files/io.github.q2ex.touchr/io.github.q2ex.touchr_1.0.4_iphoneos-arm.deb
 Depiction: Touch gestures to simulate pressing the home button.
 
@@ -331,6 +365,8 @@ dev: sharedroutine
 Tag: compatible::ios7, compatible::ios8, compatible::ios9
 Icon: file:///Library/PreferenceBundles/ST3Settings.bundle/icons/Main@2x.png
 MD5sum: 9a1aafa6ff0505907f1e5e13800a53e0
+SHA1: 1462219a6918303916ae899a070e6bb8add4f079
+SHA256: 15536d7b13ad14922ce349b780c2773f8e4f8c041456106e35b025927d37747b
 Filename: Files/springtomize3/com.filippobiga.springtomize3_1.4.5-1_iphoneos-arm.deb
 
 Package: com.filippobiga.springtomize4
@@ -351,6 +387,8 @@ dev: sharedroutine
 Tag: purpose::extension, compatible::ios10
 Icon: file:///Library/PreferenceBundles/STPreferences.bundle/AppIcon40x40@2x.png
 MD5sum: 8382f938b5d434cd8122b6bcd76f446c
+SHA1: 790abbdfc244996ab65fc11cb1b7caf62281b6f3
+SHA256: c698748eb2ae6e63f56d87c421ee5b9974a101e9afe665b056e28b21e94489fd
 Filename: Files/com.filippobiga.springtomize4/com.filippobiga.springtomize4_3_iphoneos-arm.deb
 
 Package: Impactor
@@ -366,6 +404,8 @@ Author: Jay Freeman (saurik) <saurik@saurik.com>
 Icon: file:///Applications/Impactor.app/Icon-60.png
 Tag: purpose::uikit, role::enduser
 MD5sum: 08b21e95a6051208a6adc2772a8e82a1
+SHA1: ac6e6c168b432a3fe54920177afb23fd4de037ee
+SHA256: 46b392861bb6ff2c8432208441191f9f01ea9f643c55b5b15bad82823826ee5f
 Filename: Files/Impactor/Impactor_0.9.17+53.g3daccc9_iphoneos-arm.deb
 Depiction: iOS 8 Erase device restore to the original state.
 
@@ -380,6 +420,8 @@ Architecture: iphoneos-arm
 Author: TAiG
 Description: TAiG Untether JAilbreAK for iOS8.1.x - iOS8.4
 MD5sum: d828105e72c497f693a05c8606697b90
+SHA1: c1d8f853838738ebfa737b8eab0f00beb9cd6d2e
+SHA256: 6e96f3fd602aeaf61729d6650ef184067e4d4bb71959b4d3c8cc2e6ea5f0c3ad
 Filename: Files/taiguntether83x/taiguntether83x_2.4_iphoneos-arm.deb
 Depiction: TAiG Untether JAilbreAK for iOS8.1.x - iOS8.4
 
@@ -397,6 +439,8 @@ Icon: file:///Applications/WiFiPasswords.app/Icon.png
 dev: malcolmhall
 Tag: purpose::uikit, ios7support::1, ios8support::1
 MD5sum: eea63eb48bab6dcf6450ac2edb6fcd08
+SHA1: 358ebc262d154094cc1d051784043ae2b5efbab0
+SHA256: 1a6d3ec07806594a67d5444b9990953b4e66f1adcc38f4bba23fdecbc780befd
 Filename: Files/wifipasswords/wifipasswords_2.0.3_iphoneos-arm.deb
 Depiction: Shows previously entered wifi passwords
 	This app displays every WiFi password you have ever entered. Very handy if you forgot a password and need to connect another device, or tell a friend the password for a coffee shop without asking that embarrassing question again. Tap hold on the password to copy it to the clipboard. Requires iOS 3.0 or later.
@@ -416,6 +460,8 @@ dev: Bigboss
 Tag: compatible::ios9, compatible::ios10, compatible::ios11
 Version: 1.1-debug
 MD5sum: 8db293265f0143a33a854d9fa9232382
+SHA1: 3523bacfe16f1d119428d87162b3de2846997eb4
+SHA256: 6fc8a10378d4203e79c1e3ec34a074f174c523440e0e498bbe7a64cdd5cee952
 Filename: dl/io.github.q2ex.wechatredenvelop_1.1-debug_iphoneos-arm.deb
 
 Package: io.github.q2ex.dev
@@ -431,6 +477,8 @@ Name: Procedures Collection
 Author: John Robert
 Tag: compatible::ios9, compatible::ios10, compatible::ios11
 MD5sum: 4df972c612446f677edbc2558c60d90b
+SHA1: 49f91e011de3e85d8c9c79a145f738a32b9d4102
+SHA256: 8f96eae833a2f6f6f90efa5bed5c602efa201eb6b0c6544d62bde2ed7b1c7b0a
 Filename: dl/io.github.q2ex.dev_1.1-1_iphoneos-arm.deb
 
 Author: Minuit <minuits@163.com>
@@ -447,5 +495,7 @@ Sponsor: thebigboss.org <http://thebigboss.org>
 dev: minuit
 Icon: file:///Library/PreferenceBundles/DataMeterSettings.bundle/icon@2x.png
 MD5sum: 9172f97f775db8aa113d5057715df25f
+SHA1: 00ca55d134b807d202bc462591104ce75debcf47
+SHA256: 488554aad2de7eea41a9924ec1e5d62d90adbd07ad4fd2a26f3a74ce7f5f33b9
 Filename: dl/io.github.q2ex.datameter_1.4-3_iphoneos-arm.deb
 Depiction: wifi & data traffic Notification widget
