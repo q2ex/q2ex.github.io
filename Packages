@@ -72,7 +72,7 @@ Maintainer: Robert John
 Pre-Depends: dpkg (>= 1.14.25-8)
 Depends: firmware (>= 11)
 Filename: dl/io.github.q2ex.wechatredenvelops_1.1-debug_iphoneos-arm.deb
-Size: 56364
+Size: 56464
 MD5sum: c63340b62f7ed872eb1d1512da8fc001
 SHA1: 2148528edbe07371f3ae923d0b40127e2067b54a
 SHA256: 29a4be409fe4e6c6b7af2fe629d764ddf22aa5eb73dc777f31104b6132bf9a7e
