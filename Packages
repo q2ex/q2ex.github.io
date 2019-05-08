@@ -311,24 +311,6 @@ SHA1: 96e79f1d8a5405e8c7e1a35c10da2051c90acf8f
 SHA256: cedd270ec591e5f8f845f463de015574824c533c99e4888816dd73dc0c117d16
 Filename: dl/applist_1.5.14-debug_iphoneos-arm.deb
 
-Package: preferenceloader
-Name: PreferenceLoader
-Depends: mobilesubstrate
-Architecture: iphoneos-arm
-Description: load preferences in style.
-Maintainer: BigBoss <bigboss@thebigboss.org>
-Author: Dustin Howett <cydia.pl@relay.howett.net>
-Section: System
-Priority: optional
-dev: dustinhowett
-Depiction: load preferences in style.
-Tag: role::developer, role::hacker, purpose::library, compatible::ios7, compatible::ios8, compatible::ios9, compatible::ios10, compatible::ios11, compatible::ios12
-Version: 2.2.3-3-debug
-MD5sum: e33876dcc51f93f71daff91828025170
-SHA1: 4e9729e8bdd519670ddd3f6ed804267102558958
-SHA256: 5ee14ce581fa050a79d70b098d2a8718d22b4092ec28145ddae5795fad1b11e5
-Filename: dl/PreferenceLoader_2.2.3-3-debug_iphoneos-arm.deb
-
 Package: io.github.q2ex.touchr
 Conflicts: com.clezz.touchr
 Depends: mobilesubstrate, preferenceloader, firmware (>= 8.0)
