@@ -195,3 +195,20 @@ Section: Tweaks
 Priority: important
 Description: Enable FaceTime Audio on China iPhones.
 Name: FaceTimeAudioEnabler
+
+Package: libertylite
+Version: 0.2.10
+Architecture: iphoneos-arm
+Maintainer: Ryley Angus
+Depends: mobilesubstrate, preferenceloader, applist
+Conflicts: com.ryleyangus.liberty, com.ryleyangus.libertylite
+Filename: dl/libertylite_0.2.10_iphoneos-arm.deb
+Size: 46756
+MD5sum: a50a555a9f6ddcfc7b08e8ef9565e8a4
+SHA1: 00ccc49a49f6dd901d52713d144b92c6517d1943
+SHA256: 90e5f90f8c9f61adf89d88123fcf9b8425a4f2cb2b462a0f9343cdb96811fc73
+Section: Tweaks
+Priority: important
+Description: A (lite) general purpose jailbreak detection bypass patch. Use the Liberty entry in the Settings app to block (most) apps from detecting your jailbreak. Disabling Substrate/Substitute is not supported, so certain apps (PayPal, HSBC HK) will still be problematic.
+Icon: file:///Library/PreferenceBundles/LibertyPref.bundle/LibertyPref.png
+Name: Liberty Lite
