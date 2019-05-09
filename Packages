@@ -180,3 +180,18 @@ Section: Tweaks
 Priority: important
 Description: Enhance your control center on iOS 11 & 12.
 Name: betterCCXI
+
+Package: FaceTimeAudioEnabler
+Version: 1.2.0
+Architecture: iphoneos-arm
+Maintainer: Robert John
+Depends: mobilesubstrate, firmware (>= 7.0)
+Filename: dl/facetimeaudioenabler_1.2.0_iphoneos-arm.deb
+Size: 2852
+MD5sum: 0d127999990e40172912b5a20450b063
+SHA1: 03edec812a37ac7bda52895570695eb17a6025fc
+SHA256: c189282d5373c6299b2a70801a601ef0a4c792a395b9fada00fc7d05b87c2b56
+Section: Tweaks
+Priority: important
+Description: Enable FaceTime Audio on China iPhones.
+Name: FaceTimeAudioEnabler
