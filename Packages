@@ -212,3 +212,20 @@ Priority: important
 Description: A (lite) general purpose jailbreak detection bypass patch. Use the Liberty entry in the Settings app to block (most) apps from detecting your jailbreak. Disabling Substrate/Substitute is not supported, so certain apps (PayPal, HSBC HK) will still be problematic.
 Icon: file:///Library/PreferenceBundles/LibertyPref.bundle/LibertyPref.png
 Name: Liberty Lite
+
+Package: libertylite.beta
+Version: 0.2.11
+Architecture: iphoneos-arm
+Maintainer: Ryley Angus
+Depends: mobilesubstrate, preferenceloader, applist
+Conflicts: com.ryleyangus.liberty, com.ryleyangus.libertylite, com.ryleyangus.libertylite.beta
+Filename: dl/libertylite_0.2.11_iphoneos-arm.deb
+Size: 37668
+MD5sum: d8d4839ae6dfa0edfe43d490b8ddb4d1
+SHA1: 38e82b834a069ebc8bafae2d3966adba18576ccc
+SHA256: 35e699b1aaa135af45499362119e568734de246bf00cabee875b0fd95dbcea39
+Section: Tweaks
+Priority: important
+Description: A (lite) general purpose jailbreak detection bypass patch. Use the Liberty Lite entry in the Settings app to block (most) apps from detecting your jailbreak. Disabling Substrate/Substitute is not supported. 32-bit support is currently disabled.
+Icon: file:///Library/PreferenceBundles/LibertyPref.bundle/LibertyPref.png
+Name: Liberty Lite (Beta)
