@@ -279,3 +279,20 @@ Priority: important
 Description: Load Preferences In Style.
 Homepage: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=preferenceloader2Data
 Name: PreferenceLoader
+
+Package: flexible
+Version: 2.1.0
+Architecture: iphoneos-arm
+Maintainer: BigBoss
+Depends: firmware(>= 8.0), mobilesubstrate, preferenceloader, applist
+Filename: dl/flexible_2.1.0_iphoneos-arm.deb
+Size: 707676
+MD5sum: f196271ec769d22bf46ab3b32b6c02be
+SHA1: c931bbb17a4abf43556b968208512b2297edb78e
+SHA256: 4f6b7a2288f6dd2392200f02eec480b107c6901118beece16d4f2ec521c24fee
+Section: Development
+Priority: important
+Description: Tweak To Enable FLEX Debugging Tool.
+Homepage: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=flexibleDp
+Icon: file:///Library/PreferenceBundles/FlexiblePrefs.bundle/FLEXibleIcon@2x.png
+Name: FLEXible
