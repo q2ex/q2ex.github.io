@@ -263,3 +263,19 @@ Priority: important
 Description: The First Real iOS System Cleaner & Optimizer.
 Icon: file:///Applications/iCleaner.app/Icon.png
 Name: iCleaner Pro
+
+Package: preferenceloader
+Version: 2.2.4~beta1-debug
+Architecture: iphoneos-arm
+Maintainer: Dustin Howett
+Depends: mobilesubstrate
+Filename: dl/Preferenceloader_2.2.4_beta1-debug_iphoneos-arm.deb
+Size: 33940
+MD5sum: b5d35caaefbc05912a011293aa4ebb6d
+SHA1: da0f49d2bf1a33f42a40cb43cdfda7b23f6cebd3
+SHA256: e3fed3b97d0a4d32ace071fb236535c8554e8e46845819df97ba427cd496f8f4
+Section: System
+Priority: important
+Description: Load Preferences In Style.
+Homepage: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=preferenceloader2Data
+Name: PreferenceLoader
