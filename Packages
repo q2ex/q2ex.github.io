@@ -1,7 +1,7 @@
 Package: org.thebigboss.elite
 Version: 1.5
 Architecture: iphoneos-arm
-Maintainer: leftyfl1p <leftyfl1p@icloud.com>
+Maintainer: leftyfl1p
 Depends: mobilesubstrate, org.thebigboss.libcolorpicker
 Filename: dl/org.thebigboss.elite_1.5_iphoneos-arm.deb
 MD5sum: 571925f82e88d83cad1abe5a861537db
@@ -9,8 +9,6 @@ SHA1: 0543599236e4c53ab75c6a384190d64e5a1f1a66
 SHA256: f5d2be94d5ae1ecf9cacdec894f6c94c2bc2b6297908b96e3e13c57327efb641
 Section: Tweaks
 Description: An awesome MobileSubstrate tweak!
-Author: leftyfl1p <leftyfl1p@icloud.com>
-Depiction: An awesome MobileSubstrate tweak!
 Name: ColorCodedLogs
 
 Package: io.github.q2ex.ip
