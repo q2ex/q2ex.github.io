@@ -245,3 +245,21 @@ Section: Utilities
 Priority: important
 Description: File Manager for iPhone, iPad, iPod Touch. Supports iOS 7 More. This Special Version Only Supports 64 bit Devices.
 Name: Filza
+
+Package: com.exile90.icleanerpro
+Version: 7.7.5
+Architecture: iphoneos-arm
+Maintainer: Ivano Bilenchi
+Depends: firmware (>= 4.0), findutils, shell-cmds, apt | apt7
+Conflicts: org.altervista.exilecom.icleaner
+Replaces: org.altervista.exilecom.icleaner
+Filename: dl/filza_3.7.0-18_iphoneos-arm.deb
+Size: 5378760
+MD5sum: e8b5c98b0c4d82c2b662d9a54b609e60
+SHA1: 1e84cd7abc1036b2717097534694b0d41d1fe325
+SHA256: ccd63d77f425631aff31f5fdc97014425ff9409e3c03967fdb2287169c41c29c
+Section: Utilities
+Priority: important
+Description: The First Real iOS System Cleaner & Optimizer.
+Icon: file:///Applications/iCleaner.app/Icon.png
+Name: iCleaner Pro
