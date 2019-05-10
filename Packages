@@ -253,7 +253,7 @@ Maintainer: Ivano Bilenchi
 Depends: firmware (>= 4.0), findutils, shell-cmds, apt | apt7
 Conflicts: org.altervista.exilecom.icleaner
 Replaces: org.altervista.exilecom.icleaner
-Filename: dl/filza_3.7.0-18_iphoneos-arm.deb
+Filename: dl/iCleanerPro_7.7.5_iphoneos-arm.deb
 Size: 5378760
 MD5sum: e8b5c98b0c4d82c2b662d9a54b609e60
 SHA1: 1e84cd7abc1036b2717097534694b0d41d1fe325
