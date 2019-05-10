@@ -229,3 +229,18 @@ Priority: important
 Description: A (lite) general purpose jailbreak detection bypass patch. Use the Liberty Lite entry in the Settings app to block (most) apps from detecting your jailbreak. Disabling Substrate/Substitute is not supported. 32-bit support is currently disabled.
 Icon: file:///Library/PreferenceBundles/LibertyPref.bundle/LibertyPref.png
 Name: Liberty Lite (Beta)
+
+Package: filza
+Version: 3.7.0-18
+Architecture: iphoneos-arm
+Maintainer: TIGI Software
+Depends: zip, unzip, gzip, unrar, p7zip
+Filename: dl/filza_3.7.0-18_iphoneos-arm.deb
+Size: 6724020
+MD5sum: 3f4a0263e4aadf9f64758384086b91d6
+SHA1: c67565c5e5f6530f5f1fcc3ab69b3e6559beafa1
+SHA256: bc84d7c891b10c86f815196eb3f81dd299f11c20caad0f65eb0a9a0791444ae8
+Section: Utilities
+Priority: important
+Description: File Manager for iPhone, iPad, iPod Touch. Supports iOS 7 More. This Special Version Only Supports 64 bit Devices.
+Name: Filza
