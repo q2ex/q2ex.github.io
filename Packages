@@ -235,6 +235,7 @@ Version: 3.7.0-18
 Architecture: iphoneos-arm
 Maintainer: TIGI Software
 Depends: zip, unzip, gzip, unrar, p7zip
+Conflicts: com.tigisoftware.filza, com.tigisoftware.filza64bit
 Filename: dl/filza_3.7.0-18_iphoneos-arm.deb
 Size: 6724020
 MD5sum: 3f4a0263e4aadf9f64758384086b91d6
