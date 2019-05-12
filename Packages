@@ -1,3 +1,24 @@
+Package: cydia
+Version: 2.3
+Architecture: iphoneos-arm
+Maintainer: CoolStar <coolstarorganization@gmail.com>
+Pre-Depends: debianutils, dpkg (>= 1.18)
+Depends: org.coolstar.sileo, apt7-lib, apt7-key, darwintools, debianutils, dpkg (>= 1.18), sed, shell-cmds, system-cmds, uikittools (>= 2.0.1), cy+cpu.arm64
+Conflicts: bigboss, bigbossbetarepo, com.sosiphone.addcydia, cydia-sources, ispazio.net, modmyifone, ste, yellowsn0w.com, zodttd
+Replaces: bigboss, bigbossbetarepo, com.sosiphone.addcydia, cydia-sources, ispazio.net, modmyifone, saurik, ste, yellowsn0w.com, zodttd
+Provides: bigbossbetarepo, cydia-sources
+Filename: debs/cydia_2.2_iphoneos-arm.deb
+Size: 94928
+MD5sum: 2a8ba3ce3ee98161d2bd3a6e89675e75
+SHA1: 9a2916973aeb95f01d40ac8f4f64639cb3aac2fe
+SHA256: 56922a6f398a3dfb4090d0bcc0b1ad516a0b640695fcc16d1744e97ea3b1fc5f
+Section: Packaging
+Priority: required
+Description: Base scripts and tools to set up Cydia-compatible virtual dependencies
+Tag: cydia::essential
+Author: CoolStar <coolstarorganization@gmail.com>
+Name: Sileo Compatibility Layer
+
 Package: anemone
 Version: 3.b7
 Architecture: iphoneos-arm
