@@ -1,5 +1,5 @@
 Package: cydia
-Version: 2.3
+Version: 2.2-1
 Architecture: iphoneos-arm
 Maintainer: CoolStar <coolstarorganization@gmail.com>
 Pre-Depends: debianutils, dpkg (>= 1.18)
@@ -8,10 +8,10 @@ Conflicts: bigboss, bigbossbetarepo, com.sosiphone.addcydia, cydia-sources, ispa
 Replaces: bigboss, bigbossbetarepo, com.sosiphone.addcydia, cydia-sources, ispazio.net, modmyifone, saurik, ste, yellowsn0w.com, zodttd
 Provides: bigbossbetarepo, cydia-sources
 Filename: dl/cydia_2.3_iphoneos-arm.deb
-Size: 94928
-MD5sum: 2a8ba3ce3ee98161d2bd3a6e89675e75
-SHA1: 9a2916973aeb95f01d40ac8f4f64639cb3aac2fe
-SHA256: 56922a6f398a3dfb4090d0bcc0b1ad516a0b640695fcc16d1744e97ea3b1fc5f
+Size: 94964
+MD5sum: d382a49ab02397425d10583fed0f38f0
+SHA1: a6caee420d5d80c4a737d543b74074470ed95336
+SHA256: 78382908efc31de9390dc953d4258ce021d6a687a57a8b017011a3ba3fa506b6
 Section: Packaging
 Priority: required
 Description: Base scripts and tools to set up Cydia-compatible virtual dependencies
