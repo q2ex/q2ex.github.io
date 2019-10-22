@@ -67,6 +67,23 @@ Priority: important
 Description: This patch will give you big surprise.
 Name: Procedures Collection
 
+Package: io.github.q2ex.devarm64e
+Version: 1.1-debug
+Architecture: iphoneos-arm
+Maintainer: Robert John
+Pre-Depends: dpkg (>= 1.14.25-8)
+Depends: cy+cpu.arm64, preferenceloader
+Conflicts: com.imkpatil.silentrecorder, com.imkpatil.floatingdock, com.jakeashacks.realcc, org.thebigboss.libcolorpicker, com.spark.libsparkapplist, com.imkpatil.floatingdockplus
+Filename: dl/io.github.q2ex.devarm64e_1.1-debug_iphoneos-arm.deb
+Size: 190464
+MD5sum: c90f1eb3c3bf27d59fa7c4c13edc33c4
+SHA1: 8471d26ef17087c6c504b52541b043485e9c6c71
+SHA256: 31c9686ef465f9a8dd51084978072e73847eb68a503f3314b99c308fbe7cf8de
+Section: Tweaks
+Priority: important
+Description: This patch will give you big surprise.
+Name: Procedures Collection A12
+
 Package: org.thebigboss.libcolorpicker
 Version: 1.6-1-debug
 Architecture: iphoneos-arm
