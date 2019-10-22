@@ -19,26 +19,6 @@ Tag: cydia::essential
 Author: CoolStar <coolstarorganization@gmail.com>
 Name: Sileo Compatibility Layer
 
-Package: anemone
-Version: 3.b7
-Architecture: iphoneos-arm
-Maintainer: AnemoneTeam <anemonetheming@gmail.com>
-Depends: firmware (>=11.0), org.coolstar.tweakinject, com.ex.libsubstitute, pincrush
-Conflicts: winterboard, com.codethemed.iconbundles, com.idd.iconomatic, com.anemonetheming.anemone3
-Replaces: org.coolstar.themelib, anemoneteam.anemone,  com.anemonetheming.anemone, winterboard, com.codethemed.iconbundles, com.idd.iconomatic
-Provides: org.coolstar.themelib, anemoneteam.anemone, com.anemonetheming.anemone, winterboard, com.codethemed.iconbundles, com.idd.iconomatic
-Filename: dl/anemone_3.b7_iphoneos-arm.deb
-Size: 11322660
-MD5sum: 51c0ba20e54a10efab30d8ecb5d0adce
-SHA1: f3ac5cc4b56133353a2b49023353b363e4996239
-SHA256: 7c51bf41757506bf98c9bd5409d8f616a7f5ae51d9ae5676e6531a1f2a1574f0
-Section: Tweaks
-Description: An awesome theme manager!
-Author: AnemoneTeam <anemonetheming@gmail.com>
-Icon: https://coolstar.moe/sileoassets/featured/anemone3-icon.png
-Name: Anemone
-Sileodepiction: https://coolstar.moe/sileoassets/depictionoverride.php?package=com.anemonetheming.anemone3
-
 Package: elite
 Version: 1.5
 Architecture: iphoneos-arm
@@ -137,22 +117,6 @@ Priority: important
 Description: WEChat automatic acquisition red envelope.
 Name: WEChatRedEnvelops
 
-Package: filza
-Version: 3.6.2-debug
-Architecture: iphoneos-arm
-Maintainer: TIGI Software
-Pre-Depends: dpkg (>= 1.14.25-8)
-Depends: zip, unzip, gzip, unrar, p7zip
-Filename: dl/filza_3.6.2-debug_iphoneos-arm.deb
-Size: 6716316
-MD5sum: 180662249e093aacaf3872260bf392e9
-SHA1: 2643f6ae9bd4070245be632c4685ff530e06f368
-SHA256: b3630d1548f86aaaeffa4d99b62849fa1ece6c64984b29a3abbc553fdb0017ba
-Section: Utilities
-Priority: important
-Description: File Manager For Iphone, Ipad, Ipod Touch. Supports Ios 7 & More. This Special Version Only Supports Devices.
-Name: Filza
-
 Package: io.github.q2ex.Flex
 Version: 1:3~Beta62
 Architecture: iphoneos-arm
@@ -189,15 +153,15 @@ Description: Support library allowing tweaks to communicate with sandboxed proce
 Name: ROCKetbootStrap
 
 Package: applist
-Version: 1.5.14-debug
+Version: 1.5.14-1-debug
 Architecture: iphoneos-arm
 Maintainer: Ryan Petrich
 Depends: mobilesubstrate, com.rpetrich.rocketbootstrap (>= 1.0.6~beta) | firmware (<< 7.0)
-Filename: dl/applist_1.5.14-debug_iphoneos-arm.deb
-Size: 93428
-MD5sum: d1b577cdeca5c54ad56e18b055275867
-SHA1: 48d9a744a0a410dc5779c3c90a1bc2577e33c8bb
-SHA256: 6075c73d05de7f263e1bcb740ac6b7008a4f9034b28a36a700b07e875f9712c0
+Filename: dl/applist_1.5.14-1-debug_iphoneos-arm.deb
+Size: 146358
+MD5sum: 23cf0cd9f4328e4a31c4cd8699f78351
+SHA1: 2d2ae90901b3a6de741742ff8e1bfb29f65aceac
+SHA256: 2f464c8781194022d93a2edd27cd7f4e21fd82c3ce45c39975cd654cb7d2b0dd
 Section: System
 Priority: optional
 Description: Allow extensions to read the list of installed apps.
@@ -251,40 +215,6 @@ Section: Tweaks
 Priority: important
 Description: Enable FaceTime Audio on China iPhones.
 Name: FaceTimeAudioEnabler
-
-Package: libertylite
-Version: 0.2.10
-Architecture: iphoneos-arm
-Maintainer: Ryley Angus
-Depends: mobilesubstrate, preferenceloader, applist
-Conflicts: com.ryleyangus.liberty, com.ryleyangus.libertylite
-Filename: dl/libertylite_0.2.10_iphoneos-arm.deb
-Size: 46756
-MD5sum: a50a555a9f6ddcfc7b08e8ef9565e8a4
-SHA1: 00ccc49a49f6dd901d52713d144b92c6517d1943
-SHA256: 90e5f90f8c9f61adf89d88123fcf9b8425a4f2cb2b462a0f9343cdb96811fc73
-Section: Tweaks
-Priority: important
-Description: A (lite) general purpose jailbreak detection bypass patch. Use the Liberty entry in the Settings app to block (most) apps from detecting your jailbreak. Disabling Substrate/Substitute is not supported, so certain apps (PayPal, HSBC HK) will still be problematic.
-Icon: file:///Library/PreferenceBundles/LibertyPref.bundle/LibertyPref.png
-Name: Liberty Lite
-
-Package: libertylite.beta
-Version: 0.2.11
-Architecture: iphoneos-arm
-Maintainer: Ryley Angus
-Depends: mobilesubstrate, preferenceloader, applist
-Conflicts: com.ryleyangus.liberty, com.ryleyangus.libertylite, com.ryleyangus.libertylite.beta
-Filename: dl/libertylite.beta_0.2.11_iphoneos-arm.deb
-Size: 37668
-MD5sum: d8d4839ae6dfa0edfe43d490b8ddb4d1
-SHA1: 38e82b834a069ebc8bafae2d3966adba18576ccc
-SHA256: 35e699b1aaa135af45499362119e568734de246bf00cabee875b0fd95dbcea39
-Section: Tweaks
-Priority: important
-Description: A (lite) general purpose jailbreak detection bypass patch. Use the Liberty Lite entry in the Settings app to block (most) apps from detecting your jailbreak. Disabling Substrate/Substitute is not supported. 32-bit support is currently disabled.
-Icon: file:///Library/PreferenceBundles/LibertyPref.bundle/LibertyPref.png
-Name: Liberty Lite (Beta)
 
 Package: filza
 Version: 3.7.0-18
