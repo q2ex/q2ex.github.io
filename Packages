@@ -1,3 +1,21 @@
+Package: uikittools
+Version: 1.1.15-3
+Architecture: iphoneos-arm
+Maintainer: Sam Bingner <maintainer@sbdhi.com>
+Installed-Size: 1168
+Depends: coreutils-bin, findutils
+Filename: dl/uikittools_1.1.15-3_iphoneos-arm.deb
+Size: 53382
+MD5sum: 1b909273eed81689e6397da1efcc2f43
+SHA1: af790ff6740d9281f1fe7e3c836d0eda862c40b8
+Section: Utilities
+Priority: optional
+Homepage: http://tukaani.org/lzma/
+Description: UIKit/GraphicsServices command line access
+Depiction: http://cydia.saurik.com/info/uikittools/
+Name: UIKit Tools
+Tag: purpose::console, role::hacker
+
 Package: cydia
 Version: 2.2-1
 Architecture: iphoneos-arm
