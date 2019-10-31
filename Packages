@@ -1,3 +1,23 @@
+Package: applist
+Name: AppLiSt
+Architecture: iphoneos-arm
+Description: Allow extensions to read the list of installed apps
+Maintainer: Ryan Petrich <rpetrich@gmail.com>
+Author: Ryan Petrich <rpetrich@gmail.com>
+Depends: mobilesubstrate (>= 0.9.5000), firmware (>= 3.0), com.rpetrich.rocketbootstrap (>= 1.0.7~beta3) | firmware (<< 7.0)
+Conflicts: com.a3tweaks.polus (<< 2.0.7)
+Section: System
+Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=AppListDp
+Website: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=AppListDp
+dev: rpetrich
+Version: 1.5.15~beta1-debug
+Installed-Size: 780
+Filename: ./debs/applist_1.5.15~beta1-debug_iphoneos-arm.deb
+MD5sum: 2fca5a5135a60e2c4c58ba4cb4575e8b
+SHA1: 812fddf63980694c89ff44346c7a7f18782466c2
+SHA256: 55cb9b74d2201d58f3dcde5765c103d305180222fe61a18baa644d84153fa0aa
+Size: 104730
+
 Package: com.rpetrich.rocketbootstrap
 Depends: mobilesubstrate (>= 0.9.5000), firmware (>= 3.0)
 Name: ROCKetbootStrap
