@@ -1,21 +1,3 @@
-Package: uikittools
-Version: 1.1.15-3
-Architecture: iphoneos-arm
-Maintainer: Sam Bingner <maintainer@sbdhi.com>
-Installed-Size: 1168
-Depends: coreutils-bin, findutils
-Filename: dl/uikittools_1.1.15-3_iphoneos-arm.deb
-Size: 53382
-MD5sum: 1b909273eed81689e6397da1efcc2f43
-SHA1: af790ff6740d9281f1fe7e3c836d0eda862c40b8
-Section: Utilities
-Priority: optional
-Homepage: http://tukaani.org/lzma/
-Description: UIKit/GraphicsServices command line access
-Depiction: http://cydia.saurik.com/info/uikittools/
-Name: UIKit Tools
-Tag: purpose::console, role::hacker
-
 Package: cydia
 Version: 2.2-1
 Architecture: iphoneos-arm
@@ -190,7 +172,7 @@ Version: 1.5.14-1-debug
 Architecture: iphoneos-arm
 Maintainer: Ryan Petrich
 Depends: mobilesubstrate, com.rpetrich.rocketbootstrap (>= 1.0.6~beta) | firmware (<< 7.0)
-Filename: dl/applist_1.5.14-1-debug_iphoneos-arm.deb
+Filename: dl/applist_1.5.14-1_iphoneos-arm.deb
 Size: 146358
 MD5sum: 23cf0cd9f4328e4a31c4cd8699f78351
 SHA1: 2d2ae90901b3a6de741742ff8e1bfb29f65aceac
