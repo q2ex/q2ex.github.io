@@ -178,7 +178,6 @@ MD5sum: ef3a08ca67cd49ccd79a102330119b7e
 SHA1: b6fe1742909cd6d56654b2b87d4e51f69ca316ce
 SHA256: 77c01019d25a5e82013854c9f41981b2101928924ec8016d0481dca251fb30e3
 Section: System
-Priority: optional
 Description: Allow extensions to read the list of installed apps.
 Name: AppLiST
 
