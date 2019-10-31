@@ -1,3 +1,21 @@
+Package: com.rpetrich.rocketbootstrap
+Depends: mobilesubstrate (>= 0.9.5000), firmware (>= 3.0)
+Name: ROCKetbootStrap
+Architecture: iphoneos-arm
+Description: Support library allowing tweaks to communicate with sandboxed processes.
+Depiction: Support library allowing tweaks to communicate with sandboxed processes.
+Maintainer: BigBoss <bigboss@thebigboss.org>
+Author: Ryan Petrich <rpetrich+rocketbootstrap@gmail.com>
+Section: Tweaks
+dev: rpetrich
+Tag: purpose::extension, role::developer
+Version: 1.0.7~beta3-debug
+Filename: dl/com.rpetrich.rocketbootstrap_1.0.7~beta3-debug_iphoneos-arm.deb
+MD5sum: a1d8102e58742ffce0720ae142b1b54e
+SHA1: e30f1635016795e4b7f81eb28613a7e9aa462164
+SHA256: 2bce24f9505ecc16c3e1754afe3c58409542fe575faa966584adabba099398b3
+Size: 67554
+
 Package: cydia
 Version: 2.2-1
 Architecture: iphoneos-arm
