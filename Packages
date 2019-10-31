@@ -1,7 +1,7 @@
 Package: applist
-Name: AppLiSt
+Name: AppLiST
 Architecture: iphoneos-arm
-Description: Allow extensions to read the list of installed apps
+Description: Allow extensions to read the list of installed apps.
 Maintainer: Ryan Petrich <rpetrich@gmail.com>
 Author: Ryan Petrich <rpetrich@gmail.com>
 Depends: mobilesubstrate (>= 0.9.5000), firmware (>= 3.0), com.rpetrich.rocketbootstrap (>= 1.0.7~beta3) | firmware (<< 7.0)
@@ -11,12 +11,11 @@ Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=AppListDp
 Website: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=AppListDp
 dev: rpetrich
 Version: 1.5.15~beta1-debug
-Installed-Size: 780
-Filename: ./debs/applist_1.5.15~beta1-debug_iphoneos-arm.deb
-MD5sum: 2fca5a5135a60e2c4c58ba4cb4575e8b
-SHA1: 812fddf63980694c89ff44346c7a7f18782466c2
-SHA256: 55cb9b74d2201d58f3dcde5765c103d305180222fe61a18baa644d84153fa0aa
-Size: 104730
+Filename: dl/applist_1.5.15~beta1-debug_iphoneos-arm.deb
+MD5sum: dd9101e88989823d9e68efc47d99af35
+SHA1: 953068fa1c17d0391aaa1acc9e528e8490e1125d
+SHA256: 9a06d1d8421f8b3f7cab3f2ba6c6f0c42af60efa9e0defb894cece052f6cdb98
+Size: 186230
 
 Package: com.rpetrich.rocketbootstrap
 Depends: mobilesubstrate (>= 0.9.5000), firmware (>= 3.0)
@@ -30,7 +29,7 @@ Section: Tweaks
 dev: rpetrich
 Tag: purpose::extension, role::developer
 Version: 1.0.7~beta3-debug
-Filename: dl/com.rpetrich.rocketbootstrap_1.0.7~beta3-debug_iphoneos-arm.deb
+Filename: dl/com.rpetrich.rocketbootstrap_1.0.7_beta3-debug_iphoneos-arm.deb
 MD5sum: a1d8102e58742ffce0720ae142b1b54e
 SHA1: e30f1635016795e4b7f81eb28613a7e9aa462164
 SHA256: 2bce24f9505ecc16c3e1754afe3c58409542fe575faa966584adabba099398b3
