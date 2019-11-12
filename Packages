@@ -1,17 +1,17 @@
-Package: notchification
-Name: Notchification 
-Version: 1.4.2
-Depends: firmware (>= 7.0), mobilesubstrate, applist
+Package: com.spark.libsparkapplist
+Name: LibSPARKAppLiST
+Version: 1.0.3+debug
+Section: System
 Architecture: iphoneos-arm
-Author: C1d3r
-Depiction: Beautiful animated notifications for all device.
-Section: Tweaks
-Description: Beautiful animated notifications for all device.
-Maintainer: C1d3r
-Filename: dl/notchification_1.4.2_iphoneos-arm.deb
-MD5sum: 2c58971a11a74f1ef582fd52d197c275
-SHA1: 906f84bb910479de6e69f7203012b17c477b8565
-SHA256: 473cb63a7666df2bb9fabba1d8817e069a4c10a37335f9bb0059cfe8620ac2e7
+Author: SPARK
+Maintainer: SPARK
+Description: AppLiST Alternative.
+Tag: role::developer
+Filename: dl/com.spark.libsparkapplist_1.0.3+debug_iphoneos-arm.deb
+Size: 67852
+MD5sum: 64d6dbcd575ea8bd5f696f3f4cc7b2cb
+SHA1: 9c1c2c3bb3526eb659780a2182c935528e6c0aff
+SHA256: 4362b81251ce8bc1ec27cf9d44fc750b0b21d140f5add3123d06d58d5076b8c1
 
 Package: applist
 Name: AppLiST
@@ -124,33 +124,41 @@ Version: 1.1-debug
 Architecture: iphoneos-arm
 Maintainer: Robert John
 Pre-Depends: dpkg (>= 1.14.25-8)
-Depends: cy+cpu.arm64, preferenceloader
-Conflicts: com.imkpatil.silentrecorder, com.imkpatil.floatingdock, com.jakeashacks.realcc, org.thebigboss.libcolorpicker, com.spark.libsparkapplist, com.imkpatil.floatingdockplus
+Depends: cy+cpu.arm64, preferenceloader, org.thebigboss.libcolorpicker, com.spark.libsparkapplist
+Conflicts: com.imkpatil.silentrecorder, com.imkpatil.floatingdock, com.jakeashacks.realcc, com.imkpatil.floatingdockplus
 Filename: dl/io.github.q2ex.devarm64e_1.1-debug_iphoneos-arm.deb
-Size: 190464
-MD5sum: c90f1eb3c3bf27d59fa7c4c13edc33c4
-SHA1: 8471d26ef17087c6c504b52541b043485e9c6c71
-SHA256: 31c9686ef465f9a8dd51084978072e73847eb68a503f3314b99c308fbe7cf8de
+Size: 54280
+MD5sum: e8f13ec25d5948af99438f3d8aaa3603
+SHA1: 34234f5020282aea838c66d15ba033f15e406717
+SHA256: 090a272d9bf2e7efd2ca2bf3c5612c304a5f7c39be3eb0096b173c97bf111fc4
 Section: Tweaks
 Priority: important
 Description: This patch will give you big surprise.
 Name: Procedures Collection A12
 
+Name: libColorPicKer
 Package: org.thebigboss.libcolorpicker
-Version: 1.6-1-debug
-Architecture: iphoneos-arm
-Maintainer: Robert John
-Pre-Depends: dpkg (>= 1.14.25-8)
-Depends: preferenceloader
-Filename: dl/libcolorpicker_1.6-1-debug.deb
-Size: 71896
-MD5sum: 7c1c7ca299989ba34b1a71944106c983
-SHA1: 23c4c6986b3e235a1b0579b8d0417fcccf8e00e6
-SHA256: d53ce7a17cc1e28e91685c89af53b9ce2817c1967f36910e5c7aa41aef02e62d
-Section: Development
 Priority: optional
-Description: Color PiCKer Library for Developers.
-Name: libColorPiCKer
+Depends: firmware (>= 6.0), mobilesubstrate (>= 0.9.5000)
+Provides: me.nepeta.libcolorpicker
+Replaces: me.nepeta.libcolorpicker
+Version: 1.6.4+debug
+Architecture: iphoneos-arm
+Description: Color PicKer Library For Developers.
+Homepage: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=libcolorpickerDp
+Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=libcolorpickerDp
+Sponsor: thebigboss.org <http://thebigboss.org>
+Maintainer: BigBoss <bigboss@thebigboss.org>
+Author: PixelFire <pixelfiredev@helpful.io>
+dev: pixelfiredev
+Section: Development
+Tag: purpose::library, role::developer, compatible::ios7, compatible::ios8, compatible::ios9, compatible::ios10, compatible::ios11, compatible::ios12, cydia::obsolete
+Installed-Size: 572
+Filename: dl/org.thebigboss.libcolorpicker_1.6.4+debug_iphoneos-arm.deb
+Size: 181468
+MD5sum: cc9be796265a49d08883791bf6f217a5
+SHA1: 66a5313c5deb2cc4bc3ca0d50622f469a1b7fc3d
+SHA256: 5e601632061f5efdb563eb2794818e802003cbdee97bc46a341be7093e0d7730
 
 Package: io.github.q2ex.datameter
 Version: 1.4-3
@@ -202,22 +210,6 @@ SHA256: 4479f1c9641144d1202c63122387b3239ef04f2d75584e0f838f5b36c4ee4317
 Section: Tweaks
 Description: Develop your own tweaks and share them on the Flex Community Cloud.
 Name: Flex
-
-Package: com.rpetrich.rocketbootstrap
-Version: 1.0.7~beta2-debug
-Architecture: iphoneos-arm
-Maintainer: Ryan Petrich
-Pre-Depends: dpkg (>= 1.14.25-8)
-Depends: mobilesubstrate
-Filename: dl/com.rpetrich.rocketbootstrap_1.0.7_beta2-debug_iphoneos-arm.deb
-Size: 31696
-MD5sum: b78048d4cd0d27e9495b72a291014f02
-SHA1: d122441c4533f2fcad3d66b23721301ef5451673
-SHA256: ac274d76083460d658488c533ef2441f3213c5b55ed023c0c73b2dc20802e771
-Section: Tweaks
-Priority: important
-Description: Support library allowing tweaks to communicate with sandboxed processes.
-Name: ROCKetbootStrap
 
 Package: afc2d
 Version: 1.1-debug
