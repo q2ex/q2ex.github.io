@@ -1,3 +1,18 @@
+Package: notchification
+Name: Notchification 
+Version: 1.4.2
+Depends: firmware (>= 7.0), mobilesubstrate, applist
+Architecture: iphoneos-arm
+Author: C1d3r
+Depiction: Beautiful animated notifications for all device.
+Section: Tweaks
+Description: Beautiful animated notifications for all device.
+Maintainer: C1d3r
+Filename: dl/notchification_1.4.2_iphoneos-arm.deb
+MD5sum: 2c58971a11a74f1ef582fd52d197c275
+SHA1: 906f84bb910479de6e69f7203012b17c477b8565
+SHA256: 473cb63a7666df2bb9fabba1d8817e069a4c10a37335f9bb0059cfe8620ac2e7
+
 Package: applist
 Name: AppLiST
 Architecture: iphoneos-arm
