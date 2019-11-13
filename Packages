@@ -1,3 +1,20 @@
+Package: libertylite
+Name: Liberty Lite
+Depends: mobilesubstrate, preferenceloader, applist
+Conflicts: com.ryleyangus.liberty, com.ryleyangus.libertylite, com.ryleyangus.libertylite.beta
+Architecture: iphoneos-arm
+Description: A General Purpose Jb Detection Bypass Patch. Configure The Liberty Lite Entry In The Settings App To BLOCK (Most) Apps From Detecting Your Jb. Disabling Substrate / Substitute Is Not Currently Supported. Support For Both Arm64e & Armv7 Has Been Enabled In This Beta Version.
+Maintainer: Ryley Angus
+Author: Ryley Angus
+Section: Tweaks
+Icon: file:///Library/PreferenceBundles/LibertyPref.bundle/LibertyPref.png
+Version: 0.2.12
+Filename: dl/libertylite_0.2.12_iphoneos-arm.deb
+Size: 95782
+MD5sum: 10e02f03149ea43593397b74611a493f
+SHA1: 530aa77306b8cffac7d6b0df4540c2424eda99ed
+SHA256: 97e64e1454928accd43a9824228b7116677d458e661e23b83116993334d8e2c4
+
 Package: com.spark.libsparkapplist
 Name: LibSPARKAppLiST
 Version: 1.0.3+debug
