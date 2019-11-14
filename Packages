@@ -67,27 +67,6 @@ SHA1: e30f1635016795e4b7f81eb28613a7e9aa462164
 SHA256: 2bce24f9505ecc16c3e1754afe3c58409542fe575faa966584adabba099398b3
 Size: 67554
 
-Package: cydia
-Version: 2.2-1
-Architecture: iphoneos-arm
-Maintainer: CoolStar <coolstarorganization@gmail.com>
-Pre-Depends: debianutils, dpkg (>= 1.18)
-Depends: org.coolstar.sileo, apt7-lib, apt7-key, darwintools, debianutils, dpkg (>= 1.18), sed, shell-cmds, system-cmds, uikittools (>= 2.0.1), cy+cpu.arm64
-Conflicts: bigboss, bigbossbetarepo, com.sosiphone.addcydia, cydia-sources, ispazio.net, modmyifone, ste, yellowsn0w.com, zodttd
-Replaces: bigboss, bigbossbetarepo, com.sosiphone.addcydia, cydia-sources, ispazio.net, modmyifone, saurik, ste, yellowsn0w.com, zodttd
-Provides: bigbossbetarepo, cydia-sources
-Filename: dl/cydia_2.2-1_iphoneos-arm.deb
-Size: 94964
-MD5sum: d382a49ab02397425d10583fed0f38f0
-SHA1: a6caee420d5d80c4a737d543b74074470ed95336
-SHA256: 78382908efc31de9390dc953d4258ce021d6a687a57a8b017011a3ba3fa506b6
-Section: Packaging
-Priority: required
-Description: Base scripts and tools to set up Cydia-compatible virtual dependencies
-Tag: cydia::essential
-Author: CoolStar <coolstarorganization@gmail.com>
-Name: Sileo Compatibility Layer
-
 Package: elite
 Version: 1.5
 Architecture: iphoneos-arm
