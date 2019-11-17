@@ -1,3 +1,20 @@
+Package: hidebarx
+Name: Hide Bar X [Public]
+Depends: mobilesubstrate
+Conflicts: com.spark.HidebarX, com.spark.hidebarx
+Removes: com.spark.HidebarX
+Architecture: iphoneos-arm
+Description: Hides the iPhone X home bar - Compatible with Volume Bar X
+Maintainer: bigboss
+Author: bigboss
+Section: Tweaks
+Version: 0.0.4
+Filename: dl/hidebarx_0.0.4_iphoneos-arm.deb
+Size: 5474
+MD5sum: d8f8e0cd815e2778b9405facd664a76c
+SHA1: 38952ffc9f47118e2ae3bbf01b9294a2f93554e4
+SHA256: bde82cef566a898f2c04a9ea5a1e401b8cdcd92df4be6d2413fb1b7743925f5b
+
 Package: libertylite
 Name: Liberty Lite
 Depends: mobilesubstrate, preferenceloader, applist
