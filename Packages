@@ -27,10 +27,10 @@ Section: Tweaks
 Icon: file:///Library/PreferenceBundles/LibertyPref.bundle/LibertyPref.png
 Version: 0.2.12
 Filename: dl/libertylite_0.2.12_iphoneos-arm.deb
-Size: 95782
-MD5sum: 10e02f03149ea43593397b74611a493f
-SHA1: 530aa77306b8cffac7d6b0df4540c2424eda99ed
-SHA256: 97e64e1454928accd43a9824228b7116677d458e661e23b83116993334d8e2c4
+Size: 95792
+MD5sum: 459421d7cac971e444a01cdb0dcae307
+SHA1: 7d3e62d2c883fc1893274bf31d5eb4fb5e4e79b4
+SHA256: 3749d48dc34b20d60c00eee910d6feba2bd637d7c3c88df3f5f2e43a217db009
 
 Package: com.spark.libsparkapplist
 Name: LibSPARKAppLiST
