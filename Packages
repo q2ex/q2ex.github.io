@@ -1,3 +1,22 @@
+Conflicts: us.hackulo.appsync50, us.hackulo.appsync50plus, com.hackyouriphone.appsync7, com.teiron.ppsync, appsync50plus2.25pp, com.linusyang.appsync, com.sull.appsyncunified, com.sull.appsyncunifiedbeta, com.xsellize.appsync50, com.xsellize.appsync50plus, appsync50plus.178, appsync50plus2.178, cydia.net.angelxwind.appsyncunified, science.xnu.substitute, com.ex.substitute (<< 0.0.13), com.ex.libsubstitute (<= 0.1.0-coolstar)
+Depends: firmware (>= 5.0), mobilesubstrate (>= 0.9.5100), firmware (<= 13.3.1)
+Depiction: Enables the ability to install unsigned/fakesigned iOS applications.
+Maintainer: Karen/あけみ <karen@akemi.ai>
+Provides: appsync
+Replaces: us.hackulo.appsync50
+Package: net.angelxwind.appsyncunified
+Name: AppSync Unified
+Architecture: iphoneos-arm
+Description: Enables the ability to install unsigned/fakesigned iOS applications.
+Section: Tweaks
+Author: Linus Yang, Karen/あけみ <karen@akemi.ai>
+Version: 65.0
+Filename: dl/net.angelxwind.appsyncunified_65.0_iphoneos-arm.deb
+Size: 47954
+MD5sum: 6fa9867a9ce4a004cb2cef958de13bdd
+SHA1: 29e3c423e21c6b8e0cc39e6d42c1114a202ac221
+SHA256: 703f41b71e35610a390e68b5b763f1c00f6745192668296dbd0c61bb9622ef8e
+
 Name: libColorPicKer
 Package: org.thebigboss.libcolorpicker
 Priority: optional
