@@ -23,6 +23,28 @@ Priority: optional
 Depends: firmware (>= 6.0), mobilesubstrate (>= 0.9.5000)
 Provides: me.nepeta.libcolorpicker
 Replaces: me.nepeta.libcolorpicker
+Version: 1.6.6+debug
+Architecture: iphoneos-arm
+Description: Color PicKer Library for Developers.
+Depiction: Color PicKer Library for Developers.
+Sponsor: thebigboss.org <http://thebigboss.org>
+Maintainer: BigBoss <bigboss@thebigboss.org>
+Author: PixelFire <pixelfiredev@helpful.io>
+dev: pixelfiredev
+Section: Development
+Tag: purpose::library, role::developer, compatible::ios7, compatible::ios8, compatible::ios9, compatible::ios10, compatible::ios11, compatible::ios12, compatible::ios13, cydia::obsolete
+Filename: dl/org.thebigboss.libcolorpicker_1.6.6+debug_iphoneos-arm.deb
+Size: 191472
+MD5sum: acf90670a108ae4d5b1f8549aa8b940a
+SHA1: db93b1c34a4a4c6ba0176d8f5a8e9c24eb64ceb4
+SHA256: 29d22288ccddc1a36269db614d47ff42fbbe2c59a0ae283e29889632ee16efb3
+
+Name: libColorPicKer
+Package: org.thebigboss.libcolorpicker
+Priority: optional
+Depends: firmware (>= 6.0), mobilesubstrate (>= 0.9.5000)
+Provides: me.nepeta.libcolorpicker
+Replaces: me.nepeta.libcolorpicker
 Version: 1.6.5+debug
 Architecture: iphoneos-arm
 Description: Color PicKer Library for Developers.
