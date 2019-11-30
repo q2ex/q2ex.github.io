@@ -1,3 +1,18 @@
+Package: com.spark.libsparkapplist
+Name: LibSPARKAppLiST
+Architecture: iphoneos-arm
+Description: AppLiST Alternative.
+Maintainer: SPARK
+Author: SPARK
+Section: System
+Tag: role::developer
+Version: 1.0.4+debug
+Filename: dl/com.spark.libsparkapplist_1.0.4+debug_iphoneos-arm.deb
+Size: 69170
+MD5sum: cce2df0af927b850bd92658bf11aa8a6
+SHA1: b66bb51f36236953ce8dc6f28bd012710487ceff
+SHA256: f31b3a5e7f730400cd9bd86f95992eeb09f1633aba9ffab104254b337678157e
+
 Conflicts: us.hackulo.appsync50, us.hackulo.appsync50plus, com.hackyouriphone.appsync7, com.teiron.ppsync, appsync50plus2.25pp, com.linusyang.appsync, com.sull.appsyncunified, com.sull.appsyncunifiedbeta, com.xsellize.appsync50, com.xsellize.appsync50plus, appsync50plus.178, appsync50plus2.178, cydia.net.angelxwind.appsyncunified, science.xnu.substitute, com.ex.substitute (<< 0.0.13), com.ex.libsubstitute (<= 0.1.0-coolstar)
 Depends: firmware (>= 5.0), mobilesubstrate (>= 0.9.5100), firmware (<= 13.3.1)
 Depiction: Enables the ability to install unsigned/fakesigned iOS applications.
