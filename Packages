@@ -1,23 +1,24 @@
-Name: Succession
-Package: successionrestore
+Name: libColorPicKer
+Package: org.thebigboss.libcolorpicker
 Priority: optional
-Depends: firmware (>= 11.0), firmware-sbin, rsync
-Version: 1.3.8
+Depends: firmware (>= 6.0), mobilesubstrate (>= 0.9.5000)
+Provides: me.nepeta.libcolorpicker
+Replaces: me.nepeta.libcolorpicker
+Version: 1.6.7+debug
 Architecture: iphoneos-arm
-Description: Restore Your iPhone Clean.
-Depiction: Restore Your iPhone Clean.
+Description: Color PicKer Library for Developers.
+Depiction: Color PicKer Library for Developers.
 Sponsor: thebigboss.org <http://thebigboss.org>
 Maintainer: BigBoss <bigboss@thebigboss.org>
-Author: Samg_is_a_Ninja <stgardner4@att.net>
-Section: Utilities
-Tag: purpose::uikit, compatible::ios11, compatible::ios12
-dev: stgardner4
-Icon: file:///Applications/SuccessionRestore.app/AppIcon20x20@3x.png
-Filename: dl/successionrestore_1.3.8_iphoneos-arm.deb
-Size: 1246204
-MD5sum: e26b50ebea78c39638bcf4e308b7befb
-SHA1: cd914e86a1f605886ecf70b3abc00f8d5200d75c
-SHA256: 3b720f8a70489a5b4fb2cd40c191c2bfaffda301774d9b5f692d564578727c3d
+Author: PixelFire <pixelfiredev@helpful.io>
+dev: pixelfiredev
+Section: Development
+Tag: purpose::library, role::developer, compatible::ios7, compatible::ios8, compatible::ios9, compatible::ios10, compatible::ios11, compatible::ios12, compatible::ios13, cydia::obsolete
+Filename: dl/org.thebigboss.libcolorpicker_1.6.7+debug_iphoneos-arm.deb
+Size: 191438
+MD5sum: ca7bb291afc9f794fbed60b570435c93
+SHA1: 19c6e70b1d4bca23567860062a5d61cff024fb3a
+SHA256: 4a708e9fa117a88b1bf506916af1c89dab8e7e8114336c85ccf9a08c2d2f4054
 
 Package: com.spark.libsparkapplist
 Name: libSPARKAppLiST
