@@ -1,3 +1,19 @@
+Package: mcpatch
+Name: MCPatch
+Depends: mobilesubstrate
+Architecture: iphoneos-arm
+Description: Allows installation of configuration files regardless of target device type!
+Depiction: Allows installation of configuration files regardless of target device type!
+Maintainer: XsF1re
+Author: XsF1re
+Section: Utilities
+Version: 0.0.1
+Filename: dl/mcpatch_0.0.1_iphoneos-arm.deb
+Size: 3428
+MD5sum: 5cfa2b076a27bc778842ab0ea3318938
+SHA1: ef28c95827bcea1e89a6ed4823363f182abf4d93
+SHA256: adf63f2804552bc9b7beda0e5e455ab4bbd45f25875d1b0c33d00032d2253026
+
 Name: libColorPicKer
 Package: org.thebigboss.libcolorpicker
 Priority: optional
