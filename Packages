@@ -1,3 +1,21 @@
+Name: HideShareApp
+Package: hideshareapp
+Priority: optional
+Depends: mobilesubstrate, firmware (>= 11.0)
+Version: 0.0.1
+Architecture: iphoneos-arm
+Description: Hide “Share App” Option on 3D Touch.
+Depiction: Hide “Share App” Option on 3D Touch.
+Maintainer: BigBoss
+Author: lenglengyu
+Section: Tweaks
+Tag: purpose::extension, compatible::ios10, compatible::ios11, compatible::ios12, compatible::ios13
+Filename: dl/HideShareApp_0.0.1_iphoneos-arm.deb
+Size: 5864
+MD5sum: a2827e27727bba599c2c441e6bc9a7c8
+SHA1: c3cae01251c4e7aadabc7edaeee75ff73339d23d
+SHA256: dd9e1fb4f306fbe543c837bee3c8541f9b5051a20bbb1d272e6b732efd783d25
+
 Package: mcpatch
 Name: MCPatch
 Depends: mobilesubstrate
