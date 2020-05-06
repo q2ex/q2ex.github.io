@@ -1,3 +1,40 @@
+Package: applist
+Name: AppLiST
+Architecture: iphoneos-arm
+Description: Allow extensions to read the list of installed apps
+Maintainer: Ryan Petrich <rpetrich@gmail.com>
+Author: Ryan Petrich <rpetrich@gmail.com>
+Depends: mobilesubstrate (>= 0.9.5000), firmware (>= 3.0), com.rpetrich.rocketbootstrap (>= 1.0.7~beta3) | firmware (<< 7.0)
+Conflicts: com.a3tweaks.polus (<< 2.0.7)
+Section: System
+Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=AppListDp
+dev: rpetrich
+Version: 1.5.16~beta1-debug
+Filename: dl/applist_1.5.16~beta1-debug_iphoneos-arm.deb
+MD5sum: 7f1ed8ae65a764fdfa166b21b2afb08d
+SHA1: 402c5a0fd3d39784e3407c6de13120239e20c61d
+SHA256: c6b56942eea73307e92f5324ca8444c9c7ff714a14afc45827be1aac395cf710
+Size: 187604
+
+Package: com.rpetrich.rocketbootstrap
+Depends: mobilesubstrate (>= 0.9.5000), firmware (>= 3.0)
+Name: ROCKetBootStrap
+Architecture: iphoneos-arm
+Description: Support library allowing tweaks to communicate with sandboxed processes.
+Depiction: https://www.rpetrich.com/cydia/rocketbootstrap/beta/
+Maintainer: BigBoss <bigboss@thebigboss.org>
+Author: Ryan Petrich <rpetrich+rocketbootstrap@gmail.com>
+Sponsor: thebigboss.org <http://thebigboss.org>
+Section: Tweaks
+dev: rpetrich
+Tag: purpose::extension, role::developer
+Version: 1.0.9
+Filename: dl/com.rpetrich.rocketbootstrap_1.0.9_iphoneos-arm.deb
+MD5sum: 21652e0d02ecdc365be37a466db83f26
+SHA1: 4bb903442d564464ac062597edcd0be556273a65
+SHA256: 6ddb5e2a27fdd69c4145e9a1a7fa9274721f0cf059fe1dca2573c32a41fa6394
+Size: 67018
+
 Package: com.exile90.icleanerpro
 Version: 7.8.0
 Architecture: iphoneos-arm
