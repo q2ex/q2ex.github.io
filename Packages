@@ -1,3 +1,23 @@
+Package: com.exile90.icleanerpro
+Version: 7.8.2
+Architecture: iphoneos-arm
+Maintainer: Ivano Bilenchi <support@ib-soft.net>
+Depends: firmware (>= 4.0), findutils, apt | apt7
+Conflicts: org.altervista.exilecom.icleaner
+Replaces: org.altervista.exilecom.icleaner
+Filename: dl/iCleanerPro_7.8.2.deb
+Size: 6557578
+MD5sum: 2967fdbb6c3c65b7a1d00523136e7b58
+SHA1: 0eed6fcaf5e77dc5338e5b9da01d0e8786d662f1
+SHA256: 4e2f3600be5bc7253bdc890fe156d75a2e697a6e5404f549a01f65917d01f8c4
+Section: Utilities
+Homepage: http://ib-soft.net/icleaner
+Description: The first real iOS system cleaner & optimizer
+Author: Ivano Bilenchi <support@ib-soft.net>
+Depiction: http://ib-soft.net/depictions/?pkgId=com.exile90.icleanerpro
+Icon: file:///Applications/iCleaner.app/Icon.png
+Name: iCleaner Pro
+
 Package: applist
 Name: AppLiST
 Architecture: iphoneos-arm
