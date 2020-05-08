@@ -1,3 +1,21 @@
+Package: com.spark.libsparkapplist
+Name: libSPARKAppLiST
+Architecture: iphoneos-arm
+Description: AppLiST Alternative.
+Maintainer: SPARK
+Author: SPARK
+Section: System
+Tag: purpose::extension, role::developer
+Version: 1.0.7
+Depiction: AppLiST Alternative.
+SileoDepiction: AppLiST Alternative.
+Icon: https://sparkdev.me/package-logo/com.spark.libsparkapplist
+Filename: dl/com.spark.libsparkapplist_1.0.7_iphoneos-arm.deb
+Size: 54666
+MD5sum: 8e3fdec4a459afe18d8076d87d38ae36
+SHA1: 089dd1fe79be7792138b9fa7dda5d718ee850866
+SHA256: d08d977f6e8578aa8f1e696317af504421d79137c99fa89acc13aee41d3ea750
+
 Package: com.exile90.icleanerpro
 Version: 7.8.2
 Architecture: iphoneos-arm
