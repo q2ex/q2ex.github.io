@@ -1,3 +1,20 @@
+Package: applist
+Name: AppLiST
+Architecture: iphoneos-arm
+Description: Allow extensions to read the list of installed apps.
+Maintainer: Ryan Petrich <rpetrich@gmail.com>
+Author: Ryan Petrich <rpetrich@gmail.com>
+Depends: mobilesubstrate (>= 0.9.5000), firmware (>= 3.0), com.rpetrich.rocketbootstrap (>= 1.0.7~beta3) | firmware (<< 7.0)
+Conflicts: com.a3tweaks.polus (<< 2.0.7)
+Section: System
+dev: rpetrich
+Version: 1.5.16+debug
+Filename: dl/applist_1.5.16+debug_iphoneos-arm.deb
+Size: 186800
+MD5sum: ab1ca941a13ac384a02c34806a3fdb81
+SHA1: 8a750ef58f45644b45fda5d24226035b21716059
+SHA256: f24acf9321bdf7720f1eb1c47062c8e782c4caac636a9a2f1c8ca01e71e6db95
+
 Package: filza
 Name: Filza
 Depends: zip, unzip, gzip, unrar, p7zip
