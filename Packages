@@ -1,3 +1,20 @@
+Package: filza
+Name: Filza
+Depends: zip, unzip, gzip, unrar, p7zip
+Conflicts: com.tigisoftware.filza, com.tigisoftware.filza64bit
+Architecture: iphoneos-arm
+Description: File Manager for iPhone, iPad, iPod Touch. Supports iOS 7 More. This Special Version Only Supports 64 bit Devices.
+Maintainer: TIGI Software
+Author: TIGI Software
+Section: Utilities
+Priority: important
+Version: 3.7.5-12
+Filename: dl/filza_3.7.5-12_iphoneos-arm.deb
+Size: 8614370
+MD5sum: ebbe8897f5a68fdd36d3dcb5c250958c
+SHA1: 2b40638185d2240b88f613be4873175e06624880
+SHA256: 1cec849f0b918e811e3fa652821d624e1e7ff76fd87d4b9a8dcaacf0f36c7e27
+
 Package: com.rpetrich.rocketbootstrap
 Depends: mobilesubstrate (>= 0.9.5000), firmware (>= 3.0)
 Name: ROCKetBootStrap
