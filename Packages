@@ -1,3 +1,40 @@
+Package: com.rpetrich.rocketbootstrap
+Depends: mobilesubstrate (>= 0.9.5000), firmware (>= 3.0)
+Name: ROCKetBootStrap
+Architecture: iphoneos-arm
+Description: Support Library Allowing Tweaks To Communicate With Sandboxed Processes.
+Depiction: https://www.rpetrich.com/cydia/rocketbootstrap/beta/
+Maintainer: BigBoss <bigboss@thebigboss.org>
+Author: Ryan Petrich <rpetrich+rocketbootstrap@gmail.com>
+Sponsor: thebigboss.org <http://thebigboss.org>
+Section: Tweaks
+dev: rpetrich
+Tag: purpose::extension, role::developer
+Version: 1.0.9+debug
+Filename: dl/com.rpetrich.rocketbootstrap_1.0.9+debug_iphoneos-arm.deb
+MD5sum: 0956e4e7c75d7adef99d3ecae392c501
+SHA1: efb584b2242f3c8003e05d7992f721080a664792
+SHA256: 6d86783e61bada95b772aa085859bad5742bccd55b8799edb121e6354bfcf233
+Size: 66988
+
+Package: com.spark.libsparkapplist
+Name: libSPARKAppLiST
+Architecture: iphoneos-arm
+Description: AppLiST Alternative.
+Maintainer: SPARK
+Author: SPARK
+Section: System
+Tag: purpose::extension, role::developer
+Version: 1.0.9
+Depiction: AppLiST Alternative.
+SileoDepiction: AppLiST Alternative.
+Icon: https://sparkdev.me/package-logo/com.spark.libsparkapplist
+Filename: dl/com.spark.libsparkapplist_1.0.9_iphoneos-arm.deb
+Size: 54750
+MD5sum: 55b6c318a237cedb03da8dd950b90fdc
+SHA1: f9555415f445b9f70d667ece2c454121b4adef39
+SHA256: ed0feb4e0eebdeeb65eadf83567eedfd54cfada2b80b622caf092ee5a1e4ed86
+
 Package: applist
 Name: AppLiST
 Architecture: iphoneos-arm
