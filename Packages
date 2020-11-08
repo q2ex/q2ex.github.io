@@ -1,3 +1,20 @@
+Package: filza
+Name: Filza
+Depends: zip, unzip, gzip, unrar, p7zip
+Conflicts: com.tigisoftware.filza, com.tigisoftware.filza64bit
+Architecture: iphoneos-arm
+Description: File Manager for iPhone, iPad, iPod Touch. Supports iOS 7 More. This Special Version Only Supports 64 bit Devices.
+Maintainer: TIGI Software
+Author: TIGI Software
+Section: Utilities
+Priority: important
+Version: 3.8.0-24
+Filename: dl/filza_3.8.0-24_iphoneos-arm.deb
+Size: 8360892
+MD5sum: 57844171b229ed608cb0d32942402efb
+SHA1: be2b7bcd91c30e70ebea9259b28fe5502fabe3d7
+SHA256: 72ec9f7214745a05152a0508ef74af1d26b2279fdfa3844c3f33693373b856e3
+
 Name: libColorPicKer
 Package: org.thebigboss.libcolorpicker
 Priority: optional
