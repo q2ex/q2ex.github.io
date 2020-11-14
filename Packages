@@ -1,3 +1,23 @@
+Package: com.exile90.icleanerpro
+Version: 7.9.0
+Architecture: iphoneos-arm
+Maintainer: Ivano Bilenchi <support@ib-soft.net>
+Depends: firmware (>= 4.0), findutils, apt | apt7
+Conflicts: org.altervista.exilecom.icleaner
+Replaces: org.altervista.exilecom.icleaner
+Filename: dl/com.exile90.icleanerpro_7.9.0_iphoneos-arm.deb
+Size: 4772402
+MD5sum: 0ce90140ef3ebb38c8fdecda21f9eb7c
+SHA1: 4e9bf12c53b8e2ac07c2d4e5d21219739fe9f2ba
+SHA256: 7b35413010d2afc0c3df2d36d51aca3115a88a53bb2122fa52558e89e3205195
+Section: Utilities
+Homepage: http://ib-soft.net/icleaner
+Description: The first real iOS system cleaner & optimizer
+Author: Ivano Bilenchi <support@ib-soft.net>
+Depiction: http://ib-soft.net/depictions/?pkgId=com.exile90.icleanerpro
+Icon: file:///Applications/iCleaner.app/Icon.png
+Name: iCleaner Pro
+
 Package: filza
 Name: Filza
 Depends: zip, unzip, gzip, unrar, p7zip
