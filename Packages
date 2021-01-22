@@ -1,3 +1,23 @@
+Package: com.rpetrich.rocketbootstrap
+Depends: mobilesubstrate (>= 0.9.5000), firmware (>= 3.0)
+Name: ROCKetBootStrap
+Architecture: iphoneos-arm
+Description: Support Library Allowing Tweaks To Communicate With Sandboxed Processes.
+Depiction: https://www.rpetrich.com/cydia/rocketbootstrap/beta/
+Homepage: https://www.rpetrich.com/cydia/rocketbootstrap/beta/
+Maintainer: BigBoss <bigboss@thebigboss.org>
+Author: Ryan Petrich <rpetrich+rocketbootstrap@gmail.com>
+Sponsor: thebigboss.org <http://thebigboss.org>
+Section: Tweaks
+dev: rpetrich
+Tag: purpose::extension, role::developer
+Version: 1.0.10~beta1+debug
+Filename: dl/com.rpetrich.rocketbootstrap_1.0.10~beta1+debug_iphoneos-arm.deb
+MD5sum: cd697e32e2eaa1dab319e7c4988b22ec
+SHA1: f1942f27815407eb3e6bcd24b5008d8e794ff05d
+SHA256: 9a71f302547bf0dfd25015236600d583925ffea2dbb95072e0ddd6fc7bfff470
+Size: 68678
+
 Package: com.exile90.icleanerpro
 Version: 7.9.0
 Architecture: iphoneos-arm
