@@ -1,3 +1,20 @@
+Package: filza
+Name: Filza
+Depends: zip, unzip, gzip, unrar, p7zip
+Conflicts: com.tigisoftware.filza, com.tigisoftware.filza64bit
+Architecture: iphoneos-arm
+Description: File Manager for iPhone, iPad, iPod Touch. Supports iOS 7 More. This Special Version Only Supports 64 bit Devices.
+Maintainer: TIGI Software
+Author: TIGI Software
+Section: Utilities
+Priority: important
+Version: 3.8.2-6
+Filename: dl/filza_3.8.2-6_iphoneos-arm.deb
+Size: 8387264
+MD5sum: f3ce42fc1e5e7ead70eaeb231dc6c0d8
+SHA1: 4098012512e7ddc2b68405ab8449805551097280
+SHA256: 8f348905719a2fc3d514ce2914223566b40e4f85222f8771517237d42e6bf393
+
 Package: com.exile90.icleanerpro
 Version: 7.9.1
 Architecture: iphoneos-arm
