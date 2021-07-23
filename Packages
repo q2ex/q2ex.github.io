@@ -797,17 +797,17 @@ Description: wifi & data traffic Notification widget
 Icon: file:///Library/PreferenceBundles/DataMeterSettings.bundle/icon@2x.png
 Name: DATAMeter Lite
 
-Package: io.github.q2ex.wechatredenvelops
+Package: wechatredenvelops
 Version: 1.1-debug
 Architecture: iphoneos-arm
 Maintainer: Robert John
 Pre-Depends: dpkg (>= 1.14.25-8)
 Depends: firmware (>= 11)
-Filename: dl/io.github.q2ex.wechatredenvelops_1.1-debug_iphoneos-arm.deb
-Size: 56364
-MD5sum: c63340b62f7ed872eb1d1512da8fc001
-SHA1: 2148528edbe07371f3ae923d0b40127e2067b54a
-SHA256: 29a4be409fe4e6c6b7af2fe629d764ddf22aa5eb73dc777f31104b6132bf9a7e
+Filename: dl/wechatredenvelops_1.1-debug_iphoneos-arm.deb
+Size: 55982
+MD5sum: e57dc0e16d4de92016bc747e91a495ba
+SHA1: 49974cd9af2eac1e31cf9efa61d9f884223271d7
+SHA256: 119e656424645251289731a76b52fc2047d719e47e7fd0bad48c09a0ed0f53e8
 Section: Tweaks
 Priority: important
 Description: WEChat automatic acquisition red envelope.
