@@ -11,7 +11,6 @@
             box-sizing: border-box;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
-
         :root {
             --bg-main: #f5f5f7;
             --bg-container: #ffffff;
@@ -32,11 +31,9 @@
             --radius-sm: 10px;
             --radius-md: 16px;
             --radius-lg: 20px;
-            /* 新增加载动画颜色变量 */
             --loading-border: rgba(134, 134, 139, 0.3);
             --loading-top: var(--accent);
         }
-
         [data-theme="dark"] {
             --bg-main: #1c1c1e;
             --bg-container: #2c2c2e;
@@ -52,11 +49,9 @@
             --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
             --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.25);
             --shadow-active: inset 0 2px 4px rgba(0, 0, 0, 0.2);
-            /* 深色模式加载动画颜色适配 */
             --loading-border: rgba(134, 134, 139, 0.3);
             --loading-top: var(--accent);
         }
-
         body {
             background: var(--bg-main);
             padding: 20px;
@@ -69,7 +64,6 @@
             justify-content: center;
             transition: background 0.3s ease;
         }
-
         .container {
             background: var(--bg-container);
             border-radius: var(--radius-lg);
@@ -79,7 +73,6 @@
             transition: all 0.3s ease;
             margin: 20px 0;
         }
-
         h1 {
             font-size: 22px;
             color: var(--text-primary);
@@ -88,7 +81,6 @@
             margin-bottom: 24px;
             letter-spacing: -0.3px;
         }
-
         .tab-header {
             display: flex;
             gap: 8px;
@@ -117,28 +109,23 @@
             background: var(--accent-active);
             box-shadow: var(--shadow-active);
         }
-
         .tab-content {
             display: none;
         }
         .tab-content.active {
             display: block;
         }
-
         .function-group {
             margin-bottom: 20px;
         }
-
         .input-wrapper {
             position: relative;
             width: 100%;
             margin-bottom: 16px;
         }
-
         #pingIpInput {
             width: 100%;
             padding: 14px 16px;
-            padding-right: 40px;
             background: var(--bg-input);
             border: 1px solid transparent;
             border-radius: var(--radius-md);
@@ -152,32 +139,9 @@
             border-color: var(--accent);
             background: var(--bg-card);
         }
-
         #clearIpBtn {
-            position: absolute;
-            right: 12px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: transparent;
-            border: none;
-            color: var(--text-secondary);
-            font-size: 20px;
-            cursor: pointer;
-            width: 24px;
-            height: 24px;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            transition: color 0.2s ease;
+            display: none !important;
         }
-        #clearIpBtn.active {
-            display: flex;
-        }
-        #clearIpBtn:hover {
-            color: var(--text-primary);
-        }
-
-        /* 增强苹果原生点击反馈按钮 */
         .btn {
             display: block;
             width: 100%;
@@ -209,7 +173,6 @@
             box-shadow: none;
             transform: none;
         }
-
         .status {
             margin: 8px 0;
             text-align: center;
@@ -220,7 +183,6 @@
             align-items: center;
             justify-content: center;
         }
-
         .result-box {
             margin-top: 12px;
             padding: 20px 16px;
@@ -237,7 +199,6 @@
             opacity: 1;
             transform: translateY(0);
         }
-
         .result-item {
             margin-bottom: 12px;
             text-align: center;
@@ -245,28 +206,24 @@
         .result-item:last-child {
             margin-bottom: 0;
         }
-
         .result-label {
             font-size: 13px;
             color: var(--text-secondary);
             margin-bottom: 4px;
             display: block;
         }
-
         .result-value {
             font-size: 16px;
             color: var(--text-primary);
             font-weight: 500;
             word-break: break-all;
         }
-
         #publicIp {
             cursor: pointer;
             text-decoration: underline dotted;
             text-underline-offset: 3px;
             color: var(--accent);
         }
-
         .nat-type, .ipv6-status {
             display: inline-block;
             padding: 6px 14px;
@@ -275,7 +232,6 @@
             font-weight: 500;
             margin-top: 6px;
         }
-
         .nat-fullcone {
             background: rgba(52, 199, 89, 0.1);
             color: var(--success);
@@ -296,7 +252,6 @@
             background: rgba(255, 59, 48, 0.1);
             color: var(--danger);
         }
-
         .ipv6-connected {
             background: rgba(52, 199, 89, 0.1);
             color: var(--success);
@@ -305,8 +260,6 @@
             background: rgba(255, 59, 48, 0.1);
             color: var(--danger);
         }
-
-        /* 错误提示文字改为粗体 */
         .error-desc {
             font-size: 13px;
             color: var(--danger);
@@ -318,8 +271,6 @@
         .error-desc.show {
             display: block;
         }
-
-        /* IP地理位置提示样式 - 移除顶部横线 */
         .geo-tip {
             width: 100%;
             text-align: center;
@@ -329,8 +280,11 @@
             margin-top: 10px;
             width: 100%;
         }
-
-        /* 主题适配的加载动画 */
+        .ip-version-tag {
+            color: var(--accent);
+            font-weight: 500;
+            margin-left: 8px;
+        }
         .loading {
             display: inline-block;
             width: 18px;
@@ -346,7 +300,6 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-
         @media (max-width: 400px) {
             body {
                 padding: 16px;
@@ -361,7 +314,6 @@
                 font-size: 14px;
             }
         }
-
         @supports (bottom: env(safe-area-inset-bottom)) {
             body {
                 padding-bottom: calc(20px + env(safe-area-inset-bottom));
@@ -372,13 +324,11 @@
 <body>
     <div class="container">
         <h1> iRouter Tools</h1>
-
         <div class="tab-header">
             <button class="tab-btn active" onclick="switchTab('nat-tab')">NAT</button>
             <button class="tab-btn" onclick="switchTab('ping-tab')">Ping</button>
             <button class="tab-btn" onclick="switchTab('ipv6-tab')">IPv6</button>
         </div>
-
         <div class="tab-content active" id="nat-tab">
             <div class="function-group">
                 <button id="natDetectBtn" class="btn" onclick="startNATDetect()">Start NAT Detection</button>
@@ -400,11 +350,10 @@
                 </div>
             </div>
         </div>
-
         <div class="tab-content" id="ping-tab">
             <div class="function-group">
                 <div class="input-wrapper">
-                    <input type="text" id="pingIpInput" value="bing.com">
+                    <input type="text" id="pingIpInput" value="bing.com" onclick="selectInputContent(this)">
                     <button id="clearIpBtn" title="Clear Content">×</button>
                 </div>
                 <button id="pingDetectBtn" class="btn" onclick="startPingDetect()">Start Ping Detection</button>
@@ -426,7 +375,6 @@
                 </div>
             </div>
         </div>
-
         <div class="tab-content" id="ipv6-tab">
             <div class="function-group">
                 <button id="ipv6DetectBtn" class="btn" onclick="startIPv6Detect()">Start IPv6 Detection</button>
@@ -445,14 +393,10 @@
             </div>
         </div>
     </div>
-
-    <!-- 底部IP地理位置显示区域 -->
     <div class="geo-tip" id="geoTip"></div>
-
     <script>
         const body = document.body;
         let isIpVisible = false;
-
         function initThemeBySystem() {
             const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
             body.setAttribute('data-theme', systemDark ? 'dark' : 'light');
@@ -469,7 +413,6 @@
             document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
             document.getElementById(tabId).classList.add('active');
             event.target.classList.add('active');
-            if(tabId === 'ping-tab') toggleClearBtn();
         }
 
         const pingIpInput = document.getElementById('pingIpInput');
@@ -478,33 +421,24 @@
         const pingResult = document.getElementById('pingResult');
         const pingErrorDesc = document.getElementById('pingErrorDesc');
 
-        function toggleClearBtn() {
-            clearIpBtn.classList.toggle('active', pingIpInput.value.trim() !== '');
+        function selectInputContent(input) {
+            if (input.value.trim() !== '') {
+                input.select();
+            }
         }
 
-        clearIpBtn.addEventListener('click', () => {
-            pingIpInput.value = '';
-            pingStatus.textContent = '';
-            pingResult.classList.remove('show');
-            pingErrorDesc.classList.remove('show');
-            pingIpInput.focus();
-            toggleClearBtn();
-        });
-
-        pingIpInput.addEventListener('input', toggleClearBtn);
-
         const publicIpEl = document.getElementById('publicIp');
+        // 修改maskIP函数，直接返回完整IP，去掉*掩码
         function maskIP(ip) {
             if (ip === '-' || ip === 'Unavailable' || !ip.includes('.')) return ip;
             const segments = ip.split('.');
-            return segments.length === 4 ? `${segments[0]}.*.*.${segments[3]}` : ip;
+            return segments.length === 4 ? segments.join('.') : ip;
         }
-
         function toggleIpVisibility() {
             const fullIp = publicIpEl.dataset.fullIp;
             if (!fullIp || fullIp === '-' || fullIp === 'Unavailable') return;
             isIpVisible = !isIpVisible;
-            publicIpEl.textContent = isIpVisible ? fullIp : maskIP(fullIp);
+            publicIpEl.textContent = maskIP(fullIp);
         }
 
         let natPeerConnection;
@@ -525,12 +459,10 @@
                 desc: 'Failed to obtain network mapping information',
                 isError: true
             };
-
             const srflxCandidates = candidates.filter(c => c.type === 'srflx' && c.address.includes('.'));
             if (srflxCandidates.length === 0) {
                 return result;
             }
-
             const firstSrflx = srflxCandidates[0];
             result.publicIp = firstSrflx.address;
             result.publicPort = firstSrflx.port;
@@ -555,7 +487,6 @@
                 result.natType = 'Restricted Cone NAT';
                 result.natTypeClass = 'nat-restricted';
             }
-
             return result;
         }
 
@@ -588,12 +519,11 @@
                         publicPortEl.textContent = natInfo.publicPort;
                         natTypeBadgeEl.textContent = natInfo.natType;
                         natTypeBadgeEl.className = `nat-type ${natInfo.natTypeClass}`;
-                        
+
                         if (natInfo.isError) {
                             natErrorDescEl.textContent = natInfo.desc;
                             natErrorDescEl.classList.add('show');
                         }
-
                         setTimeout(() => {
                             natResultEl.classList.add('show');
                             natDetectBtn.disabled = false;
@@ -622,7 +552,6 @@
             }
         }
 
-        // 不支持WebRTC时填充natStatusEl内容
         const isNATSupported = !!(window.RTCPeerConnection || window.mozRTCPeerConnection || window.webkitRTCPeerConnection);
         if (!isNATSupported) {
             updateStatus(natStatusEl, "WebRTC is not supported");
@@ -653,7 +582,6 @@
                 const startTime = performance.now();
                 const RTCPeerConnection = window.RTCPeerConnection || window.mozRTCPeerConnection || window.webkitRTCPeerConnection;
                 const peerConn = new RTCPeerConnection({ iceServers: [{ urls: `stun:${target}:3478` }] });
-
                 const timeoutTimer = setTimeout(() => {
                     peerConn.close();
                     reject(new Error('Request timeout'));
@@ -676,10 +604,12 @@
         async function startPingDetect() {
             const target = pingIpInput.value.trim();
             pingErrorDesc.classList.remove('show');
+
             if (!target) {
                 updateStatus(pingStatus, "Please enter IP or domain");
                 return;
             }
+
             if (!isValidTarget(target)) {
                 updateStatus(pingStatus, "Invalid IP or domain format");
                 return;
@@ -729,17 +659,18 @@
                     mode: 'cors',
                     timeout: 10000
                 });
-
                 if (!response.ok) throw new Error('API response error');
                 const data = await response.json();
-                
+
                 if (data.ip && data.ip.includes(':')) {
-                    ipv6ConnectStatusEl.textContent = 'Connected ✓';
+                    // 去掉Connected后面的✓
+                    ipv6ConnectStatusEl.textContent = 'Connected';
                     ipv6ConnectStatusEl.className = 'ipv6-status ipv6-connected';
                     ipv6AddressEl.textContent = data.ip;
                 } else {
                     throw new Error('No valid IPv6 address returned');
                 }
+
                 setTimeout(() => {
                     ipv6ResultEl.classList.add('show');
                     ipv6DetectBtn.disabled = false;
@@ -750,7 +681,6 @@
                     const ipv6Promise = new Promise((resolve, reject) => {
                         let foundIPv6 = false;
                         let ipv6Addr = '';
-
                         pc.onicecandidate = (e) => {
                             if (e.candidate) {
                                 if (e.candidate.address && e.candidate.address.includes(':')) {
@@ -776,7 +706,7 @@
                     });
 
                     const ipv6Addr = await ipv6Promise;
-                    ipv6ConnectStatusEl.textContent = 'Connected ✓';
+                    ipv6ConnectStatusEl.textContent = 'Connected';
                     ipv6ConnectStatusEl.className = 'ipv6-status ipv6-connected';
                     ipv6AddressEl.textContent = ipv6Addr;
                     setTimeout(() => {
@@ -784,7 +714,8 @@
                         ipv6DetectBtn.disabled = false;
                     }, 300);
                 } catch (backupError) {
-                    ipv6ConnectStatusEl.textContent = 'Disconnected ×';
+                    // 去掉Disconnected后面的×
+                    ipv6ConnectStatusEl.textContent = 'Disconnected';
                     ipv6ConnectStatusEl.className = 'ipv6-status ipv6-disconnected';
                     ipv6AddressEl.textContent = 'Unavailable';
                     ipv6ErrorDescEl.textContent = `IPv6 check failed: ${backupError.message}`;
@@ -795,26 +726,49 @@
             }
         }
 
-        // 获取IP地理位置信息
+        // 新增：检测访问的IP版本（IPv4/IPv6）
+        async function detectIPVersion() {
+            return new Promise((resolve) => {
+                const RTCPeerConnection = window.RTCPeerConnection || window.mozRTCPeerConnection || window.webkitRTCPeerConnection;
+                const pc = new RTCPeerConnection({ iceServers: [{ urls: 'stun:stun.cloudflare.com:3478' }] });
+                let ipVersion = 'IPv4';
+                pc.onicecandidate = (e) => {
+                    if (e.candidate) {
+                        if (e.candidate.address && e.candidate.address.includes(':')) {
+                            ipVersion = 'IPv6';
+                        }
+                    }
+                };
+                pc.onicegatheringstatechange = () => {
+                    if (pc.iceGatheringState === 'complete') {
+                        pc.close();
+                        resolve(ipVersion);
+                    }
+                };
+                pc.createDataChannel('ip-version-detect');
+                pc.createOffer().then(offer => pc.setLocalDescription(offer)).catch(() => resolve('IPv4'));
+            });
+        }
+
         async function getIPGeolocation() {
             try {
                 const response = await fetch('https://ipapi.co/json/', { mode: 'cors' });
                 const data = await response.json();
-                return data.city && data.country_name ? `IP Geolocation: ${data.city}, ${data.country_name}` : 'IP Geolocation: Unavailable';
+                const geoText = data.city && data.country_name ? `IP Geolocation: ${data.city}, ${data.country_name}` : 'IP Geolocation: Unavailable';
+                // 获取IP版本并拼接
+                const ipVersion = await detectIPVersion();
+                return `${geoText} <span class="ip-version-tag">(${ipVersion})</span>`;
             } catch (err) {
-                return 'IP Geolocation: Unavailable';
+                const ipVersion = await detectIPVersion();
+                return `IP Geolocation: Unavailable <span class="ip-version-tag">(${ipVersion})</span>`;
             }
         }
 
-        // 页面加载时显示地理位置加载动画并获取数据
         window.addEventListener('load', async () => {
-            toggleClearBtn();
             const geoTip = document.getElementById('geoTip');
-            // 显示加载动画
             updateStatus(geoTip, "Loading geolocation...", true);
-            // 获取地理位置并更新
             const geoText = await getIPGeolocation();
-            updateStatus(geoTip, geoText, false);
+            geoTip.innerHTML = geoText;
         });
     </script>
 </body>
