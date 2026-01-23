@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>★ Star Tools</title>
     <style>
         * {
@@ -10,6 +10,7 @@
             padding: 0;
             box-sizing: border-box;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
         :root {
             --bg-main: #f5f5f7;
@@ -52,12 +53,41 @@
             --loading-border: rgba(134, 134, 139, 0.3);
             --loading-top: var(--accent);
         }
+        .loader-mask {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-main);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            padding-bottom: env(safe-area-inset-bottom, -webkit-env(safe-area-inset-bottom));
+        }
+        .loader-mask.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .loader-text {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-top: 20px;
+            transition: color 0.3s ease;
+        }
+        .loader-text.ready {
+            color: var(--success);
+        }
         body {
             background: var(--bg-main);
             padding: 20px;
             max-width: 580px;
             margin: 0 auto;
             min-height: 100vh;
+            -webkit-min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -72,10 +102,13 @@
             width: 100%;
             transition: all 0.3s ease;
             margin: 20px 0;
+            position: relative;
+            z-index: 1;
         }
+        /* 标题样式调整：增大字号+强调色，更醒目 */
         h1 {
-            font-size: 22px;
-            color: var(--text-primary);
+            font-size: 26px;
+            color: var(--accent);
             text-align: center;
             font-weight: 600;
             margin-bottom: 24px;
@@ -97,6 +130,7 @@
             font-weight: 500;
             cursor: pointer;
             transition: all 0.2s ease;
+            -webkit-appearance: none;
         }
         .tab-btn:hover {
             background: var(--bg-input);
@@ -133,6 +167,7 @@
             font-size: 16px;
             transition: all 0.2s ease;
             text-align: center;
+            -webkit-appearance: none;
         }
         #pingIpInput:focus {
             outline: none;
@@ -156,6 +191,7 @@
             transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
             margin-bottom: 12px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+            -webkit-appearance: none;
         }
         .btn:hover:not(:disabled) {
             background: var(--accent-hover);
@@ -300,28 +336,40 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        @media (max-width: 400px) {
+        @media (max-width: 414px) {
             body {
                 padding: 16px;
             }
             .container {
                 padding: 24px 16px;
+                margin: 10px 0;
             }
+            /* 手机端标题字号适配 */
             h1 {
-                font-size: 20px;
+                font-size: 24px;
             }
             .tab-btn {
                 font-size: 14px;
             }
         }
-        @supports (bottom: env(safe-area-inset-bottom)) {
+        @supports (bottom: env(safe-area-inset-bottom)) or (bottom: -webkit-env(safe-area-inset-bottom)) {
             body {
-                padding-bottom: calc(20px + env(safe-area-inset-bottom));
+                padding-bottom: calc(20px + env(safe-area-inset-bottom, -webkit-env(safe-area-inset-bottom)));
+            }
+            @media (max-width: 414px) {
+                body {
+                    padding-bottom: calc(16px + env(safe-area-inset-bottom, -webkit-env(safe-area-inset-bottom)));
+                }
             }
         }
     </style>
 </head>
 <body>
+    <div class="loader-mask" id="loaderMask">
+        <span class="loading"></span>
+        <div class="loader-text" id="loaderText">Initializing...</div>
+    </div>
+
     <div class="container">
         <h1>★ Star Tools</h1>
         <div class="tab-header">
@@ -331,6 +379,7 @@
         </div>
         <div class="tab-content active" id="nat-tab">
             <div class="function-group">
+                <!-- 按钮文本修改：Start NAT → Start NAT Detection -->
                 <button id="natDetectBtn" class="btn" onclick="startNATDetect()">Start NAT Detection</button>
                 <div id="natStatus" class="status"></div>
                 <div id="natResult" class="result-box">
@@ -356,6 +405,7 @@
                     <input type="text" id="pingIpInput" value="bing.com" onclick="selectInputContent(this)">
                     <button id="clearIpBtn" title="Clear Content">×</button>
                 </div>
+                <!-- 按钮文本修改：Start Ping → Start Ping Detection -->
                 <button id="pingDetectBtn" class="btn" onclick="startPingDetect()">Start Ping Detection</button>
                 <div id="pingStatus" class="status"></div>
                 <div id="pingResult" class="result-box">
@@ -377,6 +427,7 @@
         </div>
         <div class="tab-content" id="ipv6-tab">
             <div class="function-group">
+                <!-- 按钮文本修改：Start IPv6 → Start IPv6 Detection -->
                 <button id="ipv6DetectBtn" class="btn" onclick="startIPv6Detect()">Start IPv6 Detection</button>
                 <div id="ipv6Status" class="status"></div>
                 <div id="ipv6Result" class="result-box">
@@ -397,6 +448,9 @@
     <script>
         const body = document.body;
         let isIpVisible = false;
+        const loaderMask = document.getElementById('loaderMask');
+        const loaderText = document.getElementById('loaderText');
+
         function initThemeBySystem() {
             const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
             body.setAttribute('data-theme', systemDark ? 'dark' : 'light');
@@ -428,7 +482,6 @@
         }
 
         const publicIpEl = document.getElementById('publicIp');
-        // 修改maskIP函数，直接返回完整IP，去掉*掩码
         function maskIP(ip) {
             if (ip === '-' || ip === 'Unavailable' || !ip.includes('.')) return ip;
             const segments = ip.split('.');
@@ -663,7 +716,6 @@
                 const data = await response.json();
 
                 if (data.ip && data.ip.includes(':')) {
-                    // 去掉Connected后面的✓
                     ipv6ConnectStatusEl.textContent = 'Connected';
                     ipv6ConnectStatusEl.className = 'ipv6-status ipv6-connected';
                     ipv6AddressEl.textContent = data.ip;
@@ -714,7 +766,6 @@
                         ipv6DetectBtn.disabled = false;
                     }, 300);
                 } catch (backupError) {
-                    // 去掉Disconnected后面的×
                     ipv6ConnectStatusEl.textContent = 'Disconnected';
                     ipv6ConnectStatusEl.className = 'ipv6-status ipv6-disconnected';
                     ipv6AddressEl.textContent = 'Unavailable';
@@ -726,7 +777,6 @@
             }
         }
 
-        // 新增：检测访问的IP版本（IPv4/IPv6）
         async function detectIPVersion() {
             return new Promise((resolve) => {
                 const RTCPeerConnection = window.RTCPeerConnection || window.mozRTCPeerConnection || window.webkitRTCPeerConnection;
@@ -755,7 +805,6 @@
                 const response = await fetch('https://ipapi.co/json/', { mode: 'cors' });
                 const data = await response.json();
                 const geoText = data.city && data.country_name ? `IP Geolocation: ${data.city}, ${data.country_name}` : 'IP Geolocation: Unavailable';
-                // 获取IP版本并拼接
                 const ipVersion = await detectIPVersion();
                 return `${geoText} <span class="ip-version-tag">(${ipVersion})</span>`;
             } catch (err) {
@@ -764,12 +813,19 @@
             }
         }
 
-        window.addEventListener('load', async () => {
+        async function initApp() {
             const geoTip = document.getElementById('geoTip');
             updateStatus(geoTip, "Loading geolocation...", true);
             const geoText = await getIPGeolocation();
             geoTip.innerHTML = geoText;
-        });
+            loaderText.textContent = "Ready";
+            loaderText.classList.add("ready");
+            setTimeout(() => {
+                loaderMask.classList.add("hidden");
+            }, 800);
+        }
+
+        window.addEventListener('load', initApp);
     </script>
 </body>
 </html>
