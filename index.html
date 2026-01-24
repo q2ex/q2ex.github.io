@@ -263,28 +263,6 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        /* 新增重试按钮样式 */
-        .retry-btn {
-            display: block;
-            width: 120px;
-            padding: 8px 0;
-            margin: 12px auto 0;
-            border: none;
-            border-radius: var(--radius-md);
-            background: var(--accent);
-            color: #fff;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        .retry-btn:hover {
-            background: var(--accent-hover);
-        }
-        .retry-btn:active {
-            background: var(--accent-active);
-            box-shadow: var(--shadow-active);
-        }
         @media (max-width: 400px) {
             body {
                 padding: 16px;
@@ -314,11 +292,10 @@
             <button class="tab-btn" onclick="switchTab('ping-tab')">Ping</button>
             <button class="tab-btn" onclick="switchTab('ipv6-tab')">IPv6</button>
         </div>
-        <!-- NAT 标签页 - 新增重试按钮 -->
+        <!-- NAT 标签页 - 已移除重试按钮 -->
         <div class="tab-content active" id="nat-tab">
             <div class="function-group">
                 <div id="natStatus" class="status"></div>
-                <button class="retry-btn" onclick="startNATDetect()">Retry Detect</button>
                 <div id="natResult" class="result-box">
                     <div class="result-item">
                         <div class="result-label">Public Mapped IP</div>
