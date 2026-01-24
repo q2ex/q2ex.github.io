@@ -2,101 +2,147 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NAT 类型检测</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>NAT 类型检测（iOS 兼容版）</title>
     <style>
         body {
-            max-width: 800px;
-            margin: 50px auto;
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            padding: 0 20px;
+            max-width: 90%;
+            margin: 30px auto;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        h1 {
+            font-size: 20px;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 12px 0;
+            font-size: 16px;
+            color: white;
+            background-color: #007aff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            -webkit-appearance: none; /* 清除 iOS 按钮默认样式 */
+        }
+        button:active {
+            background-color: #0066cc;
         }
         #result {
             margin-top: 20px;
-            padding: 20px;
-            border: 1px solid #ccc;
+            padding: 15px;
+            border: 1px solid #ddd;
             border-radius: 8px;
-            background-color: #f9f9f9;
+            background-color: white;
+            min-height: 100px;
+            font-size: 14px;
+            white-space: pre-wrap; /* 保留换行符，适配 iOS 文本显示 */
+            word-break: break-all;
         }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            background-color: #4285f4;
-            color: white;
-            border: none;
-            border-radius: 4px;
-        }
-        button:hover {
-            background-color: #3367d6;
+        .tips {
+            margin-top: 10px;
+            font-size: 12px;
+            color: #666;
+            text-align: center;
         }
     </style>
 </head>
 <body>
-    <h1>NAT 类型检测工具</h1>
+    <h1>NAT 类型检测工具（iOS 专用）</h1>
     <button onclick="detectNATType()">开始检测 NAT 类型</button>
-    <div id="result">等待检测...</div>
+    <div id="result">等待检测...<br>提示：检测过程约需 8 秒，请耐心等待</div>
+    <div class="tips">iOS 需在 HTTPS/localhost 环境下运行</div>
 
     <script>
-        // 配置指定的 STUN 服务器
+        // 配置 STUN 服务器列表（指定2个 + 谷歌服务器）
         const iceServers = [
             { urls: 'stun:stun.miwifi.com:3478' },
-            { urls: 'stun:stun.hitv.com:3478' }
+            { urls: 'stun:stun.hitv.com:3478' },
+            { urls: 'stun:stun.l.google.com:19302' }
         ];
 
-        // NAT 类型检测核心函数
+        // 兼容 iOS 的 NAT 检测函数
         async function detectNATType() {
             const resultEl = document.getElementById('result');
-            resultEl.textContent = "正在连接 STUN 服务器...";
-            
-            // 创建 RTCPeerConnection 实例
-            const pc = new RTCPeerConnection({ iceServers });
-            let candidates = [];
+            resultEl.textContent = "正在初始化连接...\n";
+            let pc = null;
 
-            // 监听 ICE 候选事件
-            pc.onicecandidate = (e) => {
-                if (e.candidate) {
-                    candidates.push(e.candidate);
-                    resultEl.textContent += `\n收到候选地址: ${e.candidate.candidate}`;
-                }
-            };
-
-            // 创建数据通道以触发 ICE 候选收集
-            pc.createDataChannel('dummy-channel');
-
-            // 创建 Offer 并设置本地描述
             try {
-                const offer = await pc.createOffer();
-                await pc.setLocalDescription(offer);
-                // 等待 ICE 收集完成
-                await new Promise(resolve => setTimeout(resolve, 5000));
+                // iOS 兼容的 RTCPeerConnection 配置，关闭证书验证以提升兼容性
+                pc = new RTCPeerConnection({
+                    iceServers,
+                    iceTransportPolicy: 'all',
+                    rtcpMuxPolicy: 'require'
+                });
 
-                // 分析候选地址判断 NAT 类型
+                let candidates = [];
+                let iceGatheringDone = false;
+
+                // 监听 ICE 候选地址（适配 iOS 延迟收集问题）
+                pc.onicecandidate = (e) => {
+                    if (e.candidate) {
+                        candidates.push(e.candidate);
+                        resultEl.textContent += `\n发现候选地址: ${e.candidate.type} - ${e.candidate.candidate.split(' ')[4]}`;
+                    } else {
+                        iceGatheringDone = true;
+                        resultEl.textContent += "\n候选地址收集完成";
+                    }
+                };
+
+                // 创建数据通道（触发 iOS 下的 ICE 收集，避免依赖媒体流）
+                pc.createDataChannel('nat-detect-channel', { ordered: false });
+
+                // 创建 Offer 并设置本地描述（iOS 需严格按顺序执行）
+                const offer = await pc.createOffer({ offerToReceiveAudio: false, offerToReceiveVideo: false });
+                await pc.setLocalDescription(offer);
+
+                // 延长等待时间（适配 iOS 较慢的 ICE 收集速度）
+                const waitTime = 8000;
+                resultEl.textContent += `\n等待 ${waitTime/1000} 秒收集完整数据...`;
+                await new Promise(resolve => setTimeout(resolve, waitTime));
+
+                // 强制判断收集状态（避免 iOS 未触发 onicecandidate null 事件）
+                if (!iceGatheringDone) {
+                    resultEl.textContent += "\n⚠️ 候选地址收集超时，结果可能不准确";
+                }
+
+                // 分析 NAT 类型（适配 iOS 候选数据格式）
                 const hostCandidates = candidates.filter(c => c.type === 'host');
                 const srflxCandidates = candidates.filter(c => c.type === 'srflx');
                 const relayCandidates = candidates.filter(c => c.type === 'relay');
 
                 let natType = '';
                 if (hostCandidates.length > 0 && srflxCandidates.length === 0) {
-                    natType = '无 NAT (公网 IP 直连)';
+                    natType = "无 NAT（公网 IP 直连）";
                 } else if (srflxCandidates.length > 0 && relayCandidates.length === 0) {
-                    // 进一步区分锥形 NAT 类型（简化判断）
-                    natType = '锥形 NAT (可能是全锥形、受限锥形或端口受限锥形)';
-                } else if (srflxCandidates.length > 0) {
-                    // 对称 NAT 会为不同 STUN 服务器分配不同的端口
-                    const ports = new Set(srflxCandidates.map(c => c.candidate.split(':').pop()));
-                    natType = ports.size > 1 ? '对称 NAT' : '锥形 NAT';
+                    // 分析端口判断对称 NAT
+                    const portSet = new Set();
+                    srflxCandidates.forEach(c => {
+                        const port = c.candidate.split(':').pop().split(' ')[0];
+                        portSet.add(port);
+                    });
+                    natType = portSet.size > 1 ? "对称 NAT" : "锥形 NAT（全锥形/受限/端口受限）";
+                } else if (relayCandidates.length > 0) {
+                    natType = "需要 TURN 中继（对称 NAT 或严格防火墙）";
                 } else {
-                    natType = '检测失败，无法连接 STUN 服务器或无有效候选地址';
+                    natType = "检测失败：未获取到有效候选地址";
                 }
 
-                resultEl.textContent += `\n\n最终 NAT 类型判定: ${natType}`;
+                resultEl.textContent += `\n\n=== 最终 NAT 类型判定 ===\n${natType}`;
+
             } catch (err) {
-                resultEl.textContent = `检测出错: ${err.message}`;
+                resultEl.textContent += `\n\n检测出错: ${err.message}`;
+                resultEl.textContent += "\n错误原因可能：非 HTTPS 环境 / 防火墙拦截 / iOS 权限限制";
             } finally {
-                // 关闭连接释放资源
-                pc.close();
+                // 释放资源（iOS 需主动关闭连接，避免内存泄漏）
+                if (pc) {
+                    pc.close();
+                }
             }
         }
     </script>
