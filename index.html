@@ -3,334 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebRTC NAT 类型检测（多STUN验证+进度条）</title>
+    <title>NAT 类型检测</title>
     <style>
-        /* 苹果风格基础重置 */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
         body {
             max-width: 800px;
-            margin: 60px auto;
-            padding: 0 20px;
-            /* 苹果默认无衬线字体 */
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #f5f5f7;
-            color: #1d1d1f;
-        }
-        h1 {
-            font-size: 24px;
-            font-weight: 600;
-            text-align: center;
-            margin-bottom: 30px;
-            color: #1d1d1f;
-        }
-        /* 苹果风格按钮 */
-        #detectBtn {
-            display: block;
-            width: 100%;
-            padding: 14px 0;
-            font-size: 16px;
-            font-weight: 500;
-            background-color: #0071e3;
-            color: #ffffff;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: background-color 0.2s ease;
-        }
-        #detectBtn:hover {
-            background-color: #0077ed;
-        }
-        #detectBtn:disabled {
-            background-color: #e0e0e2;
-            color: #86868b;
-            cursor: not-allowed;
-        }
-        /* 苹果风格进度条 */
-        #progressContainer {
-            margin: 25px 0;
-            display: none;
-        }
-        #progressBar {
-            width: 100%;
-            height: 4px;
-            border-radius: 2px;
-            background-color: #e0e0e2;
-            /* 隐藏默认样式 */
-            -webkit-appearance: none;
-            appearance: none;
-        }
-        /* Webkit内核进度条 */
-        #progressBar::-webkit-progress-bar {
-            background-color: #e0e0e2;
-            border-radius: 2px;
-        }
-        #progressBar::-webkit-progress-value {
-            background-color: #0071e3;
-            border-radius: 2px;
-        }
-        /* Firefox进度条 */
-        #progressBar::-moz-progress-bar {
-            background-color: #0071e3;
-            border-radius: 2px;
-        }
-        #progressText {
-            margin-top: 8px;
-            font-size: 13px;
-            color: #86868b;
-            text-align: center;
-        }
-        /* 苹果风格容器 */
-        .container {
-            margin-top: 20px;
-            border-radius: 16px;
-            overflow: hidden;
-            background-color: #ffffff;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        }
-        #log, #result {
-            padding: 20px;
-            font-size: 14px;
+            margin: 50px auto;
+            font-family: Arial, sans-serif;
             line-height: 1.6;
-        }
-        #log {
-            background-color: #f9f9fb;
-            border-bottom: 1px solid #e0e0e2;
-            max-height: 300px;
-            overflow-y: auto;
-            color: #424245;
+            padding: 0 20px;
         }
         #result {
-            font-weight: 500;
-            color: #1d1d1f;
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #f9f9f9;
         }
-        /* 状态文字颜色 */
-        .public {
-            color: #34c759;
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4285f4;
+            color: white;
+            border: none;
+            border-radius: 4px;
         }
-        .private {
-            color: #ff3b30;
-        }
-        .symmetric {
-            color: #ff3b30;
-            font-weight: 600;
-        }
-        .non-symmetric {
-            color: #34c759;
-            font-weight: 600;
+        button:hover {
+            background-color: #3367d6;
         }
     </style>
 </head>
 <body>
-    <h1>WebRTC NAT 类型检测（NAT1-4+对称型验证）</h1>
-    <button id="detectBtn" onclick="detectNAT()">开始检测 NAT 类型</button>
-    <!-- 进度条容器 -->
-    <div id="progressContainer">
-        <progress id="progressBar" value="0" max="3"></progress>
-        <div id="progressText">检测进度：0/3 组</div>
-    </div>
-    <div class="container">
-        <div id="log">【日志】等待检测开始...</div>
-        <div id="result">【结果】检测结果将显示在这里...</div>
-    </div>
+    <h1>NAT 类型检测工具</h1>
+    <button onclick="detectNATType()">开始检测 NAT 类型</button>
+    <div id="result">等待检测...</div>
+
     <script>
-        // 多组STUN服务器列表（用于对比反射地址）
-        const STUN_SERVER_GROUPS = [
-            { name: "组1", urls: ["stun:stun.miwifi.com:3478", "stun:stun.hitv.com:3478"] },
-            { name: "组2", urls: ["stun:stun.l.google.com:19302", "stun:stun1.l.google.com:19302"] },
-            { name: "组3", urls: ["stun:stun.ekiga.net", "stun:stun.freeswitch.org"] }
+        // 配置指定的 STUN 服务器
+        const iceServers = [
+            { urls: 'stun:stun.miwifi.com:3478' },
+            { urls: 'stun:stun.hitv.com:3478' }
         ];
-        let peerConnection = null;
-        const resultDom = document.getElementById('result');
-        const logDom = document.getElementById('log');
-        const detectBtn = document.getElementById('detectBtn');
-        const progressContainer = document.getElementById('progressContainer');
-        const progressBar = document.getElementById('progressBar');
-        const progressText = document.getElementById('progressText');
-        // 存储每组服务器的反射地址结果
-        const srflxResults = [];
-        // 实时日志输出函数
-        function addLog(message) {
-            const time = new Date().toLocaleTimeString();
-            logDom.textContent += `[${time}] ${message}\n`;
-            logDom.scrollTop = logDom.scrollHeight;
-        }
-        // 解析候选地址（仅处理host和srflx类型）
-        function parseCandidate(candidateStr) {
-            const regex = /candidate:.+ (\d+) (\w+) (\d+) (\S+) (\d+) typ (\w+)/;
-            const match = candidateStr.match(regex);
-            if (!match) return null;
-            return {
-                protocol: match[2],
-                ip: match[4],
-                port: parseInt(match[5]),
-                type: match[6]
-            };
-        }
-        // 判断IP是否为内网IP（同时支持IPv4/IPv6）
-        function isPrivateIP(ip) {
-            if (ip.includes('.')) {
-                const ipv4PrivateRegex = /^(10\.|172\.(1[6-9]|2[0-9]|3[0-1])\.|192\.168\.|127\.|169\.254\.)/;
-                return ipv4PrivateRegex.test(ip);
-            } else if (ip.includes(':')) {
-                const ipv6PrivateRegex = /^(fe80:|fc|fd)/i;
-                return ipv6PrivateRegex.test(ip);
-            }
-            return false;
-        }
-        // 判断基础NAT类型
-        function judgeBasicNATType(hostCandidate, serverReflexiveCandidate) {
-            if (!hostCandidate || !serverReflexiveCandidate) {
-                return "无法识别 NAT 类型（候选地址不完整）";
-            }
+
+        // NAT 类型检测核心函数
+        async function detectNATType() {
+            const resultEl = document.getElementById('result');
+            resultEl.textContent = "正在连接 STUN 服务器...";
             
-            if (hostCandidate.ip === serverReflexiveCandidate.ip) {
-                return "NAT1 - 公网（无 NAT）";
-            }
-            if (hostCandidate.port === serverReflexiveCandidate.port) {
-                return "NAT2 - 全锥型 NAT";
-            }
-            if (hostCandidate.port !== serverReflexiveCandidate.port && serverReflexiveCandidate.type === "srflx") {
-                return "NAT3 - 端口受限锥型 NAT";
-            }
-            return "NAT4 - 对称型 NAT（待多服务器验证）";
-        }
-        // 验证对称型NAT：对比多组反射地址是否不同
-        function judgeSymmetricNAT(srflxResults) {
-            if (srflxResults.length < 2) return "对称型验证失败：检测组数不足";
-            const firstAddr = `${srflxResults[0].ip}:${srflxResults[0].port}`;
-            for (let i = 1; i < srflxResults.length; i++) {
-                const currAddr = `${srflxResults[i].ip}:${srflxResults[i].port}`;
-                if (currAddr !== firstAddr) {
-                    return `<span class="symmetric">验证通过：确认为对称型 NAT</span>`;
+            // 创建 RTCPeerConnection 实例
+            const pc = new RTCPeerConnection({ iceServers });
+            let candidates = [];
+
+            // 监听 ICE 候选事件
+            pc.onicecandidate = (e) => {
+                if (e.candidate) {
+                    candidates.push(e.candidate);
+                    resultEl.textContent += `\n收到候选地址: ${e.candidate.candidate}`;
                 }
-            }
-            return `<span class="non-symmetric">验证通过：非对称型 NAT</span>`;
-        }
-        // 单组STUN服务器检测函数
-        async function detectSingleGroup(stunGroup) {
-            return new Promise(async (resolve) => {
-                addLog(`=== 开始检测 ${stunGroup.name} STUN 服务器 ===`);
-                let hostCandidate = null;
-                let serverReflexiveCandidate = null;
-                peerConnection = new RTCPeerConnection({ iceServers: [{ urls: stunGroup.urls }] });
-                peerConnection.onicecandidate = (event) => {
-                    if (event.candidate) {
-                        const parsed = parseCandidate(event.candidate.candidate);
-                        if (!parsed) return;
-                        switch (parsed.type) {
-                            case "host":
-                                hostCandidate = parsed;
-                                addLog(`${stunGroup.name} 主机地址：${parsed.ip}:${parsed.port}`);
-                                break;
-                            case "srflx":
-                                serverReflexiveCandidate = parsed;
-                                addLog(`${stunGroup.name} 服务器反射地址：${parsed.ip}:${parsed.port}`);
-                                break;
-                        }
-                    }
-                };
-                // 触发ICE收集
-                const dataChannel = peerConnection.createDataChannel(`dummy-${stunGroup.name}`);
-                await peerConnection.createOffer().then(offer => peerConnection.setLocalDescription(offer));
-                // 等待收集完成
-                await new Promise(resolve => setTimeout(resolve, 4000));
-                // 释放资源
-                peerConnection.close();
-                peerConnection = null;
-                // 记录该组结果
-                const result = {
-                    groupName: stunGroup.name,
-                    host: hostCandidate,
-                    srflx: serverReflexiveCandidate,
-                    natType: judgeBasicNATType(hostCandidate, serverReflexiveCandidate)
-                };
-                if (serverReflexiveCandidate) {
-                    const isPrivate = isPrivateIP(serverReflexiveCandidate.ip);
-                    result.isPublic = !isPrivate;
-                    result.protocol = serverReflexiveCandidate.ip.includes('.') ? "IPv4" : "IPv6";
-                }
-                resolve(result);
-            });
-        }
-        // 核心多组检测逻辑
-        async function detectNAT() {
-            // 初始化状态
-            logDom.textContent = "";
-            resultDom.textContent = "【结果】检测中...";
-            detectBtn.disabled = true;
-            srflxResults.length = 0;
-            const groupResults = [];
-            // 初始化进度条
-            const totalGroups = STUN_SERVER_GROUPS.length;
-            progressBar.max = totalGroups;
-            progressBar.value = 0;
-            progressText.textContent = `检测进度：0/${totalGroups} 组`;
-            progressContainer.style.display = "block";
-            addLog("=== 多STUN服务器 NAT 检测启动 ===");
+            };
+
+            // 创建数据通道以触发 ICE 候选收集
+            pc.createDataChannel('dummy-channel');
+
+            // 创建 Offer 并设置本地描述
             try {
-                // 循环检测每组STUN服务器
-                for (let i = 0; i < totalGroups; i++) {
-                    const groupResult = await detectSingleGroup(STUN_SERVER_GROUPS[i]);
-                    groupResults.push(groupResult);
-                    if (groupResult.srflx) {
-                        srflxResults.push(groupResult.srflx);
-                    }
-                    // 更新进度条
-                    progressBar.value = i + 1;
-                    progressText.textContent = `检测进度：${i + 1}/${totalGroups} 组`;
-                    addLog(`=== ${STUN_SERVER_GROUPS[i].name} 检测完成，进度更新 ===`);
+                const offer = await pc.createOffer();
+                await pc.setLocalDescription(offer);
+                // 等待 ICE 收集完成
+                await new Promise(resolve => setTimeout(resolve, 5000));
+
+                // 分析候选地址判断 NAT 类型
+                const hostCandidates = candidates.filter(c => c.type === 'host');
+                const srflxCandidates = candidates.filter(c => c.type === 'srflx');
+                const relayCandidates = candidates.filter(c => c.type === 'relay');
+
+                let natType = '';
+                if (hostCandidates.length > 0 && srflxCandidates.length === 0) {
+                    natType = '无 NAT (公网 IP 直连)';
+                } else if (srflxCandidates.length > 0 && relayCandidates.length === 0) {
+                    // 进一步区分锥形 NAT 类型（简化判断）
+                    natType = '锥形 NAT (可能是全锥形、受限锥形或端口受限锥形)';
+                } else if (srflxCandidates.length > 0) {
+                    // 对称 NAT 会为不同 STUN 服务器分配不同的端口
+                    const ports = new Set(srflxCandidates.map(c => c.candidate.split(':').pop()));
+                    natType = ports.size > 1 ? '对称 NAT' : '锥形 NAT';
+                } else {
+                    natType = '检测失败，无法连接 STUN 服务器或无有效候选地址';
                 }
-                // 生成最终结果
-                let resultHtml = "检测完成！\n";
-                let basicNatType = "未获取";
-                let mainProtocol = "未知";
-                let mainPublicVerify = "未验证";
-                // 提取第一组的基础信息（作为参考）
-                if (groupResults[0].srflx) {
-                    basicNatType = groupResults[0].natType;
-                    mainProtocol = groupResults[0].protocol;
-                    const isPublic = groupResults[0].isPublic;
-                    mainPublicVerify = isPublic 
-                        ? `<span class="public">${mainProtocol} 真实公网IP</span>` 
-                        : `<span class="private">${mainProtocol} 内网IP</span>`;
-                    resultHtml += `参考组（${groupResults[0].groupName}）反射地址：${groupResults[0].srflx.ip}:${groupResults[0].srflx.port}\n`;
-                    resultHtml += `参考组地址验证：${mainPublicVerify}\n`;
-                    resultHtml += `基础 NAT 类型判定：${basicNatType}\n`;
-                }
-                // 对称型验证结果
-                resultHtml += `多服务器对称型 NAT 验证：${judgeSymmetricNAT(srflxResults)}\n`;
-                // 汇总所有组地址
-                resultHtml += "所有组反射地址汇总：\n";
-                groupResults.forEach(g => {
-                    const addr = g.srflx ? `${g.srflx.ip}:${g.srflx.port}` : "未获取";
-                    resultHtml += `  - ${g.groupName}：${addr}\n`;
-                });
-                resultDom.innerHTML = resultHtml;
-                addLog("=== 多STUN服务器检测正常结束 ===");
-            } catch (error) {
-                resultDom.textContent = `检测失败：${error.message}\n请检查浏览器权限或网络连接`;
-                addLog(`检测异常终止：${error.message}`);
+
+                resultEl.textContent += `\n\n最终 NAT 类型判定: ${natType}`;
+            } catch (err) {
+                resultEl.textContent = `检测出错: ${err.message}`;
             } finally {
-                if (peerConnection) {
-                    peerConnection.close();
-                    peerConnection = null;
-                }
-                detectBtn.disabled = false;
-                // 检测结束后1秒隐藏进度条
-                setTimeout(() => {
-                    progressContainer.style.display = "none";
-                }, 1000);
+                // 关闭连接释放资源
+                pc.close();
             }
-        }
-        // 浏览器兼容性检测
-        if (!window.RTCPeerConnection) {
-            resultDom.textContent = "当前浏览器不支持 WebRTC！请使用 Chrome/Edge/Safari 最新版";
-            detectBtn.disabled = true;
-            addLog("浏览器兼容性检测失败：不支持 WebRTC");
         }
     </script>
 </body>
