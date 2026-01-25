@@ -15,11 +15,9 @@
             --nat-type-bg: #9333ea;
             --nat-type-text: #ffffff;
             --result-bg: #e5e7eb; /* IP地址背景色 */
-            --result-text: #333333; /* IP地址文字色 */
-            --success-text: #10b981;
-            /* 新增苹果风格连接状态配色 - 浅色模式（柔和薄荷绿，符合iOS） */
-            --connectivity-bg: #e3fcef; 
-            --connectivity-text: #1d936f;
+            --result-text: #333333;
+            --success-text: #10b981; /* 成功文字色 */
+            --connect-bg: #d1fae5; /* Connected背景色（浅薄荷绿，和success-text协调） */
             /* 日志容器颜色变量 */
             --log-bg: #f8f9fa;
             --log-text: #333333;
@@ -36,11 +34,10 @@
                 --btn-disabled: #4b5563;
                 --nat-type-bg: #8b5cf6;
                 --nat-type-text: #ffffff;
-                --result-bg: #374151; /* IP地址深色背景 */
-                --result-text: #f5f5f5; /* IP地址深色文字 */
-                /* 新增苹果风格连接状态配色 - 深色模式（iOS深色绿调） */
-                --connectivity-bg: #1f3b32;
-                --connectivity-text: #5eead4;
+                --result-bg: #374151; /* 深色模式IP背景色 */
+                --result-text: #f5f5f5;
+                --success-text: #34d399; /* 深色模式成功文字色 */
+                --connect-bg: #134e4a; /* 深色模式Connected背景色（深绿灰，和success-text协调） */
                 /* 深色模式日志容器颜色 */
                 --log-bg: #2d3748;
                 --log-text: #e2e8f0;
@@ -178,15 +175,14 @@
             width: auto;
             min-width: 0;
             white-space: nowrap;
-            overflow: visible;
         }
-        /* 核心修改：Connected样式和IP地址一致，苹果风格配色 */
+        /* 核心修改：给Connected添加和IP一致的背景样式 */
         .connectivity-value.has-content {
-            background: var(--connectivity-bg);
-            color: var(--connectivity-text);
+            background: var(--connect-bg);
+            color: var(--success-text);
+            font-weight: 500;
             padding: 8px 12px;
             border-radius: 6px;
-            font-weight: 500;
         }
         
         /* 日志容器默认隐藏，仅检测时显示 */
@@ -228,9 +224,12 @@
             .loading {
                 margin: 10px auto;
             }
-            .ip-value, .connectivity-value {
+            /* 移动端让IP、连接状态、NAT类型统一左对齐，宽度100% */
+            .nat-type-value, .ip-value, .connectivity-value {
                 white-space: nowrap;
                 overflow: visible;
+                width: 100%;
+                text-align: left;
             }
             .log-container {
                 max-height: 200px !important;
@@ -247,10 +246,6 @@
                 width: 100%;
                 margin-bottom: 5px;
             }
-            .nat-type-value, .ip-value, .connectivity-value {
-                width: 100%;
-                text-align: left;
-            }
         }
     </style>
 </head>
@@ -263,7 +258,7 @@
 
         <div class="result-section" id="resultSection">
             <div class="result-row">
-                <span class="result-label">NAT Type</span>
+                <span class="result-label">IPv4 NAT Type</span>
                 <span class="nat-type-value" id="natType"></span>
             </div>
             <div class="result-row">
@@ -271,7 +266,7 @@
                 <span class="ip-value" id="publicIP"></span>
             </div>
             <div class="result-row">
-                <span class="result-label">Pulic Port</span>
+                <span class="result-label">IPv4 Port</span>
                 <span class="ip-value" id="publicPort"></span>
             </div>
             <div class="divider"></div>
@@ -434,10 +429,7 @@
                     if (!ip || ip === 'Unknown') return 'Unknown';
                     try {
                         this.log(`Getting geolocation for IP: ${ip}`);
-                        const response = await fetch(`https://ip-api.com/json/${ip}?lang=en`, {
-                            method: 'GET',
-                            timeout: 5000
-                        });
+                        const response = await fetch(`https://ip-api.com/json/${ip}?lang=en`, { timeout: 5000 });
                         const data = await response.json();
                         if (data.status !== 'success') {
                             this.log(`Geolocation lookup failed: ${data.message}`);
@@ -471,13 +463,11 @@
                         
                         const connectPromise = new Promise((resolve, reject) => {
                             this.ws = new WebSocket(wsUrl);
-                            
                             this.ws.onopen = () => {
                                 this.log('WebSocket connection established');
                                 this.connected = true;
                                 resolve();
                             };
-                            
                             this.ws.onmessage = (event) => {
                                 try {
                                     const message = JSON.parse(event.data);
@@ -486,7 +476,6 @@
                                     this.log(`Received non-JSON message: ${event.data}`);
                                 }
                             };
-                            
                             this.ws.onclose = (event) => {
                                 this.log(`WebSocket closed (code: ${event.code}, reason: ${event.reason || 'No reason'})`);
                                 this.connected = false;
@@ -494,7 +483,6 @@
                                     this.showError(`Connection closed: ${event.reason || 'Unknown reason'}`);
                                 }
                             };
-                            
                             this.ws.onerror = (error) => {
                                 this.log(`WebSocket error: ${error.message || 'Unknown error'}`);
                                 reject(new Error(`WebSocket error: ${error.message || 'Unknown error'}`));
@@ -503,7 +491,6 @@
                         
                         await Promise.race([connectPromise, connectTimeout]);
                         await this.setupWebRTC();
-                        
                     } catch (error) {
                         this.showError(error.message);
                         this.log(`Connection failed: ${error.message}`);
@@ -522,12 +509,10 @@
                         this.log('WebSocket not available, cannot setup WebRTC');
                         return;
                     }
-                    
                     try {
                         this.log('Setting up WebRTC connection...');
                         const RTCPeerConnection = window.RTCPeerConnection || window.webkitRTCPeerConnection;
                         this.pc = new RTCPeerConnection({ iceServers: this.iceServersConfig });
-                        
                         this.dataChannel = this.pc.createDataChannel('nat-detection', { ordered: true });
                         this.dataChannel.onopen = () => this.log('Data channel opened');
                         
@@ -535,13 +520,11 @@
                             if (event.candidate) {
                                 const candidateInfo = this.parseICECandidate(event.candidate.candidate);
                                 this.log(`ICE candidate received: ${candidateInfo.type} ${candidateInfo.protocol} ${candidateInfo.ip}:${candidateInfo.port}`);
-                                
                                 if (candidateInfo.type === 'srflx' && candidateInfo.protocol === 'udp' && candidateInfo.ipType === 'ipv4') {
                                     this.publicIP = candidateInfo.ip;
                                     this.publicPort = candidateInfo.port;
                                     this.log(`Public address detected: ${this.publicIP}:${this.publicPort}`);
                                 }
-                                
                                 if (this.shouldSendCandidate(candidateInfo)) {
                                     this.sendWebSocketMessage({
                                         type: 'ice-candidate',
@@ -566,7 +549,6 @@
                             type: 'offer',
                             sdp: offer.sdp
                         });
-                        
                     } catch (e) {
                         this.showError(`WebRTC setup failed: ${e.message}`);
                         this.log(`WebRTC setup error: ${e.message}`);
@@ -582,7 +564,6 @@
                 handleWebSocketMessage(message) {
                     this.log(`Received server message: ${message.type}`);
                     console.log('Server message:', message);
-                    
                     switch (message.type) {
                         case 'nat-result':
                             this.handleNATResult(message);
@@ -637,7 +618,6 @@
                 async handleNATResult(result) {
                     try {
                         this.log('Processing NAT detection result');
-                        
                         const natTypeMap = {
                             'full-cone': 'Full Cone NAT',
                             'restricted-cone': 'Restricted Cone NAT',
@@ -652,7 +632,6 @@
                             this.checkConnectivity(),
                             this.getPublicIP()
                         ]);
-                        
                         const mainIP = result.publicIP || this.publicIP || publicIP;
                         const ipVersion = this.getIPVersion(mainIP !== 'Unknown' ? mainIP : ipv6);
                         const geoLocation = await this.getGeoLocation(mainIP);
@@ -677,14 +656,13 @@
                         this.domElements.ipv6.textContent = natResult.ipv6;
                         this.domElements.ipv6.classList.add('has-content');
                         this.domElements.connectivity.textContent = natResult.connectivity;
-                        this.domElements.connectivity.classList.toggle('has-content', natResult.connectivity === 'Connected');
+                        this.domElements.connectivity.classList.add('has-content');
                         this.domElements.ipVersion.textContent = natResult.ipVersion;
                         this.domElements.ipVersion.classList.add('has-content');
                         this.domElements.geoLocation.textContent = natResult.geoLocation;
                         this.domElements.geoLocation.classList.add('has-content');
                         
                         this.log(`Detection completed - NAT Type: ${natResult.natType}, Public IP: ${natResult.publicIP}:${natResult.publicPort}, IP Version: ${natResult.ipVersion}, Location: ${natResult.geoLocation}`);
-                        
                     } catch (error) {
                         this.showError(`Failed to process result: ${error.message}`);
                         this.log(`Result processing error: ${error.message}`);
@@ -701,12 +679,10 @@
 
                 parseICECandidate(candidateString) {
                     if (!candidateString) return { type: 'unknown', protocol: 'unknown', ip: 'unknown', port: 'unknown', ipType: 'unknown' };
-                    
                     const parts = candidateString.split(' ');
                     if (parts.length < 8) {
                         return { type: 'unknown', protocol: 'unknown', ip: 'unknown', port: 'unknown', ipType: 'unknown' };
                     }
-                    
                     return {
                         foundation: parts[0].split(':')[1],
                         component: parts[1],
@@ -741,7 +717,6 @@
 
                 disconnect() {
                     this.log('Disconnecting all connections...');
-                    
                     if (this.pc) {
                         this.pc.close();
                         this.pc = null;
@@ -754,7 +729,6 @@
                         this.ws.close();
                         this.ws = null;
                     }
-                    
                     this.connected = false;
                     this.detecting = false;
                     this.publicIP = '';
@@ -767,23 +741,19 @@
             async function startDetection() {
                 const startBtn = document.getElementById('startBtn');
                 startBtn.disabled = true;
-                
                 resultSection.classList.remove('show');
                 ['natType', 'publicIP', 'publicPort', 'ipv6', 'connectivity', 'ipVersion', 'geoLocation'].forEach(id => {
                     const el = document.getElementById(id);
                     el.textContent = '';
                     el.classList.remove('has-content');
                 });
-                
                 try {
                     if (client) {
                         client.disconnect();
                         await new Promise(resolve => setTimeout(resolve, 100));
                     }
-                    
                     client = new NATDetectionClient();
                     await client.connect();
-                    
                 } catch (error) {
                     console.error('Detection failed:', error);
                     client?.log(`Detection failed: ${error.message}`);
@@ -800,7 +770,6 @@
             }
 
             document.getElementById('startBtn').addEventListener('click', startDetection);
-
             window.addEventListener('beforeunload', () => {
                 if (client) {
                     client.disconnect();
