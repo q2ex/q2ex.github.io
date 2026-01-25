@@ -1,150 +1,949 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>NAT 类型检测（iOS 兼容版）</title>
+    <title></title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        :root {
+            --bg-main: #f5f5f7;
+            --bg-container: #ffffff;
+            --bg-card: #f8f8fa;
+            --bg-input: #f5f5f7;
+            --text-primary: #1d1d1f;
+            --text-secondary: #86868b;
+            --text-tertiary: #a1a1aa;
+            --accent: #0071e3;
+            --accent-hover: #0077ed;
+            --accent-active: #0066cc;
+            --border-light: #e3e3e5;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+            --shadow-active: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+            --success: #34c759;
+            --danger: #ff3b30;
+            --warning: #ff9500;
+            --info: #5856d6;
+            --radius-sm: 10px;
+            --radius-md: 16px;
+            --radius-lg: 20px;
+            --loading-border: rgba(134, 134, 139, 0.3);
+            --loading-top: var(--accent);
+            --modal-bg: #ffffff;
+            --modal-border: #e3e3e5;
+            --modal-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            --mask-bg: rgba(0, 0, 0, 0.3);
+        }
+        [data-theme="dark"] {
+            --bg-main: #1c1c1e;
+            --bg-container: #2c2c2e;
+            --bg-card: #3a3a3c;
+            --bg-input: #3a3a3c;
+            --text-primary: #ffffff;
+            --text-secondary: #86868b;
+            --text-tertiary: #a1a1aa;
+            --accent: #0a84ff;
+            --accent-hover: #148dff;
+            --accent-active: #007aff;
+            --border-light: #48484a;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.25);
+            --shadow-active: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+            --loading-border: rgba(134, 134, 139, 0.3);
+            --loading-top: var(--accent);
+            --modal-bg: #2c2c2e;
+            --modal-border: #48484a;
+            --modal-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            --mask-bg: rgba(0, 0, 0, 0.5);
+        }
         body {
-            max-width: 90%;
-            margin: 30px auto;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-            line-height: 1.8;
-            color: #333;
-            background-color: #f8f9fa;
+            background: var(--bg-main);
+            padding: 20px;
+            max-width: 580px;
+            margin: 0 auto;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+        }
+        .container {
+            background: var(--bg-container);
+            border-radius: var(--radius-lg);
+            padding: 30px 24px;
+            box-shadow: var(--shadow-md);
+            width: 100%;
+            transition: all 0.3s ease;
+            margin: 20px 0;
         }
         h1 {
-            font-size: 20px;
+            font-size: 22px;
+            color: var(--text-primary);
             text-align: center;
-            margin-bottom: 25px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            letter-spacing: -0.3px;
         }
-        button {
+        .tab-header {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+        .tab-btn {
+            flex: 1;
+            padding: 12px 0;
+            border: none;
+            border-radius: var(--radius-md);
+            background: var(--bg-card);
+            color: var(--text-secondary);
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .tab-btn:hover {
+            background: var(--bg-input);
+        }
+        .tab-btn.active {
+            background: var(--accent);
+            color: #ffffff;
+        }
+        .tab-btn.active:active {
+            background: var(--accent-active);
+            box-shadow: var(--shadow-active);
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .function-group {
+            margin-bottom: 20px;
+        }
+        .input-wrapper {
+            position: relative;
+            width: 100%;
+            margin-bottom: 16px;
+        }
+        #pingIpInput {
+            width: 100%;
+            padding: 14px 16px;
+            background: var(--bg-input);
+            border: 1px solid transparent;
+            border-radius: var(--radius-md);
+            color: var(--text-primary);
+            font-size: 16px;
+            transition: all 0.2s ease;
+            text-align: center;
+        }
+        #pingIpInput:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: var(--bg-card);
+        }
+        .btn {
             display: block;
             width: 100%;
-            padding: 12px 0;
-            font-size: 16px;
-            color: white;
-            background-color: #007aff;
+            padding: 14px;
+            background: var(--accent);
+            color: #ffffff;
             border: none;
-            border-radius: 8px;
+            border-radius: var(--radius-md);
+            font-size: 16px;
+            font-weight: 500;
             cursor: pointer;
-            -webkit-appearance: none; /* 清除 iOS 按钮默认样式 */
+            transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-bottom: 12px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
         }
-        button:active {
-            background-color: #0066cc;
+        .btn:hover:not(:disabled) {
+            background: var(--accent-hover);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
         }
-        #result {
-            margin-top: 20px;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            background-color: white;
-            min-height: 100px;
+        .btn:active:not(:disabled) {
+            transform: scale(0.97);
+            background: var(--accent-active);
+            box-shadow: var(--shadow-active);
+        }
+        .btn:disabled {
+            background: var(--bg-card);
+            color: var(--text-tertiary);
+            cursor: not-allowed;
+            box-shadow: none;
+            transform: none;
+        }
+        .status {
+            margin: 8px 0;
+            text-align: center;
             font-size: 14px;
-            white-space: pre-wrap; /* 保留换行符，适配 iOS 文本显示 */
+            color: var(--text-secondary);
+            min-height: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .result-box {
+            margin-top: 12px;
+            padding: 20px 16px;
+            border-radius: var(--radius-md);
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            display: none;
+            opacity: 0;
+            transform: translateY(8px);
+            transition: all 0.3s ease;
+        }
+        .result-box.show {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .result-item {
+            margin-bottom: 12px;
+            text-align: center;
+        }
+        .result-item:last-child {
+            margin-bottom: 0;
+        }
+        .result-label {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+            display: block;
+        }
+        .result-value {
+            font-size: 16px;
+            color: var(--text-primary);
+            font-weight: 500;
             word-break: break-all;
         }
-        .tips {
-            margin-top: 10px;
-            font-size: 12px;
-            color: #666;
+        #publicIp, #mappedPort {
+            color: var(--accent);
+        }
+        .nat-type, .ipv6-status {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 100px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-top: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .nat-type:hover {
+            transform: scale(1.05);
+        }
+        .nat-fullcone {
+            background: rgba(52, 199, 89, 0.1);
+            color: var(--success);
+        }
+        .nat-portrestricted {
+            background: rgba(255, 149, 0, 0.1);
+            color: var(--warning);
+        }
+        .nat-restricted {
+            background: rgba(88, 86, 214, 0.1);
+            color: var(--info);
+        }
+        .nat-symmetric {
+            background: rgba(10, 132, 255, 0.1);
+            color: var(--accent);
+        }
+        .nat-error {
+            background: rgba(255, 59, 48, 0.1);
+            color: var(--danger);
+        }
+        .ipv6-connected {
+            background: rgba(52, 199, 89, 0.1);
+            color: var(--success);
+        }
+        .ipv6-disconnected {
+            background: rgba(255, 59, 48, 0.1);
+            color: var(--danger);
+        }
+        .error-desc {
+            font-size: 13px;
+            color: var(--danger);
+            font-weight: 600;
+            margin-top: 8px;
+            line-height: 1.5;
+            display: none;
+        }
+        .error-desc.show {
+            display: block;
+        }
+        .geo-tip {
+            width: 100%;
             text-align: center;
+            font-size: 13px;
+            color: var(--text-secondary);
+            padding: 12px 0;
+            margin-top: 10px;
+            width: 100%;
+        }
+        .ip-version-tag {
+            color: var(--accent);
+            font-weight: 500;
+        }
+        .loading {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            border: 2px solid var(--loading-border);
+            border-radius: 50%;
+            border-top-color: var(--loading-top);
+            animation: spin 1.2s linear infinite;
+            vertical-align: middle;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        /* NAT 说明弹窗样式 */
+        .modal-mask {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--mask-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .modal-mask.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .modal-container {
+            width: 90%;
+            max-width: 400px;
+            background: var(--modal-bg);
+            border: 1px solid var(--modal-border);
+            border-radius: var(--radius-md);
+            box-shadow: var(--modal-shadow);
+            padding: 24px;
+            transform: translateY(-20px) scale(0.95);
+            transition: all 0.3s ease;
+        }
+        .modal-mask.show .modal-container {
+            transform: translateY(0) scale(1);
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .modal-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        .modal-close {
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 20px;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+        .modal-close:hover {
+            background: var(--bg-card);
+            color: var(--text-primary);
+        }
+        .modal-content {
+            font-size: 14px;
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        .modal-content p {
+            margin-bottom: 8px;
+        }
+        .modal-content .highlight {
+            color: var(--accent);
+            font-weight: 500;
+        }
+        @media (max-width: 400px) {
+            body {
+                padding: 16px;
+            }
+            .container {
+                padding: 24px 16px;
+            }
+            h1 {
+                font-size: 20px;
+            }
+            .tab-btn {
+                font-size: 14px;
+            }
+        }
+        @supports (bottom: env(safe-area-inset-bottom)) {
+            body {
+                padding-bottom: calc(20px + env(safe-area-inset-bottom));
+            }
         }
     </style>
 </head>
 <body>
-    <h1>NAT 类型检测工具（iOS 专用）</h1>
-    <button onclick="detectNATType()">开始检测 NAT 类型</button>
-    <div id="result">等待检测...<br>提示：检测过程约需 8 秒，请耐心等待</div>
-    <div class="tips">iOS 需在 HTTPS/localhost 环境下运行</div>
-
+    <div class="container">
+        <h1></h1>
+        <div class="tab-header">
+            <button class="tab-btn active" onclick="switchTab('nat-tab')">NAT</button>
+            <button class="tab-btn" onclick="switchTab('ping-tab')">Ping</button>
+            <button class="tab-btn" onclick="switchTab('ipv6-tab')">IPv6</button>
+        </div>
+        <div class="tab-content active" id="nat-tab">
+            <div class="function-group">
+                <button id="natDetectBtn" class="btn" onclick="startNATDetect()">Start NAT</button>
+                <div id="natStatus" class="status"></div>
+                <div id="natResult" class="result-box">
+                    <div class="result-item">
+                        <div class="result-label">Public Mapped IP</div>
+                        <div id="publicIp" class="result-value">-</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-label">Mapped Port</div>
+                        <div id="mappedPort" class="result-value">-</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-label">NAT Type</div>
+                        <div id="natTypeBadge" class="nat-type">-</div>
+                        <div id="natErrorDesc" class="error-desc"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-content" id="ping-tab">
+            <div class="function-group">
+                <div class="input-wrapper">
+                    <input type="text" id="pingIpInput" value="bing.com">
+                </div>
+                <button id="pingDetectBtn" class="btn" onclick="startPingDetect()">Start Ping</button>
+                <div id="pingStatus" class="status"></div>
+                <div id="pingResult" class="result-box">
+                    <div class="result-item">
+                        <div class="result-label">Target</div>
+                        <div id="pingTargetIp" class="result-value">-</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-label">Ping Latency</div>
+                        <div id="pingLatency" class="result-value">-</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-label">Status</div>
+                        <div id="pingStatusText" class="result-value">-</div>
+                        <div id="pingErrorDesc" class="error-desc"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-content" id="ipv6-tab">
+            <div class="function-group">
+                <button id="ipv6DetectBtn" class="btn" onclick="startIPv6Detect()">Start IPv6</button>
+                <div id="ipv6Status" class="status"></div>
+                <div id="ipv6Result" class="result-box">
+                    <div class="result-item">
+                        <div class="result-label">IPv6 Status</div>
+                        <div id="ipv6ConnectStatus" class="ipv6-status">-</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-label">Your IPv6 Address</div>
+                        <div id="ipv6Address" class="result-value">-</div>
+                        <div id="ipv6ErrorDesc" class="error-desc"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="geo-tip" id="geoTip"></div>
+    <!-- NAT 说明弹窗 -->
+    <div class="modal-mask" id="natModal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalTitle">NAT Type Description</h3>
+                <button class="modal-close" onclick="closeModal()">×</button>
+            </div>
+            <div class="modal-content" id="modalContent"></div>
+        </div>
+    </div>
     <script>
-        // 配置 STUN 服务器列表（指定2个 + 谷歌服务器）
-        const iceServers = [
-            { urls: 'stun:stun.miwifi.com:3478' },
-            { urls: 'stun:stun.hitv.com:3478' },
-            { urls: 'stun:stun.l.google.com:19302' }
+        const body = document.body;
+        let currentIPVersion = "Unknown";
+
+        // 主题初始化
+        function initThemeBySystem() {
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            body.setAttribute('data-theme', systemDark ? 'dark' : 'light');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', initThemeBySystem);
+        initThemeBySystem();
+
+        // 状态更新工具函数 - 仅保留加载图标
+        function updateStatus(el, text, isLoading = false) {
+            el.innerHTML = isLoading ? `<span class="loading"></span>` : text;
+        }
+
+        // Tab 切换函数
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // ========== NAT 检测模块 ==========
+        const STUN_SERVERS = [
+            { urls: 'stun:stun.cloudflare.com:3478', id: 'CF-3478', group: 'cloudflare' },
+            { urls: 'stun:stun.l.google.com:19302', id: 'G-19302', group: 'google' },
+            { urls: 'stun:stun1.l.google.com:19302', id: 'G1-19302', group: 'google' },
+            { urls: 'stun:stun2.l.google.com:19302', id: 'G2-19302', group: 'google' },
+            { urls: 'stun:stun3.l.google.com:19302', id: 'G3-19302', group: 'google' },
+            { urls: 'stun:stun4.l.google.com:19302', id: 'G4-19302', group: 'google' },
+            { urls: 'stun:stun.qq.com:3478', id: 'QQ-3478', group: 'cn_isp' },
+            { urls: 'stun:stun.miwifi.com:3478', id: 'MI-3478', group: 'cn_isp' },
+            { urls: 'stun:stun.nextcloud.com:3478', id: 'NC-3478', group: 'europe' },
+            { urls: 'stun:stun.1und1.de:3478', id: '1UND1-3478', group: 'europe' },
+            { urls: 'stun:stun.freeswitch.org:3478', id: 'FS-3478', group: 'global' },
+            { urls: 'stun:stun.linphone.org:3478', id: 'LP-3478', group: 'global' },
+            { urls: 'stun:stun.telnyx.com:3478', id: 'TX-3478', group: 'us' },
+            { urls: 'stun:stun.sonetel.com:3478', id: 'SN-3478', group: 'europe' },
+            { urls: 'stun:stun.ringostat.com:3478', id: 'RS-3478', group: 'global' },
+            { urls: 'stun:stun.stunprotocol.org:3478', id: 'SP-3478', group: 'global' }
         ];
+        const natDetectBtn = document.getElementById('natDetectBtn');
+        const natStatusEl = document.getElementById('natStatus');
+        const natResultEl = document.getElementById('natResult');
+        const natTypeBadgeEl = document.getElementById('natTypeBadge');
+        const natErrorDescEl = document.getElementById('natErrorDesc');
+        const publicIpEl = document.getElementById('publicIp');
+        const mappedPortEl = document.getElementById('mappedPort');
 
-        // 兼容 iOS 的 NAT 检测函数
-        async function detectNATType() {
-            const resultEl = document.getElementById('result');
-            resultEl.textContent = "正在初始化连接...\n";
-            let pc = null;
+        // NAT type description (English only)
+        const natDescriptions = {
+            'Full Cone NAT (NAT1)': `
+                <p><span class="highlight">Feature</span>: All external hosts can access the internal device via the public IP:Port, without the need for the internal device to initiate a connection first.</p>
+                <p><span class="highlight">Advantage</span>: 100% P2P connection success rate, ideal for online gaming, remote desktop, and file transfer.</p>
+                <p><span class="highlight">Note</span>: Lower security level, it is recommended to enable firewall protection.</p>
+            `,
+            'Port-Restricted Cone NAT (NAT2)': `
+                <p><span class="highlight">Feature</span>: Only the external IP:Port that the internal device has actively accessed can initiate a reverse connection.</p>
+                <p><span class="highlight">Advantage</span>: High P2P success rate (about 90%), balanced security and usability.</p>
+                <p><span class="highlight">Scenario</span>: Default mode for most home routers, suitable for most network applications.</p>
+            `,
+            'Restricted Cone NAT (NAT3)': `
+                <p><span class="highlight">Feature</span>: Only the external IP that the internal device has actively accessed can initiate a reverse connection (port unrestricted).</p>
+                <p><span class="highlight">Advantage</span>: Higher security level, moderate P2P success rate (about 60%).</p>
+                <p><span class="highlight">Limitation</span>: May cause matching delays in some online games.</p>
+            `,
+            'Symmetric NAT (NAT4)': `
+                <p><span class="highlight">Feature</span>: Different external IPs are mapped to different public IP:Port, and only the corresponding external IP is allowed to access.</p>
+                <p><span class="highlight">Disadvantage</span>: Very low P2P success rate (about 10%), requires relay server support.</p>
+                <p><span class="highlight">Scenario</span>: Enterprise/campus networks with the highest security level.</p>
+            `,
+            'Detection Error': `
+                <p><span class="highlight">Cause</span>: STUN server connection failure, WebRTC not supported, or abnormal network environment.</p>
+                <p><span class="highlight">Solution</span>: Turn off VPN/proxy, try another browser, or check network firewall settings.</p>
+            `
+        };
 
-            try {
-                // iOS 兼容的 RTCPeerConnection 配置，关闭证书验证以提升兼容性
-                pc = new RTCPeerConnection({
-                    iceServers,
-                    iceTransportPolicy: 'all',
-                    rtcpMuxPolicy: 'require'
-                });
+        // Modal control functions
+        function openModal(natType) {
+            const modal = document.getElementById('natModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalContent = document.getElementById('modalContent');
+            
+            modalTitle.textContent = natType;
+            modalContent.innerHTML = natDescriptions[natType] || '<p>No description available.</p>';
+            modal.classList.add('show');
+            modal.onclick = (e) => {
+                if (e.target === modal) closeModal();
+            };
+        }
 
-                let candidates = [];
-                let iceGatheringDone = false;
+        function closeModal() {
+            document.getElementById('natModal').classList.remove('show');
+        }
 
-                // 监听 ICE 候选地址（适配 iOS 延迟收集问题）
+        // Bind click event for NAT type badge
+        natTypeBadgeEl.addEventListener('click', () => {
+            const currentType = natTypeBadgeEl.textContent;
+            if (currentType !== '-') openModal(currentType);
+        });
+
+        // Single STUN server test
+        async function testSingleSTUN(server) {
+            return new Promise((resolve) => {
+                const RTCPeerConnection = window.RTCPeerConnection || window.mozRTCPeerConnection || window.webkitRTCPeerConnection;
+                const pc = new RTCPeerConnection({ iceServers: [server] });
+                let candidate = null;
                 pc.onicecandidate = (e) => {
-                    if (e.candidate) {
-                        candidates.push(e.candidate);
-                        resultEl.textContent += `\n发现候选地址: ${e.candidate.type} - ${e.candidate.candidate.split(' ')[4]}`;
-                    } else {
-                        iceGatheringDone = true;
-                        resultEl.textContent += "\n候选地址收集完成";
+                    if (!e.candidate) return;
+                    if (e.candidate.type === 'srflx' && e.candidate.protocol === 'udp' && e.candidate.address.includes('.')) {
+                        candidate = {
+                            serverId: server.id,
+                            group: server.group,
+                            ip: e.candidate.address,
+                            port: e.candidate.port,
+                            addr: `${e.candidate.address}:${e.candidate.port}`
+                        };
                     }
                 };
-
-                // 创建数据通道（触发 iOS 下的 ICE 收集，避免依赖媒体流）
-                pc.createDataChannel('nat-detect-channel', { ordered: false });
-
-                // 创建 Offer 并设置本地描述（iOS 需严格按顺序执行）
-                const offer = await pc.createOffer({ offerToReceiveAudio: false, offerToReceiveVideo: false });
-                await pc.setLocalDescription(offer);
-
-                // 延长等待时间（适配 iOS 较慢的 ICE 收集速度）
-                const waitTime = 8000;
-                resultEl.textContent += `\n等待 ${waitTime/1000} 秒收集完整数据...`;
-                await new Promise(resolve => setTimeout(resolve, waitTime));
-
-                // 强制判断收集状态（避免 iOS 未触发 onicecandidate null 事件）
-                if (!iceGatheringDone) {
-                    resultEl.textContent += "\n⚠️ 候选地址收集超时，结果可能不准确";
-                }
-
-                // 分析 NAT 类型（适配 iOS 候选数据格式）
-                const hostCandidates = candidates.filter(c => c.type === 'host');
-                const srflxCandidates = candidates.filter(c => c.type === 'srflx');
-                const relayCandidates = candidates.filter(c => c.type === 'relay');
-
-                let natType = '';
-                if (hostCandidates.length > 0 && srflxCandidates.length === 0) {
-                    natType = "无 NAT（公网 IP 直连）";
-                } else if (srflxCandidates.length > 0 && relayCandidates.length === 0) {
-                    // 分析端口判断对称 NAT
-                    const portSet = new Set();
-                    srflxCandidates.forEach(c => {
-                        const port = c.candidate.split(':').pop().split(' ')[0];
-                        portSet.add(port);
-                    });
-                    natType = portSet.size > 1 ? "对称 NAT" : "锥形 NAT（全锥形/受限/端口受限）";
-                } else if (relayCandidates.length > 0) {
-                    natType = "需要 TURN 中继（对称 NAT 或严格防火墙）";
-                } else {
-                    natType = "检测失败：未获取到有效候选地址";
-                }
-
-                resultEl.textContent += `\n\n=== 最终 NAT 类型判定 ===\n${natType}`;
-
-            } catch (err) {
-                resultEl.textContent += `\n\n检测出错: ${err.message}`;
-                resultEl.textContent += "\n错误原因可能：非 HTTPS 环境 / 防火墙拦截 / iOS 权限限制";
-            } finally {
-                // 释放资源（iOS 需主动关闭连接，避免内存泄漏）
-                if (pc) {
+                try {
+                    pc.createDataChannel('dummy-channel');
+                    pc.createOffer().then(offer => pc.setLocalDescription(offer));
+                } catch (err) {}
+                setTimeout(() => {
                     pc.close();
+                    resolve(candidate);
+                }, 2000);
+            });
+        }
+
+        // NAT type judgment (order: NAT1→NAT2→NAT3→NAT4)
+        function judgeNATType(candidateMap) {
+            const result = {
+                natType: 'Detection Failed',
+                natTypeClass: 'nat-error',
+                desc: 'Failed to obtain valid mapping info',
+                isError: true,
+                mainIp: '-',
+                mainPort: '-'
+            };
+            const validCandidates = Object.values(candidateMap).filter(c => 
+                c && c.ip && c.port && !c.ip.includes('192.168.') && !c.ip.includes('10.') && !c.ip.includes('172.')
+            );
+            if (validCandidates.length === 0) return result;
+
+            const first = validCandidates[0];
+            result.mainIp = first.ip;
+            result.mainPort = first.port;
+
+            const allAddrs = validCandidates.map(c => `${c.ip}:${c.port}`);
+            const uniqueAll = [...new Set(allAddrs)];
+            const allIps = validCandidates.map(c => c.ip);
+            const uniqueIps = [...new Set(allIps)];
+            const allPorts = validCandidates.map(c => c.port);
+            const uniquePorts = [...new Set(allPorts)];
+
+            // 1. NAT1: All mapped IP:Port are identical
+            if (uniqueAll.length === 1) {
+                return {
+                    natType: 'Full Cone NAT (NAT1)',
+                    natTypeClass: 'nat-fullcone',
+                    desc: '',
+                    isError: false,
+                    mainIp: first.ip,
+                    mainPort: first.port
+                };
+            }
+
+            // Same public IP → distinguish NAT2 / NAT3
+            if (uniqueIps.length === 1) {
+                const groupPortMap = {};
+                validCandidates.forEach(c => {
+                    if (!groupPortMap[c.group]) {
+                        groupPortMap[c.group] = new Set();
+                    }
+                    groupPortMap[c.group].add(c.port);
+                });
+                const groupPortCounts = Object.values(groupPortMap).map(set => set.size);
+
+                // 2. NAT2: Multiple ports mapped in the same server group
+                if (groupPortCounts.some(count => count > 1)) {
+                    return {
+                        natType: 'Port-Restricted Cone NAT (NAT2)',
+                        natTypeClass: 'nat-portrestricted',
+                        desc: '',
+                        isError: false,
+                        mainIp: first.ip,
+                        mainPort: first.port
+                    };
+                }
+
+                // 3. NAT3: Unique port per server group, different ports between groups
+                if (groupPortCounts.every(count => count === 1) && uniquePorts.length > 1) {
+                    return {
+                        natType: 'Restricted Cone NAT (NAT3)',
+                        natTypeClass: 'nat-restricted',
+                        desc: '',
+                        isError: false,
+                        mainIp: first.ip,
+                        mainPort: first.port
+                    };
+                }
+            }
+
+            // 4. NAT4: Different public IPs for different servers
+            return {
+                natType: 'Symmetric NAT (NAT4)',
+                natTypeClass: 'nat-symmetric',
+                desc: '',
+                isError: false,
+                mainIp: first.ip,
+                mainPort: first.port
+            };
+        }
+
+        // Start NAT detection - 无文字提示
+        async function startNATDetect() {
+            natDetectBtn.disabled = true;
+            natResultEl.classList.remove('show');
+            natErrorDescEl.classList.remove('show');
+            updateStatus(natStatusEl, "", true);
+            try {
+                const candidateMap = {};
+                const testPromises = STUN_SERVERS.map(server => testSingleSTUN(server));
+                const results = await Promise.all(testPromises);
+                results.forEach(res => {
+                    if (res) candidateMap[res.serverId] = res;
+                });
+                const natInfo = judgeNATType(candidateMap);
+                publicIpEl.textContent = natInfo.mainIp;
+                mappedPortEl.textContent = natInfo.mainPort;
+                natTypeBadgeEl.textContent = natInfo.natType;
+                natTypeBadgeEl.className = `nat-type ${natInfo.natTypeClass}`;
+                
+                if (natInfo.isError) {
+                    natErrorDescEl.textContent = natInfo.desc;
+                    natErrorDescEl.classList.add('show');
+                }
+                updateStatus(natStatusEl, "");
+                setTimeout(() => {
+                    natResultEl.classList.add('show');
+                    natDetectBtn.disabled = false;
+                }, 300);
+            } catch (error) {
+                updateStatus(natStatusEl, "");
+                publicIpEl.textContent = 'Unavailable';
+                mappedPortEl.textContent = 'Unavailable';
+                natTypeBadgeEl.textContent = 'Detection Error';
+                natTypeBadgeEl.className = 'nat-type nat-error';
+                natErrorDescEl.textContent = `Error: ${error.message}`;
+                natErrorDescEl.classList.add('show');
+                natResultEl.classList.add('show');
+                natDetectBtn.disabled = false;
+            }
+        }
+
+        // Check WebRTC support
+        const isNATSupported = !!(window.RTCPeerConnection || window.mozRTCPeerConnection || window.webkitRTCPeerConnection);
+        if (!isNATSupported) {
+            updateStatus(natStatusEl, "WebRTC is not supported");
+            publicIpEl.textContent = 'Not Supported';
+            mappedPortEl.textContent = 'Not Supported';
+            natTypeBadgeEl.textContent = 'Not Supported';
+            natTypeBadgeEl.className = 'nat-type nat-error';
+            natErrorDescEl.textContent = 'Your browser does not support WebRTC technology';
+            natErrorDescEl.classList.add('show');
+            natResultEl.classList.add('show');
+            natDetectBtn.disabled = true;
+        }
+
+        // ========== Ping Detection Module ==========
+        const pingDetectBtn = document.getElementById('pingDetectBtn');
+        const pingStatus = document.getElementById('pingStatus');
+        const pingResult = document.getElementById('pingResult');
+        const pingTargetEl = document.getElementById('pingTargetIp');
+        const pingLatencyEl = document.getElementById('pingLatency');
+        const pingStatusTextEl = document.getElementById('pingStatusText');
+        const pingErrorDesc = document.getElementById('pingErrorDesc');
+
+        function isValidTarget(target) {
+            const ipRegex = /^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
+            const domainRegex = /^([a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}$/;
+            return ipRegex.test(target) || domainRegex.test(target);
+        }
+
+        async function pingTarget(target, timeout = 5000) {
+            return new Promise((resolve, reject) => {
+                const startTime = performance.now();
+                const RTCPeerConnection = window.RTCPeerConnection || window.mozRTCPeerConnection || window.webkitRTCPeerConnection;
+                const peerConn = new RTCPeerConnection({ iceServers: [{ urls: `stun:${target}:3478` }] });
+                const timeoutTimer = setTimeout(() => {
+                    peerConn.close();
+                    reject(new Error('Request timeout'));
+                }, timeout);
+                peerConn.onicecandidate = (e) => {
+                    if (e.candidate) {
+                        clearTimeout(timeoutTimer);
+                        const latency = Math.round(performance.now() - startTime);
+                        peerConn.close();
+                        resolve(latency);
+                    }
+                };
+                peerConn.createDataChannel('ping-channel');
+                peerConn.createOffer().then(offer => peerConn.setLocalDescription(offer)).catch(reject);
+            });
+        }
+
+        async function startPingDetect() {
+            const pingIpInput = document.getElementById('pingIpInput');
+            const target = pingIpInput.value.trim();
+            pingErrorDesc.classList.remove('show');
+            if (!target) {
+                updateStatus(pingStatus, "Please enter IP or domain");
+                return;
+            }
+            if (!isValidTarget(target)) {
+                updateStatus(pingStatus, "Invalid IP or domain format");
+                return;
+            }
+            pingDetectBtn.disabled = true;
+            pingResult.classList.remove('show');
+            updateStatus(pingStatus, "", true);
+            try {
+                const latency = await pingTarget(target);
+                updateStatus(pingStatus, "");
+                pingTargetEl.textContent = target;
+                pingLatencyEl.textContent = `${latency} ms`;
+                pingStatusTextEl.textContent = 'Reachable';
+                setTimeout(() => {
+                    pingResult.classList.add('show');
+                    pingDetectBtn.disabled = false;
+                }, 300);
+            } catch (error) {
+                updateStatus(pingStatus, "");
+                pingTargetEl.textContent = target;
+                pingLatencyEl.textContent = '-';
+                pingStatusTextEl.textContent = 'Unreachable';
+                pingErrorDesc.textContent = `Error: ${error.message}`;
+                pingErrorDesc.classList.add('show');
+                pingResult.classList.add('show');
+                pingDetectBtn.disabled = false;
+            }
+        }
+
+        // ========== IPv6 Detection Module ==========
+        const ipv6DetectBtn = document.getElementById('ipv6DetectBtn');
+        const ipv6StatusEl = document.getElementById('ipv6Status');
+        const ipv6ResultEl = document.getElementById('ipv6Result');
+        const ipv6ConnectStatusEl = document.getElementById('ipv6ConnectStatus');
+        const ipv6AddressEl = document.getElementById('ipv6Address');
+        const ipv6ErrorDescEl = document.getElementById('ipv6ErrorDesc');
+
+        async function startIPv6Detect() {
+            ipv6DetectBtn.disabled = true;
+            ipv6ResultEl.classList.remove('show');
+            ipv6ErrorDescEl.classList.remove('show');
+            ipv6StatusEl.innerHTML = '';
+            updateStatus(ipv6StatusEl, "", true);
+            try {
+                const response = await fetch('https://api64.ipify.org?format=json', {
+                    mode: 'cors',
+                    timeout: 10000
+                });
+                if (!response.ok) throw new Error('API response error');
+                const data = await response.json();
+                
+                if (data.ip && data.ip.includes(':')) {
+                    ipv6ConnectStatusEl.textContent = 'Connected';
+                    ipv6ConnectStatusEl.className = 'ipv6-status ipv6-connected';
+                    ipv6AddressEl.textContent = data.ip;
+                    currentIPVersion = "IPv4/IPv6";
+                } else {
+                    throw new Error('No valid IPv6 address returned');
+                }
+                updateStatus(ipv6StatusEl, "");
+                setTimeout(() => {
+                    ipv6ResultEl.classList.add('show');
+                    ipv6DetectBtn.disabled = false;
+                    updateGeoTip();
+                }, 300);
+            } catch (error) {
+                try {
+                    const pc = new RTCPeerConnection({ iceServers: [{ urls: 'stun:stun.cloudflare.com:3478' }] });
+                    const ipv6Promise = new Promise((resolve, reject) => {
+                        let foundIPv6 = false;
+                        let ipv6Addr = '';
+                        pc.onicecandidate = (e) => {
+                            if (e.candidate) {
+                                if (e.candidate.address && e.candidate.address.includes(':')) {
+                                    foundIPv6 = true;
+                                    ipv6Addr = e.candidate.address;
+                                }
+                            }
+                        };
+                        pc.onicegatheringstatechange = () => {
+                            if (pc.iceGatheringState === 'complete') {
+                                pc.close();
+                                if (foundIPv6) {
+                                    resolve(ipv6Addr);
+                                } else {
+                                    reject(new Error('No IPv6 candidate found'));
+                                }
+                            }
+                        };
+                        pc.createDataChannel('ipv6-detect');
+                        pc.createOffer().then(offer => pc.setLocalDescription(offer));
+                    });
+                    const ipv6Addr = await ipv6Promise;
+                    ipv6ConnectStatusEl.textContent = 'Connected';
+                    ipv6ConnectStatusEl.className = 'ipv6-status ipv6-connected';
+                    ipv6AddressEl.textContent = ipv6Addr;
+                    currentIPVersion = "IPv4/IPv6";
+                    updateStatus(ipv6StatusEl, "");
+                    setTimeout(() => {
+                        ipv6ResultEl.classList.add('show');
+                        ipv6DetectBtn.disabled = false;
+                        updateGeoTip();
+                    }, 300);
+                } catch (backupError) {
+                    updateStatus(ipv6StatusEl, "");
+                    ipv6ConnectStatusEl.textContent = 'Disconnected';
+                    ipv6ConnectStatusEl.className = 'ipv6-status ipv6-disconnected';
+                    ipv6AddressEl.textContent = 'Unavailable';
+                    ipv6ErrorDescEl.textContent = `Error: ${backupError.message}`;
+                    ipv6ErrorDescEl.classList.add('show');
+                    ipv6ResultEl.classList.add('show');
+                    ipv6DetectBtn.disabled = false;
+                    currentIPVersion = "IPv4";
+                    updateGeoTip();
                 }
             }
         }
+
+        // ========== Geo Tip Module (replace | with space) ==========
+        async function getIPGeolocation() {
+            try {
+                const response = await fetch('https://ipapi.co/json/', { mode: 'cors' });
+                const data = await response.json();
+                return data.city && data.country_name ? `${data.city}, ${data.country_name}` : 'Unavailable';
+            } catch (err) {
+                return 'Unavailable';
+            }
+        }
+
+        async function updateGeoTip() {
+            const geoText = await getIPGeolocation();
+            const geoTipEl = document.getElementById('geoTip');
+            geoTipEl.innerHTML = `${geoText}  <span class="ip-version-tag">${currentIPVersion}</span>`;
+        }
+
+        // Page load initialization
+        window.addEventListener('load', async () => {
+            await startIPv6Detect();
+        });
     </script>
 </body>
 </html>
