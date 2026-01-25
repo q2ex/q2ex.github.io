@@ -16,12 +16,10 @@
             --nat-type-text: #ffffff;
             --result-bg: #e5e7eb; /* IP地址背景色 */
             --result-text: #333333; /* IP地址文字色 */
-            /* 苹果风格 - 连接成功 */
-            --connect-connected-bg: #e3fcef; 
-            --connect-connected-text: #1d936f;
-            /* 苹果风格 - 连接失败（柔和红调，不刺眼） */
-            --connect-disconnected-bg: #fef2f2;
-            --connect-disconnected-text: #b45353;
+            --success-text: #10b981;
+            /* 新增苹果风格连接状态配色 - 浅色模式（柔和薄荷绿，符合iOS） */
+            --connectivity-bg: #e3fcef; 
+            --connectivity-text: #1d936f;
             /* 日志容器颜色变量 */
             --log-bg: #f8f9fa;
             --log-text: #333333;
@@ -40,12 +38,9 @@
                 --nat-type-text: #ffffff;
                 --result-bg: #374151; /* IP地址深色背景 */
                 --result-text: #f5f5f5; /* IP地址深色文字 */
-                /* 苹果风格深色模式 - 连接成功 */
-                --connect-connected-bg: #1f3b32;
-                --connect-connected-text: #5eead4;
-                /* 苹果风格深色模式 - 连接失败（暗调红，适配深色） */
-                --connect-disconnected-bg: #3b1f1f;
-                --connect-disconnected-text: #fca5a5;
+                /* 新增苹果风格连接状态配色 - 深色模式（iOS深色绿调） */
+                --connectivity-bg: #1f3b32;
+                --connectivity-text: #5eead4;
                 /* 深色模式日志容器颜色 */
                 --log-bg: #2d3748;
                 --log-text: #e2e8f0;
@@ -171,11 +166,10 @@
             margin: 15px 0;
             padding: 8px 0;
         }
-        /* 连接状态基础样式：和IP地址完全一致 */
         .connectivity-value {
             font-size: 14px;
-            padding: 8px 12px;
-            border-radius: 6px;
+            padding: 0;
+            border-radius: 0;
             background: transparent;
             color: inherit;
             text-align: right;
@@ -185,17 +179,14 @@
             min-width: 0;
             white-space: nowrap;
             overflow: visible;
+        }
+        /* 核心修改：Connected样式和IP地址一致，苹果风格配色 */
+        .connectivity-value.has-content {
+            background: var(--connectivity-bg);
+            color: var(--connectivity-text);
+            padding: 8px 12px;
+            border-radius: 6px;
             font-weight: 500;
-        }
-        /* 连接成功样式 */
-        .connectivity-value.connected {
-            background: var(--connect-connected-bg);
-            color: var(--connect-connected-text);
-        }
-        /* 连接失败样式 */
-        .connectivity-value.disconnected {
-            background: var(--connect-disconnected-bg);
-            color: var(--connect-disconnected-text);
         }
         
         /* 日志容器默认隐藏，仅检测时显示 */
@@ -240,8 +231,6 @@
             .ip-value, .connectivity-value {
                 white-space: nowrap;
                 overflow: visible;
-                width: 100%;
-                text-align: left;
             }
             .log-container {
                 max-height: 200px !important;
@@ -258,7 +247,7 @@
                 width: 100%;
                 margin-bottom: 5px;
             }
-            .nat-type-value, .ip-value {
+            .nat-type-value, .ip-value, .connectivity-value {
                 width: 100%;
                 text-align: left;
             }
@@ -678,7 +667,6 @@
                             geoLocation: geoLocation
                         };
                         
-                        // 渲染结果
                         resultSection.classList.add('show');
                         this.domElements.natType.textContent = natResult.natType;
                         this.domElements.natType.classList.add('has-content');
@@ -688,20 +676,13 @@
                         this.domElements.publicPort.classList.add('has-content');
                         this.domElements.ipv6.textContent = natResult.ipv6;
                         this.domElements.ipv6.classList.add('has-content');
+                        this.domElements.connectivity.textContent = natResult.connectivity;
+                        this.domElements.connectivity.classList.toggle('has-content', natResult.connectivity === 'Connected');
                         this.domElements.ipVersion.textContent = natResult.ipVersion;
                         this.domElements.ipVersion.classList.add('has-content');
                         this.domElements.geoLocation.textContent = natResult.geoLocation;
                         this.domElements.geoLocation.classList.add('has-content');
                         
-                        // 动态设置连接状态样式（核心修改）
-                        this.domElements.connectivity.textContent = natResult.connectivity;
-                        this.domElements.connectivity.classList.remove('connected', 'disconnected');
-                        if (natResult.connectivity === 'Connected') {
-                            this.domElements.connectivity.classList.add('connected');
-                        } else {
-                            this.domElements.connectivity.classList.add('disconnected');
-                        }
-
                         this.log(`Detection completed - NAT Type: ${natResult.natType}, Public IP: ${natResult.publicIP}:${natResult.publicPort}, IP Version: ${natResult.ipVersion}, Location: ${natResult.geoLocation}`);
                         
                     } catch (error) {
@@ -787,13 +768,11 @@
                 const startBtn = document.getElementById('startBtn');
                 startBtn.disabled = true;
                 
-                // 重置所有结果样式
                 resultSection.classList.remove('show');
-                const allResultIds = ['natType', 'publicIP', 'publicPort', 'ipv6', 'connectivity', 'ipVersion', 'geoLocation'];
-                allResultIds.forEach(id => {
+                ['natType', 'publicIP', 'publicPort', 'ipv6', 'connectivity', 'ipVersion', 'geoLocation'].forEach(id => {
                     const el = document.getElementById(id);
                     el.textContent = '';
-                    el.classList.remove('has-content', 'connected', 'disconnected');
+                    el.classList.remove('has-content');
                 });
                 
                 try {
