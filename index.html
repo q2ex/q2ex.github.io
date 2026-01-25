@@ -6,76 +6,55 @@
     <title>NAT Type Detection Tool (Final)</title>
     <style>
         :root {
-            --primary-color: #007aff; /* 苹果原生蓝色 */
+            --primary-color: #007bff;
             --bg-color: #ffffff;
-            --text-color: #1d1d1f; /* 苹果原生文本色 */
-            --border-color: #e6e6e6;
-            --error-color: #ff3b30; /* 苹果原生错误红 */
-            --btn-disabled: #8e8e93; /* 苹果原生禁用灰 */
-            
-            /* 苹果风格 NAT类型配色（柔和紫，贴合iOS） */
-            --nat-type-bg: #f0e6ff; 
-            --nat-type-text: #8633e4;
-            --nat-type-border: #e4d5ff;
-            --nat-type-radius: 24px; /* 苹果大圆角 */
-            
-            /* 苹果风格 IP地址背景（磨砂玻璃质感） */
-            --result-bg: rgba(242, 242, 247, 0.8); /* iOS浅灰磨砂 */
-            --result-text: #1d1d1f;
-            --result-border: rgba(229, 229, 234, 0.8);
-            --result-radius: 12px; /* 苹果常用圆角 */
-            
+            --text-color: #333333;
+            --border-color: #eeeeee;
+            --error-color: #dc3545;
+            --btn-disabled: #6c757d;
+            --nat-type-bg: #9333ea;
+            --nat-type-text: #ffffff;
+            --result-bg: #e5e7eb; /* IP地址背景色 */
+            --result-text: #333333; /* IP地址文字色 */
             /* 苹果风格 - 连接成功 */
             --connect-connected-bg: #e3fcef; 
             --connect-connected-text: #1d936f;
-            --connect-connected-border: #d1f0e1;
-            /* 苹果风格 - 连接失败 */
+            /* 苹果风格 - 连接失败（柔和红调，不刺眼） */
             --connect-disconnected-bg: #fef2f2;
             --connect-disconnected-text: #b45353;
-            --connect-disconnected-border: #fcd9d9;
-            
-            /* 日志容器颜色变量（苹果风格） */
-            --log-bg: rgba(248, 248, 250, 0.9);
-            --log-text: #1d1d1f;
-            --log-border: rgba(222, 226, 230, 0.8);
+            /* 日志容器颜色变量 */
+            --log-bg: #f8f9fa;
+            --log-text: #333333;
+            --log-border: #dee2e6;
         }
 
         @media (prefers-color-scheme: dark) {
             :root {
-                --primary-color: #0a84ff; /* 苹果深色模式蓝色 */
-                --bg-color: #000000;
-                --text-color: #f5f5f7;
-                --border-color: #3a3a3c;
-                --error-color: #ff453a; /* 苹果深色错误红 */
-                --btn-disabled: #636366;
-                
-                /* 深色模式 NAT类型 */
-                --nat-type-bg: rgba(107, 83, 246, 0.2);
-                --nat-type-text: #c0a5ff;
-                --nat-type-border: rgba(120, 87, 255, 0.3);
-                
-                /* 深色模式 IP地址（磨砂玻璃） */
-                --result-bg: rgba(42, 42, 45, 0.8);
-                --result-text: #f5f5f7;
-                --result-border: rgba(60, 60, 67, 0.8);
-                
-                /* 深色模式 连接状态 */
-                --connect-connected-bg: rgba(31, 59, 50, 0.8);
+                --primary-color: #3b82f6;
+                --bg-color: #1a1a1a;
+                --text-color: #f5f5f5;
+                --border-color: #333333;
+                --error-color: #f87171;
+                --btn-disabled: #4b5563;
+                --nat-type-bg: #8b5cf6;
+                --nat-type-text: #ffffff;
+                --result-bg: #374151; /* IP地址深色背景 */
+                --result-text: #f5f5f5; /* IP地址深色文字 */
+                /* 苹果风格深色模式 - 连接成功 */
+                --connect-connected-bg: #1f3b32;
                 --connect-connected-text: #5eead4;
-                --connect-connected-border: rgba(47, 88, 73, 0.8);
-                --connect-disconnected-bg: rgba(59, 31, 31, 0.8);
+                /* 苹果风格深色模式 - 连接失败（暗调红，适配深色） */
+                --connect-disconnected-bg: #3b1f1f;
                 --connect-disconnected-text: #fca5a5;
-                --connect-disconnected-border: rgba(88, 47, 47, 0.8);
-                
-                /* 深色模式 日志容器 */
-                --log-bg: rgba(30, 30, 32, 0.9);
+                /* 深色模式日志容器颜色 */
+                --log-bg: #2d3748;
                 --log-text: #e2e8f0;
-                --log-border: rgba(74, 85, 104, 0.8);
+                --log-border: #4a5568;
             }
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif; /* 苹果原生字体 */
+            font-family: Arial, sans-serif;
             max-width: 800px;
             margin: 20px auto;
             padding: 0 20px;
@@ -84,53 +63,47 @@
             transition: background-color 0.3s, color 0.3s;
         }
         .container {
-            padding: 24px; /* 苹果风格间距 */
+            padding: 20px;
             border: 1px solid var(--border-color);
-            border-radius: 16px; /* 苹果大圆角容器 */
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05); /* 苹果轻微阴影 */
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             background-color: var(--bg-color);
         }
         #startBtn {
-            padding: 12px 24px; /* 苹果按钮间距 */
+            padding: 10px 20px;
             background: var(--primary-color);
             color: white;
             border: none;
-            border-radius: 12px; /* 苹果按钮圆角 */
+            border-radius: 4px;
             cursor: pointer;
             font-size: 16px;
-            font-weight: 500; /* 苹果按钮字重 */
-            transition: background 0.2s, transform 0.1s; /* 苹果轻量动效 */
+            transition: background 0.2s;
         }
         #startBtn:disabled {
             background: var(--btn-disabled);
             cursor: not-allowed;
-            transform: none; /* 禁用时取消动效 */
-        }
-        #startBtn:active:not(:disabled) {
-            transform: scale(0.98); /* 苹果按钮按压动效 */
         }
         #errorTip {
             color: var(--error-color);
             margin: 15px 0;
             min-height: 20px;
-            font-size: 14px;
         }
         .loading {
             display: none;
-            width: 16px; /* 稍大的加载图标 */
-            height: 16px;
+            width: 12px;
+            height: 12px;
             border: 2px solid var(--primary-color);
             border-top: 2px solid transparent;
             border-radius: 50%;
             animation: spin 1s linear infinite;
-            margin: 12px 0;
+            margin: 10px 0;
         }
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
 
         .result-section {
-            margin: 24px 0;
+            margin: 20px 0;
             display: none;
             opacity: 0;
             transition: opacity 0.3s ease;
@@ -143,135 +116,101 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin: 16px 0; /* 苹果风格间距 */
-            padding: 4px 0;
-            /* 新增：换行兼容，避免PC端元素挤压 */
-            flex-wrap: wrap;
-            gap: 8px;
+            margin: 15px 0;
+            padding: 8px 0;
         }
         .result-label {
-            font-weight: 500; /* 苹果标签字重 */
-            font-size: 17px; /* 苹果原生文本大小 */
+            font-weight: bold;
+            font-size: 16px;
             color: var(--text-color);
-            /* 新增：标签最小宽度，保证排版整齐 */
-            min-width: 100px;
         }
-        
-        /* ========== 核心修改：苹果风格 NAT类型样式 ========== */
         .nat-type-value {
-            font-size: 15px; /* 苹果文本大小 */
+            font-size: 14px;
             font-weight: 500;
-            padding: 8px 20px; /* 苹果内边距 */
-            border-radius: var(--nat-type-radius);
-            background: var(--nat-type-bg);
-            color: var(--nat-type-text);
-            border: 1px solid var(--nat-type-border);
-            backdrop-filter: blur(8px); /* 苹果磨砂玻璃效果 */
-            transition: all 0.2s ease;
-            display: inline-block;
-            min-height: 40px; /* 统一高度 */
-            line-height: 24px; /* 垂直居中 */
-            box-sizing: border-box;
-            /* 新增：NAT类型也自适应文本 */
-            width: fit-content;
-            max-width: calc(100% - 110px);
+            padding: 0;
+            border-radius: 0;
+            background: transparent;
+            color: inherit;
+            transition: all 0.2s;
         }
         .nat-type-value.has-content {
-            /* 保留原有标识，无需额外修改 */
+            background: var(--nat-type-bg);
+            color: var(--nat-type-text);
+            padding: 6px 16px;
+            border-radius: 20px;
         }
-        
-        /* ========== 核心修改：IP地址/Port/Version/Geolocation 自适应样式 ========== */
         .ip-value {
-            font-size: 15px;
-            padding: 10px 16px; /* 苹果内边距 */
-            border-radius: var(--result-radius);
-            background: var(--result-bg);
-            color: var(--result-text);
-            border: 1px solid var(--result-border);
-            backdrop-filter: blur(8px); /* 苹果核心磨砂玻璃效果 */
-            transition: all 0.2s ease;
+            font-size: 14px;
+            padding: 0;
+            border-radius: 0;
+            background: transparent;
+            color: inherit;
+            text-align: right;
+            transition: all 0.2s;
             display: inline-block;
-            min-height: 44px; /* 苹果可点击元素最小高度 */
-            line-height: 24px;
-            box-sizing: border-box;
-            /* 核心修改1：宽度自适应文本 */
-            width: fit-content;
-            /* 核心修改2：限制最大宽度，避免超出容器（兼容长文本如Geolocation） */
-            max-width: calc(100% - 110px);
-            /* 核心修改3：文本过长时自动换行 + 省略（兼顾IP地址/地理位置） */
-            white-space: pre-wrap;
-            word-break: break-all;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            width: auto;
+            min-width: 0;
+            white-space: nowrap;
+            overflow: visible;
         }
         .ip-value.has-content {
-            /* 保留原有标识，无需额外修改 */
+            background: var(--result-bg);
+            color: var(--result-text);
+            padding: 8px 12px;
+            border-radius: 6px;
         }
-        
         .divider {
             height: 1px;
             background: var(--border-color);
             margin: 20px 0;
-            opacity: 0.5; /* 苹果分隔线透明度 */
         }
         .connectivity-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin: 16px 0;
-            padding: 4px 0;
-            /* 新增：换行兼容 */
-            flex-wrap: wrap;
-            gap: 8px;
+            margin: 15px 0;
+            padding: 8px 0;
         }
-        
-        /* ========== 核心修改：Connectivity 自适应样式 ========== */
+        /* 连接状态基础样式：和IP地址完全一致 */
         .connectivity-value {
-            font-size: 15px;
-            padding: 10px 16px;
-            border-radius: var(--result-radius);
+            font-size: 14px;
+            padding: 8px 12px;
+            border-radius: 6px;
+            background: transparent;
             color: inherit;
-            transition: all 0.2s ease;
+            text-align: right;
+            transition: all 0.2s;
             display: inline-block;
-            min-height: 44px;
-            line-height: 24px;
-            box-sizing: border-box;
-            font-weight: 500;
-            border: 1px solid transparent;
-            backdrop-filter: blur(8px);
-            /* 核心修改1：宽度自适应文本 */
-            width: fit-content;
-            /* 核心修改2：限制最大宽度 */
-            max-width: calc(100% - 110px);
-            /* 核心修改3：短文本不换行，长文本省略 */
+            width: auto;
+            min-width: 0;
             white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            overflow: visible;
+            font-weight: 500;
         }
+        /* 连接成功样式 */
         .connectivity-value.connected {
             background: var(--connect-connected-bg);
             color: var(--connect-connected-text);
-            border-color: var(--connect-connected-border);
         }
+        /* 连接失败样式 */
         .connectivity-value.disconnected {
             background: var(--connect-disconnected-bg);
             color: var(--connect-disconnected-text);
-            border-color: var(--connect-disconnected-border);
         }
         
-        /* 苹果风格 日志容器 */
+        /* 日志容器默认隐藏，仅检测时显示 */
         .log-container {
             background-color: var(--log-bg) !important;
             color: var(--log-text) !important;
-            padding: 16px !important;
-            border-radius: var(--result-radius) !important;
-            font-family: 'SF Mono', 'Courier New', monospace !important; /* 苹果等宽字体 */
+            padding: 15px !important;
+            border-radius: 6px !important;
+            font-family: 'Courier New', monospace !important;
             font-size: 13px !important;
-            line-height: 1.6 !important;
+            line-height: 1.5 !important;
             max-height: 250px !important;
             height: auto !important;
             overflow-y: auto !important;
-            margin-top: 24px !important;
+            margin-top: 20px !important;
             border: 1px solid var(--log-border) !important;
             width: 100% !important;
             box-sizing: border-box !important;
@@ -279,62 +218,56 @@
             display: none !important;
             opacity: 0 !important;
             transition: opacity 0.3s ease !important;
-            backdrop-filter: blur(8px) !important; /* 苹果磨砂 */
         }
         .log-container.show {
             display: block !important;
             opacity: 1 !important;
         }
 
-        /* 移动端适配（苹果iOS原生适配逻辑） */
+        /* 移动端适配优化 */
         @media (max-width: 480px) {
             .container {
-                padding: 20px;
+                padding: 15px;
                 width: 100%;
                 box-sizing: border-box;
-                border-radius: 20px; /* 移动端更大圆角 */
             }
             #startBtn {
                 width: 100%;
-                padding: 14px 0;
-                font-size: 17px;
             }
             .loading {
-                margin: 12px auto;
+                margin: 10px auto;
             }
-            /* 核心修改：移动端占满宽度，保证显示完整 */
-            .ip-value, .connectivity-value, .nat-type-value {
+            .ip-value, .connectivity-value {
                 white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis; /* 苹果文本溢出处理 */
-                width: 100% !important;
-                max-width: 100% !important;
+                overflow: visible;
+                width: 100%;
                 text-align: left;
-                min-width: unset;
-                margin-top: 4px;
             }
             .log-container {
                 max-height: 200px !important;
                 font-size: 12px !important;
-                padding: 14px !important;
-                margin-top: 20px !important;
+                padding: 10px !important;
+                margin-top: 15px !important;
+                overflow-y: scroll !important;
             }
             .result-row, .connectivity-row {
                 flex-wrap: wrap;
-                gap: 8px; /* 移动端更小间距 */
+                gap: 10px;
             }
             .result-label {
                 width: 100%;
-                margin-bottom: 4px;
-                font-size: 16px;
-                min-width: unset;
+                margin-bottom: 5px;
+            }
+            .nat-type-value, .ip-value {
+                width: 100%;
+                text-align: left;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1 style="font-size: 24px; font-weight: 600; margin-bottom: 20px; color: var(--text-color);">NAT Type Detection Tool</h1>
+        <h1>NAT Type Detection Tool (Final)</h1>
         <button id="startBtn">Start detection</button>
         <div id="loadingIcon" class="loading"></div>
         <div id="errorTip"></div>
@@ -760,7 +693,7 @@
                         this.domElements.geoLocation.textContent = natResult.geoLocation;
                         this.domElements.geoLocation.classList.add('has-content');
                         
-                        // 动态设置连接状态样式
+                        // 动态设置连接状态样式（核心修改）
                         this.domElements.connectivity.textContent = natResult.connectivity;
                         this.domElements.connectivity.classList.remove('connected', 'disconnected');
                         if (natResult.connectivity === 'Connected') {
