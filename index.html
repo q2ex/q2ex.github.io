@@ -2,781 +2,342 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NAT Type Detection Tool (Final)</title>
+    <title>NAT Detector</title>
     <style>
-        :root {
-            --primary-color: #007bff;
-            --bg-color: #ffffff;
-            --text-color: #333333;
-            --border-color: #eeeeee;
-            --error-color: #dc3545;
-            --btn-disabled: #6c757d;
-            --nat-type-bg: #9333ea;
-            --nat-type-text: #ffffff;
-            --result-bg: #e5e7eb; /* IP地址背景色 */
-            --result-text: #333333;
-            --success-text: #10b981; /* 成功文字色 */
-            --connect-bg: #d1fae5; /* Connected背景色（浅薄荷绿，和success-text协调） */
-            /* 日志容器颜色变量 */
-            --log-bg: #f8f9fa;
-            --log-text: #333333;
-            --log-border: #dee2e6;
-        }
-
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --primary-color: #3b82f6;
-                --bg-color: #1a1a1a;
-                --text-color: #f5f5f5;
-                --border-color: #333333;
-                --error-color: #f87171;
-                --btn-disabled: #4b5563;
-                --nat-type-bg: #8b5cf6;
-                --nat-type-text: #ffffff;
-                --result-bg: #374151; /* 深色模式IP背景色 */
-                --result-text: #f5f5f5;
-                --success-text: #34d399; /* 深色模式成功文字色 */
-                --connect-bg: #134e4a; /* 深色模式Connected背景色（深绿灰，和success-text协调） */
-                /* 深色模式日志容器颜色 */
-                --log-bg: #2d3748;
-                --log-text: #e2e8f0;
-                --log-border: #4a5568;
-            }
-        }
-
         body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 0 20px;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            transition: background-color 0.3s, color 0.3s;
-        }
-        .container {
-            padding: 20px;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            background-color: var(--bg-color);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            max-width: 480px;
+            margin: 12px auto;
+            padding: 0 10px;
+            background-color: #f9fafb;
+            overflow-x: hidden;
+            text-align: center;
         }
         #startBtn {
-            padding: 10px 20px;
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 4px;
+            padding: 7px 14px;
+            font-size: 13px;
             cursor: pointer;
-            font-size: 16px;
-            transition: background 0.2s;
+            border: none;
+            border-radius: 5px;
+            background-color: #6366f1;
+            color: white;
+            transition: background-color 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin: 0 auto;
         }
         #startBtn:disabled {
-            background: var(--btn-disabled);
+            background-color: #c7d2fe;
             cursor: not-allowed;
         }
-        #errorTip {
-            color: var(--error-color);
-            margin: 15px 0;
-            min-height: 20px;
-        }
-        .loading {
-            display: none;
-            width: 12px;
-            height: 12px;
-            border: 2px solid var(--primary-color);
-            border-top: 2px solid transparent;
+        .spinner {
+            width: 14px;
+            height: 14px;
+            border: 2px solid rgba(255,255,255,0.5);
+            border-top: 2px solid white;
             border-radius: 50%;
             animation: spin 1s linear infinite;
-            margin: 10px 0;
         }
         @keyframes spin {
-            to { transform: rotate(360deg); }
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
-
-        .result-section {
-            margin: 20px 0;
+        #error {
+            color: #ef4444;
+            margin: 5px 0;
+            font-size: 11px;
+            text-align: center;
+        }
+        #result {
             display: none;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            margin: 15px auto 0;
+            background-color: white;
+            padding: 14px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+            animation: fadeIn 0.5s ease-in-out;
+            overflow: hidden;
+            text-align: left;
         }
-        .result-section.show {
-            display: block;
-            opacity: 1;
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         .result-row {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            margin: 15px 0;
-            padding: 8px 0;
+            margin: 10px 0;
+            justify-content: space-between;
+            gap: 12px;
         }
-        .result-label {
-            font-weight: bold;
-            font-size: 16px;
-            color: var(--text-color);
+        .label {
+            font-size: 14px;
+            color: #374151;
+            font-weight: 700;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+        .value {
+            font-size: 13px;
+            text-align: right;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         .nat-type-value {
-            font-size: 14px;
-            font-weight: 500;
-            padding: 0;
-            border-radius: 0;
-            background: transparent;
-            color: inherit;
-            transition: all 0.2s;
-        }
-        .nat-type-value.has-content {
-            background: var(--nat-type-bg);
-            color: var(--nat-type-text);
-            padding: 6px 16px;
-            border-radius: 20px;
-        }
-        .ip-value {
-            font-size: 14px;
-            padding: 0;
-            border-radius: 0;
-            background: transparent;
-            color: inherit;
-            text-align: right;
-            transition: all 0.2s;
-            display: inline-block;
-            width: auto;
-            min-width: 0;
+            background-color: #a78bfa;
+            color: white;
+            font-weight: 600;
+            padding: 5px 15px;
+            border-radius: 18px;
+            font-size: 13px;
             white-space: nowrap;
-            overflow: visible;
         }
-        .ip-value.has-content {
-            background: var(--result-bg);
-            color: var(--result-text);
-            padding: 8px 12px;
-            border-radius: 6px;
+        .symmetric-nat {
+            background-color: #ef4444;
         }
-        .divider {
-            height: 1px;
-            background: var(--border-color);
-            margin: 20px 0;
+        .ip-value, .port-value {
+            background-color: #e5e7eb;
+            color: #1f2937;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 13px;
+            white-space: nowrap;
         }
-        .connectivity-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin: 15px 0;
-            padding: 8px 0;
+        .ipv6-value {
+            background-color: #e5e7eb;
+            color: #1f2937;
+            padding: 6px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         .connectivity-value {
-            font-size: 14px;
-            padding: 0;
-            border-radius: 0;
-            background: transparent;
-            color: inherit;
-            text-align: right;
-            transition: all 0.2s;
-            display: inline-block;
-            width: auto;
-            min-width: 0;
+            color: #10b981;
+            font-weight: 600;
+            font-size: 13px;
             white-space: nowrap;
+            text-transform: uppercase; /* 新增：连接状态自动大写 */
         }
-        /* 核心修改：给Connected添加和IP一致的背景样式 */
-        .connectivity-value.has-content {
-            background: var(--connect-bg);
-            color: var(--success-text);
-            font-weight: 500;
-            padding: 8px 12px;
-            border-radius: 6px;
-        }
-        
-        /* 日志容器默认隐藏，仅检测时显示 */
-        .log-container {
-            background-color: var(--log-bg) !important;
-            color: var(--log-text) !important;
-            padding: 15px !important;
-            border-radius: 6px !important;
-            font-family: 'Courier New', monospace !important;
-            font-size: 13px !important;
-            line-height: 1.5 !important;
-            max-height: 250px !important;
-            height: auto !important;
-            overflow-y: auto !important;
-            margin-top: 20px !important;
-            border: 1px solid var(--log-border) !important;
-            width: 100% !important;
-            box-sizing: border-box !important;
-            -webkit-overflow-scrolling: touch !important;
-            display: none !important;
-            opacity: 0 !important;
-            transition: opacity 0.3s ease !important;
-        }
-        .log-container.show {
-            display: block !important;
-            opacity: 1 !important;
-        }
-
-        /* 移动端适配优化 */
-        @media (max-width: 480px) {
-            .container {
-                padding: 15px;
-                width: 100%;
-                box-sizing: border-box;
-            }
-            #startBtn {
-                width: 100%;
-            }
-            .loading {
-                margin: 10px auto;
-            }
-            /* 移动端让IP、连接状态、NAT类型统一左对齐，宽度100% */
-            .nat-type-value, .ip-value, .connectivity-value {
-                white-space: nowrap;
-                overflow: visible;
-                width: 100%;
-                text-align: left;
-            }
-            .log-container {
-                max-height: 200px !important;
-                font-size: 12px !important;
-                padding: 10px !important;
-                margin-top: 15px !important;
-                overflow-y: scroll !important;
-            }
-            .result-row, .connectivity-row {
-                flex-wrap: wrap;
-                gap: 10px;
-            }
-            .result-label {
-                width: 100%;
-                margin-bottom: 5px;
-            }
+        hr {
+            border: 1px solid #f3f4f6;
+            margin: 8px 0;
+            width: 100%;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>NAT Type Detection Tool (Final)</h1>
-        <button id="startBtn">Start detection</button>
-        <div id="loadingIcon" class="loading"></div>
-        <div id="errorTip"></div>
-
-        <div class="result-section" id="resultSection">
-            <div class="result-row">
-                <span class="result-label">IPv4 NAT Type</span>
-                <span class="nat-type-value" id="natType"></span>
-            </div>
-            <div class="result-row">
-                <span class="result-label">Public IP</span>
-                <span class="ip-value" id="publicIP"></span>
-            </div>
-            <div class="result-row">
-                <span class="result-label">IPv4 Port</span>
-                <span class="ip-value" id="publicPort"></span>
-            </div>
-            <div class="divider"></div>
-            <div class="result-row">
-                <span class="result-label">IPv6</span>
-                <span class="ip-value" id="ipv6"></span>
-            </div>
-            <div class="connectivity-row">
-                <span class="result-label">Connectivity</span>
-                <span class="connectivity-value" id="connectivity"></span>
-            </div>
-            <div class="result-row">
-                <span class="result-label">IP Version</span>
-                <span class="ip-value" id="ipVersion"></span>
-            </div>
-            <div class="result-row">
-                <span class="result-label">Geolocation</span>
-                <span class="ip-value" id="geoLocation"></span>
-            </div>
+    <button id="startBtn">
+        <span id="btnText">Start Detect</span>
+        <span class="spinner" style="display:none;"></span>
+    </button>
+    <div id="error"></div>
+    <div id="result">
+        <div class="result-row">
+            <div class="label">TYPE</div>
+            <div id="natType" class="value nat-type-value"></div>
         </div>
-        
-        <div id="logContainer" class="log-container"></div>
+        <div class="result-row">
+            <div class="label">IPv4</div>
+            <div id="publicIP" class="value ip-value"></div>
+        </div>
+        <div class="result-row">
+            <div class="label">Port</div>
+            <div id="publicPort" class="value port-value"></div>
+        </div>
+        <hr>
+        <div class="result-row">
+            <div class="label">IPv6</div>
+            <div id="ipv6" class="value ipv6-value"></div>
+        </div>
+        <div class="result-row">
+            <div class="label">Port</div>
+            <div id="ipv6Port" class="value port-value"></div>
+        </div>
+        <div class="result-row connectivity-row">
+            <div class="label">CONNECTIVITY</div>
+            <div id="connectivity" class="value connectivity-value"></div>
+        </div>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const isWebRTCsupported = !!window.RTCPeerConnection || !!window.webkitRTCPeerConnection;
-            const isWebSocketsupported = !!window.WebSocket;
-            const resultSection = document.getElementById('resultSection');
+        document.addEventListener('DOMContentLoaded', () => {
+            const dom = {
+                btn: document.getElementById('startBtn'),
+                btnText: document.getElementById('btnText'),
+                spinner: document.querySelector('.spinner'),
+                err: document.getElementById('error'),
+                res: document.getElementById('result'),
+                nat: document.getElementById('natType'),
+                ip: document.getElementById('publicIP'),
+                ipv4Port: document.getElementById('publicPort'),
+                ipv6: document.getElementById('ipv6'),
+                ipv6Port: document.getElementById('ipv6Port'),
+                conn: document.getElementById('connectivity')
+            };
 
-            class NATDetectionClient {
+            const isSupported = !!window.RTCPeerConnection && !!window.WebSocket;
+            if (!isSupported) {
+                dom.btn.disabled = true;
+                return;
+            }
+
+            const RTCPeerConnection = window.RTCPeerConnection || window.webkitRTCPeerConnection;
+            let detector = null;
+            let isDetecting = false;
+
+            class Detector {
                 constructor() {
-                    this.iceServersConfig = [
-                        { urls: 'stun:stun.cloudflare.com:3478' },
-                        { urls: 'stun:stun.l.google.com:19302' },
-                        { urls: 'stun:stun1.l.google.com:19302' },
-                        { urls: 'stun:stun2.l.google.com:19302' },
-                        { urls: 'stun:stun3.l.google.com:19302' },
-                        { urls: 'stun:stun4.l.google.com:19302' }
-                    ];
-                    
                     this.ws = null;
                     this.pc = null;
-                    this.dataChannel = null;
-                    this.connected = false;
-                    this.detecting = false;
-                    this.publicIP = '';
-                    this.publicPort = '';
+                    this.v4 = '';
+                    this.p4 = '';
+                    this.v6 = '';
+                    this.p6 = '';
+                }
 
-                    this.domElements = {
-                        errorTip: document.getElementById('errorTip'),
-                        natType: document.getElementById('natType'),
-                        publicIP: document.getElementById('publicIP'),
-                        publicPort: document.getElementById('publicPort'),
-                        ipv6: document.getElementById('ipv6'),
-                        connectivity: document.getElementById('connectivity'),
-                        ipVersion: document.getElementById('ipVersion'),
-                        geoLocation: document.getElementById('geoLocation'),
-                        startBtn: document.getElementById('startBtn'),
-                        loadingIcon: document.getElementById('loadingIcon'),
-                        logContainer: document.getElementById('logContainer')
+                async run() {
+                    isDetecting = true;
+                    dom.btn.disabled = true;
+                    dom.btnText.textContent = 'Detecting';
+                    dom.spinner.style.display = 'inline-block';
+                    dom.err.textContent = '';
+                    dom.res.style.display = 'none';
+                    [dom.nat, dom.ip, dom.ipv4Port, dom.ipv6, dom.ipv6Port, dom.conn].forEach(el => el.textContent = '');
+                    dom.nat.className = 'value nat-type-value';
+
+                    try {
+                        await this.wsConnect();
+                        await this.rtcSetup();
+                    } catch (e) {
+                        dom.err.textContent = e.message || 'Detection failed';
+                        this.clean();
+                        this.resetBtn();
+                        isDetecting = false;
+                    }
+                }
+
+                async wsConnect() {
+                    const ws = new WebSocket(`${location.protocol === 'https:' ? 'wss:' : 'ws:'}//nat.mycloudgame.com/ws`);
+                    this.ws = ws;
+
+                    const timeout = new Promise((_, rej) => setTimeout(() => rej(new Error('Timeout (10s)')), 10000));
+                    const connect = new Promise((res, rej) => {
+                        ws.onopen = res;
+                        ws.onmessage = e => { try { this.msgHandle(JSON.parse(e.data)); } catch (_) {} };
+                        ws.onclose = e => e.reason && rej(new Error(`Closed: ${e.reason}`));
+                        ws.onerror = () => {};
+                    });
+
+                    await Promise.race([connect, timeout]);
+                }
+
+                async rtcSetup() {
+                    this.pc = new RTCPeerConnection({
+                        iceServers: [
+                            { urls: 'stun:stun.cloudflare.com:3478' },
+                            { urls: 'stun:stun.l.google.com:19302' }
+                        ]
+                    });
+
+                    this.pc.createDataChannel('nat');
+                    this.pc.onicecandidate = e => {
+                        if (e.candidate) {
+                            const p = e.candidate.candidate.split(' ');
+                            if (p.length >= 8 && p[7] === 'srflx') {
+                                if (p[4].includes('.')) {
+                                    this.v4 = p[4];
+                                    this.p4 = p[5];
+                                } else if (p[4].includes(':')) {
+                                    this.v6 = p[4];
+                                    this.p6 = p[5];
+                                }
+                                p[2] === 'udp' && this.ws.send(JSON.stringify({ type: 'ice-candidate', candidate: e.candidate }));
+                            }
+                        }
                     };
 
-                    this.checkBrowserSupport();
+                    const offer = await this.pc.createOffer({ offerToReceiveAudio: false, offerToReceiveVideo: false });
+                    await this.pc.setLocalDescription(offer);
+                    this.ws.send(JSON.stringify({ type: 'offer', sdp: offer.sdp }));
                 }
 
-                showLogContainer() {
-                    if (this.domElements.logContainer) {
-                        this.domElements.logContainer.classList.add('show');
-                    }
-                }
-
-                hideLogContainer() {
-                    if (this.domElements.logContainer) {
-                        this.domElements.logContainer.classList.remove('show');
-                        this.domElements.logContainer.innerHTML = '';
-                    }
-                }
-
-                log(message) {
-                    if (!this.domElements.logContainer) return;
-                    this.showLogContainer();
-                    const timestamp = new Date().toLocaleTimeString();
-                    const logEntry = `[${timestamp}] ${message}`;
-                    this.domElements.logContainer.innerHTML += `${logEntry}<br>`;
-                    setTimeout(() => {
-                        this.domElements.logContainer.scrollTop = this.domElements.logContainer.scrollHeight;
-                    }, 10);
-                    console.log(logEntry);
-                }
-
-                checkBrowserSupport() {
-                    if (!isWebSocketsupported) {
-                        this.showError('Your browser does not support WebSocket');
-                        this.domElements.startBtn.disabled = true;
-                        this.log('Browser does not support WebSocket');
-                    }
-                    if (!isWebRTCsupported) {
-                        this.showError('Your browser does not support WebRTC');
-                        this.domElements.startBtn.disabled = true;
-                        this.log('Browser does not support WebRTC');
-                    } else {
-                        this.hideLogContainer();
-                    }
-                }
-
-                toggleLoading(show) {
-                    this.domElements.loadingIcon.style.display = show ? 'block' : 'none';
-                }
-
-                showError(message) {
-                    this.domElements.errorTip.textContent = `Error: ${message}`;
-                    this.log(`Error: ${message}`);
-                }
-
-                clearError() {
-                    this.domElements.errorTip.textContent = '';
-                }
-
-                async getRealIPv6() {
-                    try {
-                        const response = await fetch('https://api6.ipify.org?format=json');
-                        const data = await response.json();
-                        return data.ip || 'Unknown';
-                    } catch (e) {
-                        this.log(`Failed to get IPv6: ${e.message}`);
-                        return 'Unknown';
-                    }
-                }
-
-                async getPublicIP() {
-                    try {
-                        const response = await fetch('https://api.ipify.org?format=json');
-                        const data = await response.json();
-                        return data.ip || 'Unknown';
-                    } catch (e) {
-                        this.log(`Failed to get public IP: ${e.message}`);
-                        return 'Unknown';
-                    }
-                }
-
-                async checkConnectivity() {
-                    try {
-                        await fetch('https://www.cloudflare.com/cdn-cgi/trace', { method: 'HEAD' });
-                        return 'Connected';
-                    } catch (e) {
-                        this.log(`Connectivity check failed: ${e.message}`);
-                        return 'Disconnected';
-                    }
-                }
-
-                getIPVersion(ip) {
-                    if (!ip || ip === 'Unknown') return 'Unknown';
-                    if (ip.includes(':')) return 'IPv6';
-                    else if (ip.includes('.') && /^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/.test(ip)) return 'IPv4';
-                    else return 'Unknown';
-                }
-
-                async getGeoLocation(ip) {
-                    if (!ip || ip === 'Unknown') return 'Unknown';
-                    try {
-                        this.log(`Getting geolocation for IP: ${ip}`);
-                        const response = await fetch(`https://ip-api.com/json/${ip}?lang=en`, { timeout: 5000 });
-                        const data = await response.json();
-                        if (data.status !== 'success') {
-                            this.log(`Geolocation lookup failed: ${data.message}`);
-                            return 'Unknown';
-                        }
-                        const locationParts = [
-                            data.country || '',
-                            data.regionName || '',
-                            data.city || ''
-                        ].filter(Boolean);
-                        return locationParts.join(', ') || 'Unknown';
-                    } catch (e) {
-                        this.log(`Failed to get geolocation: ${e.message}`);
-                        return 'Unknown';
-                    }
-                }
-
-                async connect() {
-                    try {
-                        this.clearError();
-                        this.toggleLoading(true);
-                        this.detecting = true;
-                        this.log('Starting NAT detection...');
-                        const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-                        const wsUrl = `${protocol}//nat.mycloudgame.com/ws`;
-                        this.log(`Connecting to WebSocket server: ${wsUrl}`);
-                        
-                        const connectTimeout = new Promise((_, reject) => {
-                            setTimeout(() => reject(new Error('Connection timeout (10s)')), 10000);
-                        });
-                        
-                        const connectPromise = new Promise((resolve, reject) => {
-                            this.ws = new WebSocket(wsUrl);
-                            this.ws.onopen = () => {
-                                this.log('WebSocket connection established');
-                                this.connected = true;
-                                resolve();
-                            };
-                            this.ws.onmessage = (event) => {
-                                try {
-                                    const message = JSON.parse(event.data);
-                                    this.handleWebSocketMessage(message);
-                                } catch (e) {
-                                    this.log(`Received non-JSON message: ${event.data}`);
-                                }
-                            };
-                            this.ws.onclose = (event) => {
-                                this.log(`WebSocket closed (code: ${event.code}, reason: ${event.reason || 'No reason'})`);
-                                this.connected = false;
-                                if (this.detecting) {
-                                    this.showError(`Connection closed: ${event.reason || 'Unknown reason'}`);
-                                }
-                            };
-                            this.ws.onerror = (error) => {
-                                this.log(`WebSocket error: ${error.message || 'Unknown error'}`);
-                                reject(new Error(`WebSocket error: ${error.message || 'Unknown error'}`));
-                            };
-                        });
-                        
-                        await Promise.race([connectPromise, connectTimeout]);
-                        await this.setupWebRTC();
-                    } catch (error) {
-                        this.showError(error.message);
-                        this.log(`Connection failed: ${error.message}`);
-                        this.disconnect();
-                        this.toggleLoading(false);
-                        this.domElements.startBtn.disabled = false;
-                        setTimeout(() => {
-                            this.hideLogContainer();
-                        }, 3000);
-                        throw error;
-                    }
-                }
-
-                async setupWebRTC() {
-                    if (!this.connected || !this.ws || this.ws.readyState !== WebSocket.OPEN) {
-                        this.log('WebSocket not available, cannot setup WebRTC');
-                        return;
-                    }
-                    try {
-                        this.log('Setting up WebRTC connection...');
-                        const RTCPeerConnection = window.RTCPeerConnection || window.webkitRTCPeerConnection;
-                        this.pc = new RTCPeerConnection({ iceServers: this.iceServersConfig });
-                        this.dataChannel = this.pc.createDataChannel('nat-detection', { ordered: true });
-                        this.dataChannel.onopen = () => this.log('Data channel opened');
-                        
-                        this.pc.onicecandidate = (event) => {
-                            if (event.candidate) {
-                                const candidateInfo = this.parseICECandidate(event.candidate.candidate);
-                                this.log(`ICE candidate received: ${candidateInfo.type} ${candidateInfo.protocol} ${candidateInfo.ip}:${candidateInfo.port}`);
-                                if (candidateInfo.type === 'srflx' && candidateInfo.protocol === 'udp' && candidateInfo.ipType === 'ipv4') {
-                                    this.publicIP = candidateInfo.ip;
-                                    this.publicPort = candidateInfo.port;
-                                    this.log(`Public address detected: ${this.publicIP}:${this.publicPort}`);
-                                }
-                                if (this.shouldSendCandidate(candidateInfo)) {
-                                    this.sendWebSocketMessage({
-                                        type: 'ice-candidate',
-                                        candidate: event.candidate
-                                    });
-                                }
-                            }
-                        };
-                        
-                        this.pc.onconnectionstatechange = () => {
-                            this.log(`WebRTC connection state: ${this.pc.connectionState}`);
-                        };
-                        
-                        const offer = await this.pc.createOffer({
-                            iceRestart: false,
-                            offerToReceiveAudio: false,
-                            offerToReceiveVideo: false
-                        });
-                        await this.pc.setLocalDescription(offer);
-                        this.log('Sending SDP offer to server');
-                        this.sendWebSocketMessage({
-                            type: 'offer',
-                            sdp: offer.sdp
-                        });
-                    } catch (e) {
-                        this.showError(`WebRTC setup failed: ${e.message}`);
-                        this.log(`WebRTC setup error: ${e.message}`);
-                        this.disconnect();
-                        this.toggleLoading(false);
-                        this.domElements.startBtn.disabled = false;
-                        setTimeout(() => {
-                            this.hideLogContainer();
-                        }, 3000);
-                    }
-                }
-
-                handleWebSocketMessage(message) {
-                    this.log(`Received server message: ${message.type}`);
-                    console.log('Server message:', message);
-                    switch (message.type) {
+                msgHandle(msg) {
+                    switch (msg.type) {
                         case 'nat-result':
-                            this.handleNATResult(message);
+                            this.showRes(msg);
                             break;
                         case 'answer':
-                            this.handleAnswer(message.sdp);
+                            this.pc.setRemoteDescription({ type: 'answer', sdp: msg.sdp });
                             break;
                         case 'ice-candidate':
-                            this.handleICECandidate(message.candidate);
+                            this.pc.remoteDescription && this.pc.addIceCandidate(msg.candidate);
                             break;
                         case 'error':
-                            this.showError(message.message || 'Server error');
-                            this.disconnect();
-                            this.toggleLoading(false);
-                            this.domElements.startBtn.disabled = false;
-                            setTimeout(() => {
-                                this.hideLogContainer();
-                            }, 3000);
-                            break;
-                        default:
-                            this.log(`Unhandled message type: ${message.type}`);
+                            dom.err.textContent = msg.message || '';
+                            this.clean();
+                            this.resetBtn();
+                            isDetecting = false;
                     }
                 }
 
-                async handleAnswer(sdp) {
-                    try {
-                        this.log('Processing SDP answer from server');
-                        await this.pc.setRemoteDescription({
-                            type: 'answer',
-                            sdp: sdp
-                        });
-                        this.log('Remote description set successfully');
-                    } catch (e) {
-                        this.log(`Failed to set remote description: ${e.message}`);
-                        this.showError('Failed to set remote SDP');
-                    }
-                }
-
-                async handleICECandidate(candidate) {
-                    try {
-                        if (!this.pc.remoteDescription) {
-                            this.log('Skipping ICE candidate - no remote description');
-                            return;
-                        }
-                        this.log(`Adding server ICE candidate: ${candidate.candidate}`);
-                        await this.pc.addIceCandidate(candidate);
-                    } catch (e) {
-                        this.log(`Failed to add ICE candidate: ${e.message}`);
-                    }
-                }
-
-                async handleNATResult(result) {
-                    try {
-                        this.log('Processing NAT detection result');
-                        const natTypeMap = {
-                            'full-cone': 'Full Cone NAT',
-                            'restricted-cone': 'Restricted Cone NAT',
-                            'port-restricted-cone': 'Port Restricted Cone NAT',
-                            'symmetric': 'Symmetric NAT',
-                            'blocked': 'Blocked/Firewall',
-                            'unknown': 'Unknown'
-                        };
-                        
-                        const [ipv6, connectivity, publicIP] = await Promise.all([
-                            this.getRealIPv6(),
-                            this.checkConnectivity(),
-                            this.getPublicIP()
-                        ]);
-                        const mainIP = result.publicIP || this.publicIP || publicIP;
-                        const ipVersion = this.getIPVersion(mainIP !== 'Unknown' ? mainIP : ipv6);
-                        const geoLocation = await this.getGeoLocation(mainIP);
-                        
-                        const natResult = {
-                            natType: natTypeMap[result.natType] || result.natType || 'Unknown',
-                            publicIP: mainIP,
-                            publicPort: result.publicPort || this.publicPort || 'Unknown',
-                            ipv6: ipv6,
-                            connectivity: connectivity,
-                            ipVersion: ipVersion,
-                            geoLocation: geoLocation
-                        };
-                        
-                        resultSection.classList.add('show');
-                        this.domElements.natType.textContent = natResult.natType;
-                        this.domElements.natType.classList.add('has-content');
-                        this.domElements.publicIP.textContent = natResult.publicIP;
-                        this.domElements.publicIP.classList.add('has-content');
-                        this.domElements.publicPort.textContent = natResult.publicPort;
-                        this.domElements.publicPort.classList.add('has-content');
-                        this.domElements.ipv6.textContent = natResult.ipv6;
-                        this.domElements.ipv6.classList.add('has-content');
-                        this.domElements.connectivity.textContent = natResult.connectivity;
-                        this.domElements.connectivity.classList.add('has-content');
-                        this.domElements.ipVersion.textContent = natResult.ipVersion;
-                        this.domElements.ipVersion.classList.add('has-content');
-                        this.domElements.geoLocation.textContent = natResult.geoLocation;
-                        this.domElements.geoLocation.classList.add('has-content');
-                        
-                        this.log(`Detection completed - NAT Type: ${natResult.natType}, Public IP: ${natResult.publicIP}:${natResult.publicPort}, IP Version: ${natResult.ipVersion}, Location: ${natResult.geoLocation}`);
-                    } catch (error) {
-                        this.showError(`Failed to process result: ${error.message}`);
-                        this.log(`Result processing error: ${error.message}`);
-                    } finally {
-                        this.toggleLoading(false);
-                        this.domElements.startBtn.disabled = false;
-                        this.detecting = false;
-                        this.disconnect();
-                        setTimeout(() => {
-                            this.hideLogContainer();
-                        }, 2000);
-                    }
-                }
-
-                parseICECandidate(candidateString) {
-                    if (!candidateString) return { type: 'unknown', protocol: 'unknown', ip: 'unknown', port: 'unknown', ipType: 'unknown' };
-                    const parts = candidateString.split(' ');
-                    if (parts.length < 8) {
-                        return { type: 'unknown', protocol: 'unknown', ip: 'unknown', port: 'unknown', ipType: 'unknown' };
-                    }
-                    return {
-                        foundation: parts[0].split(':')[1],
-                        component: parts[1],
-                        protocol: parts[2].toLowerCase(),
-                        priority: parts[3],
-                        ip: parts[4],
-                        port: parts[5],
-                        type: parts[7],
-                        ipType: parts[4].includes(':') ? 'ipv6' : parts[4].includes('.') ? 'ipv4' : 'unknown'
+                async showRes(res) {
+                    const natMap = {
+                        'full-cone': 'Full Cone NAT',
+                        'restricted-cone': 'Restricted Cone NAT',
+                        'port-restricted-cone': 'Port Restricted Cone NAT',
+                        'symmetric': 'Symmetric NAT',
+                        'blocked': 'Firewall interception',
+                        'unknown': 'UnKnown'
                     };
+
+                    if (res.natType === 'symmetric') {
+                        dom.nat.classList.add('symmetric-nat');
+                    }
+
+                    // 连接状态转为大写
+                    const conn = await fetch('https://www.cloudflare.com/cdn-cgi/trace', { method: 'HEAD' })
+                        .then(() => '✓ EXTERNALLY CONNECTED')
+                        .catch(() => '× NOT CONNECTED');
+
+                    dom.nat.textContent = natMap[res.natType] || 'UnKnown';
+                    dom.ip.textContent = res.publicIP || this.v4 || 'UnKnown';
+                    dom.ipv4Port.textContent = res.publicPort || this.p4 || 'UnKnown';
+                    dom.ipv6.textContent = this.v6 || 'UnKnown';
+                    dom.ipv6Port.textContent = this.p6 || 'UnKnown';
+                    dom.conn.textContent = conn;
+                    dom.res.style.display = 'block';
+
+                    this.clean();
+                    this.resetBtn();
+                    isDetecting = false;
                 }
 
-                shouldSendCandidate(candidateInfo) {
-                    if (!candidateInfo) return false;
-                    return candidateInfo.type === 'srflx' && 
-                           candidateInfo.protocol === 'udp' && 
-                           candidateInfo.ipType === 'ipv4';
+                resetBtn() {
+                    dom.btnText.textContent = 'Start Detect';
+                    dom.spinner.style.display = 'none';
+                    dom.btn.disabled = false;
                 }
 
-                sendWebSocketMessage(message) {
-                    if (!this.ws || this.ws.readyState !== WebSocket.OPEN) {
-                        this.log('Cannot send message - WebSocket not open');
-                        return;
-                    }
-                    try {
-                        this.ws.send(JSON.stringify(message));
-                    } catch (e) {
-                        this.log(`Message send failed: ${e.message}`);
-                        this.showError('Failed to send message to server');
-                    }
-                }
-
-                disconnect() {
-                    this.log('Disconnecting all connections...');
-                    if (this.pc) {
-                        this.pc.close();
-                        this.pc = null;
-                    }
-                    if (this.dataChannel) {
-                        this.dataChannel.close();
-                        this.dataChannel = null;
-                    }
-                    if (this.ws) {
-                        this.ws.close();
-                        this.ws = null;
-                    }
-                    this.connected = false;
-                    this.detecting = false;
-                    this.publicIP = '';
-                    this.publicPort = '';
+                clean() {
+                    this.pc?.close();
+                    this.ws?.close();
+                    this.pc = this.ws = null;
+                    this.v4 = this.p4 = this.v6 = this.p6 = '';
                 }
             }
 
-            let client = null;
-
-            async function startDetection() {
-                const startBtn = document.getElementById('startBtn');
-                startBtn.disabled = true;
-                resultSection.classList.remove('show');
-                ['natType', 'publicIP', 'publicPort', 'ipv6', 'connectivity', 'ipVersion', 'geoLocation'].forEach(id => {
-                    const el = document.getElementById(id);
-                    el.textContent = '';
-                    el.classList.remove('has-content');
-                });
-                try {
-                    if (client) {
-                        client.disconnect();
-                        await new Promise(resolve => setTimeout(resolve, 100));
-                    }
-                    client = new NATDetectionClient();
-                    await client.connect();
-                } catch (error) {
-                    console.error('Detection failed:', error);
-                    client?.log(`Detection failed: ${error.message}`);
-                    client?.toggleLoading(false);
-                    startBtn.disabled = false;
-                    if (client) {
-                        client.disconnect();
-                        setTimeout(() => {
-                            client.hideLogContainer();
-                            client = null;
-                        }, 3000);
-                    }
-                }
-            }
-
-            document.getElementById('startBtn').addEventListener('click', startDetection);
-            window.addEventListener('beforeunload', () => {
-                if (client) {
-                    client.disconnect();
-                    client.hideLogContainer();
-                    client = null;
-                }
+            dom.btn.addEventListener('click', () => {
+                if (isDetecting) return;
+                detector?.clean();
+                detector = new Detector();
+                detector.run();
             });
+
+            window.onbeforeunload = () => detector?.clean();
         });
     </script>
 </body>
