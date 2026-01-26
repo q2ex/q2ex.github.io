@@ -2,8 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 移动端视口适配 -->
+    <meta name="apple-mobile-web-app-capable" content="yes"> <!-- Safari 全屏支持 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="default"> <!-- Safari 状态栏适配 -->
     <title>NAT Detector</title>
     <style>
+        /* 全局重置，解决浏览器默认样式差异 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent; /* 去除 Safari 点击高亮 */
+        }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             max-width: 480px;
@@ -12,20 +22,24 @@
             background-color: #f9fafb;
             overflow-x: hidden;
             text-align: center;
+            -webkit-font-smoothing: antialiased; /* Safari 字体抗锯齿 */
+            -moz-osx-font-smoothing: grayscale;
         }
         #startBtn {
-            padding: 7px 14px;
-            font-size: 13px;
+            padding: 8px 16px; /* 调整点击区域，更适合移动端触摸 */
+            font-size: 14px;
             cursor: pointer;
             border: none;
-            border-radius: 5px;
+            border-radius: 6px;
             background-color: #6366f1;
             color: white;
             transition: background-color 0.2s;
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            margin: 0 auto;
+            margin: 0 auto 10px; /* 增加底部间距，避免遮挡 */
+            -webkit-appearance: none; /* 去除 Safari 默认按钮样式 */
+            appearance: none;
         }
         #startBtn:disabled {
             background-color: #c7d2fe;
@@ -46,19 +60,22 @@
         #error {
             color: #ef4444;
             margin: 5px 0;
-            font-size: 11px;
+            font-size: 12px;
             text-align: center;
+            line-height: 1.4; /* 优化行高，提升可读性 */
         }
         #result {
             display: none;
             margin: 15px auto 0;
             background-color: white;
-            padding: 14px;
+            padding: 16px 14px;
             border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06); /* 优化阴影，更适配移动端 */
             animation: fadeIn 0.5s ease-in-out;
             overflow: hidden;
             text-align: left;
+            width: 100%; /* 移动端宽度自适应 */
+            max-width: 100%;
         }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
@@ -67,9 +84,9 @@
         .result-row {
             display: flex;
             align-items: center;
-            margin: 10px 0;
+            margin: 12px 0; /* 调整行间距，更适合移动端阅读 */
             justify-content: space-between;
-            gap: 12px;
+            gap: 8px; /* 减小间隙，适配小屏 */
         }
         .label {
             font-size: 14px;
@@ -84,6 +101,7 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            flex-shrink: 1; /* 允许内容收缩，避免溢出 */
         }
         .nat-type-value {
             background-color: #a78bfa;
@@ -100,7 +118,7 @@
         .ip-value, .port-value {
             background-color: #e5e7eb;
             color: #1f2937;
-            padding: 5px 10px;
+            padding: 6px 10px;
             border-radius: 5px;
             font-size: 13px;
             white-space: nowrap;
@@ -114,18 +132,32 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            max-width: 180px; /* 限制 IPv6 长度，适配小屏 */
         }
         .connectivity-value {
             color: #10b981;
             font-weight: 600;
             font-size: 13px;
             white-space: nowrap;
-            text-transform: uppercase; /* 新增：连接状态自动大写 */
+            text-transform: uppercase;
         }
         hr {
             border: 1px solid #f3f4f6;
-            margin: 8px 0;
+            margin: 10px 0;
             width: 100%;
+        }
+
+        /* 小屏移动端适配 */
+        @media screen and (max-width: 320px) {
+            .result-row {
+                gap: 4px;
+            }
+            .label {
+                font-size: 13px;
+            }
+            .ipv6-value {
+                max-width: 140px;
+            }
         }
     </style>
 </head>
@@ -137,24 +169,24 @@
     <div id="error"></div>
     <div id="result">
         <div class="result-row">
-            <div class="label">TYPE</div>
+            <div class="label">NAT TYPE</div>
             <div id="natType" class="value nat-type-value"></div>
         </div>
         <div class="result-row">
-            <div class="label">IPv4</div>
+            <div class="label">IPV4</div>
             <div id="publicIP" class="value ip-value"></div>
         </div>
         <div class="result-row">
-            <div class="label">Port</div>
+            <div class="label">PORT</div>
             <div id="publicPort" class="value port-value"></div>
         </div>
         <hr>
         <div class="result-row">
-            <div class="label">IPv6</div>
+            <div class="label">IPV6</div>
             <div id="ipv6" class="value ipv6-value"></div>
         </div>
         <div class="result-row">
-            <div class="label">Port</div>
+            <div class="label">PORT</div>
             <div id="ipv6Port" class="value port-value"></div>
         </div>
         <div class="result-row connectivity-row">
@@ -179,13 +211,16 @@
                 conn: document.getElementById('connectivity')
             };
 
-            const isSupported = !!window.RTCPeerConnection && !!window.WebSocket;
+            // 检测浏览器，兼容 Safari 的 RTCPeerConnection 前缀
+            const RTCPeerConnection = window.RTCPeerConnection || window.webkitRTCPeerConnection || window.mozRTCPeerConnection;
+            const isSupported = !!RTCPeerConnection && !!window.WebSocket;
+            
             if (!isSupported) {
                 dom.btn.disabled = true;
+                dom.err.textContent = "Browser not supported. Use Chrome, Firefox or Safari.";
                 return;
             }
 
-            const RTCPeerConnection = window.RTCPeerConnection || window.webkitRTCPeerConnection;
             let detector = null;
             let isDetecting = false;
 
@@ -221,29 +256,36 @@
                 }
 
                 async wsConnect() {
-                    const ws = new WebSocket(`${location.protocol === 'https:' ? 'wss:' : 'ws:'}//nat.mycloudgame.com/ws`);
+                    const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+                    const ws = new WebSocket(`${wsProtocol}//nat.mycloudgame.com/ws`);
                     this.ws = ws;
 
                     const timeout = new Promise((_, rej) => setTimeout(() => rej(new Error('Timeout (10s)')), 10000));
                     const connect = new Promise((res, rej) => {
                         ws.onopen = res;
-                        ws.onmessage = e => { try { this.msgHandle(JSON.parse(e.data)); } catch (_) {} };
+                        ws.onmessage = e => { 
+                            try { this.msgHandle(JSON.parse(e.data)); } 
+                            catch (_) {} 
+                        };
                         ws.onclose = e => e.reason && rej(new Error(`Closed: ${e.reason}`));
-                        ws.onerror = () => {};
+                        ws.onerror = () => rej(new Error('WebSocket error'));
                     });
 
                     await Promise.race([connect, timeout]);
                 }
 
                 async rtcSetup() {
+                    // Safari 兼容的 ICE 服务器配置
                     this.pc = new RTCPeerConnection({
                         iceServers: [
                             { urls: 'stun:stun.cloudflare.com:3478' },
                             { urls: 'stun:stun.l.google.com:19302' }
-                        ]
+                        ],
+                        iceCandidatePoolSize: 10 // 提升 Safari 兼容性
                     });
 
                     this.pc.createDataChannel('nat');
+                    
                     this.pc.onicecandidate = e => {
                         if (e.candidate) {
                             const p = e.candidate.candidate.split(' ');
@@ -298,7 +340,6 @@
                         dom.nat.classList.add('symmetric-nat');
                     }
 
-                    // 连接状态转为大写
                     const conn = await fetch('https://www.cloudflare.com/cdn-cgi/trace', { method: 'HEAD' })
                         .then(() => '✓ EXTERNALLY CONNECTED')
                         .catch(() => '× NOT CONNECTED');
@@ -337,7 +378,8 @@
                 detector.run();
             });
 
-            window.onbeforeunload = () => detector?.clean();
+            // 页面卸载前清理资源
+            window.addEventListener('beforeunload', () => detector?.clean());
         });
     </script>
 </body>
