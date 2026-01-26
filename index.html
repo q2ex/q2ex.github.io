@@ -2,55 +2,90 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NAT Detector</title>
     <style>
-        /* 仅保留结果框架样式 */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            max-width: 480px; /* 恢复最大宽度限制 */
+            margin: 12px auto;
+            padding: 0 10px;
+            background-color: #f9fafb;
+            overflow-x: hidden; /* 禁止横向滚动 */
+        }
+        #startBtn {
+            padding: 7px 14px;
+            font-size: 13px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #6366f1;
+            color: white;
+            transition: background-color 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        #startBtn:disabled {
+            background-color: #c7d2fe;
+            cursor: not-allowed;
+        }
+        .spinner {
+            width: 14px;
+            height: 14px;
+            border: 2px solid rgba(255,255,255,0.5);
+            border-top: 2px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        #error {
+            color: #ef4444;
+            margin: 5px 0;
+            font-size: 11px;
+        }
         #result {
             display: none;
-            margin: 20px 0 0 auto;
+            margin-top: 15px;
             background-color: white;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            overflow: hidden;
-            text-align: right;
-            width: 90%;
-            max-width: 400px;
+            padding: 14px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+            animation: fadeIn 0.5s ease-in-out;
+            overflow: hidden; /* 禁止内容溢出 */
         }
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateX(20px); }
-            to { opacity: 1; transform: translateX(0); }
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         .result-row {
             display: flex;
             align-items: center;
-            margin: 12px 0;
-            justify-content: flex-end;
-            gap: 15px;
+            margin: 10px 0;
+            justify-content: space-between;
+            gap: 12px;
         }
         .label {
             font-size: 14px;
-            color: #6b7280;
-            font-weight: 700;
-            text-transform: uppercase;
+            color: #374151;
+            font-weight: 500;
             white-space: nowrap;
-            margin-right: auto;
         }
         .value {
-            font-size: 14px;
+            font-size: 13px;
             text-align: right;
             white-space: nowrap;
             overflow: hidden;
-            text-overflow: ellipsis;
-            font-weight: 500;
+            text-overflow: ellipsis; /* 超长内容省略显示 */
         }
         .nat-type-value {
-            background-color: #8b5cf6;
+            background-color: #a78bfa;
             color: white;
             font-weight: 600;
-            padding: 6px 18px;
-            border-radius: 20px;
+            padding: 5px 15px;
+            border-radius: 18px;
             font-size: 13px;
             white-space: nowrap;
         }
@@ -58,33 +93,32 @@
             background-color: #ef4444;
         }
         .ip-value, .port-value {
-            background-color: #f3f4f6;
+            background-color: #e5e7eb;
             color: #1f2937;
-            padding: 6px 12px;
-            border-radius: 6px;
+            padding: 5px 10px;
+            border-radius: 5px;
             font-size: 13px;
             white-space: nowrap;
         }
         .ipv6-value {
-            background-color: #f3f4f6;
+            background-color: #e5e7eb;
             color: #1f2937;
-            padding: 6px 12px;
-            border-radius: 6px;
+            padding: 6px 10px;
+            border-radius: 5px;
             font-size: 12px;
             white-space: nowrap;
             overflow: hidden;
-            text-overflow: ellipsis;
+            text-overflow: ellipsis; /* IPv6超长省略 */
         }
         .connectivity-value {
             color: #10b981;
             font-weight: 600;
-            font-size: 14px;
+            font-size: 13px;
             white-space: nowrap;
-            text-transform: uppercase;
         }
         hr {
-            border: 1px solid #f0f0f0;
-            margin: 15px 0;
+            border: 1px solid #f3f4f6;
+            margin: 8px 0;
             width: 100%;
         }
     </style>
@@ -97,28 +131,24 @@
     <div id="error"></div>
     <div id="result">
         <div class="result-row">
-            <div class="label">NAT TYPE</div>
+            <div class="label">NAT Type</div> <!-- 改为NAT Type -->
             <div id="natType" class="value nat-type-value"></div>
         </div>
         <div class="result-row">
-            <div class="label">IPV4</div>
+            <div class="label">Public IP</div>
             <div id="publicIP" class="value ip-value"></div>
         </div>
         <div class="result-row">
-            <div class="label">PORT</div>
+            <div class="label">Public Port</div> <!-- 改为Public Port -->
             <div id="publicPort" class="value port-value"></div>
         </div>
         <hr>
         <div class="result-row">
-            <div class="label">IPV6</div>
+            <div class="label">IPv6</div>
             <div id="ipv6" class="value ipv6-value"></div>
         </div>
-        <div class="result-row">
-            <div class="label">PORT</div>
-            <div id="ipv6Port" class="value port-value"></div>
-        </div>
         <div class="result-row connectivity-row">
-            <div class="label">CONNECTIVITY</div>
+            <div class="label">Connectivity</div>
             <div id="connectivity" class="value connectivity-value"></div>
         </div>
     </div>
@@ -133,9 +163,8 @@
                 res: document.getElementById('result'),
                 nat: document.getElementById('natType'),
                 ip: document.getElementById('publicIP'),
-                ipv4Port: document.getElementById('publicPort'),
+                port: document.getElementById('publicPort'),
                 ipv6: document.getElementById('ipv6'),
-                ipv6Port: document.getElementById('ipv6Port'),
                 conn: document.getElementById('connectivity')
             };
 
@@ -156,7 +185,6 @@
                     this.v4 = '';
                     this.p4 = '';
                     this.v6 = '';
-                    this.p6 = '';
                 }
 
                 async run() {
@@ -166,7 +194,7 @@
                     dom.spinner.style.display = 'inline-block';
                     dom.err.textContent = '';
                     dom.res.style.display = 'none';
-                    [dom.nat, dom.ip, dom.ipv4Port, dom.ipv6, dom.ipv6Port, dom.conn].forEach(el => el.textContent = '');
+                    [dom.nat, dom.ip, dom.port, dom.ipv6, dom.conn].forEach(el => el.textContent = '');
                     dom.nat.className = 'value nat-type-value';
 
                     try {
@@ -213,7 +241,6 @@
                                     this.p4 = p[5];
                                 } else if (p[4].includes(':')) {
                                     this.v6 = p[4];
-                                    this.p6 = p[5];
                                 }
                                 p[2] === 'udp' && this.ws.send(JSON.stringify({ type: 'ice-candidate', candidate: e.candidate }));
                             }
@@ -259,21 +286,19 @@
                     }
 
                     const conn = await fetch('https://www.cloudflare.com/cdn-cgi/trace', { method: 'HEAD' })
-                        .then(() => '✓ EXTERNALLY CONNECTED')
-                        .catch(() => '× NOT CONNECTED');
+                        .then(() => '✓ Externally Connected')
+                        .catch(() => '× Not Connected');
 
                     dom.nat.textContent = natMap[res.natType] || 'UnKnown';
                     dom.ip.textContent = res.publicIP || this.v4 || 'UnKnown';
-                    dom.ipv4Port.textContent = res.publicPort || this.p4 || 'UnKnown';
+                    dom.port.textContent = res.publicPort || this.p4 || 'UnKnown';
                     dom.ipv6.textContent = this.v6 || 'UnKnown';
-                    dom.ipv6Port.textContent = this.p6 || 'UnKnown';
                     dom.conn.textContent = conn;
                     dom.res.style.display = 'block';
-                    // 手动触发动画
-                    dom.res.style.animation = 'fadeIn 0.5s ease-in-out';
 
                     this.clean();
                     this.resetBtn();
+                    isDetecting = false;
                 }
 
                 resetBtn() {
@@ -286,7 +311,7 @@
                     this.pc?.close();
                     this.ws?.close();
                     this.pc = this.ws = null;
-                    this.v4 = this.p4 = this.v6 = this.p6 = '';
+                    this.v4 = this.p4 = this.v6 = '';
                 }
             }
 
