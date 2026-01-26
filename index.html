@@ -85,6 +85,11 @@
         .result-item:nth-child(3) { animation-delay: 0.2s; }
         .result-item:nth-child(4) { animation-delay: 0.25s; }
         .result-item:nth-child(5) { animation-delay: 0.3s; }
+        .result-item:nth-child(6) { animation-delay: 0.35s; }
+        .result-item:nth-child(7) { animation-delay: 0.4s; }
+        .result-item:nth-child(8) { animation-delay: 0.45s; }
+        .result-item:nth-child(9) { animation-delay: 0.5s; }
+        .result-item:nth-child(10) { animation-delay: 0.55s; }
         @keyframes fadeInUp {
             to {
                 opacity: 1;
@@ -225,6 +230,13 @@
         <div class="result-item">v6: <span id="ipv6"></span></div>
         <div class="result-item">Direct: <span id="direct"></span></div>
         <div class="result-item">Location: <span id="location"></span></div>
+        <!-- 新增地理位置相关信息项 -->
+        <div class="result-item">Region: <span id="region"></span></div>
+        <div class="result-item">ISP: <span id="isp"></span></div>
+        <div class="result-item">Timezone: <span id="timezone"></span></div>
+        <!-- 新增经纬度显示项 -->
+        <div class="result-item">Latitude: <span id="latitude"></span></div>
+        <div class="result-item">Longitude: <span id="longitude"></span></div>
     </div>
     <div id="loader">
         <div class="spinner"></div>
@@ -240,6 +252,12 @@
                 ipv6: document.getElementById('ipv6'),
                 direct: document.getElementById('direct'),
                 location: document.getElementById('location'),
+                region: document.getElementById('region'),
+                isp: document.getElementById('isp'),
+                timezone: document.getElementById('timezone'),
+                // 新增经纬度 DOM 引用
+                latitude: document.getElementById('latitude'),
+                longitude: document.getElementById('longitude'),
                 loader: document.getElementById('loader')
             };
             const isSupported = !!window.RTCPeerConnection && !!window.WebSocket;
@@ -264,14 +282,16 @@
                     this.v4 = '';
                     this.p4 = '';
                     this.v6 = '';
-                    this.p6 = '';
                 }
                 async run() {
                     dom.err.textContent = '';
                     dom.res.classList.remove('show');
-                    [dom.nat, dom.ip, dom.ipv6, dom.direct, dom.location].forEach(el => {
-                        el.textContent = '';
-                        if(el === dom.nat) el.className = '';
+                    // 重置所有显示项
+                    Object.values(dom).forEach(el => {
+                        if(el?.textContent !== undefined && el !== dom.err && el !== dom.res && el !== dom.loader) {
+                            el.textContent = '';
+                            if(el === dom.nat) el.className = '';
+                        }
                     });
                     try {
                         await this.wsConnect();
@@ -326,13 +346,22 @@
                     try {
                         const res = await fetch(`https://ipapi.co/${this.v4}/json/`);
                         const data = await res.json();
-                        if (data.city && data.country_name) {
-                            dom.location.textContent = `${data.city}, ${data.country_name}`;
-                        } else {
-                            dom.location.textContent = 'UnKnown';
-                        }
+                        // 原有位置信息
+                        dom.location.textContent = data.city && data.country_name ? `${data.city}, ${data.country_name}` : 'UnKnown';
+                        dom.region.textContent = data.region || 'UnKnown';
+                        dom.isp.textContent = data.org || 'UnKnown';
+                        dom.timezone.textContent = data.timezone || 'UnKnown';
+                        // 新增经纬度数据填充
+                        dom.latitude.textContent = data.latitude ? data.latitude.toFixed(6) : 'UnKnown';
+                        dom.longitude.textContent = data.longitude ? data.longitude.toFixed(6) : 'UnKnown';
                     } catch (err) {
+                        // 容错处理
                         dom.location.textContent = 'UnKnown';
+                        dom.region.textContent = 'UnKnown';
+                        dom.isp.textContent = 'UnKnown';
+                        dom.timezone.textContent = 'UnKnown';
+                        dom.latitude.textContent = 'UnKnown';
+                        dom.longitude.textContent = 'UnKnown';
                     }
                 }
                 msgHandle(msg) {
@@ -376,7 +405,6 @@
                     dom.loader.style.opacity = 0;
                     setTimeout(() => {
                         dom.loader.style.display = 'none';
-                        // 添加 show 类触发弹入动画
                         dom.res.classList.add('show');
                     }, 300);
                     this.clean();
@@ -385,7 +413,7 @@
                     this.pc?.close();
                     this.ws?.close();
                     this.pc = this.ws = null;
-                    this.v4 = this.p4 = this.v6 = this.p6 = '';
+                    this.v4 = this.p4 = this.v6 = '';
                 }
             }
             detector = new Detector();
