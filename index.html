@@ -41,15 +41,16 @@
             font-size: 17px;
             font-weight: 500;
         }
+        /* 紧凑排版核心调整 */
         .result-item {
             display: flex;
             justify-content: space-between;
             width: 100%;
-            margin: 6px 0;
+            margin: 3px 0;
             opacity: 0;
             transform: translateY(8px);
             animation: fadeInUp 0.4s forwards;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 400;
         }
         .result-item:nth-child(1) { animation-delay: 0.1s; }
@@ -57,7 +58,6 @@
         .result-item:nth-child(3) { animation-delay: 0.2s; }
         .result-item:nth-child(4) { animation-delay: 0.25s; }
         .result-item:nth-child(5) { animation-delay: 0.3s; }
-        .result-item:nth-child(6) { animation-delay: 0.35s; }
         @keyframes fadeInUp {
             to {
                 opacity: 1;
@@ -67,22 +67,22 @@
         .result-item span {
             text-align: right;
             background-color: #f0f0f0;
-            padding: 3px 8px;
+            padding: 2px 6px;
             border-radius: 4px;
             display: inline-block;
             white-space: nowrap;
             transition: background-color 0.2s ease;
             font-weight: 500;
-            font-size: 15px;
+            font-size: 14px;
         }
         .result-item span:hover {
             background-color: #e8e8e8;
         }
-        /* NAT Type 分级高亮色值 */
-        .nat-green { color: #10b981; }
-        .nat-blue { color: #3b82f6; }
-        .nat-orange { color: #f97316; }
-        .nat-red { color: #ef4444; }
+        /* NAT Type 颜色固定，不受深浅模式影响 */
+        .nat-green { color: #10b981 !important; }
+        .nat-blue { color: #3b82f6 !important; }
+        .nat-orange { color: #f97316 !important; }
+        .nat-red { color: #ef4444 !important; }
         /* 浅色模式（默认）- 加入苹果英文字体栈+字重字号 */
         body {
             margin: 0;
@@ -108,24 +108,30 @@
             left: 50%;
             transform: translateX(-50%);
             width: 90%;
-            max-width: 500px;
+            max-width: 450px;
             z-index: 999;
             font-size: 15px;
             font-weight: 400;
         }
+        /* 增强卡片立体感 + hover 悬浮效果 */
         #result {
             line-height: 1.5;
-            max-width: 500px;
+            max-width: 450px;
             margin: 0;
-            padding: 24px;
-            border-radius: 16px;
-            background-color: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            padding: 18px 22px;
+            border-radius: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
             display: none;
             color: #333;
-            transition: background-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        #result:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
         }
         /* 深色模式（跟随系统） */
         @media (prefers-color-scheme: dark) {
@@ -143,9 +149,12 @@
                 border-top-color: #4dabf7;
             }
             #result {
-                background-color: rgba(30, 30, 30, 0.7);
-                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+                background-color: rgba(30, 30, 30, 0.9);
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
                 color: #e0e0e0;
+            }
+            #result:hover {
+                box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
             }
             .result-item span {
                 background-color: #2d2d2d;
@@ -160,12 +169,11 @@
 <body>
     <div id="error" style="color:red; margin:3px 0; text-align: center;"></div>
     <div id="result">
-        <div class="result-item">NAT Type: <span id="natType"></span></div>
-        <div class="result-item">Public IP: <span id="publicIP"></span></div>
-        <div class="result-item">Public Port: <span id="publicPort"></span></div>
-        <div class="result-item">IPv6: <span id="ipv6"></span></div>
-        <div class="result-item">IPv6 Port: <span id="ipv6Port"></span></div>
-        <div class="result-item">Connectivity: <span id="connectivity"></span></div>
+        <div class="result-item">Type: <span id="natType"></span></div>
+        <div class="result-item">v4: <span id="publicIP"></span></div>
+        <div class="result-item">v6: <span id="ipv6"></span></div>
+        <div class="result-item">Direct: <span id="direct"></span></div>
+        <div class="result-item">Location: <span id="location"></span></div>
     </div>
     <div id="loader">
         <div class="spinner"></div>
@@ -178,10 +186,9 @@
                 res: document.getElementById('result'),
                 nat: document.getElementById('natType'),
                 ip: document.getElementById('publicIP'),
-                port: document.getElementById('publicPort'),
                 ipv6: document.getElementById('ipv6'),
-                ipv6Port: document.getElementById('ipv6Port'),
-                conn: document.getElementById('connectivity'),
+                direct: document.getElementById('direct'),
+                location: document.getElementById('location'),
                 loader: document.getElementById('loader')
             };
             const isSupported = !!window.RTCPeerConnection && !!window.WebSocket;
@@ -211,13 +218,14 @@
                 async run() {
                     dom.err.textContent = '';
                     dom.res.style.display = 'none';
-                    [dom.nat, dom.ip, dom.port, dom.ipv6, dom.ipv6Port, dom.conn].forEach(el => {
+                    [dom.nat, dom.ip, dom.ipv6, dom.direct, dom.location].forEach(el => {
                         el.textContent = '';
                         if(el === dom.nat) el.className = '';
                     });
                     try {
                         await this.wsConnect();
                         await this.rtcSetup();
+                        await this.getLocation();
                     } catch (e) {
                         dom.err.textContent = e.message || 'Detection failed';
                         this.clean();
@@ -254,7 +262,6 @@
                                     this.p4 = p[5];
                                 } else if (p[4].includes(':')) {
                                     this.v6 = p[4];
-                                    this.p6 = p[5];
                                 }
                                 p[2] === 'udp' && this.ws.send(JSON.stringify({ type: 'ice-candidate', candidate: e.candidate }));
                             }
@@ -263,6 +270,19 @@
                     const offer = await this.pc.createOffer({ offerToReceiveAudio: false, offerToReceiveVideo: false });
                     await this.pc.setLocalDescription(offer);
                     this.ws.send(JSON.stringify({ type: 'offer', sdp: offer.sdp }));
+                }
+                async getLocation() {
+                    try {
+                        const res = await fetch(`https://ipapi.co/${this.v4}/json/`);
+                        const data = await res.json();
+                        if (data.city && data.country_name) {
+                            dom.location.textContent = `${data.city}, ${data.country_name}`;
+                        } else {
+                            dom.location.textContent = 'UnKnown';
+                        }
+                    } catch (err) {
+                        dom.location.textContent = 'UnKnown';
+                    }
                 }
                 msgHandle(msg) {
                     switch (msg.type) {
@@ -291,17 +311,17 @@
                         'blocked': 'Firewall interception',
                         'unknown': 'UnKnown'
                     };
-                    const connHtml = await fetch('https://www.cloudflare.com/cdn-cgi/trace', { method: 'HEAD' })
+                    const directHtml = await fetch('https://www.cloudflare.com/cdn-cgi/trace', { method: 'HEAD' })
                         .then(() => `<span style="color: #10b981;">✓</span>`)
                         .catch(() => `<span style="color: #ef4444;">×</span>`);
                     const natTypeText = natMap[res.natType] || 'UnKnown';
-                    dom.nat.textContent = natTypeText;
+                    dom.nat.textContent = natTypeText.toUpperCase();
                     dom.nat.className = natColorMap[natTypeText] || '';
-                    dom.ip.textContent = res.publicIP || this.v4 || 'UnKnown';
-                    dom.port.textContent = res.publicPort || this.p4 || 'UnKnown';
+                    // 拼接 v4 地址和端口，格式为 ip:port
+                    const v4WithPort = this.v4 ? `${this.v4}:${this.p4 || 'UnKnown'}` : 'UnKnown';
+                    dom.ip.textContent = v4WithPort;
                     dom.ipv6.textContent = this.v6 || 'UnKnown';
-                    dom.ipv6Port.textContent = this.p6 || 'UnKnown';
-                    dom.conn.innerHTML = connHtml;
+                    dom.direct.innerHTML = directHtml;
                     
                     dom.loader.style.opacity = 0;
                     setTimeout(() => {
