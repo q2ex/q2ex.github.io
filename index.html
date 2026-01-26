@@ -38,15 +38,19 @@
         }
         #loader-text {
             color: #555;
+            font-size: 17px;
+            font-weight: 500;
         }
         .result-item {
             display: flex;
             justify-content: space-between;
             width: 100%;
-            margin: 4px 0;
+            margin: 6px 0;
             opacity: 0;
             transform: translateY(8px);
             animation: fadeInUp 0.4s forwards;
+            font-size: 16px;
+            font-weight: 400;
         }
         .result-item:nth-child(1) { animation-delay: 0.1s; }
         .result-item:nth-child(2) { animation-delay: 0.15s; }
@@ -54,7 +58,6 @@
         .result-item:nth-child(4) { animation-delay: 0.25s; }
         .result-item:nth-child(5) { animation-delay: 0.3s; }
         .result-item:nth-child(6) { animation-delay: 0.35s; }
-
         @keyframes fadeInUp {
             to {
                 opacity: 1;
@@ -64,11 +67,13 @@
         .result-item span {
             text-align: right;
             background-color: #f0f0f0;
-            padding: 2px 6px;
-            border-radius: 3px;
+            padding: 3px 8px;
+            border-radius: 4px;
             display: inline-block;
             white-space: nowrap;
             transition: background-color 0.2s ease;
+            font-weight: 500;
+            font-size: 15px;
         }
         .result-item span:hover {
             background-color: #e8e8e8;
@@ -78,8 +83,7 @@
         .nat-blue { color: #3b82f6; }
         .nat-orange { color: #f97316; }
         .nat-red { color: #ef4444; }
-
-        /* 浅色模式（默认） */
+        /* 浅色模式（默认）- 加入苹果英文字体栈+字重字号 */
         body {
             margin: 0;
             padding: 16px;
@@ -89,6 +93,10 @@
             align-items: center;
             min-height: 100vh;
             transition: background-color 0.3s ease;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF UI Text", sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.5;
         }
         #error {
             color: #ef4444;
@@ -102,13 +110,15 @@
             width: 90%;
             max-width: 500px;
             z-index: 999;
+            font-size: 15px;
+            font-weight: 400;
         }
         #result {
-            line-height: 1.4;
+            line-height: 1.5;
             max-width: 500px;
             margin: 0;
-            padding: 20px;
-            border-radius: 12px;
+            padding: 24px;
+            border-radius: 16px;
             background-color: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(4px);
@@ -117,7 +127,6 @@
             color: #333;
             transition: background-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
         }
-
         /* 深色模式（跟随系统） */
         @media (prefers-color-scheme: dark) {
             body {
@@ -162,7 +171,6 @@
         <div class="spinner"></div>
         <div id="loader-text">Detecting NAT information...</div>
     </div>
-
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const dom = {
@@ -176,16 +184,13 @@
                 conn: document.getElementById('connectivity'),
                 loader: document.getElementById('loader')
             };
-
             const isSupported = !!window.RTCPeerConnection && !!window.WebSocket;
-
             if (!isSupported) {
                 dom.err.textContent = "Your browser does not support RTCPeerConnection or WebSocket";
                 dom.loader.style.opacity = 0;
                 setTimeout(() => dom.loader.style.display = 'none', 300);
                 return;
             }
-
             const RTCPeerConnection = window.RTCPeerConnection || window.webkitRTCPeerConnection;
             const natColorMap = {
                 'Full Cone NAT': 'nat-green',
@@ -193,9 +198,7 @@
                 'Port Restricted Cone NAT': 'nat-orange',
                 'Symmetric NAT': 'nat-red'
             };
-
             let detector = null;
-
             class Detector {
                 constructor() {
                     this.ws = null;
@@ -205,7 +208,6 @@
                     this.v6 = '';
                     this.p6 = '';
                 }
-
                 async run() {
                     dom.err.textContent = '';
                     dom.res.style.display = 'none';
@@ -213,7 +215,6 @@
                         el.textContent = '';
                         if(el === dom.nat) el.className = '';
                     });
-
                     try {
                         await this.wsConnect();
                         await this.rtcSetup();
@@ -224,11 +225,9 @@
                         setTimeout(() => dom.loader.style.display = 'none', 300);
                     }
                 }
-
                 async wsConnect() {
                     const ws = new WebSocket(`${location.protocol === 'https:' ? 'wss:' : 'ws:'}//nat.mycloudgame.com/ws`);
                     this.ws = ws;
-
                     const timeout = new Promise((_, rej) => setTimeout(() => rej(new Error('Timeout (10s)')), 10000));
                     const connect = new Promise((res, rej) => {
                         ws.onopen = res;
@@ -236,10 +235,8 @@
                         ws.onclose = e => e.reason && rej(new Error(`Closed: ${e.reason}`));
                         ws.onerror = () => {};
                     });
-
                     await Promise.race([connect, timeout]);
                 }
-
                 async rtcSetup() {
                     this.pc = new RTCPeerConnection({
                         iceServers: [
@@ -263,12 +260,10 @@
                             }
                         }
                     };
-
                     const offer = await this.pc.createOffer({ offerToReceiveAudio: false, offerToReceiveVideo: false });
                     await this.pc.setLocalDescription(offer);
                     this.ws.send(JSON.stringify({ type: 'offer', sdp: offer.sdp }));
                 }
-
                 msgHandle(msg) {
                     switch (msg.type) {
                         case 'nat-result':
@@ -287,7 +282,6 @@
                             setTimeout(() => dom.loader.style.display = 'none', 300);
                     }
                 }
-
                 async showRes(res) {
                     const natMap = {
                         'full-cone': 'Full Cone NAT',
@@ -297,15 +291,12 @@
                         'blocked': 'Firewall interception',
                         'unknown': 'UnKnown'
                     };
-
                     const connHtml = await fetch('https://www.cloudflare.com/cdn-cgi/trace', { method: 'HEAD' })
                         .then(() => `<span style="color: #10b981;">✓</span>`)
                         .catch(() => `<span style="color: #ef4444;">×</span>`);
-
                     const natTypeText = natMap[res.natType] || 'UnKnown';
                     dom.nat.textContent = natTypeText;
                     dom.nat.className = natColorMap[natTypeText] || '';
-
                     dom.ip.textContent = res.publicIP || this.v4 || 'UnKnown';
                     dom.port.textContent = res.publicPort || this.p4 || 'UnKnown';
                     dom.ipv6.textContent = this.v6 || 'UnKnown';
@@ -317,10 +308,8 @@
                         dom.loader.style.display = 'none';
                         dom.res.style.display = 'block';
                     }, 300);
-
                     this.clean();
                 }
-
                 clean() {
                     this.pc?.close();
                     this.ws?.close();
@@ -328,7 +317,6 @@
                     this.v4 = this.p4 = this.v6 = this.p6 = '';
                 }
             }
-
             detector = new Detector();
             detector.run();
             window.onbeforeunload = () => detector?.clean();
