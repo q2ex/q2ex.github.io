@@ -11,14 +11,16 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background-color: rgba(255, 255, 255, 0.95);
+            background-color: rgba(255, 255, 255, 0.8);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             z-index: 9999;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             opacity: 1;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
         }
         .spinner {
             width: 40px;
@@ -28,6 +30,7 @@
             border-radius: 50%;
             animation: spin 1s linear infinite;
             margin-bottom: 15px;
+            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
         }
         @keyframes spin {
             0% { transform: rotate(0deg); }
@@ -70,40 +73,78 @@
         .result-item span:hover {
             background-color: #e8e8e8;
         }
+        /* NAT Type 分级高亮色值 */
         .nat-green { color: #10b981; }
         .nat-blue { color: #3b82f6; }
         .nat-orange { color: #f97316; }
         .nat-red { color: #ef4444; }
-        /* IPv6 状态提示样式 */
-        .ipv6-tip {
-            font-size: 12px;
-            color: #999;
-            margin-left: 6px;
-        }
-        .ipv6-fail {
-            color: #ef4444;
-        }
 
+        /* 浅色模式（默认） */
         body {
             margin: 0;
             padding: 16px;
             background-color: #fafafa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            transition: background-color 0.3s ease;
         }
         #error {
             color: #ef4444;
             margin: 3px 0;
             text-align: center;
             transition: opacity 0.3s ease;
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 500px;
+            z-index: 999;
         }
         #result {
             line-height: 1.4;
             max-width: 500px;
-            margin: 20px auto;
+            margin: 0;
             padding: 20px;
             border-radius: 12px;
-            background-color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
             display: none;
+            color: #333;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+        }
+
+        /* 深色模式（跟随系统） */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #1a1a1a;
+            }
+            #loader {
+                background-color: rgba(20, 20, 20, 0.8);
+            }
+            #loader-text {
+                color: #ccc;
+            }
+            .spinner {
+                border-color: #333;
+                border-top-color: #4dabf7;
+            }
+            #result {
+                background-color: rgba(30, 30, 30, 0.7);
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+                color: #e0e0e0;
+            }
+            .result-item span {
+                background-color: #2d2d2d;
+                color: #e0e0e0;
+            }
+            .result-item span:hover {
+                background-color: #383838;
+            }
         }
     </style>
 </head>
@@ -123,8 +164,8 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var dom = {
+        document.addEventListener('DOMContentLoaded', () => {
+            const dom = {
                 err: document.getElementById('error'),
                 res: document.getElementById('result'),
                 nat: document.getElementById('natType'),
@@ -136,246 +177,161 @@
                 loader: document.getElementById('loader')
             };
 
-            var isSupported = !!(window.RTCPeerConnection || window.webkitRTCPeerConnection) && !!window.WebSocket;
+            const isSupported = !!window.RTCPeerConnection && !!window.WebSocket;
 
             if (!isSupported) {
                 dom.err.textContent = "Your browser does not support RTCPeerConnection or WebSocket";
                 dom.loader.style.opacity = 0;
-                setTimeout(function() {
-                    dom.loader.style.display = 'none';
-                }, 300);
+                setTimeout(() => dom.loader.style.display = 'none', 300);
                 return;
             }
 
-            var RTCPeerConnection = window.RTCPeerConnection || window.webkitRTCPeerConnection;
-            var natColorMap = {
+            const RTCPeerConnection = window.RTCPeerConnection || window.webkitRTCPeerConnection;
+            const natColorMap = {
                 'Full Cone NAT': 'nat-green',
                 'Restricted Cone NAT': 'nat-blue',
                 'Port Restricted Cone NAT': 'nat-orange',
                 'Symmetric NAT': 'nat-red'
             };
 
-            var detector = null;
-            // 新增：标记 IPv6 检测是否出现异常
-            var ipv6DetectError = false;
+            let detector = null;
 
-            function Detector() {
-                this.ws = null;
-                this.pc = null;
-                this.v4 = '';
-                this.p4 = '';
-                this.v6 = '';
-                this.p6 = '';
-            }
-
-            Detector.prototype.run = function() {
-                var _this = this;
-                ipv6DetectError = false;
-                dom.err.textContent = '';
-                dom.res.style.display = 'none';
-                var elements = [dom.nat, dom.ip, dom.port, dom.ipv6, dom.ipv6Port, dom.conn];
-                for (var i = 0; i < elements.length; i++) {
-                    elements[i].textContent = '';
-                    if (elements[i] === dom.nat) {
-                        elements[i].className = '';
-                    }
+            class Detector {
+                constructor() {
+                    this.ws = null;
+                    this.pc = null;
+                    this.v4 = '';
+                    this.p4 = '';
+                    this.v6 = '';
+                    this.p6 = '';
                 }
 
-                this.wsConnect().then(function() {
-                    return _this.rtcSetup();
-                }).catch(function(e) {
-                    dom.err.textContent = e.message || 'Detection failed';
-                    // 捕获异常时标记 IPv6 检测失败
-                    ipv6DetectError = true;
-                    _this.clean();
-                    dom.loader.style.opacity = 0;
-                    setTimeout(function() {
-                        dom.loader.style.display = 'none';
-                    }, 300);
-                });
-            };
+                async run() {
+                    dom.err.textContent = '';
+                    dom.res.style.display = 'none';
+                    [dom.nat, dom.ip, dom.port, dom.ipv6, dom.ipv6Port, dom.conn].forEach(el => {
+                        el.textContent = '';
+                        if(el === dom.nat) el.className = '';
+                    });
 
-            Detector.prototype.wsConnect = function() {
-                var _this = this;
-                var wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
-                this.ws = new WebSocket(wsProtocol + '//nat.mycloudgame.com/ws');
-
-                var timeout = new Promise(function(_, rej) {
-                    setTimeout(function() {
-                        rej(new Error('Timeout (10s)'));
-                    }, 10000);
-                });
-
-                var connect = new Promise(function(res, rej) {
-                    _this.ws.onopen = res;
-                    _this.ws.onmessage = function(e) {
-                        try {
-                            _this.msgHandle(JSON.parse(e.data));
-                        } catch (err) {
-                            ipv6DetectError = true;
-                        }
-                    };
-                    _this.ws.onclose = function(e) {
-                        if (e.reason) rej(new Error('Closed: ' + e.reason));
-                    };
-                    _this.ws.onerror = function() {
-                        ipv6DetectError = true;
-                    };
-                });
-
-                return Promise.race([connect, timeout]);
-            };
-
-            Detector.prototype.rtcSetup = function() {
-                var _this = this;
-                this.pc = new RTCPeerConnection({
-                    iceServers: [
-                        { urls: 'stun:stun.cloudflare.com:3478' },
-                        { urls: 'stun:stun.l.google.com:19302' },
-                        { urls: 'stun:stun.ietf.org:3478' },
-                        { urls: 'stun:stun.services.mozilla.com' }
-                    ],
-                    iceTransportPolicy: 'all'
-                });
-
-                this.pc.createDataChannel('nat');
-                this.pc.onicecandidate = function(e) {
-                    if (e.candidate) {
-                        var cand = e.candidate.candidate;
-                        var parts = cand.split(' ');
-                        if (parts.length >= 8 && (parts[7] === 'srflx' || parts[7] === 'host')) {
-                            if (parts[4].indexOf(':') !== -1) {
-                                _this.v6 = parts[4];
-                                _this.p6 = parts[5];
-                            } else if (parts[4].indexOf('.') !== -1) {
-                                _this.v4 = parts[4];
-                                _this.p4 = parts[5];
-                            }
-                            if (parts[2] === 'udp') {
-                                _this.ws.send(JSON.stringify({ type: 'ice-candidate', candidate: e.candidate }));
-                            }
-                        }
-                    }
-                };
-
-                // ICE 收集失败时标记 IPv6 检测异常
-                this.pc.onicegatheringstatechange = function() {
-                    if (_this.pc.iceGatheringState === 'failed') {
-                        ipv6DetectError = true;
-                    }
-                };
-
-                return this.pc.createOffer({ offerToReceiveAudio: false, offerToReceiveVideo: false }).then(function(offer) {
-                    return _this.pc.setLocalDescription(offer);
-                }).then(function() {
-                    _this.ws.send(JSON.stringify({ type: 'offer', sdp: _this.pc.localDescription.sdp }));
-                });
-            };
-
-            Detector.prototype.msgHandle = function(msg) {
-                var _this = this;
-                switch (msg.type) {
-                    case 'nat-result':
-                        this.showRes(msg);
-                        break;
-                    case 'answer':
-                        this.pc.setRemoteDescription({ type: 'answer', sdp: msg.sdp });
-                        break;
-                    case 'ice-candidate':
-                        if (this.pc.remoteDescription) {
-                            this.pc.addIceCandidate(msg.candidate);
-                        }
-                        break;
-                    case 'error':
-                        dom.err.textContent = msg.message || 'Detection error';
-                        ipv6DetectError = true;
+                    try {
+                        await this.wsConnect();
+                        await this.rtcSetup();
+                    } catch (e) {
+                        dom.err.textContent = e.message || 'Detection failed';
                         this.clean();
                         dom.loader.style.opacity = 0;
-                        setTimeout(function() {
-                            dom.loader.style.display = 'none';
-                        }, 300);
-                        break;
+                        setTimeout(() => dom.loader.style.display = 'none', 300);
+                    }
                 }
-            };
 
-            Detector.prototype.showRes = function(res) {
-                var _this = this;
-                var natMap = {
-                    'full-cone': 'Full Cone NAT',
-                    'restricted-cone': 'Restricted Cone NAT',
-                    'port-restricted-cone': 'Port Restricted Cone NAT',
-                    'symmetric': 'Symmetric NAT',
-                    'blocked': 'Firewall interception',
-                    'unknown': 'UnKnown'
-                };
+                async wsConnect() {
+                    const ws = new WebSocket(`${location.protocol === 'https:' ? 'wss:' : 'ws:'}//nat.mycloudgame.com/ws`);
+                    this.ws = ws;
 
-                var fetchTimeout = function(url, options, timeout) {
-                    return Promise.race([
-                        fetch(url, options),
-                        new Promise(function(_, rej) {
-                            setTimeout(function() {
-                                rej(new Error('Fetch timeout'));
-                            }, timeout);
-                        })
-                    ]);
-                };
+                    const timeout = new Promise((_, rej) => setTimeout(() => rej(new Error('Timeout (10s)')), 10000));
+                    const connect = new Promise((res, rej) => {
+                        ws.onopen = res;
+                        ws.onmessage = e => { try { this.msgHandle(JSON.parse(e.data)); } catch (_) {} };
+                        ws.onclose = e => e.reason && rej(new Error(`Closed: ${e.reason}`));
+                        ws.onerror = () => {};
+                    });
 
-                fetchTimeout('https://www.cloudflare.com/cdn-cgi/trace', { method: 'HEAD' }, 5000).then(function() {
-                    dom.conn.innerHTML = '<span style="color: #10b981;">✓</span>';
-                }).catch(function() {
-                    dom.conn.innerHTML = '<span style="color: #ef4444;">×</span>';
-                }).then(function() {
-                    var natTypeText = natMap[res.natType] || 'UnKnown';
+                    await Promise.race([connect, timeout]);
+                }
+
+                async rtcSetup() {
+                    this.pc = new RTCPeerConnection({
+                        iceServers: [
+                            { urls: 'stun:stun.cloudflare.com:3478' },
+                            { urls: 'stun:stun.l.google.com:19302' }
+                        ]
+                    });
+                    this.pc.createDataChannel('nat');
+                    this.pc.onicecandidate = e => {
+                        if (e.candidate) {
+                            const p = e.candidate.candidate.split(' ');
+                            if (p.length >= 8 && p[7] === 'srflx') {
+                                if (p[4].includes('.')) {
+                                    this.v4 = p[4];
+                                    this.p4 = p[5];
+                                } else if (p[4].includes(':')) {
+                                    this.v6 = p[4];
+                                    this.p6 = p[5];
+                                }
+                                p[2] === 'udp' && this.ws.send(JSON.stringify({ type: 'ice-candidate', candidate: e.candidate }));
+                            }
+                        }
+                    };
+
+                    const offer = await this.pc.createOffer({ offerToReceiveAudio: false, offerToReceiveVideo: false });
+                    await this.pc.setLocalDescription(offer);
+                    this.ws.send(JSON.stringify({ type: 'offer', sdp: offer.sdp }));
+                }
+
+                msgHandle(msg) {
+                    switch (msg.type) {
+                        case 'nat-result':
+                            this.showRes(msg);
+                            break;
+                        case 'answer':
+                            this.pc.setRemoteDescription({ type: 'answer', sdp: msg.sdp });
+                            break;
+                        case 'ice-candidate':
+                            this.pc.remoteDescription && this.pc.addIceCandidate(msg.candidate);
+                            break;
+                        case 'error':
+                            dom.err.textContent = msg.message || 'Detection error';
+                            this.clean();
+                            dom.loader.style.opacity = 0;
+                            setTimeout(() => dom.loader.style.display = 'none', 300);
+                    }
+                }
+
+                async showRes(res) {
+                    const natMap = {
+                        'full-cone': 'Full Cone NAT',
+                        'restricted-cone': 'Restricted Cone NAT',
+                        'port-restricted-cone': 'Port Restricted Cone NAT',
+                        'symmetric': 'Symmetric NAT',
+                        'blocked': 'Firewall interception',
+                        'unknown': 'UnKnown'
+                    };
+
+                    const connHtml = await fetch('https://www.cloudflare.com/cdn-cgi/trace', { method: 'HEAD' })
+                        .then(() => `<span style="color: #10b981;">✓</span>`)
+                        .catch(() => `<span style="color: #ef4444;">×</span>`);
+
+                    const natTypeText = natMap[res.natType] || 'UnKnown';
                     dom.nat.textContent = natTypeText;
                     dom.nat.className = natColorMap[natTypeText] || '';
 
-                    dom.ip.textContent = res.publicIP || _this.v4 || 'UnKnown';
-                    dom.port.textContent = res.publicPort || _this.p4 || 'UnKnown';
-                    
-                    // 核心：IPv6 状态判断与提示
-                    var ipv6Addr = res.publicIPv6 || _this.v6 || '';
-                    var ipv6Port = res.publicIPv6Port || _this.p6 || '';
-                    if (ipv6Addr) {
-                        dom.ipv6.textContent = ipv6Addr;
-                        dom.ipv6Port.textContent = ipv6Port;
-                    } else {
-                        if (ipv6DetectError) {
-                            // 检测失败：红色提示
-                            dom.ipv6.innerHTML = 'UnKnown <span class="ipv6-tip ipv6-fail">(Detection failed)</span>';
-                            dom.ipv6Port.innerHTML = 'UnKnown <span class="ipv6-tip ipv6-fail">(Detection failed)</span>';
-                        } else {
-                            // 网络不支持：灰色提示
-                            dom.ipv6.innerHTML = 'UnKnown <span class="ipv6-tip">(Network does not support IPv6)</span>';
-                            dom.ipv6Port.innerHTML = 'UnKnown <span class="ipv6-tip">(Network does not support IPv6)</span>';
-                        }
-                    }
+                    dom.ip.textContent = res.publicIP || this.v4 || 'UnKnown';
+                    dom.port.textContent = res.publicPort || this.p4 || 'UnKnown';
+                    dom.ipv6.textContent = this.v6 || 'UnKnown';
+                    dom.ipv6Port.textContent = this.p6 || 'UnKnown';
+                    dom.conn.innerHTML = connHtml;
                     
                     dom.loader.style.opacity = 0;
-                    setTimeout(function() {
+                    setTimeout(() => {
                         dom.loader.style.display = 'none';
                         dom.res.style.display = 'block';
                     }, 300);
 
-                    _this.clean();
-                });
-            };
+                    this.clean();
+                }
 
-            Detector.prototype.clean = function() {
-                if (this.pc) this.pc.close();
-                if (this.ws) this.ws.close();
-                this.pc = null;
-                this.ws = null;
-                this.v4 = '';
-                this.p4 = '';
-                this.v6 = '';
-                this.p6 = '';
-            };
+                clean() {
+                    this.pc?.close();
+                    this.ws?.close();
+                    this.pc = this.ws = null;
+                    this.v4 = this.p4 = this.v6 = this.p6 = '';
+                }
+            }
 
             detector = new Detector();
             detector.run();
-            window.onbeforeunload = function() {
-                if (detector) detector.clean();
-            };
+            window.onbeforeunload = () => detector?.clean();
         });
     </script>
 </body>
