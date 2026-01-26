@@ -74,6 +74,15 @@
         .nat-blue { color: #3b82f6; }
         .nat-orange { color: #f97316; }
         .nat-red { color: #ef4444; }
+        /* IPv6 状态提示样式 */
+        .ipv6-tip {
+            font-size: 12px;
+            color: #999;
+            margin-left: 6px;
+        }
+        .ipv6-fail {
+            color: #ef4444;
+        }
 
         body {
             margin: 0;
@@ -147,6 +156,8 @@
             };
 
             var detector = null;
+            // 新增：标记 IPv6 检测是否出现异常
+            var ipv6DetectError = false;
 
             function Detector() {
                 this.ws = null;
@@ -159,6 +170,7 @@
 
             Detector.prototype.run = function() {
                 var _this = this;
+                ipv6DetectError = false;
                 dom.err.textContent = '';
                 dom.res.style.display = 'none';
                 var elements = [dom.nat, dom.ip, dom.port, dom.ipv6, dom.ipv6Port, dom.conn];
@@ -173,6 +185,8 @@
                     return _this.rtcSetup();
                 }).catch(function(e) {
                     dom.err.textContent = e.message || 'Detection failed';
+                    // 捕获异常时标记 IPv6 检测失败
+                    ipv6DetectError = true;
                     _this.clean();
                     dom.loader.style.opacity = 0;
                     setTimeout(function() {
@@ -197,12 +211,16 @@
                     _this.ws.onmessage = function(e) {
                         try {
                             _this.msgHandle(JSON.parse(e.data));
-                        } catch (err) {}
+                        } catch (err) {
+                            ipv6DetectError = true;
+                        }
                     };
                     _this.ws.onclose = function(e) {
                         if (e.reason) rej(new Error('Closed: ' + e.reason));
                     };
-                    _this.ws.onerror = function() {};
+                    _this.ws.onerror = function() {
+                        ipv6DetectError = true;
+                    };
                 });
 
                 return Promise.race([connect, timeout]);
@@ -210,15 +228,13 @@
 
             Detector.prototype.rtcSetup = function() {
                 var _this = this;
-                // 核心修复1：添加 IPv6 专用 STUN 服务器，提升 iOS12 识别率
                 this.pc = new RTCPeerConnection({
                     iceServers: [
                         { urls: 'stun:stun.cloudflare.com:3478' },
                         { urls: 'stun:stun.l.google.com:19302' },
-                        { urls: 'stun:stun.ietf.org:3478' }, // IPv6 优先 STUN
+                        { urls: 'stun:stun.ietf.org:3478' },
                         { urls: 'stun:stun.services.mozilla.com' }
                     ],
-                    // 核心修复2：强制启用 IPv6 检测
                     iceTransportPolicy: 'all'
                 });
 
@@ -227,9 +243,7 @@
                     if (e.candidate) {
                         var cand = e.candidate.candidate;
                         var parts = cand.split(' ');
-                        // 核心修复3：放宽候选筛选条件，支持 host/srflx 类型的 IPv6 候选
                         if (parts.length >= 8 && (parts[7] === 'srflx' || parts[7] === 'host')) {
-                            // 正确识别 IPv6 地址（包含多个冒号）
                             if (parts[4].indexOf(':') !== -1) {
                                 _this.v6 = parts[4];
                                 _this.p6 = parts[5];
@@ -241,6 +255,13 @@
                                 _this.ws.send(JSON.stringify({ type: 'ice-candidate', candidate: e.candidate }));
                             }
                         }
+                    }
+                };
+
+                // ICE 收集失败时标记 IPv6 检测异常
+                this.pc.onicegatheringstatechange = function() {
+                    if (_this.pc.iceGatheringState === 'failed') {
+                        ipv6DetectError = true;
                     }
                 };
 
@@ -267,6 +288,7 @@
                         break;
                     case 'error':
                         dom.err.textContent = msg.message || 'Detection error';
+                        ipv6DetectError = true;
                         this.clean();
                         dom.loader.style.opacity = 0;
                         setTimeout(function() {
@@ -307,11 +329,26 @@
                     dom.nat.textContent = natTypeText;
                     dom.nat.className = natColorMap[natTypeText] || '';
 
-                    // 核心修复4：优先使用 STUN 返回的 IPv6，其次用本地候选
                     dom.ip.textContent = res.publicIP || _this.v4 || 'UnKnown';
                     dom.port.textContent = res.publicPort || _this.p4 || 'UnKnown';
-                    dom.ipv6.textContent = res.publicIPv6 || _this.v6 || 'UnKnown'; // 新增 publicIPv6 兼容
-                    dom.ipv6Port.textContent = res.publicIPv6Port || _this.p6 || 'UnKnown';
+                    
+                    // 核心：IPv6 状态判断与提示
+                    var ipv6Addr = res.publicIPv6 || _this.v6 || '';
+                    var ipv6Port = res.publicIPv6Port || _this.p6 || '';
+                    if (ipv6Addr) {
+                        dom.ipv6.textContent = ipv6Addr;
+                        dom.ipv6Port.textContent = ipv6Port;
+                    } else {
+                        if (ipv6DetectError) {
+                            // 检测失败：红色提示
+                            dom.ipv6.innerHTML = 'UnKnown <span class="ipv6-tip ipv6-fail">(Detection failed)</span>';
+                            dom.ipv6Port.innerHTML = 'UnKnown <span class="ipv6-tip ipv6-fail">(Detection failed)</span>';
+                        } else {
+                            // 网络不支持：灰色提示
+                            dom.ipv6.innerHTML = 'UnKnown <span class="ipv6-tip">(Network does not support IPv6)</span>';
+                            dom.ipv6Port.innerHTML = 'UnKnown <span class="ipv6-tip">(Network does not support IPv6)</span>';
+                        }
+                    }
                     
                     dom.loader.style.opacity = 0;
                     setTimeout(function() {
