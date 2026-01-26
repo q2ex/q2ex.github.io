@@ -2,52 +2,50 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 移动端视口适配 -->
-    <meta name="apple-mobile-web-app-capable" content="yes"> <!-- Safari 全屏支持 -->
-    <meta name="apple-mobile-web-app-status-bar-style" content="default"> <!-- Safari 状态栏适配 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>NAT Detector</title>
     <style>
-        /* 全局重置，解决浏览器默认样式差异 */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent; /* 去除 Safari 点击高亮 */
         }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            max-width: 480px;
-            margin: 12px auto;
-            padding: 0 10px;
+            width: 100vw;
+            min-height: 100vh;
+            padding: 20px 15px;
             background-color: #f9fafb;
             overflow-x: hidden;
-            text-align: center;
-            -webkit-font-smoothing: antialiased; /* Safari 字体抗锯齿 */
-            -moz-osx-font-smoothing: grayscale;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
         }
         #startBtn {
-            padding: 8px 16px; /* 调整点击区域，更适合移动端触摸 */
-            font-size: 14px;
+            padding: 10px 20px;
+            font-size: 15px;
             cursor: pointer;
             border: none;
-            border-radius: 6px;
+            border-radius: 8px;
             background-color: #6366f1;
             color: white;
             transition: background-color 0.2s;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            margin: 0 auto 10px; /* 增加底部间距，避免遮挡 */
-            -webkit-appearance: none; /* 去除 Safari 默认按钮样式 */
-            appearance: none;
+            gap: 8px;
+            margin-bottom: 15px;
+            width: 100%;
+            max-width: 300px;
+            justify-content: center;
         }
         #startBtn:disabled {
             background-color: #c7d2fe;
             cursor: not-allowed;
         }
         .spinner {
-            width: 14px;
-            height: 14px;
+            width: 16px;
+            height: 16px;
             border: 2px solid rgba(255,255,255,0.5);
             border-top: 2px solid white;
             border-radius: 50%;
@@ -59,23 +57,23 @@
         }
         #error {
             color: #ef4444;
-            margin: 5px 0;
+            margin: 5px 0 10px;
             font-size: 12px;
             text-align: center;
-            line-height: 1.4; /* 优化行高，提升可读性 */
+            width: 100%;
+            max-width: 300px;
         }
         #result {
             display: none;
-            margin: 15px auto 0;
+            width: 100%;
+            max-width: 300px;
             background-color: white;
-            padding: 16px 14px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06); /* 优化阴影，更适配移动端 */
+            padding: 20px 15px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
             animation: fadeIn 0.5s ease-in-out;
             overflow: hidden;
             text-align: left;
-            width: 100%; /* 移动端宽度自适应 */
-            max-width: 100%;
         }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
@@ -84,9 +82,9 @@
         .result-row {
             display: flex;
             align-items: center;
-            margin: 12px 0; /* 调整行间距，更适合移动端阅读 */
+            margin: 12px 0;
             justify-content: space-between;
-            gap: 8px; /* 减小间隙，适配小屏 */
+            gap: 12px;
         }
         .label {
             font-size: 14px;
@@ -101,7 +99,6 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            flex-shrink: 1; /* 允许内容收缩，避免溢出 */
         }
         .nat-type-value {
             background-color: #a78bfa;
@@ -118,7 +115,7 @@
         .ip-value, .port-value {
             background-color: #e5e7eb;
             color: #1f2937;
-            padding: 6px 10px;
+            padding: 5px 10px;
             border-radius: 5px;
             font-size: 13px;
             white-space: nowrap;
@@ -132,7 +129,6 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            max-width: 180px; /* 限制 IPv6 长度，适配小屏 */
         }
         .connectivity-value {
             color: #10b981;
@@ -143,21 +139,8 @@
         }
         hr {
             border: 1px solid #f3f4f6;
-            margin: 10px 0;
+            margin: 8px 0;
             width: 100%;
-        }
-
-        /* 小屏移动端适配 */
-        @media screen and (max-width: 320px) {
-            .result-row {
-                gap: 4px;
-            }
-            .label {
-                font-size: 13px;
-            }
-            .ipv6-value {
-                max-width: 140px;
-            }
         }
     </style>
 </head>
@@ -211,16 +194,13 @@
                 conn: document.getElementById('connectivity')
             };
 
-            // 检测浏览器，兼容 Safari 的 RTCPeerConnection 前缀
-            const RTCPeerConnection = window.RTCPeerConnection || window.webkitRTCPeerConnection || window.mozRTCPeerConnection;
-            const isSupported = !!RTCPeerConnection && !!window.WebSocket;
-            
+            const isSupported = !!window.RTCPeerConnection && !!window.WebSocket;
             if (!isSupported) {
                 dom.btn.disabled = true;
-                dom.err.textContent = "Browser not supported. Use Chrome, Firefox or Safari.";
                 return;
             }
 
+            const RTCPeerConnection = window.RTCPeerConnection || window.webkitRTCPeerConnection;
             let detector = null;
             let isDetecting = false;
 
@@ -256,36 +236,29 @@
                 }
 
                 async wsConnect() {
-                    const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
-                    const ws = new WebSocket(`${wsProtocol}//nat.mycloudgame.com/ws`);
+                    const ws = new WebSocket(`${location.protocol === 'https:' ? 'wss:' : 'ws:'}//nat.mycloudgame.com/ws`);
                     this.ws = ws;
 
                     const timeout = new Promise((_, rej) => setTimeout(() => rej(new Error('Timeout (10s)')), 10000));
                     const connect = new Promise((res, rej) => {
                         ws.onopen = res;
-                        ws.onmessage = e => { 
-                            try { this.msgHandle(JSON.parse(e.data)); } 
-                            catch (_) {} 
-                        };
+                        ws.onmessage = e => { try { this.msgHandle(JSON.parse(e.data)); } catch (_) {} };
                         ws.onclose = e => e.reason && rej(new Error(`Closed: ${e.reason}`));
-                        ws.onerror = () => rej(new Error('WebSocket error'));
+                        ws.onerror = () => {};
                     });
 
                     await Promise.race([connect, timeout]);
                 }
 
                 async rtcSetup() {
-                    // Safari 兼容的 ICE 服务器配置
                     this.pc = new RTCPeerConnection({
                         iceServers: [
                             { urls: 'stun:stun.cloudflare.com:3478' },
                             { urls: 'stun:stun.l.google.com:19302' }
-                        ],
-                        iceCandidatePoolSize: 10 // 提升 Safari 兼容性
+                        ]
                     });
 
                     this.pc.createDataChannel('nat');
-                    
                     this.pc.onicecandidate = e => {
                         if (e.candidate) {
                             const p = e.candidate.candidate.split(' ');
@@ -378,8 +351,7 @@
                 detector.run();
             });
 
-            // 页面卸载前清理资源
-            window.addEventListener('beforeunload', () => detector?.clean());
+            window.onbeforeunload = () => detector?.clean();
         });
     </script>
 </body>
