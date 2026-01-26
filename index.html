@@ -41,6 +41,33 @@
             font-size: 17px;
             font-weight: 500;
         }
+        /* 主标题渐变+动画+间距粗细优化 */
+        .main-title {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 24px;
+            text-align: center;
+            letter-spacing: 1.2px;
+            background: linear-gradient(90deg, #3b82f6, #10b981, #f97316);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+            animation: gradientShift 3s ease-in-out infinite;
+            text-transform: none;
+        }
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
         /* 紧凑排版核心调整 */
         .result-item {
             display: flex;
@@ -89,6 +116,7 @@
             padding: 16px;
             background-color: #fafafa;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
@@ -113,7 +141,7 @@
             font-size: 15px;
             font-weight: 400;
         }
-        /* 增强卡片立体感 + hover 悬浮效果 */
+        /* 增强卡片立体感 + hover 悬浮效果 + 加载完成弹入动画 */
         #result {
             line-height: 1.5;
             max-width: 450px;
@@ -128,12 +156,34 @@
             color: #333;
             transition: all 0.3s ease;
             cursor: pointer;
+            /* 弹入动画初始状态 */
+            transform: scale(0.95);
+            opacity: 0;
+        }
+        /* 加载完成后添加该类触发动画 */
+        #result.show {
+            display: block;
+            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+        @keyframes popIn {
+            0% {
+                transform: scale(0.95);
+                opacity: 0;
+            }
+            70% {
+                transform: scale(1.02);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
         #result:hover {
-            transform: translateY(-5px);
+            transform: translateY(-5px) scale(1);
             box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
         }
-        /* 深色模式（跟随系统） */
+        /* 深色模式适配 */
         @media (prefers-color-scheme: dark) {
             body {
                 background-color: #1a1a1a;
@@ -168,6 +218,7 @@
 </head>
 <body>
     <div id="error" style="color:red; margin:3px 0; text-align: center;"></div>
+    <h1 class="main-title">NAT Type Detector</h1>
     <div id="result">
         <div class="result-item">Type: <span id="natType"></span></div>
         <div class="result-item">v4: <span id="publicIP"></span></div>
@@ -217,7 +268,7 @@
                 }
                 async run() {
                     dom.err.textContent = '';
-                    dom.res.style.display = 'none';
+                    dom.res.classList.remove('show');
                     [dom.nat, dom.ip, dom.ipv6, dom.direct, dom.location].forEach(el => {
                         el.textContent = '';
                         if(el === dom.nat) el.className = '';
@@ -317,7 +368,6 @@
                     const natTypeText = natMap[res.natType] || 'UnKnown';
                     dom.nat.textContent = natTypeText.toUpperCase();
                     dom.nat.className = natColorMap[natTypeText] || '';
-                    // 拼接 v4 地址和端口，格式为 ip:port
                     const v4WithPort = this.v4 ? `${this.v4}:${this.p4 || 'UnKnown'}` : 'UnKnown';
                     dom.ip.textContent = v4WithPort;
                     dom.ipv6.textContent = this.v6 || 'UnKnown';
@@ -326,7 +376,8 @@
                     dom.loader.style.opacity = 0;
                     setTimeout(() => {
                         dom.loader.style.display = 'none';
-                        dom.res.style.display = 'block';
+                        // 添加 show 类触发弹入动画
+                        dom.res.classList.add('show');
                     }, 300);
                     this.clean();
                 }
