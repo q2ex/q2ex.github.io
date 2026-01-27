@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <style>#result{transform:translateZ(0);}</style>
+</head>
+<body>
+    <div id="loader">Detecting...</div>
+    <div id="error"></div>
+    <div id="result" style="display:none;">
+        <div>NAT Type: <span id="natType">Detecting...</span></div>
+        <div>Public IPv4: <span id="publicIP">Detecting...</span></div>
+    </div>
+    <button onclick="detector.run()">Detect Again</button>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const dom = {
+                loader: document.getElementById('loader'),
+                error: document.getElementById('error'),
+                result: document.getElementById('result'),
+                natType: document.getElementById('natType'),
+                publicIP: document.getElementById('publicIP')
+            };
+
+            if (!window.RTCPeerConnection || !window.WebSocket) {
+                dom.error.textContent = "Browser does not support required features, detection failed";
+                dom.loader.style.display = 'none';
+                return;
+            }
+
+            const PeerConnection = window.RTCPeerConnection || window.webkitRTCPeerConnection;
+
+            class Detector {
+                constructor() {
+                    this.ws = null;
+                    this.pc = null;
+                    this.publicIp = '';
+                }
+
+                async run() {
+                    dom.error.textContent = '';
+                    dom.result.style.display = 'none';
+                    dom.loader.style.display = '';
+                    dom.natType.textContent = 'Detecting...';
+                    dom.publicIP.textContent = 'Detecting...';
+
+                    try {
+                        await this.connectWs();
+                        await this.initRtc();
+                    } catch (e) {
+                        // 核心修改点：将 Unknown error 替换为 error
+                        dom.error.textContent = `Detection failed: ${e.message || 'error'}`;
+                        this.clean();
+                        dom.loader.style.display = 'none';
+                    }
+                }
+
+                async connectWs() {
+                    const protocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+                    this.ws = new WebSocket(`${protocol}//nat.mycloudgame.com/ws`);
+
+                    await Promise.race([
+                        new Promise((res, rej) => {
+                            this.ws.onopen = res;
+                            this.ws.onmessage = e => this.handleMsg(JSON.parse(e.data));
+                            this.ws.onclose = e => e.reason && rej(new Error(`Connection closed: ${e.reason}`));
+                            this.ws.onerror = () => rej(new Error('Connection error'));
+                        }),
+                        new Promise((_, rej) => setTimeout(() => rej(new Error('Connection timeout')), 10000))
+                    ]);
+                }
+
+                async initRtc() {
+                    const rtcConfig = {
+                        iceServers: [
+                            { urls: 'stun:stun.cloudflare.com:3478' },
+                            { urls: 'stun:stun.l.google.com:19302' }
+                        ],
+                        bundlePolicy: 'max-bundle',
+                        rtcpMuxPolicy: 'require'
+                    };
+
+                    this.pc = new PeerConnection(rtcConfig);
+                    this.pc.createDataChannel('nat-detect', { ordered: false });
+
+                    this.pc.onicecandidate = e => {
+                        if (!e.candidate) return;
+                        const parts = e.candidate.candidate.split(' ');
+                        if (parts[7] === 'srflx' && parts[4].includes('.') && parts[2] === 'udp') {
+                            this.publicIp = parts[4];
+                            this.ws.send(JSON.stringify({ type: 'ice-candidate', candidate: e.candidate }));
+                        }
+                    };
+
+                    const offer = await this.pc.createOffer({
+                        offerToReceiveAudio: false,
+                        offerToReceiveVideo: false,
+                        voiceActivityDetection: false
+                    });
+                    await this.pc.setLocalDescription(offer);
+                    this.ws.send(JSON.stringify({ type: 'offer', sdp: offer.sdp }));
+                }
+
+                handleMsg(msg) {
+                    switch (msg.type) {
+                        case 'nat-result':
+                            this.showResult(msg);
+                            break;
+                        case 'answer':
+                            this.pc.setRemoteDescription({ type: 'answer', sdp: msg.sdp }).catch(() => { });
+                            break;
+                        case 'ice-candidate':
+                            this.pc.remoteDescription && this.pc.addIceCandidate(msg.candidate).catch(() => { });
+                            break;
+                        case 'error':
+                            throw new Error(msg.message);
+                    }
+                }
+
+                showResult(res) {
+                    const natMap = {
+                        'full-cone': 'Full Cone NAT (NAT1)',
+                        'restricted-cone': 'Restricted Cone NAT (NAT2)',
+                        'port-restricted-cone': 'Port Restricted Cone NAT (NAT3)',
+                        'symmetric': 'Symmetric NAT (NAT4)'
+                    };
+                    dom.natType.textContent = natMap[res.natType] || '其他NAT';
+                    dom.publicIP.textContent = this.publicIp || 'No public IPv4';
+                    dom.loader.style.display = 'none';
+                    dom.result.style.display = '';
+                    this.clean();
+                }
+
+                clean() {
+                    this.pc?.close();
+                    this.ws?.close();
+                    this.pc = this.ws = null;
+                    this.publicIp = '';
+                }
+            }
+
+            const detector = new Detector();
+            window.detector = detector;
+            detector.run();
+            window.onbeforeunload = () => detector.clean();
+        });
+    </script>
+</body>
+</html>
