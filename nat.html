@@ -50,7 +50,6 @@
                         await this.connectWs();
                         await this.initRtc();
                     } catch (e) {
-                        // 核心修改点：将 Unknown error 替换为 error
                         dom.error.textContent = `Detection failed: ${e.message || 'error'}`;
                         this.clean();
                         dom.loader.style.display = 'none';
@@ -126,7 +125,7 @@
                         'port-restricted-cone': 'Port Restricted Cone NAT (NAT3)',
                         'symmetric': 'Symmetric NAT (NAT4)'
                     };
-                    dom.natType.textContent = natMap[res.natType] || '其他NAT';
+                    dom.natType.textContent = natMap[res.natType] || 'Other NAT or firewall interception';
                     dom.publicIP.textContent = this.publicIp || 'No public IPv4';
                     dom.loader.style.display = 'none';
                     dom.result.style.display = '';
