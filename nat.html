@@ -4,16 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <style>#result{transform:translateZ(0);}</style>
+    <style>
+        #result{transform:translateZ(0);}
+        button{
+            border: none;
+            padding: 6px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            outline: none;
+            -webkit-tap-highlight-color: transparent;
+            background: transparent;
+            color: inherit;
+        }
+        body, div, span, button {
+            color: inherit;
+        }
+        .loading::after {
+            content: '';
+            animation: dots 1.5s infinite;
+        }
+        @keyframes dots {
+            0%, 20% { content: ''; }
+            40% { content: '.'; }
+            60% { content: '..'; }
+            80%, 100% { content: '...'; }
+        }
+    </style>
 </head>
 <body>
-    <div id="loader">Detecting...</div>
+    <div id="loader" class="loading">Detecting</div>
     <div id="error"></div>
     <div id="result" style="display:none;">
-        <div>NAT Type: <span id="natType">Detecting...</span></div>
-        <div>Public IPv4: <span id="publicIP">Detecting...</span></div>
+        <div>NAT Type: <span id="natType" class="loading">Detecting</span></div>
+        <div>Public IP: <span id="publicIP" class="loading">Detecting</span></div>
     </div>
-    <button onclick="detector.run()">Detect Again</button>
+    <button onclick="detector.run()">↻</button>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const dom = {
@@ -23,29 +48,26 @@
                 natType: document.getElementById('natType'),
                 publicIP: document.getElementById('publicIP')
             };
-
             if (!window.RTCPeerConnection || !window.WebSocket) {
                 dom.error.textContent = "Browser does not support required features, detection failed";
                 dom.loader.style.display = 'none';
                 return;
             }
-
             const PeerConnection = window.RTCPeerConnection || window.webkitRTCPeerConnection;
-
             class Detector {
                 constructor() {
                     this.ws = null;
                     this.pc = null;
                     this.publicIp = '';
                 }
-
                 async run() {
                     dom.error.textContent = '';
                     dom.result.style.display = 'none';
                     dom.loader.style.display = '';
-                    dom.natType.textContent = 'Detecting...';
-                    dom.publicIP.textContent = 'Detecting...';
-
+                    dom.natType.textContent = 'Detecting';
+                    dom.natType.classList.add('loading');
+                    dom.publicIP.textContent = 'Detecting';
+                    dom.publicIP.classList.add('loading');
                     try {
                         await this.connectWs();
                         await this.initRtc();
@@ -55,11 +77,9 @@
                         dom.loader.style.display = 'none';
                     }
                 }
-
                 async connectWs() {
                     const protocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
                     this.ws = new WebSocket(`${protocol}//nat.mycloudgame.com/ws`);
-
                     await Promise.race([
                         new Promise((res, rej) => {
                             this.ws.onopen = res;
@@ -70,7 +90,6 @@
                         new Promise((_, rej) => setTimeout(() => rej(new Error('Connection timeout')), 10000))
                     ]);
                 }
-
                 async initRtc() {
                     const rtcConfig = {
                         iceServers: [
@@ -80,10 +99,8 @@
                         bundlePolicy: 'max-bundle',
                         rtcpMuxPolicy: 'require'
                     };
-
                     this.pc = new PeerConnection(rtcConfig);
                     this.pc.createDataChannel('nat-detect', { ordered: false });
-
                     this.pc.onicecandidate = e => {
                         if (!e.candidate) return;
                         const parts = e.candidate.candidate.split(' ');
@@ -92,7 +109,6 @@
                             this.ws.send(JSON.stringify({ type: 'ice-candidate', candidate: e.candidate }));
                         }
                     };
-
                     const offer = await this.pc.createOffer({
                         offerToReceiveAudio: false,
                         offerToReceiveVideo: false,
@@ -101,7 +117,6 @@
                     await this.pc.setLocalDescription(offer);
                     this.ws.send(JSON.stringify({ type: 'offer', sdp: offer.sdp }));
                 }
-
                 handleMsg(msg) {
                     switch (msg.type) {
                         case 'nat-result':
@@ -117,7 +132,6 @@
                             throw new Error(msg.message);
                     }
                 }
-
                 showResult(res) {
                     const natMap = {
                         'full-cone': 'Full Cone NAT (NAT1)',
@@ -125,13 +139,14 @@
                         'port-restricted-cone': 'Port Restricted Cone NAT (NAT3)',
                         'symmetric': 'Symmetric NAT (NAT4)'
                     };
+                    dom.natType.classList.remove('loading');
                     dom.natType.textContent = natMap[res.natType] || 'Other NAT or firewall interception';
-                    dom.publicIP.textContent = this.publicIp || 'No public IPv4';
+                    dom.publicIP.classList.remove('loading');
+                    dom.publicIP.textContent = this.publicIp || 'No public IP';
                     dom.loader.style.display = 'none';
                     dom.result.style.display = '';
                     this.clean();
                 }
-
                 clean() {
                     this.pc?.close();
                     this.ws?.close();
@@ -139,7 +154,6 @@
                     this.publicIp = '';
                 }
             }
-
             const detector = new Detector();
             window.detector = detector;
             detector.run();
