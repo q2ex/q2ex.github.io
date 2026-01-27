@@ -94,8 +94,6 @@
         .result-item:nth-child(6) { animation-delay: 0.35s; }
         .result-item:nth-child(7) { animation-delay: 0.4s; }
         .result-item:nth-child(8) { animation-delay: 0.45s; }
-        .result-item:nth-child(9) { animation-delay: 0.5s; }
-        .result-item:nth-child(10) { animation-delay: 0.55s; }
         @keyframes fadeInUp {
             to {
                 opacity: 1;
@@ -115,6 +113,18 @@
         }
         .result-item span:hover {
             background-color: #e8e8e8;
+        }
+        /* 刷新图标样式 */
+        #refresh-btn {
+            margin-top: 20px;
+            font-size: 24px;
+            color: #3b82f6;
+            cursor: pointer;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+        #refresh-btn:hover {
+            color: #10b981;
+            transform: rotate(90deg);
         }
         .nat-green { color: #10b981 !important; }
         .nat-blue { color: #3b82f6 !important; }
@@ -218,6 +228,13 @@
             .result-item span:hover {
                 background-color: #383838;
             }
+            /* 深色模式下刷新图标颜色适配 */
+            #refresh-btn {
+                color: #4dabf7;
+            }
+            #refresh-btn:hover {
+                color: #36d399;
+            }
         }
     </style>
 </head>
@@ -233,9 +250,10 @@
         <div class="result-item">Region: <span id="region"></span></div>
         <div class="result-item">ISP: <span id="isp"></span></div>
         <div class="result-item">Timezone: <span id="timezone"></span></div>
-        <div class="result-item">Latitude: <span id="latitude"></span></div>
-        <div class="result-item">Longitude: <span id="longitude"></span></div>
+        <div class="result-item">Coordinates: <span id="coordinates"></span></div>
     </div>
+    <!-- 新增刷新图标 -->
+    <div id="refresh-btn">↻</div>
     <div id="loader">
         <div class="spinner"></div>
         <div id="loader-text">Detecting NAT information...</div>
@@ -253,9 +271,9 @@
                 region: document.getElementById('region'),
                 isp: document.getElementById('isp'),
                 timezone: document.getElementById('timezone'),
-                latitude: document.getElementById('latitude'),
-                longitude: document.getElementById('longitude'),
-                loader: document.getElementById('loader')
+                coordinates: document.getElementById('coordinates'),
+                loader: document.getElementById('loader'),
+                refreshBtn: document.getElementById('refresh-btn')
             };
             const isSupported = !!window.RTCPeerConnection && !!window.WebSocket;
             if (!isSupported) {
@@ -264,6 +282,10 @@
                 setTimeout(() => dom.loader.style.display = 'none', 300);
                 return;
             }
+            // 绑定刷新事件 - 原生F5刷新效果
+            dom.refreshBtn.addEventListener('click', () => {
+                window.location.reload();
+            });
             const RTCPeerConnection = window.RTCPeerConnection || window.webkitRTCPeerConnection;
             const natColorMap = {
                 'Full Cone NAT': 'nat-green',
@@ -284,7 +306,7 @@
                     dom.err.textContent = '';
                     dom.res.classList.remove('show');
                     Object.values(dom).forEach(el => {
-                        if(el?.textContent !== undefined && el !== dom.err && el !== dom.res && el !== dom.loader) {
+                        if(el?.textContent !== undefined && el !== dom.err && el !== dom.res && el !== dom.loader && el !== dom.refreshBtn) {
                             el.textContent = '';
                             if(el === dom.nat) el.className = '';
                         }
@@ -346,15 +368,15 @@
                         dom.region.textContent = data.region || 'UnKnown';
                         dom.isp.textContent = data.org || 'UnKnown';
                         dom.timezone.textContent = data.timezone || 'UnKnown';
-                        dom.latitude.textContent = data.latitude ? data.latitude.toFixed(6) : 'UnKnown';
-                        dom.longitude.textContent = data.longitude ? data.longitude.toFixed(6) : 'UnKnown';
+                        const lat = data.latitude ? data.latitude.toFixed(6) : 'UnKnown';
+                        const lng = data.longitude ? data.longitude.toFixed(6) : 'UnKnown';
+                        dom.coordinates.textContent = `${lat}, ${lng}`;
                     } catch (err) {
                         dom.location.textContent = 'UnKnown';
                         dom.region.textContent = 'UnKnown';
                         dom.isp.textContent = 'UnKnown';
                         dom.timezone.textContent = 'UnKnown';
-                        dom.latitude.textContent = 'UnKnown';
-                        dom.longitude.textContent = 'UnKnown';
+                        dom.coordinates.textContent = 'UnKnown, UnKnown';
                     }
                 }
                 msgHandle(msg) {
@@ -378,19 +400,18 @@
                 async showRes(res) {
                     const natMap = {
                         'full-cone': 'Full Cone NAT',
-                        'restricted-cone': 'Restricted Cone NAT',
+                        'Restricted Cone NAT': 'Restricted Cone NAT',
                         'port-restricted-cone': 'Port Restricted Cone NAT',
                         'symmetric': 'Symmetric NAT',
-                        'blocked': 'Firewall interception',
-                        'unknown': 'UnKnown'
+                        'blocked': 'Firewall Interception',
+                        'unknown': 'Unknown'
                     };
                     const directHtml = await fetch('https://www.cloudflare.com/cdn-cgi/trace', { method: 'HEAD' })
                         .then(() => `<span style="color: #10b981;">✓</span>`)
                         .catch(() => `<span style="color: #ef4444;">×</span>`);
-                    const natTypeText = natMap[res.natType] || 'UnKnown';
-                    dom.nat.textContent = natTypeText.toUpperCase();
+                    const natTypeText = natMap[res.natType] || 'Unknown';
+                    dom.nat.textContent = natTypeText;
                     dom.nat.className = natColorMap[natTypeText] || '';
-                    // 核心修改：只显示 IP 地址，移除端口号拼接
                     dom.ip.textContent = this.v4 || 'UnKnown';
                     dom.ipv6.textContent = this.v6 || 'UnKnown';
                     dom.direct.innerHTML = directHtml;
