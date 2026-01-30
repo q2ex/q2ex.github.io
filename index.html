@@ -19,6 +19,10 @@
             align-items: center;
             padding: 20px;
             font-family: sans-serif;
+            /* 浅色模式默认值 */
+            background-color: #ffffff;
+            color: #333333;
+            transition: background-color 0.3s, color 0.3s;
         }
         /* 新增：内容块间距 */
         #loader, #error, #result {
@@ -53,6 +57,20 @@
             40% { content: '.'; }
             60% { content: '..'; }
             80%, 100% { content: '...'; }
+        }
+
+        /* 新增：深色模式适配 */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #1a1a1a;
+                color: #f5f5f5;
+            }
+            button {
+                border: 1px solid #444444;
+            }
+            button:hover {
+                background-color: #333333;
+            }
         }
     </style>
 </head>
