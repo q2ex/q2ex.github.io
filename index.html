@@ -5,6 +5,31 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <style>
+        /* 新增：页面整体居中、自适应布局 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            font-family: sans-serif;
+        }
+        /* 新增：内容块间距 */
+        #loader, #error, #result {
+            margin: 10px 0;
+        }
+        /* 新增：按钮间距 */
+        button {
+            margin-top: 20px;
+        }
+
+        /* 原有样式保留 */
         #result{transform:translateZ(0);}
         button{
             border: none;
