@@ -30,11 +30,11 @@
         #loader, #error, #result {
             margin: 10px 0;
         }
-        /* 新增：按钮间距 */
+        /* 新增：按钮间距 + 初始化隐藏 */
         button {
             margin-top: 20px;
+            display: none; /* 关键：初始化隐藏按钮 */
         }
-
         /* 原有样式保留 */
         #result{transform:translateZ(0);}
         button{
@@ -60,7 +60,6 @@
             60% { content: '..'; }
             80%, 100% { content: '...'; }
         }
-
         /* 新增：深色模式适配 */
         @media (prefers-color-scheme: dark) {
             body {
@@ -68,7 +67,6 @@
                 color: #f5f5f5;
             }
         }
-
         /* 新增：NAT类型渐变文字样式 */
         #natType {
             background-image: linear-gradient(90deg, #4285f4, #ea4335, #fbbc05, #34a853);
@@ -93,11 +91,13 @@
                 error: document.getElementById('error'),
                 result: document.getElementById('result'),
                 natType: document.getElementById('natType'),
-                publicIP: document.getElementById('publicIP')
+                publicIP: document.getElementById('publicIP'),
+                button: document.querySelector('button') // 新增：获取按钮DOM
             };
             if (!window.RTCPeerConnection || !window.WebSocket) {
                 dom.error.textContent = "Browser does not support required features, detection failed";
                 dom.loader.style.display = 'none';
+                dom.button.style.display = ''; // 不支持时显示按钮
                 return;
             }
             const PeerConnection = window.RTCPeerConnection || window.webkitRTCPeerConnection;
@@ -115,6 +115,7 @@
                     dom.natType.classList.add('loading');
                     dom.publicIP.textContent = 'Detecting';
                     dom.publicIP.classList.add('loading');
+                    dom.button.style.display = 'none'; // 点击重新检测时隐藏按钮
                     try {
                         await this.connectWs();
                         await this.initRtc();
@@ -122,6 +123,7 @@
                         dom.error.textContent = `Detection failed: ${e.message || 'error'}`;
                         this.clean();
                         dom.loader.style.display = 'none';
+                        dom.button.style.display = ''; // 检测失败显示按钮
                     }
                 }
                 async connectWs() {
@@ -192,6 +194,7 @@
                     dom.publicIP.textContent = this.publicIp || 'No public IP';
                     dom.loader.style.display = 'none';
                     dom.result.style.display = '';
+                    dom.button.style.display = ''; // 检测完成显示按钮
                     this.clean();
                 }
                 clean() {
